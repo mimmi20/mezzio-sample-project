@@ -3,6 +3,7 @@
 .buildpath
 .project
 .idea/
+.build/
 vendor/
 composer.phar
 composer.lock
@@ -22,3 +23,6 @@ tests/temp/*.ini
 .phpunit.result.cache
 infection-*.log
 rewrite*.php
+config/development.config.php
+config/autoload/local.php
+config/autoload/*.local.php

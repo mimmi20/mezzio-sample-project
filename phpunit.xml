@@ -12,7 +12,6 @@
     beStrictAboutTodoAnnotatedTests="true"
     beStrictAboutResourceUsageDuringSmallTests="true"
     failOnEmptyTestSuite="true"
-    failOnIncomplete="true"
     failOnRisky="true"
     failOnSkipped="true"
     failOnWarning="true"
@@ -28,7 +27,7 @@
         <ini name="date.timezone" value="UTC"/>
     </php>
 
-    <testsuite name="Template Test Suite">
+    <testsuite name="Mezzion Navigation ViewHelper Test Suite">
         <directory>tests/</directory>
     </testsuite>
 

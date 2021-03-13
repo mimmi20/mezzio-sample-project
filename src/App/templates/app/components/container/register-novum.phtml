@@ -1,0 +1,15 @@
+<script src="<?= $this->escapeHtml($novumConfig['uri']) ?>js/api/api.1.4.min.js"
+        data-origin="<?= $this->escapeHtml($novumConfig['uri']) ?>"
+        id="broker-api"
+        data-brokerICrmId="<?= $this->escapeHtml($novumConfig['oid']['id24']); ?>"
+        data-iCrmSystem="JDC"
+        data-pw-strength="true"
+        data-pw-strength-style="true"
+        crossorigin="anonymous"
+        data-debug="false"
+<?php if ($includetipGiver) : ?>
+        data-tipGiver="<?= $this->escapeHtml($partnerCode); ?>"
+<?php endif; ?>
+        integrity="sha384-oWSC3yHC/G8rIVeDeE7gn2m1sWuLDEwiIkx09qcBUiX4090H1iBGvu+bPBFc87N4"
+        async>
+</script>

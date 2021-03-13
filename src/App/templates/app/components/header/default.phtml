@@ -1,0 +1,35 @@
+<?php /** @var \Mezzio\Navigation\LaminasView\View\Helper\Navigation\Menu $menu */ ?>
+<?php /** @var array $novumConfig */ ?>
+
+<header class="id24-header">
+    <div class="container">
+        <div class="id24-header-top row justify-content-between align-items-center">
+            <div class="col-auto id24-logo-container">
+                <a class="id24-logo" href="<?= $this->serverUrl('/') ?>" title="Hier gelangen Sie zur Startseite">
+                    <img src="/img/logo_mobil.svg" alt="Logo mobile" class="d-md-none">
+                    <img src="/img/logo.svg" alt="Logo Desktop" class="d-none d-md-inline-block">
+                </a>
+            </div>
+            <div class="col-auto">
+                <span class="icon id24-icon-phone"></span>
+                <a class="id24-subheader-phone" href="tel:+4991196466894" title="Mo-Fr 8:00 bis 18:00 Uhr" data-event-label="home" data-event-action="<?= $this->serverUrl('/') ?>" data-event-category="call">
+                    <span class="id24-subheader-phone-number">+49 911 9646-6894</span>
+                </a>
+            </div>
+            <div class="col-auto id24-header-navigation-toggle d-md-none">
+                <label for="navigation-toggle" class="id24-navigation-toggle-button">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+            </div>
+            <input type="checkbox" id="navigation-toggle" class="d-none id24-navigation-toggle"/>
+            <nav class="col-auto id24-header-navigation pl-md-0">
+                <?= $this->navigation('Mezzio\\Navigation\\Top')->menu()->renderMenu(null, ['ulClass' => 'id24-header-navigation-list list-unstyled row d-block d-md-flex', 'liActiveClass' => 'active']); ?>
+            </nav>
+        </div>
+    </div>
+</header>

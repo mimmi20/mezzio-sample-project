@@ -1,18 +1,27 @@
 <?xml version="1.0"?>
-<ruleset name="browser-detector"
+<ruleset name="mezzio-sample-project"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="vendor/squizlabs/php_codesniffer/phpcs.xsd"
 >
-    <description>browser-detector</description>
+    <description>mezzio-sample-project</description>
 
     <arg name="report" value="full"/>
     <arg value="wps"/>
     <arg name="encoding" value="utf-8"/>
 
     <!-- inherit rules from: -->
-    <rule ref="mimmi20-cs"/>
+    <rule ref="mimmi20-cs">
+        <exclude name="Squiz.Arrays.ArrayDeclaration.MultiLineNotAllowed"/>
+        <exclude name="Squiz.Arrays.ArrayDeclaration.ValueNoNewline"/>
+        <exclude name="Squiz.Commenting.FunctionComment.ScalarTypeHintMissing"/>
+        <exclude name="SlevomatCodingStandard.ControlStructures.AssignmentInCondition.AssignmentInCondition"/>
+        <exclude name="PSR12.Classes.AnonClassDeclaration.SpaceAfterKeyword"/>
+        <exclude name="SlevomatCodingStandard.Commenting.DocCommentSpacing.IncorrectAnnotationsGroup"/>
+    </rule>
 
     <!-- Paths to check -->
+    <file>config</file>
+    <file>public</file>
     <file>src</file>
     <file>tests</file>
 </ruleset>

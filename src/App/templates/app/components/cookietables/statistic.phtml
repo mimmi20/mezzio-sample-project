@@ -1,0 +1,30 @@
+<?php
+    $cookieArr = [];
+?>
+
+<?php foreach ($cookieArr as $key => $val) : ?>
+<table class="table table-bordered table-striped">
+    <tbody>
+        <tr>
+            <th>Name</th>
+            <td><pre><?= $val['name'] ?></pre></td>
+        </tr>
+        <tr>
+            <th>Anbieter</th>
+            <td><?= $val['anbieter'] ?></td>
+        </tr>
+        <tr>
+            <th>Zweck</th>
+            <td><?= $val['zweck'] ?></td>
+        </tr>
+        <tr>
+            <th>Cookie Name</th>
+            <td><pre><?= $val['cookie_name'] ?></pre></td>
+        </tr>
+        <tr>
+            <th>Cookie Laufzeit</th>
+            <td><pre><?= $val['cookie_laufzeit'] ?></pre></td>
+        </tr>
+    </tbody>
+</table>
+<?php endforeach; ?>

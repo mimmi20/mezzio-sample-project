@@ -1,0 +1,10 @@
+<?php /** @var $page string **/ ?>
+<?php /** @var $form \Laminas\Form\FormInterface **/ ?>
+
+<?= $this->partial(
+    sprintf('app::_pages/%s.phtml', $page),
+    [
+        'form' => $form,
+        'novumConfig' => $this->novumConfig,
+    ]
+);

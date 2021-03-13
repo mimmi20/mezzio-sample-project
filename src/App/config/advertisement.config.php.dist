@@ -1,0 +1,8 @@
+<?php
+
+return [
+    // Google Tag Manager
+    'googleTagManager' => [
+        'id' => '${gtm.id}',
+    ],
+];

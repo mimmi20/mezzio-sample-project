@@ -1,0 +1,8 @@
+<?php
+
+return [
+    'enabled'      => ${minify.enabled},
+    'revisionfile' => '${application.versionfile}',
+    'groups-file'  => 'data/minify/minify.json',
+    'public-dir'   => '${application.publicdirectory}',
+];

@@ -1,0 +1,12 @@
+<?php
+// Wenn neue Dateien hinzukommen, bitte nicht vergessen den Node-Minifier anzupassen. Dort müssen neue Dateien ebenfalls
+// hinzugefügt werden. Dieser liegt unter, /build/jsminify.run.js
+
+$this->revisionHeadLink()->appendStylesheet('/css/index.css', 'screen', false, [], true, '', true);
+?>
+
+<?= $this->headLink(); ?>
+
+<?= $this->revisionHeadLink(); ?>
+
+<?= $this->headStyle(); ?>

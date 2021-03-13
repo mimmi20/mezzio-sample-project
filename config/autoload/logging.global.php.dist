@@ -1,0 +1,34 @@
+<?php
+
+declare(strict_types=1);
+
+return [
+    'log' => [
+        'writers' => [
+            'file' => [
+                'name'     => \Laminas\Log\Writer\Stream::class,
+                'options' => [
+                    'stream' => '${resources.logger.stream.stream}',
+                    'chmod'  => 0777,
+                    'formatter' => [
+                        'name' => \Laminas\Log\Formatter\Simple::class,
+                    ],
+                    'filters' => [
+                        'priority' => [
+                            'name' => \Laminas\Log\Filter\Priority::class,
+                            'options' => [
+                                'operator' => '<=',
+                                'priority' => ${resources.logger.level},
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ],
+        'processors' => [
+            'psr3' => [
+                'name' => \Laminas\Log\Processor\PsrPlaceholder::class,
+            ],
+        ],
+    ],
+];

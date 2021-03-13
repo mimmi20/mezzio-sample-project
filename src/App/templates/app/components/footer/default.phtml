@@ -1,0 +1,23 @@
+<footer class="id24-footer">
+    <div class="container">
+        <div class="row align-items-md-center">
+            <div class="col-3 col-md-2">
+                <a class="id24-footer-logo" href="<?= $this->serverUrl('/') ?>" title="zur Startseite"></a>
+            </div>
+            <div class="col-6 col-md-10 offset-1 offset-md-0">
+                <div class="row justify-content-between align-items-md-center">
+                    <div class="col-12 col-md-4 pt-2 pt-md-0">
+                        <span class="icon id24-icon-phone"></span>
+                        <a class="id24-footer-phone" href="tel:+4991196466894" title="Mo-Fr 8:00 bis 18:00 Uhr" data-event-label="home" data-event-action="<?= $this->serverUrl('/') ?>" data-event-category="call">
+                            <span class="id24-footer-phone-number">+49 911 9646-6894</span>
+                        </a>
+                        <p class="id24-footer-servicetime">Mo-Fr 8:00 bis 18:00 Uhr</p>
+                    </div>
+                    <div class="col-12 col-md-8">
+                        <?= $this->navigation('Mezzio\\Navigation\\Bottom')->menu()->renderMenu(null, ['ulClass' => 'list-inline text-center text-lg-right mb-0 id24-footer-list', 'liActiveClass' => 'active']); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
