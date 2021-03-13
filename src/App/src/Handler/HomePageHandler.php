@@ -12,6 +12,7 @@ declare(strict_types = 1);
 namespace App\Handler;
 
 use Laminas\Diactoros\Response\HtmlResponse;
+use Laminas\Log\Logger;
 use Laminas\View\Model\ViewModel;
 use Mezzio\Template\TemplateRendererInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -23,17 +24,16 @@ final class HomePageHandler implements RequestHandlerInterface
     /** @var TemplateRendererInterface */
     private $template;
 
-    /** @var array */
-    private $novumConfig;
+    private $logger;
 
     /**
      * @param TemplateRendererInterface $template
-     * @param array                     $novumConfig
+     * @param \Laminas\Log\Logger       $logger
      */
-    public function __construct(TemplateRendererInterface $template, array $novumConfig)
+    public function __construct(TemplateRendererInterface $template, Logger $logger)
     {
         $this->template    = $template;
-        $this->novumConfig = $novumConfig;
+        $this->logger   = $logger;
     }
 
     /**
@@ -43,21 +43,24 @@ final class HomePageHandler implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $layout = new ViewModel([
-            'request' => $request,
-            'novumConfig' => $this->novumConfig,
-        ]);
-        $layout->setTemplate('layout::default');
-
-        return new HtmlResponse(
-            $this->template->render(
-                'app::home-page',
+        try {
+            $layout = new ViewModel(
                 [
-                    'novumPartner' => 'id24',
-                    'novumConfig' => $this->novumConfig,
-                    'layout' => $layout,
+                    'request' => $request,
                 ]
-            )
-        );
+            );
+            $layout->setTemplate('layout::default');
+
+            return new HtmlResponse(
+                $this->template->render(
+                    'app::home-page',
+                    [
+                        'layout' => $layout,
+                    ]
+                )
+            );
+        } catch (\Throwable $e) {
+            $this->logger->err($e);
+        }
     }
 }

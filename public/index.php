@@ -18,7 +18,7 @@ if (PHP_SAPI === 'cli-server' && __FILE__ !== $_SERVER['SCRIPT_FILENAME']) {
 chdir(dirname(__DIR__));
 require 'vendor/autoload.php';
 
-//ini_set('memory_limit', '-1');
+ini_set('memory_limit', '-1');
 
 /**
  * Self-called anonymous function that creates its own scope and keeps the global namespace clean.
@@ -35,7 +35,6 @@ require 'vendor/autoload.php';
         // Execute programmatic/declarative middleware pipeline and routing
         // configuration statements
         (require 'config/pipeline.php')($app, $factory, $container);
-        //(require 'config/routes.php')($app, $factory, $container);
 
         $app->run();
     } catch (\Throwable $e) {

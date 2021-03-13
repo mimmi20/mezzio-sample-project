@@ -2,7 +2,7 @@
 <?php /** @var $form \Laminas\Form\FormInterface **/ ?>
 
 <?= $this->partial(
-    sprintf('app::_pages/%s.phtml', $page),
+    sprintf('pages::%s', $page),
     [
         'form' => $form,
         'novumConfig' => $this->novumConfig,

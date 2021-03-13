@@ -12,7 +12,7 @@ $telephone->setAttribute('required', true)
     ->setAttribute('pattern', '^([+][ ]?[1-9][0-9][ ]?[-]?[ ]?|[(]?[0][ ]?)[0-9]{3,4}[-)/ ]?[ ]?[1-9][-0-9 ]{4,16}$')
     ->setAttribute('data-pattern-message', 'Bitte geben Sie eine gültige Telefonnummer ein.')
     ->setLabelAttributes([
-        'class' => 'id24-required'
+        'class' => 'required'
     ]);
 
 $email = $form->get('email');
@@ -25,7 +25,7 @@ $email->setAttribute('id', $email->getAttribute('id'))
     ->setAttribute('pattern', '^[a-zA-Z0-9.!#$%&\'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$')
     ->setAttribute('data-pattern-message', 'Bitte geben Sie eine gültige E-Mail Adresse ein.')
     ->setLabelAttributes([
-        'class' => 'id24-required'
+        'class' => 'required'
     ]);
 
 $privacyPolicy = $form->get('agb');
@@ -33,7 +33,7 @@ $privacyPolicy->setAttribute('class', 'custom-control-input')
     ->setAttribute('id', $privacyPolicy->getAttribute('id'))
     ->setAttribute('required', true)
     ->setAttribute('data-required-message', 'Bitte stimmen Sie den Datenschutzbedingungen zu.')
-    ->setLabel($privacyPolicy->getLabel() . '<span class="id24-required-element"></span>')
+    ->setLabel($privacyPolicy->getLabel() . '<span class="required-element"></span>')
     ->setLabelAttributes([
         'class' => 'custom-control-label'
     ]);
@@ -72,7 +72,7 @@ $form->setAttribute('class', 'js-form-validation-base js-ajax-form')->prepare();
                             <p>Montag bis Freitag, 8 bis 18 Uhr</p>
                         </div>
                         <div class="col-12 col-sm-auto col-lg-12">
-                            <a href="tel:+4991196466894"><span class="icon id24-icon-phone"></span>+49 911 9646-6894</a>
+                            <a href="tel:+4991196466894"><span class="icon icon-phone"></span>+49 911 9646-6894</a>
                             <a href="mailto:info@InsureDirect24.de"><span class="at">@</span>info@InsureDirect24.de</a>
                         </div>
                     </div>

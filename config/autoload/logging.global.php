@@ -8,19 +8,10 @@ return [
             'file' => [
                 'name'     => \Laminas\Log\Writer\Stream::class,
                 'options' => [
-                    'stream' => '${resources.logger.stream.stream}',
+                    'stream' => 'log/error.log',
                     'chmod'  => 0777,
                     'formatter' => [
                         'name' => \Laminas\Log\Formatter\Simple::class,
-                    ],
-                    'filters' => [
-                        'priority' => [
-                            'name' => \Laminas\Log\Filter\Priority::class,
-                            'options' => [
-                                'operator' => '<=',
-                                'priority' => ${resources.logger.level},
-                            ],
-                        ],
                     ],
                 ],
             ],

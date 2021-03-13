@@ -26,8 +26,8 @@ return [
                 'title' => 'Anmelden',
                 'uri' => '${interfaces.novum.uri}insuredirect24/de/login',
                 'target' => '_blank',
-                'class' => 'btn btn-primary id24-btn',
-                'liClass' => 'col-12 col-md-auto order-sm-4 id24-mainmenu id24-login-container d-none d-lg-flex',
+                'class' => 'btn btn-primary btn',
+                'liClass' => 'col-12 col-md-auto order-sm-4 mainmenu login-container d-none d-lg-flex',
             ],
             'faq' => [
                 //'type' => Route::class,
@@ -36,7 +36,7 @@ return [
                 'title' => 'FAQ',
                 'route' => 'info',
                 'params' => ['id' => 'faq'],
-                'liClass' => 'col-12 col-md-auto order-sm-0 align-self-center id24-mainmenu',
+                'liClass' => 'col-12 col-md-auto order-sm-0 align-self-center mainmenu',
             ],
             'ueber-uns' => [
                 //'type' => Route::class,
@@ -45,7 +45,7 @@ return [
                 'title' => 'Über uns',
                 'route' => 'info',
                 'params' => ['id' => 'ueber-uns'],
-                'liClass' => 'col-12 col-md-auto order-sm-1 align-self-center id24-mainmenu',
+                'liClass' => 'col-12 col-md-auto order-sm-1 align-self-center mainmenu',
             ],
             'beratung' => [
                 //'type' => Route::class,
@@ -54,7 +54,7 @@ return [
                 'title' => 'Beratung',
                 'route' => 'info',
                 'params' => ['id' => 'beratung'],
-                'liClass' => 'col-12 col-md-auto order-sm-2 align-self-center id24-mainmenu',
+                'liClass' => 'col-12 col-md-auto order-sm-2 align-self-center mainmenu',
             ],
             'kontakt' => [
                 //'type' => Route::class,
@@ -63,7 +63,7 @@ return [
                 'title' => 'Kontakt',
                 'route' => 'info',
                 'params' => ['id' => 'kontakt'],
-                'liClass' => 'col-12 col-md-auto order-sm-3 align-self-center id24-mainmenu',
+                'liClass' => 'col-12 col-md-auto order-sm-3 align-self-center mainmenu',
             ],
         ],
         'bottom' => [
