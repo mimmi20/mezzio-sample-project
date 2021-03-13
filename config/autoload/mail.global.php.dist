@@ -1,0 +1,43 @@
+<?php
+
+declare(strict_types=1);
+
+return [
+    'mail' => [
+        'transport' => [
+            'options' => [
+                'name'                  => '${smtp.host}',
+                'host'                  => '${smtp.host}',
+                'port'                  => ${smtp.port},
+                'connection_class'      => '${smtp.method}',
+                'connection_time_limit' => 300, // recreate the connection 5 minutes after connect()
+                'connection_config'     => [
+                    'username'          => '${smtp.username}',
+                    'password'          => '${smtp.password}',
+                    'ssl'               => '${smtp.ssl}',
+                    'use_complete_quit' => false, // Dont send 'QUIT' on __destruct()
+                ],
+            ],
+        ],
+        'mails' => [
+            'kontakt' => [
+                'from' => [
+                    '${mails.kontakt.from.email}' => '${mails.kontakt.from.name}',
+                ],
+                'to' => [
+                    '${mails.kontakt.to.email}' => '${mails.kontakt.to.name}',
+                ],
+                'subject' => '${mails.kontakt.subject}',
+            ],
+            'beratung' => [
+                'from' => [
+                    '${mails.beratung.from.email}' => '${mails.beratung.from.name}',
+                ],
+                'to' => [
+                    '${mails.beratung.to.email}' => '${mails.kontakt.to.name}',
+                ],
+                'subject' => '${mails.beratung.subject}',
+            ],
+        ],
+    ],
+];

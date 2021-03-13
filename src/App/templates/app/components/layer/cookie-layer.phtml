@@ -1,0 +1,77 @@
+<?php
+// Layer Aktualisierung Datenschutzbestimmung
+use \Application\Presentation\View\Helper\CookieSecurity;
+?>
+
+<?php if (!$this->cookieSecurity()->cookieExist() || $isCookiePage) : ?>
+    <div class="id24-layer-default id24-layer-cookie-approval is-shown<?php if ($isCookiePage) : ?> static embedded container<?php endif; ?>">
+        <div class="cell">
+            <div class="message-content">
+                <div class="message-content-inner">
+                    <header class="layer-headline-primary">Datenschutzeinstellungen</header>
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="site-1" role="tabpanel">
+                            <p class="layer-text">Wir nutzen Cookies auf unserer Website. Einige von ihnen sind notwendig, während andere uns helfen, diese Website und Ihr Erlebnis zu verbessern.</p>
+                            <hr />
+                            <div class="row justify-content-center justify-content-md-start">
+                                <div class="switch-element col-12">
+                                    <div class="custom-control custom-switch d-block">
+                                        <input type="checkbox" disabled class="custom-control-input cookie-checkbox" checked="checked" id="essentialCookies1">
+                                        <label class="custom-control-label" for="essentialCookies">Notwendig</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fade tab-pane" id="site-2" role="tabpanel">
+                            <p class="layer-text">Hier finden Sie eine Übersicht über alle verwendeten Cookies. Sie können Ihre Einwilligung zu ganzen Kategorien geben oder sich weitere Informationen anzeigen lassen und so nur bestimmte Cookies auswählen.</p>
+                            <hr />
+                            <h3 class="layer-headline-secondary">
+                                Notwendig
+                                <div class="switch-element">
+                                    <div class="custom-control custom-switch d-block">
+                                        <input type="checkbox" disabled class="custom-control-input cookie-checkbox" checked="checked" id="essentialCookies">
+                                        <label class="custom-control-label" for="essentialCookies"></label>
+                                    </div>
+                                </div>
+                            </h3>
+                            <p>Notwendige Cookies ermöglichen grundlegende Funktionen und sind für die einwandfreie Funktion der Website erforderlich.</p>
+                            <a data-toggle="collapse" href="#collapse-essential-cookies" aria-expanded="false" aria-controls="collapse-essential-cookies">
+                                <span class="icon id24-icon-chevron-line-down"></span>
+                                Cookie-Informationen anzeigen
+                            </a>
+                            <div class="collapse collapse-cookie-description-table" id="collapse-essential-cookies">
+                                <div class="card card-body">
+                                    <?= $this->render('/components/cookietables/essential.phtml'); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="btn-container">
+                        <div class="row justify-content-center justify-content-md-start nav">
+                            <div class="col-auto pr-md-0"><a href="#" data-cookie="all" class="js-select-cookies mt-1 btn btn-colored-default-lg btn-block">akzeptieren</a></div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="btn-container">
+                        <div class="row justify-content-center justify-content-md-between">
+                            <div class="col-12 col-md-auto nav nav-tabs" role="tablist">
+                                <a href="#site-2" class="nav-item nav-link" aria-selected="false" data-toggle="tab" role="tab">Individuelle Cookie-Einstellungen</a>
+                                <a href="#site-1" class="nav-item nav-link active show" aria-selected="true" data-toggle="tab" role="tab">Zurück</a>
+                            </div>
+                            <?php if (!$isCookiePage) : ?>
+                                <div class="col-12 col-md-auto nav">
+                                    <a href="#" target="_blank" rel="nofollow" class="nav-item nav-link">Datenschutzerklärung</a>
+                                    <a href="#" target="_blank" rel="nofollow" class="nav-item nav-link">Impressum</a>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                    <input type="hidden" name="essentialCookies" value="<?= $this->cookieSecurity()->getCookieSecurityLevel('essential') ?>">
+                    <input type="hidden" name="statisticCookies" value="<?= $this->cookieSecurity()->getCookieSecurityLevel('statistic') ?>">
+                    <input type="hidden" name="functionalCookies" value="<?= $this->cookieSecurity()->getCookieSecurityLevel('functional') ?>">
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>

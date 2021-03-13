@@ -1,0 +1,42 @@
+<?= $this->doctype() ?>
+
+<html lang="de">
+    <head>
+        <meta charset="utf-8">
+        <?= $this->headTitle('InsureDirect24 – Schwabach')->setSeparator(' - ')->setAutoEscape(false) ?>
+
+        <?= $this->headMeta()->setAutoEscape(false)
+            ->appendName('description', 'InsureDirect24 – Ihr digitales Maklerhaus, Wir machen Versicherungen für Sie einfach und transparent')
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
+        <?= $this->googleTagManager()->renderFirst() ?>
+
+        <link rel="apple-touch-icon" sizes="180x180" href="<?= $this->serverUrl('/_icons/apple-touch-icon.png')?>">
+        <link rel="icon" type="image/png" sizes="32x32" href="<?= $this->serverUrl('/_icons/favicon-32x32.png')?>">
+        <link rel="icon" type="image/png" sizes="192x192" href="<?= $this->serverUrl('/_icons/android-chrome-192x192.png')?>">
+        <link rel="icon" type="image/png" sizes="16x16" href="<?= $this->serverUrl('/_icons/favicon-16x16.png')?>">
+        <link rel="manifest" href="<?= $this->serverUrl('/_icons/site.webmanifest')?>">
+        <link rel="mask-icon" href="<?= $this->serverUrl('/_icons/safari-pinned-tab.svg')?>" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#00badb">
+        <meta name="theme-color" content="#ffffff">
+
+        <!-- Styles -->
+        <?= $this->partial('app::branding/header_styles.phtml'); ?>
+
+        <!-- Head Scripts -->
+        <?= $this->partial('app::branding/header_scripts.phtml'); ?>
+    </head>
+    <body>
+        <?= $this->googleTagManager()->renderTop() ?>
+
+        <div class="id24-wrapper">
+            <?= $this->partial('app::components/header/default.phtml', ['novumConfig' => $novumConfig]); ?>
+            <?= $this->content ?>
+            <?= $this->partial('app::components/footer/default.phtml'); ?>
+        </div>
+
+        <!-- Footer Scripts -->
+        <?= $this->partial('app::branding/footer_scripts.phtml'); ?>
+    </body>
+</html>

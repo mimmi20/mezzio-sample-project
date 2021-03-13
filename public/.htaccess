@@ -1,0 +1,124 @@
+## Enable Expires-Header and Cache-control
+################################################################################
+<IfModule mod_expires.c>
+    ExpiresActive On
+</IfModule>
+
+<IfModule mod_headers.c>
+    Header set X-UA-Compatible "IE=edge"
+    Header append Vary: Accept-Encoding
+
+    # dont't allow content sniffing inside the browser
+    Header always set X-Content-Type-Options nosniff
+
+    # Always set these headers for CORS.
+    Header always set Access-Control-Allow-Methods: "GET,POST,OPTIONS"
+    # @todo: add csp with reporting url
+</IfModule>
+
+<FilesMatch "\.ico(__[0-9a-z]+)?$">
+    <IfModule mod_headers.c>
+        # 1 Year
+        Header set Cache-Control "max-age=29030400, public"
+    </IfModule>
+    <IfModule mod_expires.c>
+        ExpiresDefault "access plus 1 year"
+    </IfModule>
+</FilesMatch>
+
+<FilesMatch "\.(json|js|gif|jpe?g|png|svg|svgz|mp4|eot|ttf|woff2?|css|var|zd|zc|zg)(__[0-9a-z]+)?$">
+    <IfModule mod_headers.c>
+        # 4 Weeks
+        Header set Cache-Control "max-age=2419200, public"
+    </IfModule>
+    <IfModule mod_expires.c>
+        ExpiresDefault "access plus 4 weeks"
+    </IfModule>
+</FilesMatch>
+
+<FilesMatch "\.(woff2?|ttf|eot|svg)$">
+    <IfModule mod_headers.c>
+        Header set Access-Control-Allow-Origin "*"
+    </IfModule>
+</FilesMatch>
+
+RewriteEngine On
+
+AddType image/svg+xml svg svgz
+AddType font/woff woff
+AddType font/woff2 woff2
+AddType video/mp4 mp4
+
+## Enable Compression
+################################################################################
+<IfModule mod_deflate.c>
+    SetOutputFilter DEFLATE
+
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/vnd.ms-fontobject
+    AddOutputFilterByType DEFLATE application/x-font
+    AddOutputFilterByType DEFLATE application/x-font-opentype
+    AddOutputFilterByType DEFLATE application/x-font-otf
+    AddOutputFilterByType DEFLATE application/x-font-truetype
+    AddOutputFilterByType DEFLATE application/x-font-ttf
+    AddOutputFilterByType DEFLATE application/x-javascript
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE font/opentype
+    AddOutputFilterByType DEFLATE font/otf
+    AddOutputFilterByType DEFLATE font/ttf
+    AddOutputFilterByType DEFLATE font/woff
+    AddOutputFilterByType DEFLATE font/woff2
+    AddOutputFilterByType DEFLATE image/svg+xml
+    AddOutputFilterByType DEFLATE image/svgz+xml
+    AddOutputFilterByType DEFLATE image/x-icon
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/javascript
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE application/json
+    AddOutputFilterByType DEFLATE text/x-component
+    AddOutputFilterByType DEFLATE application/atom+xml
+    AddOutputFilterByType DEFLATE application/pdf
+
+    # Remove browser bugs (only needed for really old browsers)
+    BrowserMatch ^Mozilla/4 gzip-only-text/html
+    BrowserMatch ^Mozilla/4\.0[678] no-gzip
+    BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+</IfModule>
+
+# Etags don't work if compression is activated #
+FileETag None
+
+# The following rule allows authentication to work with fast-cgi
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+## Rewrite rule for core css/js packages
+################################################################################
+RewriteRule ^(.+)__([0-9a-f]+)\.(css|js|var|jpe?g|png|gif|ico|eot|woff2?|ttf|svg)$ $1.$3 [NC,L]
+
+############# auf https weiterleiten ####################
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP_HOST} !localhost:\d+$ [NC]
+RewriteCond %{HTTP_HOST} !unidev\d+\.dyn\.unister\.lan:\d+$ [NC]
+RewriteCond %{HTTP_HOST} !10\.\d+\.\d+\.\d+:\d+$ [NC]
+RewriteRule (.*) https://%{HTTP_HOST}/$1 [L,NC,R=301,QSA]
+
+# The following rule tells Apache that if the requested filename
+# exists, simply serve it.
+RewriteCond %{REQUEST_FILENAME} -s [OR]
+RewriteCond %{REQUEST_FILENAME} -l [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^.*$ - [NC,L]
+
+# The following rewrites all other queries to index.php. The
+# condition ensures that if you are using Apache aliases to do
+# mass virtual hosting, the base path will be prepended to
+# allow proper resolution of the index.php file; it will work
+# in non-aliased environments as well, providing a safe, one-size
+# fits all solution.
+RewriteCond %{REQUEST_URI}::$1 ^(/.+)(.+)::\2$
+RewriteRule ^(.*) - [E=BASE:%1]
+RewriteRule !\.(css|js|var|jpe?g|png|gif|ico|eot|woff2?|ttf|svg|xml|shtml|swf|flv|map)$ %{ENV:BASE}/index.php [L]

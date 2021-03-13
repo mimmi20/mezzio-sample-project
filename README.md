@@ -1,31 +1,19 @@
-# template
+# Mezzio Navigation ViewHelper
 
-[![Continuous Integration](https://github.com/mimmi20/template/workflows/Continuous Integration/badge.svg?branch=master)](https://github.com/mimmi20/template/actions)
-[![Close stale issues and pull requests](https://github.com/mimmi20/template/workflows/Close stale issues and pull requests/badge.svg?branch=master)](https://github.com/mimmi20/template/actions)
-[![Release](https://github.com/mimmi20/template/workflows/Release/badge.svg?branch=master)](https://github.com/mimmi20/template/actions)
-[![Renew License](https://github.com/mimmi20/template/workflows/Renew License/badge.svg?branch=master)](https://github.com/mimmi20/template/actions)
+[![Latest Stable Version](https://poser.pugx.org/mimmi20/mezzio-sample-project/v/stable?format=flat-square)](https://packagist.org/packages/mimmi20/mezzio-sample-project)
+[![Latest Unstable Version](https://poser.pugx.org/mimmi20/mezzio-sample-project/v/unstable?format=flat-square)](https://packagist.org/packages/mimmi20/mezzio-sample-project)
+[![License](https://poser.pugx.org/mimmi20/mezzio-sample-project/license?format=flat-square)](https://packagist.org/packages/mimmi20/mezzio-sample-project)
 
-[![Code Coverage](https://codecov.io/gh/mimmi20/template/branch/master/graph/badge.svg)](https://codecov.io/gh/mimmi20/template)
+## Code Status
 
-[![Latest Stable Version](https://poser.pugx.org/mimmi20/template/v/stable)](https://packagist.org/packages/mimmi20/template)
-[![Total Downloads](https://poser.pugx.org/mimmi20/template/downloads)](https://packagist.org/packages/mimmi20/template)
+[![codecov](https://codecov.io/gh/mimmi20/mezzio-sample-project/branch/master/graph/badge.svg)](https://codecov.io/gh/mimmi20/mezzio-sample-project)
+[![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/mimmi20/mezzio-sample-project.svg)](http://isitmaintained.com/project/mimmi20/mezzio-sample-project "Average time to resolve an issue")
+[![Percentage of issues still open](http://isitmaintained.com/badge/open/mimmi20/mezzio-sample-project.svg)](http://isitmaintained.com/project/mimmi20/mezzio-sample-project "Percentage of issues still open")
 
 ## Installation
-
-:bulb: This is a great place for showing how to install the package, see below:
 
 Run
 
 ```
-$ composer require mimmi20/template
+$ composer require mimmi20/mezzio-sample-project
 ```
-
-## Usage
-
-:bulb: This is a great place for showing a few usage examples!
-
-## License
-
-This package is licensed using the MIT License.
-
-Please have a look at [`LICENSE.md`](LICENSE.md).
