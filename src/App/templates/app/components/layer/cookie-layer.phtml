@@ -4,7 +4,7 @@ use \Application\Presentation\View\Helper\CookieSecurity;
 ?>
 
 <?php if (!$this->cookieSecurity()->cookieExist() || $isCookiePage) : ?>
-    <div class="id24-layer-default id24-layer-cookie-approval is-shown<?php if ($isCookiePage) : ?> static embedded container<?php endif; ?>">
+    <div class="layer-default layer-cookie-approval is-shown<?php if ($isCookiePage) : ?> static embedded container<?php endif; ?>">
         <div class="cell">
             <div class="message-content">
                 <div class="message-content-inner">
@@ -36,7 +36,7 @@ use \Application\Presentation\View\Helper\CookieSecurity;
                             </h3>
                             <p>Notwendige Cookies ermöglichen grundlegende Funktionen und sind für die einwandfreie Funktion der Website erforderlich.</p>
                             <a data-toggle="collapse" href="#collapse-essential-cookies" aria-expanded="false" aria-controls="collapse-essential-cookies">
-                                <span class="icon id24-icon-chevron-line-down"></span>
+                                <span class="icon icon-chevron-line-down"></span>
                                 Cookie-Informationen anzeigen
                             </a>
                             <div class="collapse collapse-cookie-description-table" id="collapse-essential-cookies">

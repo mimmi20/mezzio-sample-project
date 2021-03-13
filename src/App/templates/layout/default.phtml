@@ -10,7 +10,6 @@
             ->appendName('viewport', 'width=device-width, initial-scale=1.0')
             ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
         ?>
-        <?= $this->googleTagManager()->renderFirst() ?>
 
         <link rel="apple-touch-icon" sizes="180x180" href="<?= $this->serverUrl('/_icons/apple-touch-icon.png')?>">
         <link rel="icon" type="image/png" sizes="32x32" href="<?= $this->serverUrl('/_icons/favicon-32x32.png')?>">
@@ -28,10 +27,8 @@
         <?= $this->partial('app::branding/header_scripts.phtml'); ?>
     </head>
     <body>
-        <?= $this->googleTagManager()->renderTop() ?>
-
-        <div class="id24-wrapper">
-            <?= $this->partial('app::components/header/default.phtml', ['novumConfig' => $novumConfig]); ?>
+        <div class="wrapper">
+            <?= $this->partial('app::components/header/default.phtml'); ?>
             <?= $this->content ?>
             <?= $this->partial('app::components/footer/default.phtml'); ?>
         </div>

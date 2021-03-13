@@ -12,6 +12,7 @@ declare(strict_types = 1);
 namespace App\Handler;
 
 use App\Config\ServiceConfigInterface;
+use Laminas\Log\Logger;
 use Mezzio\Template\TemplateRendererInterface;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -25,12 +26,9 @@ final class HomePageHandlerFactory
      */
     public function __invoke(ContainerInterface $container): RequestHandlerInterface
     {
-        $novumConfig = $container->get(ServiceConfigInterface::class)->getNovumConfig();
-        \assert(\is_array($novumConfig));
-
         return new HomePageHandler(
             $container->get(TemplateRendererInterface::class),
-            $novumConfig
+            $container->get(Logger::class)
         );
     }
 }
