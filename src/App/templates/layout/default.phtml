@@ -21,19 +21,19 @@
         <meta name="theme-color" content="#ffffff">
 
         <!-- Styles -->
-        <?= $this->partial('app::branding/header_styles.phtml'); ?>
+        <?= $this->partial('branding::header_styles'); ?>
 
         <!-- Head Scripts -->
-        <?= $this->partial('app::branding/header_scripts.phtml'); ?>
+        <?= $this->partial('branding::header_scripts'); ?>
     </head>
     <body>
         <div class="wrapper">
-            <?= $this->partial('app::components/header/default.phtml'); ?>
+            <?= $this->partial('header::default'); ?>
             <?= $this->content ?>
-            <?= $this->partial('app::components/footer/default.phtml'); ?>
+            <?= $this->partial('footer::default'); ?>
         </div>
 
         <!-- Footer Scripts -->
-        <?= $this->partial('app::branding/footer_scripts.phtml'); ?>
+        <?= $this->partial('branding::footer_scripts'); ?>
     </body>
 </html>

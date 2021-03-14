@@ -24,6 +24,9 @@ final class HomePageHandler implements RequestHandlerInterface
     /** @var TemplateRendererInterface */
     private $template;
 
+    /**
+     * @var Logger
+     */
     private $logger;
 
     /**
