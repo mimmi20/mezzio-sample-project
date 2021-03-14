@@ -13,6 +13,7 @@ namespace App\Handler;
 
 use App\Config\ServiceConfigInterface;
 use Laminas\Form\Factory;
+use Laminas\Log\Logger;
 use Mezzio\Template\TemplateRendererInterface;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -26,13 +27,10 @@ final class InfoPageHandlerFactory
      */
     public function __invoke(ContainerInterface $container): RequestHandlerInterface
     {
-        $novumConfig = $container->get(ServiceConfigInterface::class)->getNovumConfig();
-        \assert(\is_array($novumConfig));
-
         return new InfoPageHandler(
             $container->get(TemplateRendererInterface::class),
             $container->get(Factory::class),
-            $novumConfig
+            $container->get(Logger::class)
         );
     }
 }

@@ -14,6 +14,7 @@ namespace App\Handler;
 use Laminas\Diactoros\Response\HtmlResponse;
 use Laminas\Form\Factory;
 use Laminas\Form\FormInterface;
+use Laminas\Log\Logger;
 use Laminas\View\Model\ViewModel;
 use Mezzio\Template\TemplateRendererInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -25,22 +26,23 @@ final class InfoPageHandler implements RequestHandlerInterface
     /** @var TemplateRendererInterface */
     private $template;
 
-    /** @var array */
-    private $novumConfig;
-
     /** @var Factory */
     private $factory;
 
     /**
+     * @var Logger
+     */
+    private $logger;
+
+    /**
      * @param TemplateRendererInterface $template
      * @param Factory                   $factory
-     * @param array                     $novumConfig
      */
-    public function __construct(TemplateRendererInterface $template, Factory $factory, array $novumConfig)
+    public function __construct(TemplateRendererInterface $template, Factory $factory, Logger $logger)
     {
         $this->template    = $template;
-        $this->novumConfig = $novumConfig;
         $this->factory     = $factory;
+        $this->logger   = $logger;
     }
 
     /**
@@ -63,23 +65,26 @@ final class InfoPageHandler implements RequestHandlerInterface
             \assert($form instanceof FormInterface);
         }
 
-        $layout = new ViewModel([
-            'request' => $request,
-            'novumConfig' => $this->novumConfig,
-        ]);
-        $layout->setTemplate('layout::default');
-
-        return new HtmlResponse(
-            $this->template->render(
-                'app::info-page',
+        try {
+            $layout = new ViewModel(
                 [
-                    'page' => $id,
-                    'novumPartner' => 'id24',
-                    'novumConfig' => $this->novumConfig,
-                    'form' => $form,
-                    'layout' => $layout,
+                    'request' => $request,
                 ]
-            )
-        );
+            );
+            $layout->setTemplate('layout::default');
+
+            return new HtmlResponse(
+                $this->template->render(
+                    'app::info-page',
+                    [
+                        'page'   => $id,
+                        'form'   => $form,
+                        'layout' => $layout,
+                    ]
+                )
+            );
+        } catch (\Throwable $e) {
+            $this->logger->err($e);
+        }
     }
 }

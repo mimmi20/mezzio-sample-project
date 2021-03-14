@@ -57,7 +57,7 @@ final class ShowRegistrationForm extends AbstractHelper
         }
 
         return $this->template->render(
-            'app::components/container/register-novum.phtml',
+            'components::container/register-novum.phtml',
             $data
         );
     }

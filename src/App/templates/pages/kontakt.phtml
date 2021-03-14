@@ -8,13 +8,13 @@ $salutation->setLabelAttributes([
 
 $firstname = $form->get('vorname');
 $firstname->setAttribute('id', $firstname->getAttribute('id'))
-    ->setAttribute('class', 'form-control form-control-lg js-filter-name')
+    ->setAttribute('class', 'form-control form-control-lg d-block order-md-1 order-sd-0')
     ->setAttribute('autocomplete', 'off')
     ->setAttribute('spellcheck', 'false')
     ->setAttribute('required', true)
     ->setAttribute('data-required-message', 'Bitte geben Sie Ihren Vornamen ein.')
     ->setLabelAttributes([
-        'class' => 'required'
+        'class' => 'required order-md-0 order-sd-1 d-block'
     ]);
 
 $surname = $form->get('nachname');
@@ -83,72 +83,63 @@ $submit->setAttribute('class', 'btn btn-colored-default-lg btn-block');
 $form->setAttribute('class', 'js-form-validation-base js-ajax-form')->prepare();
 ?>
 
-<div class="content content-contact">
-    <div class="row section-1">
-        <div class="col-12">
-            <div class="box-text">
-                <h1 class="headline primary">Was können wir für Sie tun?</h1>
-                <div class="text">
-                    <strong>Schreiben Sie uns einfach Ihr Anliegen mit unserem Onlineformular.</strong>
-                    <p>Bitte beachten Sie: Die Angabe der Telefonnummer ist keine Pflicht - aber hilfreich. Denn viele Anliegen lassen sich mit einem kurzen Telefonat schneller und unkomplizierter klären als per E-Mail.</p>
-                </div>
-            </div>
-            <div class="box-image">
-                <img class="" src="../img/frau.png" alt="Woman">
+<div class="container">
+    <div class="card mb-3">
+        <div class="card-body">
+            <h1 class="card-title">Lorem ipsum dolor sit amet, consetetur sadipscing</h1>
+            <div class="card-text">
+                <strong>Lorem ipsum dolor sit amet</strong>
+                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat</p>
             </div>
         </div>
     </div>
-    <div class="section-2">
-        <div class="container">
-            <div class="article-right">
-                <div class="box-text">
-                    <h1 class="headline secondary">InsureDirect24.</h1>
-                    <div class="text row justify-content-start align-items-top">
+    <div class="card mb-3">
+        <div class="row g-0">
+            <div class="col-md-6">
+                <div class="card-body">
+                    <h1 class="card-title">Lorem ipsum dolor</h1>
+                    <div class="card-text row justify-content-start align-items-top">
                         <div class="col-12 col-sm-auto col-lg-12">
-                            <p>Sie erreichen uns per E-Mail oder Telefon:</p>
-                            <p>Montag bis Freitag, 8 bis 18 Uhr</p>
-                        </div>
-                        <div class="col-12 col-sm-auto col-lg-12">
-                            <a href="tel:+4991196466894"><span class="icon icon-phone"></span>+49 911 9646-6894</a>
-                            <a href="mailto:info@InsureDirect24.de"><span class="at">@</span>info@InsureDirect24.de</a>
+                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed</p>
+                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="article-left">
+            <div class="col-md-6">
                 <?= $this->form()->openTag($form) ?>
                 <div class="row">
                     <div class="col-12 col-md-10">
                         <div class="row form-group is-group">
-                            <div class="col-auto">
+                            <div class="col-md-4">
                                 <?= $this->formLabel($salutation); ?>
                             </div>
+                            <div class="col-md-8">
                             <?php foreach ($salutation->getOption('value_options') as $key => $option) : ?>
-                                <div class="col-auto">
-                                    <div class="custom-control custom-radio">
-                                        <input
-                                            type="radio"
-                                            class="custom-control-input"
-                                            id="salutation-<?= $key ?>"
-                                            required
-                                            data-required-message="Bitte wählen Sie eine Anrede."
-                                            name="<?= $salutation->getName() ?>"
-                                            value="<?= $option ?>"
-                                            <?php if ($salutation->getValue() === $option) : ?> checked="checked"<?php endif; ?> />
-                                        <label for="salutation-<?= $key ?>" class="custom-control-label"><?= $option ?></label>
-                                    </div>
+                                <div class="form-check form-check-inline">
+                                    <input
+                                        type="radio"
+                                        class="form-check-input"
+                                        id="salutation-<?= $key ?>"
+                                        required
+                                        data-required-message="Bitte wählen Sie eine Anrede."
+                                        name="<?= $salutation->getName() ?>"
+                                        value="<?= $option ?>"
+                                        <?php if ($salutation->getValue() === $option) : ?> checked="checked"<?php endif; ?> />
+                                    <label for="salutation-<?= $key ?>" class="form-check-label"><?= $option ?></label>
                                 </div>
                             <?php endforeach; ?>
+                            </div>
                         </div>
                     </div>
                     <div class="col-12 col-sm-6">
-                        <div class="form-group">
-                            <?= $this->formLabel($firstname) ?>
+                        <div class="d-flex flex-column flex-nowrap">
                             <?= $this->formElement($firstname) ?>
+                            <?= $this->formLabel($firstname) ?>
                         </div>
                     </div>
                     <div class="col-12 col-sm-6">
-                        <div class="form-group">
+                        <div class="d-flex flex-column flex-nowrap">
                             <?= $this->formLabel($surname) ?>
                             <?= $this->formElement($surname) ?>
                         </div>

@@ -71,8 +71,12 @@ final class ConfigProvider
         return [
             'paths' => [
                 'app' => [__DIR__ . '/../templates/app'],
-                'pages' => [__DIR__ . '/../templates/pages'],
+                'branding' => [__DIR__ . '/../templates/branding'],
+                'components' => [__DIR__ . '/../templates/components'],
                 'error' => [__DIR__ . '/../templates/error'],
+                'footer' => [__DIR__ . '/../templates/footer'],
+                'header' => [__DIR__ . '/../templates/header'],
+                'pages' => [__DIR__ . '/../templates/pages'],
                 'layout' => [__DIR__ . '/../templates/layout'],
             ],
         ];
