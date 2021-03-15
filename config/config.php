@@ -33,6 +33,7 @@ $aggregator = new ConfigAggregator(
         \Laminas\Navigation\ConfigProvider::class,
         \Mezzio\Navigation\ConfigProvider::class,
         \Mezzio\Navigation\LaminasView\ConfigProvider::class,
+        \Mezzio\Navigation\LaminasView\View\Helper\Navigation\ConfigProvider::class,
         \Laminas\HttpHandlerRunner\ConfigProvider::class,
         \Laminas\Validator\ConfigProvider::class,
         \Mezzio\Helper\ConfigProvider::class,
