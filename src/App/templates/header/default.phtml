@@ -2,7 +2,7 @@
 <?php /** @var array $novumConfig */ ?>
 
 <header class="header">
-    <nav class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="<?= $this->serverUrl('/') ?>" title="Hier gelangen Sie zur Startseite">
                 <img src="/img/logo_mobil.svg" alt="Logo mobile" class="d-md-none">
@@ -11,8 +11,8 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div id="navbarNavAltMarkup">
-                <?= $this->navigation('Mezzio\\Navigation\\Top')->menu()->renderMenu(null, ['ulClass' => 'nav-justified', 'liActiveClass' => 'active']); ?>
+            <div id="navbarNavAltMarkup" class="collapse navbar-collapse">
+                <?= $this->navigation('Mezzio\\Navigation\\Top')->menu()->renderMenu(null, ['in-navbar' => true, 'fill' => true]); ?>
             </div>
         </div>
     </nav>
