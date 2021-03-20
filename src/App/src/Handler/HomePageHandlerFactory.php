@@ -11,7 +11,6 @@
 declare(strict_types = 1);
 namespace App\Handler;
 
-use App\Config\ServiceConfigInterface;
 use Laminas\Log\Logger;
 use Mezzio\Template\TemplateRendererInterface;
 use Psr\Container\ContainerInterface;
