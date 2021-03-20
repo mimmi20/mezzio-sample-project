@@ -24,9 +24,7 @@ final class HomePageHandler implements RequestHandlerInterface
     /** @var TemplateRendererInterface */
     private $template;
 
-    /**
-     * @var Logger
-     */
+    /** @var Logger */
     private $logger;
 
     /**
@@ -35,7 +33,7 @@ final class HomePageHandler implements RequestHandlerInterface
      */
     public function __construct(TemplateRendererInterface $template, Logger $logger)
     {
-        $this->template    = $template;
+        $this->template = $template;
         $this->logger   = $logger;
     }
 

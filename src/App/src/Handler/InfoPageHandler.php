@@ -29,19 +29,18 @@ final class InfoPageHandler implements RequestHandlerInterface
     /** @var Factory */
     private $factory;
 
-    /**
-     * @var Logger
-     */
+    /** @var Logger */
     private $logger;
 
     /**
      * @param TemplateRendererInterface $template
      * @param Factory                   $factory
+     * @param Logger                    $logger
      */
     public function __construct(TemplateRendererInterface $template, Factory $factory, Logger $logger)
     {
-        $this->template    = $template;
-        $this->factory     = $factory;
+        $this->template = $template;
+        $this->factory  = $factory;
         $this->logger   = $logger;
     }
 
@@ -77,8 +76,8 @@ final class InfoPageHandler implements RequestHandlerInterface
                 $this->template->render(
                     'app::info-page',
                     [
-                        'page'   => $id,
-                        'form'   => $form,
+                        'page' => $id,
+                        'form' => $form,
                         'layout' => $layout,
                     ]
                 )
