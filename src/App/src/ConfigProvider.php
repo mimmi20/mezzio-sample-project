@@ -9,6 +9,7 @@
  */
 
 declare(strict_types = 1);
+
 namespace App;
 
 use JsonClass\Json;
@@ -29,7 +30,7 @@ final class ConfigProvider
      * To add a bit of a structure, each section is defined in a separate
      * method which returns an array with its configuration.
      *
-     * @return array[]
+     * @return array<string, array<string, array<string, array<int, string>|string>>>
      */
     public function __invoke(): array
     {
@@ -43,7 +44,7 @@ final class ConfigProvider
     /**
      * Returns the container dependencies
      *
-     * @return \string[][]
+     * @return array<string, array<string, string>>
      */
     public function getDependencies(): array
     {
@@ -64,7 +65,7 @@ final class ConfigProvider
     /**
      * Returns the templates configuration
      *
-     * @return \string[][]
+     * @return array<string, array<string, array<int, string>>>
      */
     public function getTemplates(): array
     {
@@ -83,7 +84,7 @@ final class ConfigProvider
     }
 
     /**
-     * @return \string[][]
+     * @return array<string, array<string, string>>
      */
     public function getViewHelperConfig(): array
     {

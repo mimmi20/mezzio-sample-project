@@ -9,9 +9,12 @@
  */
 
 declare(strict_types = 1);
+
 namespace App\Handler;
 
+use Laminas\Diactoros\Exception\InvalidArgumentException;
 use Laminas\Diactoros\Response\HtmlResponse;
+use Laminas\Form\Exception\DomainException;
 use Laminas\Form\Factory;
 use Laminas\Form\FormInterface;
 use Laminas\Log\Logger;
@@ -21,22 +24,19 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function assert;
+use function file_exists;
+use function sprintf;
+
 final class InfoPageHandler implements RequestHandlerInterface
 {
-    /** @var TemplateRendererInterface */
-    private $template;
+    private TemplateRendererInterface $template;
 
-    /** @var Factory */
-    private $factory;
+    private Factory $factory;
 
-    /** @var Logger */
-    private $logger;
+    /** @phpcsSuppress SlevomatCodingStandard.Classes.UnusedPrivateElements.WriteOnlyProperty */
+    private Logger $logger;
 
-    /**
-     * @param TemplateRendererInterface $template
-     * @param Factory                   $factory
-     * @param Logger                    $logger
-     */
     public function __construct(TemplateRendererInterface $template, Factory $factory, Logger $logger)
     {
         $this->template = $template;
@@ -45,9 +45,8 @@ final class InfoPageHandler implements RequestHandlerInterface
     }
 
     /**
-     * @param \Psr\Http\Message\ServerRequestInterface $request
-     *
-     * @return \Psr\Http\Message\ResponseInterface
+     * @throws InvalidArgumentException
+     * @throws DomainException
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
@@ -61,29 +60,23 @@ final class InfoPageHandler implements RequestHandlerInterface
             $form = $this->factory->create(
                 require $file
             );
-            \assert($form instanceof FormInterface);
+            assert($form instanceof FormInterface);
         }
 
-        try {
-            $layout = new ViewModel(
+        $layout = new ViewModel(
+            ['request' => $request]
+        );
+        $layout->setTemplate('layout::default');
+
+        return new HtmlResponse(
+            $this->template->render(
+                'app::info-page',
                 [
-                    'request' => $request,
+                    'page' => $id,
+                    'form' => $form,
+                    'layout' => $layout,
                 ]
-            );
-            $layout->setTemplate('layout::default');
-
-            return new HtmlResponse(
-                $this->template->render(
-                    'app::info-page',
-                    [
-                        'page' => $id,
-                        'form' => $form,
-                        'layout' => $layout,
-                    ]
-                )
-            );
-        } catch (\Throwable $e) {
-            $this->logger->err($e);
-        }
+            )
+        );
     }
 }

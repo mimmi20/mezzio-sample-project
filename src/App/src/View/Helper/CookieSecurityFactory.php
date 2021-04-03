@@ -9,24 +9,29 @@
  */
 
 declare(strict_types = 1);
+
 /**
  * Factory für den Cookie Security Abruf
  */
+
 namespace App\View\Helper;
 
 use Interop\Container\ContainerInterface;
 use Laminas\ServiceManager\Factory\FactoryInterface;
+use Psr\Container\ContainerExceptionInterface;
 
 final class CookieSecurityFactory implements FactoryInterface
 {
     /**
-     * @param ContainerInterface $container
-     * @param string             $requestedName
-     * @param array|null         $options
+     * @param string            $requestedName
+     * @param array<mixed>|null $options
      *
-     * @return CookieSecurity|object
+     * @throws ContainerExceptionInterface
+     *
+     * @phpcsSuppress SlevomatCodingStandard.Functions.UnusedParameter.UnusedParameter
+     * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
      */
-    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null)
+    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null): CookieSecurity
     {
         return new CookieSecurity(
             $container->get('Request')

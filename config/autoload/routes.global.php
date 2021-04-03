@@ -10,13 +10,17 @@
 
 declare(strict_types = 1);
 
+use App\Handler\HomePageHandler;
+use App\Handler\InfoPageHandler;
+use Mezzio\Navigation\NavigationMiddleware;
+
 return [
     'routes' => [
         'startpage' => [
             'path' => '/',
             'middleware' => [
-                \Mezzio\Navigation\NavigationMiddleware::class,
-                \App\Handler\HomePageHandler::class,
+                NavigationMiddleware::class,
+                HomePageHandler::class,
             ],
             'allowed_methods' => ['GET', 'POST'],
             'options' => [
@@ -28,8 +32,8 @@ return [
         'info' => [
             'path' => '/:id[/]',
             'middleware' => [
-                \Mezzio\Navigation\NavigationMiddleware::class,
-                \App\Handler\InfoPageHandler::class,
+                NavigationMiddleware::class,
+                InfoPageHandler::class,
             ],
             'allowed_methods' => ['GET', 'POST'],
             'options' => [

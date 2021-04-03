@@ -13,6 +13,7 @@ declare(strict_types = 1);
 use Laminas\ConfigAggregator\ArrayProvider;
 use Laminas\ConfigAggregator\ConfigAggregator;
 use Laminas\ConfigAggregator\PhpFileProvider;
+use Mezzio\Navigation\Helper\ConfigProvider;
 
 // To enable or disable caching, set the `ConfigAggregator::ENABLE_CACHE` boolean in
 // `config/autoload/local.php`.
@@ -20,7 +21,7 @@ $cacheConfig = ['config_cache_path' => 'data/cache/config-cache.php'];
 
 $aggregator = new ConfigAggregator(
     [
-        \Mezzio\Navigation\Helper\ConfigProvider::class,
+        ConfigProvider::class,
         \Mezzio\GenericAuthorization\ConfigProvider::class,
         \Mezzio\Authentication\ConfigProvider::class,
         \Laminas\I18n\ConfigProvider::class,
@@ -33,7 +34,7 @@ $aggregator = new ConfigAggregator(
         \Laminas\Navigation\ConfigProvider::class,
         \Mezzio\Navigation\ConfigProvider::class,
         \Mezzio\Navigation\LaminasView\ConfigProvider::class,
-        \Mezzio\Navigation\LaminasView\View\Helper\Navigation\ConfigProvider::class,
+        \Mezzio\Navigation\LaminasView\View\Helper\BootstrapNavigation\ConfigProvider::class,
         \Laminas\HttpHandlerRunner\ConfigProvider::class,
         \Laminas\Validator\ConfigProvider::class,
         \Mezzio\Helper\ConfigProvider::class,

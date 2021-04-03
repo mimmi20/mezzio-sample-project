@@ -10,6 +10,9 @@
 
 declare(strict_types = 1);
 
+use Mezzio\Application;
+use Mezzio\Container\ApplicationConfigInjectionDelegator;
+
 return [
     // Provides application-wide services.
     // We recommend using fully-qualified class names whenever possible as
@@ -32,8 +35,8 @@ return [
         ],
 
         'delegators' => [
-            \Mezzio\Application::class => [
-                \Mezzio\Container\ApplicationConfigInjectionDelegator::class,
+            Application::class => [
+                ApplicationConfigInjectionDelegator::class,
             ],
         ],
     ],

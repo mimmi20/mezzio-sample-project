@@ -9,9 +9,11 @@
  */
 
 declare(strict_types = 1);
+
 /**
  * Konfiguration der Form für Kontaktaufnahme
  */
+
 namespace Application;
 
 use Laminas\Form\Element\Checkbox;

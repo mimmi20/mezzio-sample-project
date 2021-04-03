@@ -4,6 +4,7 @@ parameters:
     maximumNumberOfProcesses: 1
     processTimeout: 200.0
   paths:
+    - config
     - src
     - tests
   scanFiles:
@@ -18,10 +19,6 @@ parameters:
   treatPhpDocTypesAsCertain: false
   excludes_analyse:
     - */tests/*/data/*
-#  ignoreErrors:
-#    - '~is not subtype of Throwable~'
-#    - '~PHPDoc tag @throws with type .* is not compatible with parent~'
-#    - '~Parameter .* of (method|function) .* expects .*, .* given~'
-#    - '~Call to an undefined method .*::find(All|One)By.*\(\)~'
-#    - '~Call to an undefined method .*::find(Rel|Rev).*\(\)~'
-#    - '~Call to (static )?(method|function) .* with .* will always evaluate to (true|false)~'
+  ignoreErrors:
+    - '~PHPDoc tag @throws with type .* is not compatible with parent~'
+    - '~is not subtype of Throwable~'

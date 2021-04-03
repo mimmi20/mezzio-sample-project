@@ -9,18 +9,20 @@
  */
 
 declare(strict_types = 1);
+
 /**
  * Config für das Minify und das Hinzufügen der Revision
  */
+
 namespace App\Config;
 
 use Laminas\Config\Config;
 
+use function array_key_exists;
+use function is_readable;
+
 final class MinifyConfig extends Config
 {
-    /**
-     * @return bool
-     */
     public function isEnabled(): bool
     {
         $config = $this->toArray();

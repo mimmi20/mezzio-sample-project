@@ -9,13 +9,24 @@
  */
 
 declare(strict_types = 1);
+
 /**
  * View helper for generating absolute URLs
  */
+
 namespace App\View\Helper;
 
+use Laminas\Uri\Exception\InvalidUriException;
+use Laminas\Uri\Exception\InvalidUriPartException;
 use Laminas\Uri\Http;
 use Laminas\View\Helper\AbstractHelper;
+
+use function array_reverse;
+use function array_splice;
+use function count;
+use function explode;
+use function implode;
+use function in_array;
 
 final class AbsoluteUrl extends AbstractHelper
 {
@@ -32,18 +43,14 @@ final class AbsoluteUrl extends AbstractHelper
     /**
      * list of all existing subdomains
      *
-     * @var array
+     * @var array<string>
      */
-    private $subdomains = [
+    private array $subdomains = [
         self::DEST_APP,
     ];
 
-    /** @var Http */
-    private $currentUri;
+    private Http $currentUri;
 
-    /**
-     * @param \Laminas\Uri\Http $currentUri
-     */
     public function __construct(Http $currentUri)
     {
         $this->currentUri = $currentUri;
@@ -52,12 +59,11 @@ final class AbsoluteUrl extends AbstractHelper
     /**
      * Gibt die absolute URL zurück.
      *
-     * @param string      $path        host based url like /test.html
-     * @param string|null $destination
-     * @param array       $query
-     * @param string      $fragment
+     * @param string                $path  host based url like /test.html
+     * @param array<string, string> $query
      *
-     * @return string
+     * @throws InvalidUriException
+     * @throws InvalidUriPartException
      */
     public function __invoke(string $path, ?string $destination = null, array $query = [], string $fragment = ''): string
     {
@@ -77,11 +83,6 @@ final class AbsoluteUrl extends AbstractHelper
 
     /**
      * replaces hosts like "www.geld.de" to "mein.geld.de"
-     *
-     * @param string $currentHost
-     * @param string $desiredHost
-     *
-     * @return string
      */
     private function replaceHost(string $currentHost, string $desiredHost): string
     {

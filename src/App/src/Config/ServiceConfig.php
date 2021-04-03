@@ -9,6 +9,7 @@
  */
 
 declare(strict_types = 1);
+
 namespace App\Config;
 
 use Laminas\Config\Config;
@@ -18,7 +19,7 @@ final class ServiceConfig extends Config implements ServiceConfigInterface
     /**
      * Get the config options for Novum
      *
-     * @return array
+     * @return array<string, array<string, string>|string>
      */
     public function getNovumConfig(): array
     {

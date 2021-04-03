@@ -10,23 +10,27 @@
 
 declare(strict_types = 1);
 
+use Laminas\Log\Formatter\Simple;
+use Laminas\Log\Processor\PsrPlaceholder;
+use Laminas\Log\Writer\Stream;
+
 return [
     'log' => [
         'writers' => [
             'file' => [
-                'name' => \Laminas\Log\Writer\Stream::class,
+                'name' => Stream::class,
                 'options' => [
                     'stream' => 'log/error.log',
                     'chmod' => 0777,
                     'formatter' => [
-                        'name' => \Laminas\Log\Formatter\Simple::class,
+                        'name' => Simple::class,
                     ],
                 ],
             ],
         ],
         'processors' => [
             'psr3' => [
-                'name' => \Laminas\Log\Processor\PsrPlaceholder::class,
+                'name' => PsrPlaceholder::class,
             ],
         ],
     ],

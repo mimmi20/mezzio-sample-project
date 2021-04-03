@@ -9,6 +9,7 @@
  */
 
 declare(strict_types = 1);
+
 namespace App\Config;
 
 interface ServiceConfigInterface
@@ -16,7 +17,7 @@ interface ServiceConfigInterface
     /**
      * Get the config options for Novum
      *
-     * @return array
+     * @return array<string, array<string, string>|string>
      */
     public function getNovumConfig(): array;
 }
