@@ -9,8 +9,10 @@
  */
 
 declare(strict_types = 1);
+
 namespace App\Handler;
 
+use Laminas\Diactoros\Exception\InvalidArgumentException;
 use Laminas\Diactoros\Response\HtmlResponse;
 use Laminas\Log\Logger;
 use Laminas\View\Model\ViewModel;
@@ -21,16 +23,11 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 final class HomePageHandler implements RequestHandlerInterface
 {
-    /** @var TemplateRendererInterface */
-    private $template;
+    private TemplateRendererInterface $template;
 
-    /** @var Logger */
-    private $logger;
+    /** @phpcsSuppress SlevomatCodingStandard.Classes.UnusedPrivateElements.WriteOnlyProperty */
+    private Logger $logger;
 
-    /**
-     * @param TemplateRendererInterface $template
-     * @param \Laminas\Log\Logger       $logger
-     */
     public function __construct(TemplateRendererInterface $template, Logger $logger)
     {
         $this->template = $template;
@@ -38,30 +35,20 @@ final class HomePageHandler implements RequestHandlerInterface
     }
 
     /**
-     * @param \Psr\Http\Message\ServerRequestInterface $request
-     *
-     * @return \Psr\Http\Message\ResponseInterface
+     * @throws InvalidArgumentException
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        try {
-            $layout = new ViewModel(
-                [
-                    'request' => $request,
-                ]
-            );
-            $layout->setTemplate('layout::default');
+        $layout = new ViewModel(
+            ['request' => $request]
+        );
+        $layout->setTemplate('layout::default');
 
-            return new HtmlResponse(
-                $this->template->render(
-                    'app::home-page',
-                    [
-                        'layout' => $layout,
-                    ]
-                )
-            );
-        } catch (\Throwable $e) {
-            $this->logger->err($e);
-        }
+        return new HtmlResponse(
+            $this->template->render(
+                'app::home-page',
+                ['layout' => $layout]
+            )
+        );
     }
 }

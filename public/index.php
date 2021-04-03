@@ -10,8 +10,12 @@
 
 declare(strict_types = 1);
 
+use Mezzio\Application;
+use Mezzio\MiddlewareFactory;
+use Psr\Container\ContainerInterface;
+
 // Delegate static file requests back to the PHP built-in webserver
-if (PHP_SAPI === 'cli-server' && __FILE__ !== $_SERVER['SCRIPT_FILENAME']) {
+if ('cli-server' === PHP_SAPI && __FILE__ !== $_SERVER['SCRIPT_FILENAME']) {
     return false;
 }
 
@@ -26,18 +30,18 @@ ini_set('memory_limit', '-1');
 (static function (): void {
     try {
         $container = require 'config/container.php';
-        \assert($container instanceof \Psr\Container\ContainerInterface);
+        assert($container instanceof ContainerInterface);
 
-        $app = $container->get(\Mezzio\Application::class);
-        \assert($app instanceof \Mezzio\Application);
-        $factory = $container->get(\Mezzio\MiddlewareFactory::class);
+        $app = $container->get(Application::class);
+        assert($app instanceof Application);
+        $factory = $container->get(MiddlewareFactory::class);
 
         // Execute programmatic/declarative middleware pipeline and routing
         // configuration statements
         (require 'config/pipeline.php')($app, $factory, $container);
 
         $app->run();
-    } catch (\Throwable $e) {
+    } catch (Throwable $e) {
         var_dump($e);
     }
 })();

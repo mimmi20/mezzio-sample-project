@@ -9,9 +9,11 @@
  */
 
 declare(strict_types = 1);
+
 /**
  * viewhelper to show the Novum registration form
  */
+
 namespace App\View\Helper;
 
 use Laminas\View\Helper\AbstractHelper;
@@ -19,15 +21,13 @@ use Mezzio\Template\TemplateRendererInterface;
 
 final class ShowRegistrationForm extends AbstractHelper
 {
-    /** @var array */
-    private $novumConfig;
+    /** @var array<string, array<string, string>|string> */
+    private array $novumConfig;
 
-    /** @var TemplateRendererInterface */
-    private $template;
+    private TemplateRendererInterface $template;
 
     /**
-     * @param TemplateRendererInterface $template
-     * @param array                     $novumConfig
+     * @param array<string, array<string, string>|string> $novumConfig
      */
     public function __construct(TemplateRendererInterface $template, array $novumConfig)
     {
@@ -37,11 +37,6 @@ final class ShowRegistrationForm extends AbstractHelper
 
     /**
      * Output the register form
-     *
-     * @param string $novumPartner
-     * @param bool   $includetipGiver
-     *
-     * @return string
      */
     public function __invoke(string $novumPartner, bool $includetipGiver = false): string
     {

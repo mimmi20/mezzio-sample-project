@@ -9,20 +9,20 @@
  */
 
 declare(strict_types = 1);
+
 namespace App\Handler;
 
 use Laminas\Form\Factory;
 use Laminas\Log\Logger;
 use Mezzio\Template\TemplateRendererInterface;
+use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 final class InfoPageHandlerFactory
 {
     /**
-     * @param \Psr\Container\ContainerInterface $container
-     *
-     * @return \Psr\Http\Server\RequestHandlerInterface
+     * @throws ContainerExceptionInterface
      */
     public function __invoke(ContainerInterface $container): RequestHandlerInterface
     {

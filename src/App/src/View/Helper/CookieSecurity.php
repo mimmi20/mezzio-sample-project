@@ -9,13 +9,20 @@
  */
 
 declare(strict_types = 1);
+
 /**
  * Helper für Cookie Security Abruf
  */
+
 namespace App\View\Helper;
 
 use Laminas\Form\View\Helper\AbstractHelper;
 use Laminas\Http\PhpEnvironment\Request;
+
+use function array_key_exists;
+use function is_array;
+use function is_bool;
+use function json_decode;
 
 final class CookieSecurity extends AbstractHelper
 {
@@ -25,30 +32,24 @@ final class CookieSecurity extends AbstractHelper
 
     public const COOKIE_NAME = 'ID24_COOKIE_APPROVAL';
 
-    /** @var Request */
-    private $request;
+    private Request $request;
 
-    /**
-     * @param Request $request
-     */
     public function __construct(Request $request)
     {
         $this->request = $request;
     }
 
-    /**
-     * @return bool
-     */
     public function cookieExist(): bool
     {
-        return false !== $this->request->getCookie() && $this->request->getCookie()->offsetExists(self::COOKIE_NAME);
+        $cookie = $this->request->getCookie();
+
+        if (is_bool($cookie)) {
+            return false;
+        }
+
+        return $cookie->offsetExists(self::COOKIE_NAME);
     }
 
-    /**
-     * @param string $securityLevel
-     *
-     * @return string
-     */
     public function getCookieSecurityLevel(string $securityLevel): string
     {
         $cookieToArr = [
@@ -63,7 +64,13 @@ final class CookieSecurity extends AbstractHelper
             return $getSecurityLevel;
         }
 
-        $cookieToArr = json_decode($this->request->getCookie()->offsetGet(self::COOKIE_NAME), true);
+        $cookie = $this->request->getCookie();
+
+        if (is_bool($cookie)) {
+            return $getSecurityLevel;
+        }
+
+        $cookieToArr = json_decode($cookie->offsetGet(self::COOKIE_NAME), true);
 
         if (!is_array($cookieToArr) || !array_key_exists($securityLevel, $cookieToArr)) {
             return $getSecurityLevel;
