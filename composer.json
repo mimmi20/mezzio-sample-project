@@ -22,7 +22,7 @@
     "laminas/laminas-config-aggregator": "^1.5.0",
     "laminas/laminas-diactoros": "^2.5.0",
     "laminas/laminas-form": "^2.16.2",
-    "laminas/laminas-i18n": "^2.11.0",
+    "laminas/laminas-i18n": "^2.11.1",
     "laminas/laminas-navigation": "^2.10.1",
     "laminas/laminas-servicemanager": "^3.6.4",
     "laminas/laminas-stdlib": "^3.3.1",
