@@ -21,18 +21,19 @@ $cacheConfig = ['config_cache_path' => 'data/cache/config-cache.php'];
 
 $aggregator = new ConfigAggregator(
     [
-        ConfigProvider::class,
-        \Mezzio\GenericAuthorization\ConfigProvider::class,
         \Mezzio\Authentication\ConfigProvider::class,
+        \Mezzio\GenericAuthorization\ConfigProvider::class,
         \Laminas\I18n\ConfigProvider::class,
         \Laminas\Form\ConfigProvider::class,
         \Laminas\InputFilter\ConfigProvider::class,
         \Laminas\Log\ConfigProvider::class,
-        \Mezzio\LaminasView\ConfigProvider::class,
         \Mezzio\Router\LaminasRouter\ConfigProvider::class,
         \Laminas\Router\ConfigProvider::class,
         \Laminas\Navigation\ConfigProvider::class,
         \Mezzio\Navigation\ConfigProvider::class,
+        \Mezzio\LaminasView\ConfigProvider::class,
+        \Mezzio\LaminasView\Helper\ConfigProvider::class,
+        ConfigProvider::class,
         \Mezzio\Navigation\LaminasView\ConfigProvider::class,
         \Mezzio\Navigation\LaminasView\View\Helper\BootstrapNavigation\ConfigProvider::class,
         \Laminas\HttpHandlerRunner\ConfigProvider::class,
