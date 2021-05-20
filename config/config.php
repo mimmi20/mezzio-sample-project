@@ -37,6 +37,7 @@ $aggregator = new ConfigAggregator(
         \Mezzio\Navigation\Helper\ConfigProvider::class,
         \Mezzio\Navigation\LaminasView\ConfigProvider::class,
         \Mezzio\Navigation\LaminasView\View\Helper\BootstrapNavigation\ConfigProvider::class,
+        \Mezzio\BootstrapForm\LaminasView\View\Helper\ConfigProvider::class,
         \Laminas\HttpHandlerRunner\ConfigProvider::class,
         \Laminas\Validator\ConfigProvider::class,
         \Mezzio\Helper\ConfigProvider::class,
