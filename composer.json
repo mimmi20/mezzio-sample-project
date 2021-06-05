@@ -38,7 +38,7 @@
     "mimmi20/mezzio-navigation-laminasviewrenderer-bootstrap": "^1.0.4"
   },
   "require-dev": {
-    "filp/whoops": "^2.12.1",
+    "filp/whoops": "^2.13.0",
     "infection/infection": "^0.23.0",
     "mezzio/mezzio-tooling": "^1.4.0",
     "mimmi20/coding-standard": "^2.2.2",
