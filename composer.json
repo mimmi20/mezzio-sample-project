@@ -32,11 +32,14 @@
     "mezzio/mezzio-laminasrouter": "^3.1.0",
     "mezzio/mezzio-laminasviewrenderer": "^2.3.0",
     "mimmi20/json-class": "^3.0.2",
-    "mimmi20/mezzio-form-laminasviewrenderer-bootstrap": "dev-master",
+    "mimmi20/laminas-form-element-group": "^1.0.2",
+    "mimmi20/laminas-form-element-links": "^1.0.0",
+    "mimmi20/mezzio-form-laminasviewrenderer-bootstrap": "^1.0.0",
     "mimmi20/mezzio-navigation": "^2.0.3",
     "mimmi20/mezzio-navigation-helpers": "^1.0.10",
     "mimmi20/mezzio-navigation-laminasviewrenderer": "^2.0.9",
-    "mimmi20/mezzio-navigation-laminasviewrenderer-bootstrap": "^1.0.4"
+    "mimmi20/mezzio-navigation-laminasviewrenderer-bootstrap": "^1.0.4",
+    "mimmi20/monolog-laminas-factory": "dev-master"
   },
   "require-dev": {
     "filp/whoops": "^2.13.0",
@@ -51,9 +54,6 @@
     "phpunit/phpunit": "^9.5.5"
   },
   "config": {
-    "platform": {
-      "php": "7.4.7"
-    },
     "preferred-install": "dist",
     "sort-packages": true
   },
