@@ -8,7 +8,7 @@ name: "Continuous Integration"
 
 env:
   PHP_EXTENSIONS: "fileinfo, json, mbstring, intl, opcache"
-  PHP_INI_VALUES: "opcache.enable=1, opcache.enable_cli=1, opcache.fast_shutdown=0, zend.assertions=1, assert.exception=On"
+  PHP_INI_VALUES: "opcache.enable=1, opcache.enable_cli=1, opcache.fast_shutdown=0, zend.assertions=1, assert.exception=On, intl.default_locale=de, intl.use_exceptions=1"
 
 jobs:
   validate:
@@ -103,7 +103,7 @@ jobs:
         run: "composer update --optimize-autoloader --prefer-dist --prefer-stable --no-progress --no-interaction -v --ansi ${{ matrix.dependencies }}"
 
       - name: "Check dependencies with composer"
-        run: "composer outdated --direct --strict"
+        run: "composer outdated --direct"
 
   php-cs-fixer:
     name: "Check Coding Standards with PHP-CS-Fixer"

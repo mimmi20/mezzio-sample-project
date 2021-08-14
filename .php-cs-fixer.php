@@ -44,7 +44,6 @@ return $config
                     'location' => 'after_open',
                     'separate' => 'bottom',
                 ],
-                'final_public_method_for_abstract_class' => false,
                 'phpdoc_to_comment' => false,
             ]
         )
