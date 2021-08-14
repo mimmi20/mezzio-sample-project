@@ -20,6 +20,7 @@ $cacheConfig = ['config_cache_path' => 'data/cache/config-cache.php'];
 
 $aggregator = new ConfigAggregator(
     [
+        \Mezzio\Tooling\ConfigProvider::class,
         \Laminas\Hydrator\ConfigProvider::class,
         \Laminas\Filter\ConfigProvider::class,
         \Mezzio\Authentication\ConfigProvider::class,
