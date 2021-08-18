@@ -14,7 +14,6 @@ namespace App\Config;
 
 use Interop\Container\ContainerInterface;
 use Laminas\ServiceManager\Factory\FactoryInterface;
-use Psr\Container\ContainerExceptionInterface;
 
 final class ServiceConfigFactory implements FactoryInterface
 {
@@ -22,7 +21,7 @@ final class ServiceConfigFactory implements FactoryInterface
      * @param string            $requestedName
      * @param array<mixed>|null $options
      *
-     * @throws ContainerExceptionInterface
+     * @throws void
      *
      * @phpcsSuppress SlevomatCodingStandard.Functions.UnusedParameter.UnusedParameter
      * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
