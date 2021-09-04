@@ -50,7 +50,7 @@
     "mimmi20/navigation-helper-htmlify": "dev-master"
   },
   "require-dev": {
-    "filp/whoops": "^2.14.0",
+    "filp/whoops": "^2.14.1",
     "laminas/laminas-dependency-plugin": "^2.1.2",
     "mezzio/mezzio-tooling": "^2.0.0",
     "mimmi20/coding-standard": "^2.4.2",
