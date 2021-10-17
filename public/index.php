@@ -39,6 +39,7 @@ ini_set('memory_limit', '-1');
         // Execute programmatic/declarative middleware pipeline and routing
         // configuration statements
         (require 'config/pipeline.php')($app, $factory, $container);
+        (require 'config/routes.php')($app, $factory, $container);
 
         $app->run();
     } catch (Throwable $e) {

@@ -12,6 +12,7 @@ declare(strict_types = 1);
 
 use App\Handler\HomePageHandler;
 use App\Handler\InfoPageHandler;
+use Fig\Http\Message\RequestMethodInterface;
 use Mezzio\Navigation\NavigationMiddleware;
 
 return [
@@ -22,7 +23,7 @@ return [
                 NavigationMiddleware::class,
                 HomePageHandler::class,
             ],
-            'allowed_methods' => ['GET', 'POST'],
+            'allowed_methods' => [RequestMethodInterface::METHOD_GET, RequestMethodInterface::METHOD_POST],
             'options' => [
                 'stuff' => 'to',
                 'pass' => 'to',
@@ -35,7 +36,7 @@ return [
                 NavigationMiddleware::class,
                 InfoPageHandler::class,
             ],
-            'allowed_methods' => ['GET', 'POST'],
+            'allowed_methods' => [RequestMethodInterface::METHOD_GET, RequestMethodInterface::METHOD_POST],
             'options' => [
                 'constraints' => ['id' => '(faq|ueber-uns|beratung|kontakt|impressum|datenschutz|erstinfo|cookie-layer|cookies)'],
             ],
