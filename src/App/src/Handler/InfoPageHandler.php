@@ -14,17 +14,15 @@ namespace App\Handler;
 
 use Laminas\Diactoros\Exception\InvalidArgumentException;
 use Laminas\Diactoros\Response\HtmlResponse;
-use Laminas\Form\Exception\DomainException;
 use Laminas\Form\Factory;
-use Laminas\Form\FormInterface;
 use Laminas\Log\Logger;
 use Laminas\View\Model\ViewModel;
 use Mezzio\Template\TemplateRendererInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use Throwable;
 
-use function assert;
 use function file_exists;
 use function sprintf;
 
@@ -46,7 +44,6 @@ final class InfoPageHandler implements RequestHandlerInterface
 
     /**
      * @throws InvalidArgumentException
-     * @throws DomainException
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
@@ -61,7 +58,7 @@ final class InfoPageHandler implements RequestHandlerInterface
                 $form = $this->factory->create(
                     require $file
                 );
-            } catch (\Throwable $e) {
+            } catch (Throwable $e) {
                 $this->logger->err($e);
                 $form = null;
             }
@@ -81,7 +78,7 @@ final class InfoPageHandler implements RequestHandlerInterface
                     'layout' => $layout,
                 ]
             );
-        } catch (\Throwable $e) {
+        } catch (Throwable $e) {
             $this->logger->err($e);
             $html = '';
         }
