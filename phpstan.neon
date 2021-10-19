@@ -24,3 +24,4 @@ parameters:
       tooWideThrowType: true
   ignoreErrors:
     - '~is not subtype of Throwable~'
+    - '~expects string, Throwable given~'
