@@ -88,17 +88,6 @@ final class ConfigProvider
      */
     public function getViewHelperConfig(): array
     {
-        return [
-            'factories' => [
-                View\Helper\AbsoluteUrl::class => View\Helper\AbsoluteUrlFactory::class,
-                View\Helper\CookieSecurity::class => View\Helper\CookieSecurityFactory::class,
-                View\Helper\ShowRegistrationForm::class => View\Helper\ShowRegistrationFormFactory::class,
-            ],
-            'aliases' => [
-                'absoluteUrl' => View\Helper\AbsoluteUrl::class,
-                'cookieSecurity' => View\Helper\CookieSecurity::class,
-                'showNovumRegistrationForm' => View\Helper\ShowRegistrationForm::class,
-            ],
-        ];
+        return [];
     }
 }

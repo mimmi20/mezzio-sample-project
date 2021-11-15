@@ -18,6 +18,8 @@ use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function assert;
+
 final class HomePageHandlerFactory
 {
     /**
@@ -25,9 +27,12 @@ final class HomePageHandlerFactory
      */
     public function __invoke(ContainerInterface $container): RequestHandlerInterface
     {
-        return new HomePageHandler(
-            $container->get(TemplateRendererInterface::class),
-            $container->get(Logger::class)
-        );
+        $renderer = $container->get(TemplateRendererInterface::class);
+        $logger   = $container->get(Logger::class);
+
+        assert($renderer instanceof TemplateRendererInterface);
+        assert($logger instanceof Logger);
+
+        return new HomePageHandler($renderer, $logger);
     }
 }

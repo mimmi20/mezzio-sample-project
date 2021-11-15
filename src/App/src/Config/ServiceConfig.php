@@ -14,6 +14,8 @@ namespace App\Config;
 
 use Laminas\Config\Config;
 
+use function assert;
+
 final class ServiceConfig extends Config implements ServiceConfigInterface
 {
     /**
@@ -23,6 +25,9 @@ final class ServiceConfig extends Config implements ServiceConfigInterface
      */
     public function getNovumConfig(): array
     {
-        return $this->get('novum')->toArray();
+        $novConfig = $this->get('novum');
+        assert($novConfig instanceof Config);
+
+        return $novConfig->toArray();
     }
 }
