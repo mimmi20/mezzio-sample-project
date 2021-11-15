@@ -23,7 +23,9 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Throwable;
 
+use function assert;
 use function file_exists;
+use function is_string;
 use function sprintf;
 
 final class InfoPageHandler implements RequestHandlerInterface
@@ -48,6 +50,8 @@ final class InfoPageHandler implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $id = $request->getAttribute('id');
+
+        assert(is_string($id) || null === $id);
 
         $file = sprintf('src/App/config/forms/%s.config.php', $id);
 

@@ -19,6 +19,8 @@ use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function assert;
+
 final class InfoPageHandlerFactory
 {
     /**
@@ -26,10 +28,18 @@ final class InfoPageHandlerFactory
      */
     public function __invoke(ContainerInterface $container): RequestHandlerInterface
     {
+        $renderer    = $container->get(TemplateRendererInterface::class);
+        $formFactory = $container->get(Factory::class);
+        $logger      = $container->get(Logger::class);
+
+        assert($renderer instanceof TemplateRendererInterface);
+        assert($formFactory instanceof Factory);
+        assert($logger instanceof Logger);
+
         return new InfoPageHandler(
-            $container->get(TemplateRendererInterface::class),
-            $container->get(Factory::class),
-            $container->get(Logger::class)
+            $renderer,
+            $formFactory,
+            $logger
         );
     }
 }
