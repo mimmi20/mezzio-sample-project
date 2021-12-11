@@ -1,9 +1,8 @@
 {
   "name": "mimmi20/mezzio-sample-project",
-  "type": "library",
   "description": "sample project for Mezzio Navigation",
-  "homepage": "https://github.com/mimmi20/mezzio-sample-project",
   "license": "MIT",
+  "type": "library",
   "authors": [
     {
       "name": "Thomas Müller",
@@ -11,6 +10,7 @@
       "role": "Developer"
     }
   ],
+  "homepage": "https://github.com/mimmi20/mezzio-sample-project",
   "require": {
     "php": "^7.4.3 || ^8.0.0",
     "ext-fileinfo": "*",
@@ -23,13 +23,13 @@
     "laminas/laminas-config-aggregator": "^1.7.0",
     "laminas/laminas-diactoros": "^2.8.0",
     "laminas/laminas-form": "^3.1.0",
-    "laminas/laminas-i18n": "^2.12.0",
-    "laminas/laminas-navigation": "^2.11.1",
+    "laminas/laminas-i18n": "^2.13.0",
+    "laminas/laminas-navigation": "^2.12.0",
     "laminas/laminas-servicemanager": "^3.10.0",
-    "laminas/laminas-stdlib": "^3.6.1",
-    "mezzio/mezzio": "^3.7.0",
+    "laminas/laminas-stdlib": "^3.6.2",
+    "mezzio/mezzio": "^3.8.0",
     "mezzio/mezzio-helpers": "^5.7.0",
-    "mezzio/mezzio-laminasrouter": "^3.1.0",
+    "mezzio/mezzio-laminasrouter": "^3.3.0",
     "mezzio/mezzio-laminasviewrenderer": "^2.3.0",
     "mimmi20/json-class": "^4.0.0",
     "mimmi20/laminas-form-element-group": "^2.0.1",
@@ -50,16 +50,29 @@
     "mimmi20/navigation-helper-htmlify": "^1.0.0"
   },
   "require-dev": {
+    "ergebnis/composer-normalize": "^2.18.0",
     "filp/whoops": "^2.14.4",
     "laminas/laminas-dependency-plugin": "^2.2.0",
-    "mezzio/mezzio-tooling": "^2.2.0",
+    "mezzio/mezzio-tooling": "^2.3.0",
     "mimmi20/coding-standard": "^2.5.1",
     "phpstan/extension-installer": "^1.1.0",
     "phpstan/phpstan": "^1.2.0",
     "phpstan/phpstan-deprecation-rules": "^1.0.0",
     "phpstan/phpstan-phpunit": "^1.0.0",
     "phpunit/phpunit": "^9.5.10",
-    "rector/rector": "^0.12.5"
+    "rector/rector": "^0.12.7"
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true,
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/App/src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "AppTest\\": "tests/AppTest/"
+    }
   },
   "config": {
     "preferred-install": "dist",
@@ -77,18 +90,6 @@
       ]
     }
   },
-  "autoload": {
-    "psr-4": {
-      "App\\": "src/App/src/"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "AppTest\\": "tests/AppTest/"
-    }
-  },
-  "minimum-stability": "stable",
-  "prefer-stable": true,
   "scripts": {
     "check": [
       "@cs-check",
