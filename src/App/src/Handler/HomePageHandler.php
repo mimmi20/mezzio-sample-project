@@ -14,21 +14,21 @@ namespace App\Handler;
 
 use Laminas\Diactoros\Exception\InvalidArgumentException;
 use Laminas\Diactoros\Response\HtmlResponse;
-use Laminas\Log\Logger;
 use Laminas\View\Model\ViewModel;
 use Mezzio\Template\TemplateRendererInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use Psr\Log\LoggerInterface;
 
 final class HomePageHandler implements RequestHandlerInterface
 {
     private TemplateRendererInterface $template;
 
     /** @phpcsSuppress SlevomatCodingStandard.Classes.UnusedPrivateElements.WriteOnlyProperty */
-    private Logger $logger;
+    private LoggerInterface $logger;
 
-    public function __construct(TemplateRendererInterface $template, Logger $logger)
+    public function __construct(TemplateRendererInterface $template, LoggerInterface $logger)
     {
         $this->template = $template;
         $this->logger   = $logger;

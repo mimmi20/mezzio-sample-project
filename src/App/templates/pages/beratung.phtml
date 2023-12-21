@@ -2,46 +2,8 @@
 /**
  * @var $form \Laminas\Form\View\Helper\Form
  */
-$telephone = $form->get('telefon');
-$telephone->setAttribute('required', true)
-    ->setAttribute('autocomplete', 'off')
-    ->setAttribute('spellcheck', 'false')
-    ->setAttribute('class', 'form-control form-control-lg order-md-1 order-sd-0')
-    ->setAttribute('data-required-message', 'Bitte geben Sie eine Telefonnummer ein.')
-    ->setAttribute('id', $telephone->getAttribute('id'))
-    ->setAttribute('pattern', '^([+][ ]?[1-9][0-9][ ]?[-]?[ ]?|[(]?[0][ ]?)[0-9]{3,4}[-)/ ]?[ ]?[1-9][-0-9 ]{4,16}$')
-    ->setAttribute('data-pattern-message', 'Bitte geben Sie eine gültige Telefonnummer ein.')
-    ->setLabelAttributes([
-        'class' => 'required order-md-0 order-sd-1'
-    ]);
 
-$email = $form->get('email');
-$email->setAttribute('id', $email->getAttribute('id'))
-    ->setAttribute('class', 'form-control form-control-lg js-filter-whitespace js-filter-to-lower')
-    ->setAttribute('autocomplete', 'off')
-    ->setAttribute('spellcheck', 'false')
-    ->setAttribute('required', true)
-    ->setAttribute('data-required-message', 'Bitte geben Sie eine E-Mail Adresse ein.')
-    ->setAttribute('pattern', '^[a-zA-Z0-9.!#$%&\'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$')
-    ->setAttribute('data-pattern-message', 'Bitte geben Sie eine gültige E-Mail Adresse ein.')
-    ->setLabelAttributes([
-        'class' => 'required'
-    ]);
-
-$privacyPolicy = $form->get('agb');
-$privacyPolicy->setAttribute('class', 'custom-control-input')
-    ->setAttribute('id', $privacyPolicy->getAttribute('id'))
-    ->setAttribute('required', true)
-    ->setAttribute('data-required-message', 'Bitte stimmen Sie den Datenschutzbedingungen zu.')
-    ->setLabel($privacyPolicy->getLabel() . '<span class="required-element"></span>')
-    ->setLabelAttributes([
-        'class' => 'custom-control-label'
-    ]);
-
-$submit = $form->get('submit');
-$submit->setAttribute('class', 'btn btn-colored-default-lg btn-block');
-
-$form->setAttribute('class', 'js-form-validation-base js-ajax-form')->prepare();
+$form->prepare();
 ?>
 
 <div class="container">
@@ -67,28 +29,8 @@ $form->setAttribute('class', 'js-form-validation-base js-ajax-form')->prepare();
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <?= $this->form()->openTag($form) ?>
-                <div class="col-12 col-sm-6">
-                    <div class="form-group form-floating">
-                        <?= $this->formElement($telephone); ?>
-                        <?= $this->formLabel($telephone); ?>
-                    </div>
-                    <div class="form-group form-floating mb-md-0">
-                        <?= $this->formLabel($email); ?>
-                        <?= $this->formElement($email); ?>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6">
-                    <div class="form-group form-check form-floating">
-                        <?= $this->formElement($privacyPolicy); ?>
-                        <?= $this->formLabel($privacyPolicy); ?>
-                    </div>
-                    <div class="form-group btn btn-primary mb-3">
-                        <?= $this->formButton($submit); ?>
-                    </div>
-                </div>
-                <?= $this->form()->closeTag() ?>
+            <div class="col-md-6 row my-0 mx-0 px-3 py-3">
+                <?= $this->form($form) ?>
             </div>
         </div>
     </div>

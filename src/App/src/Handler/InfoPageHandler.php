@@ -15,12 +15,12 @@ namespace App\Handler;
 use Laminas\Diactoros\Exception\InvalidArgumentException;
 use Laminas\Diactoros\Response\HtmlResponse;
 use Laminas\Form\Factory;
-use Laminas\Log\Logger;
 use Laminas\View\Model\ViewModel;
 use Mezzio\Template\TemplateRendererInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use Psr\Log\LoggerInterface;
 use Throwable;
 
 use function assert;
@@ -35,9 +35,9 @@ final class InfoPageHandler implements RequestHandlerInterface
     private Factory $factory;
 
     /** @phpcsSuppress SlevomatCodingStandard.Classes.UnusedPrivateElements.WriteOnlyProperty */
-    private Logger $logger;
+    private LoggerInterface $logger;
 
-    public function __construct(TemplateRendererInterface $template, Factory $factory, Logger $logger)
+    public function __construct(TemplateRendererInterface $template, Factory $factory, LoggerInterface $logger)
     {
         $this->template = $template;
         $this->factory  = $factory;
@@ -63,7 +63,7 @@ final class InfoPageHandler implements RequestHandlerInterface
                     require $file
                 );
             } catch (Throwable $e) {
-                $this->logger->err($e);
+                $this->logger->error($e);
                 $form = null;
             }
         }
@@ -83,7 +83,7 @@ final class InfoPageHandler implements RequestHandlerInterface
                 ]
             );
         } catch (Throwable $e) {
-            $this->logger->err($e);
+            $this->logger->error($e);
             $html = '';
         }
 

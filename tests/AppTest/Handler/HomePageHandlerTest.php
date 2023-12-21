@@ -14,24 +14,22 @@ namespace AppTest\Handler;
 
 use App\Handler\HomePageHandler;
 use Laminas\Diactoros\Response\HtmlResponse;
-use Laminas\Log\Logger;
 use Mezzio\Template\TemplateRendererInterface;
 use PHPUnit\Framework\Constraint\ArrayHasKey;
 use PHPUnit\Framework\Exception;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface;
-use SebastianBergmann\RecursionContext\InvalidArgumentException;
+use Psr\Log\LoggerInterface;
 
 final class HomePageHandlerTest extends TestCase
 {
     /**
-     * @throws InvalidArgumentException
      * @throws Exception
      * @throws \Laminas\Diactoros\Exception\InvalidArgumentException
      */
     public function testReturnsHtmlResponseWhenTemplateRendererProvided(): void
     {
-        $logger = $this->createMock(Logger::class);
+        $logger = $this->createMock(LoggerInterface::class);
 
         $renderer = $this->getMockBuilder(TemplateRendererInterface::class)
             ->disableOriginalConstructor()

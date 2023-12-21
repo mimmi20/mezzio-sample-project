@@ -12,12 +12,12 @@ declare(strict_types = 1);
 
 namespace App\Handler;
 
-use Laminas\Log\Logger;
 use Mezzio\Template\TemplateRendererInterface;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use Psr\Log\LoggerInterface;
 use function assert;
 
 final class HomePageHandlerFactory
@@ -28,10 +28,10 @@ final class HomePageHandlerFactory
     public function __invoke(ContainerInterface $container): RequestHandlerInterface
     {
         $renderer = $container->get(TemplateRendererInterface::class);
-        $logger   = $container->get(Logger::class);
+        $logger   = $container->get(LoggerInterface::class);
 
         assert($renderer instanceof TemplateRendererInterface);
-        assert($logger instanceof Logger);
+        assert($logger instanceof LoggerInterface);
 
         return new HomePageHandler($renderer, $logger);
     }

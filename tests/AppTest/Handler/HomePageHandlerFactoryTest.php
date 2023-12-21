@@ -14,23 +14,21 @@ namespace AppTest\Handler;
 
 use App\Handler\HomePageHandler;
 use App\Handler\HomePageHandlerFactory;
-use Laminas\Log\Logger;
 use Mezzio\Template\TemplateRendererInterface;
 use PHPUnit\Framework\Exception;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
-use SebastianBergmann\RecursionContext\InvalidArgumentException;
+use Psr\Log\LoggerInterface;
 
 final class HomePageHandlerFactoryTest extends TestCase
 {
     /**
-     * @throws InvalidArgumentException
      * @throws Exception
      */
     public function testFactory(): void
     {
         $renderer = $this->createMock(TemplateRendererInterface::class);
-        $logger   = $this->createMock(Logger::class);
+        $logger   = $this->createMock(LoggerInterface::class);
 
         $container = $this->getMockBuilder(ContainerInterface::class)
             ->disableOriginalConstructor()
@@ -39,7 +37,7 @@ final class HomePageHandlerFactoryTest extends TestCase
         $container
             ->expects(self::exactly(2))
             ->method('get')
-            ->withConsecutive([TemplateRendererInterface::class], [Logger::class])
+            ->withConsecutive([TemplateRendererInterface::class], [LoggerInterface::class])
             ->willReturnOnConsecutiveCalls($renderer, $logger);
 
         $factory = new HomePageHandlerFactory();

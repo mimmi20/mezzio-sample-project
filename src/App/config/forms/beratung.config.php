@@ -17,8 +17,10 @@ declare(strict_types = 1);
 namespace Application;
 
 use Laminas\Form\Element\Checkbox;
+use Laminas\Form\Element\Email;
 use Laminas\Form\Element\Hidden;
 use Laminas\Form\Element\Submit;
+use Laminas\Form\Element\Tel;
 use Laminas\Form\Element\Text;
 use Laminas\Form\Form;
 use Laminas\Validator\EmailAddress;
@@ -26,18 +28,28 @@ use Laminas\Validator\NotEmpty;
 
 return [
     'type' => Form::class,
+    'options' => [
+        'floating-labels' => true,
+        'col_attributes' => ['class' => 'col-12 col-md-6'],
+        'layout' => \Mimmi20\Mezzio\BootstrapForm\LaminasView\View\Helper\Form::LAYOUT_VERTICAL,
+    ],
+    'attributes' => ['class' => 'g-3'],
     'elements' => [
         [
             'spec' => [
-                'type' => Text::class,
+                'type' => Tel::class,
                 'name' => 'telefon',
                 'options' => ['label' => 'Telefonnummer'],
-                'attributes' => ['id' => 'telefon'],
+                'attributes' => [
+                    'id' => 'telefon',
+                    'autocomplete' => 'off',
+                    'spellcheck' => 'false',
+                ],
             ],
         ],
         [
             'spec' => [
-                'type' => Text::class,
+                'type' => Email::class,
                 'name' => 'email',
                 'options' => [
                     'label' => 'E-Mail-Adresse',
@@ -45,7 +57,8 @@ return [
                 ],
                 'attributes' => [
                     'id' => 'email',
-                    'required' => 'required',
+                    'autocomplete' => 'off',
+                    'spellcheck' => 'false',
                 ],
             ],
         ],
@@ -62,7 +75,8 @@ return [
                 ],
                 'attributes' => [
                     'id' => 'agb',
-                    'required' => 'required',
+                    'autocomplete' => 'off',
+                    'spellcheck' => 'false',
                 ],
             ],
         ],
@@ -82,6 +96,7 @@ return [
         ],
     ],
     'input_filter' => [
+        'telefon' => ['required' => false],
         'email' => [
             'required' => true,
             'validators' => [
