@@ -52,7 +52,7 @@
   "require-dev": {
     "filp/whoops": "^2.14.4",
     "laminas/laminas-dependency-plugin": "^2.2.0",
-    "mezzio/mezzio-tooling": "^2.2.0",
+    "mezzio/mezzio-tooling": "^2.6.0",
     "mimmi20/coding-standard": "^2.5.1",
     "phpstan/extension-installer": "^1.1.0",
     "phpstan/phpstan": "^1.2.0",
