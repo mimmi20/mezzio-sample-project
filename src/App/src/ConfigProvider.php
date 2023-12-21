@@ -2,7 +2,7 @@
 /**
  * This file is part of the mimmi20/mezzio-sample-project package.
  *
- * Copyright (c) 2021, Thomas Mueller <mimmi20@live.de>
+ * Copyright (c) 2021-2023, Thomas Mueller <mimmi20@live.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -12,8 +12,6 @@ declare(strict_types = 1);
 
 namespace App;
 
-use JsonClass\Json;
-use JsonClass\JsonInterface;
 use Laminas\Form\Factory;
 use Laminas\ServiceManager\Factory\InvokableFactory;
 
@@ -31,6 +29,8 @@ final class ConfigProvider
      * method which returns an array with its configuration.
      *
      * @return array<string, array<string, array<string, array<int, string>|string>>>
+     *
+     * @throws void
      */
     public function __invoke(): array
     {
@@ -45,6 +45,8 @@ final class ConfigProvider
      * Returns the container dependencies
      *
      * @return array<string, array<string, string>>
+     *
+     * @throws void
      */
     public function getDependencies(): array
     {
@@ -53,11 +55,7 @@ final class ConfigProvider
                 Handler\HomePageHandler::class => Handler\HomePageHandlerFactory::class,
                 Handler\InfoPageHandler::class => Handler\InfoPageHandlerFactory::class,
                 Config\ServiceConfigInterface::class => Config\ServiceConfigFactory::class,
-                Json::class => InvokableFactory::class,
                 Factory::class => InvokableFactory::class,
-            ],
-            'aliases' => [
-                JsonInterface::class => Json::class,
             ],
         ];
     }
@@ -66,6 +64,8 @@ final class ConfigProvider
      * Returns the templates configuration
      *
      * @return array<string, array<string, array<int, string>>>
+     *
+     * @throws void
      */
     public function getTemplates(): array
     {
@@ -85,6 +85,8 @@ final class ConfigProvider
 
     /**
      * @return array<string, array<string, string>>
+     *
+     * @throws void
      */
     public function getViewHelperConfig(): array
     {

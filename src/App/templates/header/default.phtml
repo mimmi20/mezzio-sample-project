@@ -11,8 +11,8 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div id="navbarNavAltMarkup" class="collapse navbar-collapse bg-warning">
-                <?= $this->navigation('Mezzio\\Navigation\\Top')->menu()->renderMenu(null, ['in-navbar' => true, 'fill' => true, 'style' => 'ul', 'sublink' => 'details', 'onlyActiveBranch' => false, 'renderParents' => true, 'minDepth' => 0]); ?>
+            <div id="navbarNavAltMarkup" class="collapse navbar-collapse">
+                <?= $this->navigation('Mimmi20\\Mezzio\\Navigation\\Top')->menu()->renderMenu(null, ['in-navbar' => true, 'fill' => true, 'style' => 'ul', 'sublink' => 'details', 'onlyActiveBranch' => false, 'renderParents' => true, 'minDepth' => 0, 'li-class' => 'dropdown-menu', 'ul-class' => 'dropdown-menu dropdown-details-menu',]); ?>
             </div>
         </div>
     </nav>

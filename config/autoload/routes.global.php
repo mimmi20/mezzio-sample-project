@@ -13,7 +13,7 @@ declare(strict_types = 1);
 use App\Handler\HomePageHandler;
 use App\Handler\InfoPageHandler;
 use Fig\Http\Message\RequestMethodInterface;
-use Mezzio\Navigation\NavigationMiddleware;
+use Mimmi20\Mezzio\Navigation\NavigationMiddleware;
 
 return [
     'routes' => [

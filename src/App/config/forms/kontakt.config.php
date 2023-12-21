@@ -2,7 +2,7 @@
 /**
  * This file is part of the mimmi20/mezzio-sample-project package.
  *
- * Copyright (c) 2021, Thomas Mueller <mimmi20@live.de>
+ * Copyright (c) 2021-2023, Thomas Mueller <mimmi20@live.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -17,9 +17,11 @@ declare(strict_types = 1);
 namespace Application;
 
 use Laminas\Form\Element\Checkbox;
+use Laminas\Form\Element\Email;
 use Laminas\Form\Element\Hidden;
 use Laminas\Form\Element\Radio;
 use Laminas\Form\Element\Submit;
+use Laminas\Form\Element\Tel;
 use Laminas\Form\Element\Text;
 use Laminas\Form\Element\Textarea;
 use Laminas\Form\Form;
@@ -28,6 +30,14 @@ use Laminas\Validator\NotEmpty;
 
 return [
     'type' => Form::class,
+    'options' => [
+        // 'floating-labels' => true,
+        'col_attributes' => ['class' => 'col-12 col-md-6'],
+        'label_col_attributes' => ['class' => 'col-12 col-md-6'],
+        'row_attributes' => ['class' => 'mb-3'],
+        'layout' => \Mimmi20\Mezzio\BootstrapForm\LaminasView\View\Helper\Form::LAYOUT_HORIZONTAL,
+    ],
+    'attributes' => ['class' => 'g-3'],
     'elements' => [
         [
             'spec' => [
@@ -41,11 +51,13 @@ return [
                         'Frau' => 'Frau',
                         'Divers' => 'Divers',
                     ],
+                    'group_attributes' => ['class' => 'form-check-inline'],
+                    // 'col_attributes' => ['class' => 'row align-items-center'],
+                    'legend_attributes' => ['class' => 'form-label'],
+                    // 'row_attributes' => ['class' => 'gx-3 gy-2 align-items-center'],
+                    // 'layout' => \Mimmi20\Mezzio\BootstrapForm\LaminasView\View\Helper\Form::LAYOUT_INLINE,
                 ],
-                'attributes' => [
-                    'id' => 'anrede',
-                    'required' => 'required',
-                ],
+                'attributes' => ['id' => 'anrede'],
             ],
         ],
         [
@@ -58,7 +70,8 @@ return [
                 ],
                 'attributes' => [
                     'id' => 'vorname',
-                    'required' => 'required',
+                    'autocomplete' => 'off',
+                    'spellcheck' => 'false',
                 ],
             ],
         ],
@@ -72,21 +85,26 @@ return [
                 ],
                 'attributes' => [
                     'id' => 'nachname',
-                    'required' => 'required',
+                    'autocomplete' => 'off',
+                    'spellcheck' => 'false',
                 ],
             ],
         ],
         [
             'spec' => [
-                'type' => Text::class,
+                'type' => Tel::class,
                 'name' => 'telefon',
                 'options' => ['label' => 'Telefonnummer'],
-                'attributes' => ['id' => 'telefon'],
+                'attributes' => [
+                    'id' => 'telefon',
+                    'autocomplete' => 'off',
+                    'spellcheck' => 'false',
+                ],
             ],
         ],
         [
             'spec' => [
-                'type' => Text::class,
+                'type' => Email::class,
                 'name' => 'email',
                 'options' => [
                     'label' => 'E-Mail-Adresse',
@@ -94,7 +112,8 @@ return [
                 ],
                 'attributes' => [
                     'id' => 'email',
-                    'required' => 'required',
+                    'autocomplete' => 'off',
+                    'spellcheck' => 'false',
                 ],
             ],
         ],
@@ -103,7 +122,11 @@ return [
                 'type' => Text::class,
                 'name' => 'title',
                 'options' => ['label' => 'Ihr Anliegen'],
-                'attributes' => ['id' => 'title'],
+                'attributes' => [
+                    'id' => 'title',
+                    'autocomplete' => 'off',
+                    'spellcheck' => 'false',
+                ],
             ],
         ],
         [
@@ -116,7 +139,8 @@ return [
                 ],
                 'attributes' => [
                     'id' => 'message',
-                    'required' => 'required',
+                    'autocomplete' => 'off',
+                    'spellcheck' => 'false',
                 ],
             ],
         ],
@@ -133,7 +157,8 @@ return [
                 ],
                 'attributes' => [
                     'id' => 'agb',
-                    'required' => 'required',
+                    'autocomplete' => 'off',
+                    'spellcheck' => 'false',
                 ],
             ],
         ],
@@ -148,7 +173,11 @@ return [
                 'type' => Submit::class,
                 'name' => 'submit',
                 'options' => ['label' => 'Nachricht senden'],
-                'attributes' => ['value' => 'Absenden'],
+                'attributes' => [
+                    'value' => 'Absenden',
+                    'autocomplete' => 'off',
+                    'spellcheck' => 'false',
+                ],
             ],
         ],
     ],
@@ -156,6 +185,7 @@ return [
         'anrede' => ['required' => true],
         'vorname' => ['required' => true],
         'nachname' => ['required' => true],
+        'telefon' => ['required' => false],
         'email' => [
             'required' => true,
             'validators' => [
