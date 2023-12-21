@@ -42,12 +42,12 @@
         "mimmi20/monolog-callbackfilterhandler": "^3.0.4",
         "mimmi20/monolog-factory": "^2.0.6",
         "mimmi20/monolog-streamformatter": "^3.1.0",
-        "mimmi20/navigation-helper-acceptpage": "^2.0.0",
+        "mimmi20/navigation-helper-acceptpage": "^2.1.0",
         "mimmi20/navigation-helper-containerparser": "^4.0.0",
-        "mimmi20/navigation-helper-converttopages": "^2.0.0",
-        "mimmi20/navigation-helper-findactive": "^2.0.0",
-        "mimmi20/navigation-helper-findfromproperty": "^2.0.0",
-        "mimmi20/navigation-helper-findroot": "^2.0.0",
+        "mimmi20/navigation-helper-converttopages": "^2.1.2",
+        "mimmi20/navigation-helper-findactive": "^2.1.0",
+        "mimmi20/navigation-helper-findfromproperty": "^2.1.1",
+        "mimmi20/navigation-helper-findroot": "^2.1.0",
         "mimmi20/navigation-helper-htmlify": "^4.0.0"
     },
     "require-dev": {
@@ -66,7 +66,7 @@
         "phpstan/phpstan-deprecation-rules": "^1.1.4",
         "phpstan/phpstan-phpunit": "^1.3.15",
         "phpunit/phpunit": "^10.5.3",
-        "rector/rector": "^0.18.12"
+        "rector/rector": "^0.18.13"
     },
     "config": {
         "platform": {
