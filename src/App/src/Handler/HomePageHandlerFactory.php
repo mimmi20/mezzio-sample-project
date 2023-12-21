@@ -2,7 +2,7 @@
 /**
  * This file is part of the mimmi20/mezzio-sample-project package.
  *
- * Copyright (c) 2021, Thomas Mueller <mimmi20@live.de>
+ * Copyright (c) 2021-2023, Thomas Mueller <mimmi20@live.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -17,22 +17,17 @@ use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use Psr\Log\LoggerInterface;
 use function assert;
 
 final class HomePageHandlerFactory
 {
-    /**
-     * @throws ContainerExceptionInterface
-     */
+    /** @throws ContainerExceptionInterface */
     public function __invoke(ContainerInterface $container): RequestHandlerInterface
     {
         $renderer = $container->get(TemplateRendererInterface::class);
-        $logger   = $container->get(LoggerInterface::class);
 
         assert($renderer instanceof TemplateRendererInterface);
-        assert($logger instanceof LoggerInterface);
 
-        return new HomePageHandler($renderer, $logger);
+        return new HomePageHandler($renderer);
     }
 }

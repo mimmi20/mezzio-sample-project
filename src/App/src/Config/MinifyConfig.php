@@ -2,7 +2,7 @@
 /**
  * This file is part of the mimmi20/mezzio-sample-project package.
  *
- * Copyright (c) 2021, Thomas Mueller <mimmi20@live.de>
+ * Copyright (c) 2021-2023, Thomas Mueller <mimmi20@live.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -23,6 +23,7 @@ use function is_readable;
 
 final class MinifyConfig extends Config
 {
+    /** @throws void */
     public function isEnabled(): bool
     {
         $config = $this->toArray();
@@ -38,8 +39,10 @@ final class MinifyConfig extends Config
      * get the path of the file where the actual git revsion is saved
      *
      * @return string|null Null is returned if the file is not configured or the configured file is not readable, the file path is returned otherwise
+     *
+     * @throws void
      */
-    public function getRevisionFile(): ?string
+    public function getRevisionFile(): string | null
     {
         $config = $this->toArray();
 
@@ -54,8 +57,10 @@ final class MinifyConfig extends Config
      * get the path of the file where the actual groups/packages are saved
      *
      * @return string|null Null is returned if the file is not configured or the configured file is not readable, the file path is returned otherwise
+     *
+     * @throws void
      */
-    public function getGroupsFile(): ?string
+    public function getGroupsFile(): string | null
     {
         $config = $this->toArray();
 
@@ -70,8 +75,10 @@ final class MinifyConfig extends Config
      * get the path of the public directory
      *
      * @return string|null Null is returned if the directory is not configured, the path is returned otherwise
+     *
+     * @throws void
      */
-    public function getPublicDir(): ?string
+    public function getPublicDir(): string | null
     {
         $config = $this->toArray();
 

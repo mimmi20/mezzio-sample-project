@@ -2,7 +2,7 @@
 /**
  * This file is part of the mimmi20/mezzio-sample-project package.
  *
- * Copyright (c) 2021, Thomas Mueller <mimmi20@live.de>
+ * Copyright (c) 2021-2023, Thomas Mueller <mimmi20@live.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -31,7 +31,7 @@ use Laminas\Validator\NotEmpty;
 return [
     'type' => Form::class,
     'options' => [
-        //'floating-labels' => true,
+        // 'floating-labels' => true,
         'col_attributes' => ['class' => 'col-12 col-md-6'],
         'label_col_attributes' => ['class' => 'col-12 col-md-6'],
         'row_attributes' => ['class' => 'mb-3'],
@@ -52,14 +52,12 @@ return [
                         'Divers' => 'Divers',
                     ],
                     'group_attributes' => ['class' => 'form-check-inline'],
-                    //'col_attributes' => ['class' => 'row align-items-center'],
+                    // 'col_attributes' => ['class' => 'row align-items-center'],
                     'legend_attributes' => ['class' => 'form-label'],
                     // 'row_attributes' => ['class' => 'gx-3 gy-2 align-items-center'],
-                    //'layout' => \Mimmi20\Mezzio\BootstrapForm\LaminasView\View\Helper\Form::LAYOUT_INLINE,
+                    // 'layout' => \Mimmi20\Mezzio\BootstrapForm\LaminasView\View\Helper\Form::LAYOUT_INLINE,
                 ],
-                'attributes' => [
-                    'id' => 'anrede',
-                ],
+                'attributes' => ['id' => 'anrede'],
             ],
         ],
         [
@@ -96,9 +94,7 @@ return [
             'spec' => [
                 'type' => Tel::class,
                 'name' => 'telefon',
-                'options' => [
-                    'label' => 'Telefonnummer',
-                ],
+                'options' => ['label' => 'Telefonnummer'],
                 'attributes' => [
                     'id' => 'telefon',
                     'autocomplete' => 'off',
@@ -125,9 +121,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'title',
-                'options' => [
-                    'label' => 'Ihr Anliegen',
-                ],
+                'options' => ['label' => 'Ihr Anliegen'],
                 'attributes' => [
                     'id' => 'title',
                     'autocomplete' => 'off',

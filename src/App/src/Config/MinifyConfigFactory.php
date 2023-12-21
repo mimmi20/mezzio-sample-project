@@ -2,7 +2,7 @@
 /**
  * This file is part of the mimmi20/mezzio-sample-project package.
  *
- * Copyright (c) 2021, Thomas Mueller <mimmi20@live.de>
+ * Copyright (c) 2021-2023, Thomas Mueller <mimmi20@live.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -12,8 +12,8 @@ declare(strict_types = 1);
 
 namespace App\Config;
 
-use Interop\Container\ContainerInterface;
 use Laminas\ServiceManager\Factory\FactoryInterface;
+use Psr\Container\ContainerInterface;
 
 final class MinifyConfigFactory implements FactoryInterface
 {
@@ -26,10 +26,8 @@ final class MinifyConfigFactory implements FactoryInterface
      * @phpcsSuppress SlevomatCodingStandard.Functions.UnusedParameter.UnusedParameter
      * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
      */
-    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null): MinifyConfig
+    public function __invoke(ContainerInterface $container, $requestedName, array | null $options = null): MinifyConfig
     {
-        return new MinifyConfig(
-            require 'src/App/config/minify.config.php'
-        );
+        return new MinifyConfig(require 'src/App/config/minify.config.php');
     }
 }

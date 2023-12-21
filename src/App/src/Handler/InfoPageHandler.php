@@ -2,7 +2,7 @@
 /**
  * This file is part of the mimmi20/mezzio-sample-project package.
  *
- * Copyright (c) 2021, Thomas Mueller <mimmi20@live.de>
+ * Copyright (c) 2021-2023, Thomas Mueller <mimmi20@live.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -30,38 +30,29 @@ use function sprintf;
 
 final class InfoPageHandler implements RequestHandlerInterface
 {
-    private TemplateRendererInterface $template;
-
-    private Factory $factory;
-
-    /** @phpcsSuppress SlevomatCodingStandard.Classes.UnusedPrivateElements.WriteOnlyProperty */
-    private LoggerInterface $logger;
-
-    public function __construct(TemplateRendererInterface $template, Factory $factory, LoggerInterface $logger)
-    {
-        $this->template = $template;
-        $this->factory  = $factory;
-        $this->logger   = $logger;
+    /** @throws void */
+    public function __construct(
+        private readonly TemplateRendererInterface $template,
+        private readonly Factory $factory,
+        private readonly LoggerInterface $logger,
+    ) {
+        // nothing to do
     }
 
-    /**
-     * @throws InvalidArgumentException
-     */
+    /** @throws InvalidArgumentException */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $id = $request->getAttribute('id');
 
-        assert(is_string($id) || null === $id);
+        assert(is_string($id) || $id === null);
 
         $file = sprintf('src/App/config/forms/%s.config.php', $id);
 
-        if (null === $id || !file_exists($file)) {
+        if ($id === null || !file_exists($file)) {
             $form = null;
         } else {
             try {
-                $form = $this->factory->create(
-                    require $file
-                );
+                $form = $this->factory->create(require $file);
             } catch (Throwable $e) {
                 $this->logger->error($e);
                 $form = null;
@@ -69,7 +60,7 @@ final class InfoPageHandler implements RequestHandlerInterface
         }
 
         $layout = new ViewModel(
-            ['request' => $request]
+            ['request' => $request],
         );
         $layout->setTemplate('layout::default');
 
@@ -80,7 +71,7 @@ final class InfoPageHandler implements RequestHandlerInterface
                     'page' => $id,
                     'form' => $form,
                     'layout' => $layout,
-                ]
+                ],
             );
         } catch (Throwable $e) {
             $this->logger->error($e);

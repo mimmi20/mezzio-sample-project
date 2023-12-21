@@ -2,7 +2,7 @@
 /**
  * This file is part of the mimmi20/mezzio-sample-project package.
  *
- * Copyright (c) 2021, Thomas Mueller <mimmi20@live.de>
+ * Copyright (c) 2021-2023, Thomas Mueller <mimmi20@live.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -21,7 +21,6 @@ use Laminas\Form\Element\Email;
 use Laminas\Form\Element\Hidden;
 use Laminas\Form\Element\Submit;
 use Laminas\Form\Element\Tel;
-use Laminas\Form\Element\Text;
 use Laminas\Form\Form;
 use Laminas\Validator\EmailAddress;
 use Laminas\Validator\NotEmpty;

@@ -3,7 +3,6 @@
 .buildpath
 .project
 .idea/
-.build/
 vendor/
 composer.phar
 composer.lock
@@ -21,9 +20,13 @@ tests/temp/*.ini
 .php-cs-fixer.cache
 .phplint-cache
 .phpunit.result.cache
+.phpcs.cache
 infection-*.log
 rewrite*.php
-config/development.config.php
-config/autoload/local.php
-config/autoload/*.local.php
-log/*
+.reports/
+node_modules/
+.build/
+package-lock.json
+.reports
+*.bak
+*.txt
