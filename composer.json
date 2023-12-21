@@ -27,7 +27,7 @@
     "laminas/laminas-navigation": "^2.11.1",
     "laminas/laminas-servicemanager": "^3.10.0",
     "laminas/laminas-stdlib": "^3.6.1",
-    "mezzio/mezzio": "^3.7.0",
+    "mezzio/mezzio": "^3.11.0",
     "mezzio/mezzio-helpers": "^5.7.0",
     "mezzio/mezzio-laminasrouter": "^3.1.0",
     "mezzio/mezzio-laminasviewrenderer": "^2.3.0",
