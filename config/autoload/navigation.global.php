@@ -70,6 +70,21 @@ return [
                     ],
                 ],
             ],
+            'vt' => [
+                'id' => 'vt',
+                'label' => 'VT',
+                'title' => 'VT',
+                'uri' => '#',
+                'pages' => [
+                    'rl' => [
+                        'label' => 'RL',
+                        'title' => 'RL',
+                        'route' => 'info',
+                        'params' => ['id' => 'rl'],
+                        'id' => 'rl-id',
+                    ],
+                ],
+            ],
             'login' => [
                 'id' => 'login',
                 'label' => 'Anmelden',

@@ -38,7 +38,7 @@ return [
             ],
             'allowed_methods' => [RequestMethodInterface::METHOD_GET, RequestMethodInterface::METHOD_POST],
             'options' => [
-                'constraints' => ['id' => '(faq|ueber-uns|beratung|kontakt|impressum|datenschutz|erstinfo|cookie-layer|cookies)'],
+                'constraints' => ['id' => '(faq|ueber-uns|beratung|kontakt|impressum|datenschutz|erstinfo|cookie-layer|cookies|rl)'],
             ],
         ],
     ],
