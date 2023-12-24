@@ -12,7 +12,11 @@ details[open] ul {
 }
 
 legend.form-label {
-    font-size: 1rem;
+    display: inline-block;
+    font-family: var(--bs-body-font-family);
+    font-size: var(--bs-body-font-size);
+    font-weight: var(--bs-body-font-weight);
+    line-height: var(--bs-body-line-height);
 }
 
 .form-floating > legend.form-label {
@@ -33,4 +37,11 @@ legend.form-label {
 
     color: rgba(var(--bs-body-color-rgb), .65);
     transform: scale(.85) translateY(-0.5rem) translateX(0.15rem);
+}
+
+.container[id] {
+    display: none;
+}
+.container[id]:target {
+    display: block;
 }

@@ -68,6 +68,13 @@ return [
                             ],
                         ],
                     ],
+                    'vt' => [
+                        'label' => 'VT',
+                        'title' => 'VT',
+                        'uri' => '/vt/',
+                        'id' => 'vt-id',
+                        'fragment' => '#vt-start',
+                    ],
                 ],
             ],
             'login' => [
