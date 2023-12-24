@@ -1,0 +1,152 @@
+<?php
+/* @var $form \Laminas\Form\Form */
+
+$form->prepare();
+?>
+
+<section class="container" id="rl-start">
+    <h1 class="headline">Rentenlückenrechner</h1>
+    <div class="text-container">
+        <strong>Lorem ipsum dolor sit amet, consetetur</strong>
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod</p>
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore</p>
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore</p>
+    </div>
+    <div class="card">
+        <div class="card-body calculation-container">
+            <div class="form-container">
+                <div class="headline text-center">Rentenlücke berechnen</div>
+                <div class="alert alert-danger" role="alert">
+                    Es ist ein Fehler aufgetreten!
+                </div>
+                <div class="alert alert-warning" role="alert">
+                    Ihre angegebenen Daten sind nicht korrekt!
+                </div>
+
+                <?= $this->form($form) ?>
+            </div>
+            <div class="result-container">
+                <div class="headline result-headline">Ergebnis</div>
+                <svg viewBox="0 0 36 36" class="circular-chart">
+                    <circle r="16" cx="18" cy="18" class="circle-bg secondary-bg" />
+                    <circle r="16" cx="18" cy="18" class="circle-bg secondary" stroke-dasharray="20 100" />
+                    <text x="18" y="18" class="circle-info">1120 €</text>
+                </svg>
+                <div class="col-12 col-lg-5 order-lg-last my-4 pe-0 result-inflation">
+                    <div class="position-relative has-tooltip">
+                        <div class="inflation-legend">Inflation berücksichtigen?</div>
+                        <div class="position-absolute tooltip-absolute"
+                            data-bs-toggle="tooltip"
+                            data-bs-placement="left"
+                            title=""
+                            data-bs-original-title="Die Inflation sorgt dafür, dass Ihre spätere Rente nicht mehr den gleichen Wert haben wird, wie heute. Die Renten werden zwar jährlich angepasst, steigt die Inflation jedoch stärker als die Renten, können Sie sich später von Ihrem Geld weniger kaufen als heute.">
+                            <span class="icon-vt icon-attention-o align-top"></span>
+                        </div>
+                    </div>
+                    <div class="form-check form-switch d-inline-block mt-2 me-2">
+                        <input type="hidden" name="inflationAn" value="0">
+                        <input type="checkbox" name="inflationAn" id="inflationAn"
+                            class="form-check-input js-adt-event js-gtm-event" form="renten-form"
+                            data-event-type="click" data-event-category="versicherung"
+                            data-event-label="rentenluecke" data-event-action="adjust inflation" value="1">
+                        <label class="form-check-label ms-2" for="inflationAn"><span
+                                class="js-inflation-rate">0.0</span>%</label>
+                    </div>
+                    <a class="icon-vt icon-cog inflation-settings" data-bs-toggle="modal" href="#inflation-layer"></a>
+                    <div class="modal fade" id="inflation-layer" tabindex="-1" aria-labelledby="inflation-layer-label"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered vt_modal-sm">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="inflation-layer-label">Einstellungen</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <label for="inflationsrate">Bitte wählen Sie die angenommene Höhe der
+                                        Inflation</label>
+                                    <div class="slider-container">
+                                        <input type="range" name="inflationsrate" id="inflationsrate"
+                                            class="slider js-tooltip-slider" min="0" max="5" step="0.1"
+                                            form="renten-form" value="2.2">
+                                        <div class="slider-tooltip js-slider-tooltip">2.2%</div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <input type="button" form="renten-form" name="btn-neu-berechnen"
+                                        class="btn btn-primary btn-rente-refresh js-adt-event js-gtm-event"
+                                        value="Neu berechnen" data-bs-dismiss="modal" data-event-type="click"
+                                        data-event-category="versicherung" data-event-label="rentenluecke"
+                                        data-event-action="recalc with changed inflation">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ul class="list-unstyled result-list">
+                    <li class="row g-0 justify-content-between monthly-requirement position-relative has-tooltip">
+                        <span class="col-8 type">monatlicher Bedarf im Alter</span>
+                        <span class="col-4 text-end amount"><span class="js-monthly-requirement-amount pe-3">?</span></span>
+                        <div class="position-absolute tooltip-absolute" data-bs-toggle="tooltip" data-bs-placement="left"
+                            title="" data-bs-original-title="Experten setzen etwa 80 Prozent des letzten Nettoeinkommens als Richtwert
+                          für den Finanzbedarf im Alter an, da als Rentner einige Ausgaben wegfallen. Dies
+                          ergibt sich z.B. weil kein finanzieller Aufwand für den Arbeitsweg mehr anfällt,
+                          manche Versicherungen nicht mehr gezahlt werden müssen oder das Eigenheim abbezahlt
+                          ist und man dort mietfrei wohnen kann.">
+                            <span class="icon-vt icon-attention-o"></span>
+                        </div>
+                    </li>
+                    <li class="row g-0 justify-content-between future-net-pension position-relative has-tooltip chart-amount-box chart-amount-1 collapse">
+                        <span class="col-8 type">zu erwartende Nettorente</span>
+                        <span class="col-4 text-end amount"><span class="js-future-net-pension-amount pe-3">?</span></span>
+                        <div class="position-absolute tooltip-absolute" data-bs-toggle="tooltip" data-bs-placement="left"
+                            title=""
+                            data-bs-original-title="Auch bei Alterseinkünften werden Sozialabgaben und Steuern fällig. Die Nettorente ist der Geldbetrag, der nach Abzug dieser übrig bleibt.">
+                            <span class="icon-vt icon-attention-o"></span>
+                        </div>
+                    </li>
+                    <li class="row g-0 justify-content-between actual-pension position-relative has-tooltip collapse chart-amount-box chart-amount-2">
+                        <span class="col-8 type">bestehende Vorsorge</span>
+                        <span class="col-4 text-end amount"><span class="js-actual-pension-amount pe-3">?</span></span>
+                        <span class="additional-pension-hint js-additional-pension-hint d-none">*</span>
+                        <div class="position-absolute tooltip-absolute" data-bs-toggle="tooltip" data-bs-placement="left"
+                            title=""
+                            data-bs-original-title="Diese Leistungen erhalten Sie aus Ihrer bestehenden Vorsorge.">
+                            <span class="icon-vt icon-attention-o"></span>
+                        </div>
+                    </li>
+                    <li class="row g-0 justify-content-between pension-gap position-relative has-tooltip chart-amount-box chart-amount-3">
+                        <span class="col-8 type">Rentenlücke</span>
+                        <span class="col-4 text-end amount">
+                            <span class="js-pension-gap-amount pe-3">?</span>
+                        </span>
+                        <div class="position-absolute tooltip-absolute"
+                            data-bs-toggle="tooltip"
+                            data-bs-placement="left"
+                            title=""
+                            data-bs-original-title="Die Differenz zwischen Ihrer zu erwartenden Rente und dem benötigten Einkommen wird als Rentenlücke bezeichnet.">
+                            <span class="icon-vt icon-attention-o"></span>
+                        </div>
+                        <div class="no-gap-hint-text mt-3 mx-3 d-none">
+                            <strong>Hinweis:</strong> Es konnte keine Rentenlücke ermittelt werden.
+                        </div>
+                    </li>
+                </ul>
+                <div class="text-center d-md-none btn-link btn-change result-change">Angaben ändern</div>
+                <div class="additional-pension-hint-text js-additional-pension-hint mt-3 mt-md-0 d-none">
+                    * Bitte beachten Sie, dass auch hier in Abhängigkeit von der Art Ihrer Vorsorge eventuell Steuer- und
+                    Sozialversicherungsabgaben anfallen.
+                </div>
+            </div>
+            <div class="text-center button-container">
+                <button type="submit" name="btn-berechnen" class="btn" form="renten-form">Berechnen</button>
+            </div>
+        </div>
+    </div>
+    <div class="text-container">
+        <strong>Lorem ipsum dolor sit amet, consetetur</strong>
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod</p>
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore</p>
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore</p>
+    </div>
+</section>
