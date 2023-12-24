@@ -16,19 +16,11 @@ declare(strict_types = 1);
 
 namespace Application;
 
-use Laminas\Form\Element\Checkbox;
-use Laminas\Form\Element\Email;
-use Laminas\Form\Element\Hidden;
 use Laminas\Form\Element\Number;
 use Laminas\Form\Element\Radio;
 use Laminas\Form\Element\Select;
-use Laminas\Form\Element\Submit;
-use Laminas\Form\Element\Tel;
-use Laminas\Form\Element\Text;
-use Laminas\Form\Element\Textarea;
 use Laminas\Form\Form;
-use Laminas\Validator\EmailAddress;
-use Laminas\Validator\NotEmpty;
+
 use function date;
 
 return [
