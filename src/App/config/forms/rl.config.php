@@ -26,10 +26,10 @@ use function date;
 return [
     'type' => Form::class,
     'options' => [
-        'floating-labels' => true,
-        'col_attributes' => ['class' => 'col-12 mb-3'],
-        'label_col_attributes' => ['class' => 'col-12'],
-        // 'row_attributes' => ['class' => 'mb-3'],
+        // 'floating-labels' => true,
+        'col_attributes' => ['class' => 'col-8 mb-3'],
+        'label_col_attributes' => ['class' => 'col-4'],
+        'row_attributes' => ['class' => 'mb-3'],
         'layout' => \Mimmi20\Mezzio\BootstrapForm\LaminasView\View\Helper\Form::LAYOUT_VERTICAL,
     ],
     'name' => 'renten-form',
@@ -38,6 +38,8 @@ return [
         'class' => 'g-0',
         'accept-charset' => 'utf-8',
         'id' => 'renten-form',
+        'novalidate' => 'novalidate',
+        'data-needs-validation' => true,
     ],
     'elements' => [
         [
@@ -83,7 +85,7 @@ return [
                         ],
                     ],
                     'col_attributes' => ['class' => 'col-md-12'],
-                    'group_attributes' => ['class' => 'form-check-inline'],
+                    // 'group_attributes' => ['class' => 'form-check-inline'],
                     'legend_attributes' => ['class' => 'form-label'],
                     // 'row_attributes' => ['class' => 'gx-3 gy-2 align-items-center'],
                     // 'layout' => \Mimmi20\Mezzio\BootstrapForm\LaminasView\View\Helper\Form::LAYOUT_INLINE,

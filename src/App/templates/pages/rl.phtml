@@ -23,7 +23,7 @@ $form->prepare();
                     Ihre angegebenen Daten sind nicht korrekt!
                 </div>
 
-                <?= $this->form($form) ?>
+                <?= $this->form()->setIndent(16)->render($form) ?>
             </div>
             <div class="result-container">
                 <div class="headline result-headline">Ergebnis</div>
@@ -150,3 +150,5 @@ $form->prepare();
         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore</p>
     </div>
 </section>
+
+<?php $this->inlineScript()->appendFile('/js/rl.js'); ?>
