@@ -27,13 +27,14 @@ $form->prepare();
             </div>
             <div class="result-container">
                 <div class="headline result-headline">Ergebnis</div>
-                <svg viewBox="0 0 36 36" class="circular-chart">
+                <svg viewBox="0 0 36 36" class="circular-chart" data-chart>
                     <circle r="16" cx="18" cy="18" class="circle-bg secondary-bg" />
-                    <circle r="16" cx="18" cy="18" class="circle-bg secondary" stroke-dasharray="20 100" />
+                    <circle r="16" cx="18" cy="18" class="circle-bg secondary" stroke-dasharray="0 100" />
+                    <circle r="16" cx="18" cy="18" class="circle-bg primary" stroke-dasharray="0 100" />
                     <text x="18" y="18" class="circle-info">1120 €</text>
                 </svg>
                 <div class="col-12 col-lg-5 order-lg-last my-4 pe-0 result-inflation">
-                    <div class="position-relative has-tooltip">
+                    <div class="position-relative">
                         <div class="inflation-legend">Inflation berücksichtigen?</div>
                         <div class="position-absolute tooltip-absolute"
                             data-bs-toggle="tooltip"
@@ -84,42 +85,35 @@ $form->prepare();
                     </div>
                 </div>
                 <ul class="list-unstyled result-list">
-                    <li class="row g-0 justify-content-between monthly-requirement position-relative has-tooltip">
-                        <span class="col-8 type">monatlicher Bedarf im Alter</span>
-                        <span class="col-4 text-end amount"><span class="js-monthly-requirement-amount pe-3">?</span></span>
-                        <div class="position-absolute tooltip-absolute" data-bs-toggle="tooltip" data-bs-placement="left"
-                            title="" data-bs-original-title="Experten setzen etwa 80 Prozent des letzten Nettoeinkommens als Richtwert
-                          für den Finanzbedarf im Alter an, da als Rentner einige Ausgaben wegfallen. Dies
-                          ergibt sich z.B. weil kein finanzieller Aufwand für den Arbeitsweg mehr anfällt,
-                          manche Versicherungen nicht mehr gezahlt werden müssen oder das Eigenheim abbezahlt
-                          ist und man dort mietfrei wohnen kann.">
-                            <span class="icon-vt icon-attention-o"></span>
+                    <li class="row g-0 justify-content-between monthly-requirement position-relative">
+                        <span class="col-8">monatlicher Bedarf im Alter</span>
+                        <output class="col-4 text-end amount pe-3" name="monthly-requirement-amount" data-monthly-requirement-amount>?</output>
+                        <div id="amount-tooltip" class="form-text">
+                            Experten setzen etwa 80 Prozent des letzten Nettoeinkommens als Richtwert
+                            für den Finanzbedarf im Alter an, da als Rentner einige Ausgaben wegfallen. Dies
+                            ergibt sich z.B. weil kein finanzieller Aufwand für den Arbeitsweg mehr anfällt,
+                            manche Versicherungen nicht mehr gezahlt werden müssen oder das Eigenheim abbezahlt
+                            ist und man dort mietfrei wohnen kann.
                         </div>
                     </li>
-                    <li class="row g-0 justify-content-between future-net-pension position-relative has-tooltip chart-amount-box chart-amount-1 collapse">
+                    <li class="row g-0 justify-content-between future-net-pension position-relative chart-amount-box chart-amount-1 d-none">
                         <span class="col-8 type">zu erwartende Nettorente</span>
-                        <span class="col-4 text-end amount"><span class="js-future-net-pension-amount pe-3">?</span></span>
-                        <div class="position-absolute tooltip-absolute" data-bs-toggle="tooltip" data-bs-placement="left"
-                            title=""
-                            data-bs-original-title="Auch bei Alterseinkünften werden Sozialabgaben und Steuern fällig. Die Nettorente ist der Geldbetrag, der nach Abzug dieser übrig bleibt.">
-                            <span class="icon-vt icon-attention-o"></span>
+                        <output class="col-4 text-end amount pe-3" name="future-net-pension-amount" data-future-pension-amount>?</output>
+                        <div id="rente-tooltip" class="form-text">
+                            Auch bei Alterseinkünften werden Sozialabgaben und Steuern fällig. Die Nettorente ist der Geldbetrag, der nach Abzug dieser übrig bleibt.
                         </div>
                     </li>
-                    <li class="row g-0 justify-content-between actual-pension position-relative has-tooltip collapse chart-amount-box chart-amount-2">
-                        <span class="col-8 type">bestehende Vorsorge</span>
-                        <span class="col-4 text-end amount"><span class="js-actual-pension-amount pe-3">?</span></span>
-                        <span class="additional-pension-hint js-additional-pension-hint d-none">*</span>
-                        <div class="position-absolute tooltip-absolute" data-bs-toggle="tooltip" data-bs-placement="left"
-                            title=""
-                            data-bs-original-title="Diese Leistungen erhalten Sie aus Ihrer bestehenden Vorsorge.">
-                            <span class="icon-vt icon-attention-o"></span>
+                    <li class="row g-0 justify-content-between position-relative chart-amount-box chart-amount-2 d-none">
+                        <span class="col-8 type">bestehende Vorsorge <sup>*</sup></span>
+                        <output class="col-4 text-end amount pe-3" name="actual-pension-amount" data-actual-pension-amount>?</output>
+                        <div id="vorsorge-tooltip" class="form-text">
+                            <p>Diese Leistungen erhalten Sie aus Ihrer bestehenden Vorsorge.</p>
+                            <p><sup>*</sup> Bitte beachten Sie, dass auch hier in Abhängigkeit von der Art Ihrer Vorsorge eventuell Steuer- und Sozialversicherungsabgaben anfallen.</p>
                         </div>
                     </li>
-                    <li class="row g-0 justify-content-between pension-gap position-relative has-tooltip chart-amount-box chart-amount-3">
+                    <li class="row g-0 justify-content-between pension-gap position-relative chart-amount-box chart-amount-3">
                         <span class="col-8 type">Rentenlücke</span>
-                        <span class="col-4 text-end amount">
-                            <span class="js-pension-gap-amount pe-3">?</span>
-                        </span>
+                        <output class="col-4 text-end amount pe-3" name="pension-gap-amount" data-gap-amount>?</output>
                         <div class="position-absolute tooltip-absolute"
                             data-bs-toggle="tooltip"
                             data-bs-placement="left"
