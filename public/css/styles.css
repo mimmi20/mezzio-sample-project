@@ -91,8 +91,13 @@ legend.form-label {
     grid-area: result;
 
     display: grid;
-    grid-template-columns: subgrid;
-    grid-template-rows: subgrid;
+    gap: 0.5rem;
+    grid-template-areas:
+                    'head head'
+                    'graph inflation'
+                    'overview overview';
+    grid-auto-rows: min-content;
+    grid-template-columns: 6fr 4fr;
 }
 .button-container {
     grid-area: button;
@@ -128,12 +133,6 @@ legend.form-label {
     padding-left: 0.25rem;
     inset: unset;
 }
-.optional::after {
-    position: absolute;
-    content: ' (optional)';
-    color: var(--vt-optional-message-color, #00ff00);
-    padding-left: 0.25rem;
-}
 .form-control:not(:placeholder-shown):not(:focus):invalid, .form-control:out-of-range {
     border-color: var(--bs-danger, #842029);
 }
@@ -166,6 +165,9 @@ legend.form-label {
     background-position: right 0.75rem center,center right 2.25rem;
     background-size: 16px 12px,calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
     border-color: var(--bs-form-invalid-color, #dc3545);
+}
+.was-validated .form-check-input:invalid ~ .form-check-label, .form-check-input.is-invalid ~ .form-check-label {
+    color: var(--bs-body-color);
 }
 .form-container :invalid~.invalid-feedback,
 .was-edited:invalid~.invalid-feedback,
@@ -204,16 +206,6 @@ form:has(.rente :is([value=""], [value="67"]):checked) :out-of-range~.invalid-mi
 }
 .text-center {
     text-align: center;
-}
-/*.col-form-label {
-    padding-top: calc(0.375rem + 1px);
-    padding-bottom: calc(0.375rem + 1px);
-    margin-bottom: 0;
-    font-size: inherit;
-    line-height: 1.5;
-}*/
-.chartjs-render-monitor {
-    animation: chartjs-render-animation 0.001s;
 }
 .form-switch {
     margin-right: 1rem;
@@ -302,17 +294,16 @@ input[type=checkbox], input[type=radio] {
     transform-origin: center;
 }
 .circular-chart .circle-bg.secondary {
-    stroke: #fb9807;
-    stroke-linecap: round;
-    stroke-dasharray: 20, 100;
+    stroke: #2cc1d5;
+    stroke-dasharray: 0, 100;
 }
 .circular-chart .circle-bg.secondary-bg {
-    stroke: #c9c9c9;
+    stroke: #ff1f00;
     stroke-dasharray: 101, 101;
 }
 .circular-chart .circle-bg.primary {
-    stroke: #005f99;
-    stroke-linecap: round;
+    stroke: #005e97;
+    stroke-dasharray: 0, 100;
 }
 .circular-chart .circle-bg.primary-bg {
     stroke: #c9c9c9;
@@ -322,7 +313,7 @@ input[type=checkbox], input[type=radio] {
     font-size: 8px;
     text-anchor: middle;
     dominant-baseline: middle;
-    fill: #004c97;
+    fill: #ff1f00;
 }
 .circular-chart .circle-info.circle-percent {
     text-anchor: end;

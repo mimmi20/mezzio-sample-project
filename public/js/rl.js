@@ -24,24 +24,18 @@ forms.forEach((form) => {
         inflationAn = data.get('inflationAn');
 
       if (null !== state && null !== stkl && null !== netto) {
-        const calculationResult = Rentenluecke.calculate(
-          !(state instanceof File) ? state.toString() || '' : '',
-          !(stkl instanceof File) ? parseInt(stkl.toString(), 10) : 0,
-          !(netto instanceof File) ? parseInt(netto.toString(), 10) : 0,
-          !(anzahl instanceof File) ? parseInt((anzahl || 0).toString(), 10) : 0,
-          !(geb instanceof File) ? parseInt((geb || 0).toString(), 10) : 0,
-          !(rente instanceof File) ? parseInt((rente || 0).toString(), 10) : 0,
-          !(alter instanceof File) ? parseInt((alter || 0).toString(), 10) : 0,
-          !(inflationsrate instanceof File) ? parseFloat((inflationsrate || 0.0).toString()) : 0,
-          !(inflationAn instanceof File) ? !!(inflationAn || false) : false,
-          LZZ.LZZ_JAHR,
-          KRV.KRV_TABELLE_ALLGEMEIN,
-          true, // kinderlos u. über 23J.
-          1, // Kirchensteuer berechnen
-          0.0, // Anzahl Kinderfreibeträge
-        );
+        const bestehendeVorsorge = 100;
+        const calculationResult = {
+          valid: true,
+          monatsBedarf: 1500,
+          monatsRente: 1200,
+          nettoRente: 900,
+          kv: 50,
+          steuer: 100,
+        };
 
         if (!calculationResult.valid) {
+          console.log('not valid');
           return;
         }
 
@@ -50,11 +44,12 @@ forms.forEach((form) => {
           kv = calculationResult.kv || 0,
           steuer = calculationResult.steuer || 0;
 
-        erwarteteRente = calculationResult.nettoRente || 0;
+        const erwarteteRente = calculationResult.nettoRente || 0;
 
         let rentenluecke = monatsBedarf - (erwarteteRente + bestehendeVorsorge);
 
         if (rentenluecke <= 0) {
+          console.log('keine Rentenlücke');
           rentenluecke = 0;
         }
 
@@ -74,28 +69,49 @@ forms.forEach((form) => {
           }),
         );
 
-        const chart = this.root.getElementById('js-doughnut-chart');
+        const chart = document.querySelector('[data-chart]');
 
-        if (null === chart || !(chart instanceof HTMLCanvasElement)) {
+        if (null === chart) {
+          console.log('no chart');
           return;
         }
 
-        //this.updateChart(erwarteteRente, bestehendeVorsorge, rentenluecke);
+        const infoText = chart.querySelector('.circle-info');
 
-        const pensionGapAmount = this.root.getElementById('pension-gap-amount');
-        const monthlyRequirementAmount = this.root.getElementById('monthly-requirement-amount');
-        const pensionNetAmount = this.root.getElementById('future-net-pension-amount');
-        const pensionActualAmount = this.root.getElementById('actual-pension-amount');
+        if (infoText instanceof SVGTextElement) {
+          infoText.textContent = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(rentenluecke);
+        }
 
-        if (null !== pensionGapAmount && pensionGapAmount instanceof HTMLOutputElement) {
+        const chart1 = chart.querySelector('.secondary');
+
+        if (chart1 instanceof SVGCircleElement) {
+          const l = (monatsBedarf - rentenluecke) / monatsBedarf * 100;
+          const o = bestehendeVorsorge / monatsBedarf * 100;
+          chart1.style.strokeDasharray = `${l + o} 100`;
+          chart1.style.strokeDashoffset = o;
+        }
+
+        const chart2 = chart.querySelector('.primary');
+
+        if (chart2 instanceof SVGCircleElement) {
+          const l = bestehendeVorsorge / monatsBedarf * 100;
+          chart2.style.strokeDasharray = `${l} 100`;
+        }
+
+        const pensionGapAmount = document.querySelector('[data-gap-amount]');
+        const monthlyRequirementAmount = document.querySelector('[data-monthly-requirement-amount]');
+        const pensionNetAmount = document.querySelector('[data-future-pension-amount]');
+        const pensionActualAmount = document.querySelector('[data-actual-pension-amount]');
+
+        if (pensionGapAmount instanceof HTMLOutputElement) {
           pensionGapAmount.value = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(rentenluecke);
         }
 
-        if (null !== monthlyRequirementAmount && monthlyRequirementAmount instanceof HTMLOutputElement) {
+        if (monthlyRequirementAmount instanceof HTMLOutputElement) {
           monthlyRequirementAmount.value = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(monatsBedarf);
         }
 
-        if (null !== pensionNetAmount && pensionNetAmount instanceof HTMLOutputElement && null !== pensionNetAmount.parentElement) {
+        if (pensionNetAmount instanceof HTMLOutputElement && null !== pensionNetAmount.parentElement) {
           if (erwarteteRente > 0) {
             pensionNetAmount.value = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(erwarteteRente);
             pensionNetAmount.parentElement.classList.remove('d-none');
@@ -104,8 +120,8 @@ forms.forEach((form) => {
           }
         }
 
-        if (null !== pensionActualAmount && pensionActualAmount instanceof HTMLOutputElement && null !== pensionActualAmount.parentElement) {
-          if (erwarteteRente > 0) {
+        if (pensionActualAmount instanceof HTMLOutputElement && null !== pensionActualAmount.parentElement) {
+          if (bestehendeVorsorge >= 0) {
             pensionActualAmount.value = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(bestehendeVorsorge);
             pensionActualAmount.parentElement.classList.remove('d-none');
           } else {

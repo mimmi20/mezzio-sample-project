@@ -108,6 +108,10 @@ return [
                     'label' => 'Steuerklasse',
                     'value_options' => [
                         [
+                            'label' => 'Bitte auswählen',
+                            'value' => '',
+                        ],
+                        [
                             'label' => 'Steuerklasse 1',
                             'value' => '1',
                         ],
@@ -155,6 +159,10 @@ return [
                 'options' => [
                     'label' => 'Bundesland',
                     'value_options' => [
+                        [
+                            'label' => 'Bitte auswählen',
+                            'value' => '',
+                        ],
                         [
                             'label' => 'Baden-Württemberg',
                             'value' => 'Baden-Württemberg',
@@ -239,6 +247,10 @@ return [
                 'options' => [
                     'label' => 'Wann möchten Sie in Rente gehen?',
                     'value_options' => [
+                        [
+                            'label' => 'Bitte auswählen',
+                            'value' => '',
+                        ],
                         [
                             'label' => 'mit vollendetem 63. Lebensjahr',
                             'value' => '63',
