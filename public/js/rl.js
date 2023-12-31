@@ -135,7 +135,7 @@ forms.forEach((form) => {
 );
 });
 
-const fields = document.querySelectorAll('[data-needs-validation] :is(input, select)');
+const fields = document.querySelectorAll('[data-needs-validation] :is(input:not([type="button"]):not([type="submit"]), select)');
 
 fields.forEach((field) => {
   field.addEventListener(

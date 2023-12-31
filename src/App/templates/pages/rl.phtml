@@ -4,18 +4,18 @@
 $form->prepare();
 ?>
 
-<section class="container" id="rl-start">
-    <h1 class="headline">Rentenlückenrechner</h1>
-    <div class="text-container">
+<div id="rl-start">
+    <h1 class="headline mx-3">Rentenlückenrechner</h1>
+    <div class="text-container mx-3">
         <strong>Lorem ipsum dolor sit amet, consetetur</strong>
         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod</p>
         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore</p>
         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore</p>
     </div>
-    <div class="card">
+    <div class="card mx-3">
         <div class="card-body calculation-container">
             <div class="form-container">
-                <div class="headline text-center">Rentenlücke berechnen</div>
+                <div class="card-title">Rentenlücke berechnen</div>
                 <div class="alert alert-danger" role="alert">
                     Es ist ein Fehler aufgetreten!
                 </div>
@@ -126,23 +126,19 @@ $form->prepare();
                         </div>
                     </li>
                 </ul>
-                <div class="text-center d-md-none btn-link btn-change result-change">Angaben ändern</div>
-                <div class="additional-pension-hint-text js-additional-pension-hint mt-3 mt-md-0 d-none">
-                    * Bitte beachten Sie, dass auch hier in Abhängigkeit von der Art Ihrer Vorsorge eventuell Steuer- und
-                    Sozialversicherungsabgaben anfallen.
-                </div>
             </div>
             <div class="text-center button-container">
-                <button type="submit" name="btn-berechnen" class="btn" form="renten-form">Berechnen</button>
+                <button type="submit" name="btn-berechnen" class="btn btn-primary" form="renten-form">Berechnen</button>
             </div>
         </div>
     </div>
-    <div class="text-container">
+    <div class="text-container mx-3">
         <strong>Lorem ipsum dolor sit amet, consetetur</strong>
         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod</p>
         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore</p>
         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore</p>
     </div>
-</section>
+</div>
 
+<?php $this->headLink()->appendStylesheet('/css/rl.css', 'screen', ['rel' => 'stylesheet']); ?>
 <?php $this->inlineScript()->appendFile('/js/rl.js'); ?>

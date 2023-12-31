@@ -16,10 +16,10 @@ declare(strict_types = 1);
 
 namespace Application;
 
+use Laminas\Form\Element\Button;
 use Laminas\Form\Element\Checkbox;
 use Laminas\Form\Element\Email;
 use Laminas\Form\Element\Hidden;
-use Laminas\Form\Element\Submit;
 use Laminas\Form\Element\Tel;
 use Laminas\Form\Form;
 use Laminas\Validator\EmailAddress;
@@ -28,11 +28,16 @@ use Laminas\Validator\NotEmpty;
 return [
     'type' => Form::class,
     'options' => [
-        'floating-labels' => true,
         'col_attributes' => ['class' => 'col-12 col-md-6'],
         'layout' => \Mimmi20\Mezzio\BootstrapForm\LaminasView\View\Helper\Form::LAYOUT_VERTICAL,
+        'form-required-mark' => '<div class="mt-2 text-info-required"><sup>*</sup> Pflichtfeld</div>',
     ],
-    'attributes' => ['class' => 'g-3'],
+    'attributes' => [
+        'class' => 'g-3',
+        'accept-charset' => 'utf-8',
+        'novalidate' => 'novalidate',
+        'data-needs-validation' => true,
+    ],
     'elements' => [
         [
             'spec' => [
@@ -43,6 +48,7 @@ return [
                     'id' => 'telefon',
                     'autocomplete' => 'off',
                     'spellcheck' => 'false',
+                    'placeholder' => ' ',
                 ],
             ],
         ],
@@ -58,6 +64,7 @@ return [
                     'id' => 'email',
                     'autocomplete' => 'off',
                     'spellcheck' => 'false',
+                    'placeholder' => ' ',
                 ],
             ],
         ],
@@ -87,10 +94,13 @@ return [
         ],
         [
             'spec' => [
-                'type' => Submit::class,
+                'type' => Button::class,
                 'name' => 'submit',
                 'options' => ['label' => 'Beratung anfordern'],
-                'attributes' => ['value' => 'Absenden'],
+                'attributes' => [
+                    'class' => 'btn btn-primary',
+                    'type' => 'submit',
+                ],
             ],
         ],
     ],

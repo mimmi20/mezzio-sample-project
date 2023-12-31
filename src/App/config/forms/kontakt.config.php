@@ -31,13 +31,19 @@ use Laminas\Validator\NotEmpty;
 return [
     'type' => Form::class,
     'options' => [
-        // 'floating-labels' => true,
         'col_attributes' => ['class' => 'col-12 col-md-6'],
         'label_col_attributes' => ['class' => 'col-12 col-md-6'],
         'row_attributes' => ['class' => 'mb-3'],
-        'layout' => \Mimmi20\Mezzio\BootstrapForm\LaminasView\View\Helper\Form::LAYOUT_VERTICAL,
+        'layout' => \Mimmi20\Mezzio\BootstrapForm\LaminasView\View\Helper\Form::LAYOUT_HORIZONTAL,
+        'form-required-mark' => '<div class="mt-2 text-info-required"><sup>*</sup> Pflichtfeld</div>',
+        'field-required-mark' => ' <span class="text-info-required"><sup>*</sup></span>',
     ],
-    'attributes' => ['class' => 'g-3'],
+    'attributes' => [
+        'class' => 'g-3',
+        'accept-charset' => 'utf-8',
+        'novalidate' => 'novalidate',
+        'data-needs-validation' => true,
+    ],
     'elements' => [
         [
             'spec' => [
@@ -45,8 +51,6 @@ return [
                 'name' => 'anrede',
                 'options' => [
                     'label' => 'Anrede',
-                    'label_options' => ['disable_html_escape' => true],
-                    'col_attributes' => ['class' => 'col-md-12'],
                     'value_options' => [
                         [
                             'label' => 'Herr',
@@ -75,10 +79,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'vorname',
-                'options' => [
-                    'label' => 'Vorname',
-                    'label_options' => ['disable_html_escape' => true],
-                ],
+                'options' => ['label' => 'Vorname'],
                 'attributes' => [
                     'id' => 'vorname',
                     'autocomplete' => 'off',
@@ -91,10 +92,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'nachname',
-                'options' => [
-                    'label' => 'Nachname',
-                    'label_options' => ['disable_html_escape' => true],
-                ],
+                'options' => ['label' => 'Nachname'],
                 'attributes' => [
                     'id' => 'nachname',
                     'autocomplete' => 'off',
@@ -120,10 +118,7 @@ return [
             'spec' => [
                 'type' => Email::class,
                 'name' => 'email',
-                'options' => [
-                    'label' => 'E-Mail-Adresse',
-                    'label_options' => ['disable_html_escape' => true],
-                ],
+                'options' => ['label' => 'E-Mail-Adresse'],
                 'attributes' => [
                     'id' => 'email',
                     'autocomplete' => 'off',
@@ -149,10 +144,7 @@ return [
             'spec' => [
                 'type' => Textarea::class,
                 'name' => 'message',
-                'options' => [
-                    'label' => 'Ihre Nachricht',
-                    'label_options' => ['disable_html_escape' => true],
-                ],
+                'options' => ['label' => 'Ihre Nachricht'],
                 'attributes' => [
                     'id' => 'message',
                     'autocomplete' => 'off',
@@ -171,6 +163,7 @@ return [
                     'use_hidden_element' => true,
                     'checked_value' => '1',
                     'unchecked_value' => '0',
+                    'col_attributes' => ['class' => 'col-md-12'],
                 ],
                 'attributes' => [
                     'id' => 'agb',
@@ -189,11 +182,9 @@ return [
             'spec' => [
                 'type' => Submit::class,
                 'name' => 'submit',
-                'options' => ['label' => 'Nachricht senden'],
                 'attributes' => [
-                    'value' => 'Absenden',
-                    'autocomplete' => 'off',
-                    'spellcheck' => 'false',
+                    'value' => 'Nachricht senden',
+                    'class' => 'btn btn-primary',
                 ],
             ],
         ],
