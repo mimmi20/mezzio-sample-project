@@ -1,6 +1,6 @@
 <?php
 /**
- * This file is part of the mimmi20/mezzio-form-laminasviewrenderer-bootstrap package.
+ * This file is part of the mimmi20/mezzio-sample-project package.
  *
  * Copyright (c) 2021-2023, Thomas Mueller <mimmi20@live.de>
  *
@@ -12,6 +12,8 @@ declare(strict_types = 1);
 
 namespace Calculator;
 
+use DateInterval;
+use DateTimeImmutable;
 use Laminas\Form\Element\Button;
 use Laminas\Form\Element\Checkbox;
 use Laminas\Form\Element\Date;
@@ -55,9 +57,9 @@ return [
                     'col_attributes' => ['class' => 'col-12 my-2'],
                     'as-card' => true,
                 ],
-                'attributes' => [
-                    // 'class' => 'card-body',
-                ],
+                // 'attributes' => [
+                //     'class' => 'card-body',
+                // ],
                 'elements' => [
                     [
                         'spec' => [
@@ -81,9 +83,7 @@ return [
 
                                 'col_attributes' => ['data-toogle' => '1'],
                             ],
-                            'attributes' => [
-                                'id' => 'versbeginn',
-                            ],
+                            'attributes' => ['id' => 'versbeginn'],
                         ],
                     ],
                     [
@@ -97,7 +97,7 @@ return [
                             'attributes' => [
                                 'id' => 'versbeginn_datum',
                                 'autocomplete' => 'off',
-                                'min' => (new \DateTimeImmutable())->format('Y-m-d'),
+                                'min' => (new DateTimeImmutable())->format('Y-m-d'),
                             ],
                         ],
                     ],
@@ -155,9 +155,7 @@ return [
 
                                 'help_content' => '<strong>Hausnummer</strong><p>Die Hausnummer Ihrer zu versichernden Wohnung.</p>',
                             ],
-                            'attributes' => [
-                                'id' => 'hnr',
-                            ],
+                            'attributes' => ['id' => 'hnr'],
                         ],
                     ],
                     [
@@ -174,7 +172,9 @@ return [
                                 'placeholder' => 'TT.MM.JJJJ',
 
                                 'autocomplete' => 'off',
-                                'max' => (new \DateTimeImmutable())->sub(new \DateInterval('P18Y'))->format('Y-m-d'),
+                                'max' => (new DateTimeImmutable())->sub(
+                                    new DateInterval('P18Y'),
+                                )->format('Y-m-d'),
                             ],
                         ],
                     ],
@@ -291,9 +291,7 @@ return [
 
                                 'col_attributes' => ['data-toogle' => '1'],
                             ],
-                            'attributes' => [
-                                'id' => 'verssummeauto',
-                            ],
+                            'attributes' => ['id' => 'verssummeauto'],
                         ],
                     ],
                     [
@@ -406,9 +404,9 @@ return [
                     'col_attributes' => ['class' => 'col-12 my-2'],
                     'as-card' => true,
                 ],
-                'attributes' => [
-                    // 'class' => 'card-body',
-                ],
+                // 'attributes' => [
+                //     'class' => 'card-body',
+                // ],
                 'elements' => [
                     [
                         'spec' => [
@@ -500,9 +498,7 @@ return [
 
                                 'col_attributes' => ['data-toogle' => '1'],
                             ],
-                            'attributes' => [
-                                'id' => 'kombirabatte',
-                            ],
+                            'attributes' => ['id' => 'kombirabatte'],
                         ],
                     ],
                 ],
@@ -524,10 +520,9 @@ return [
                     ],
                     'as-card' => true,
                 ],
-                'attributes' => [
-                    // 'class' => 'card-body',
-
-                ],
+                // 'attributes' => [
+                //     'class' => 'card-body',
+                // ],
                 'elements' => [
                     [
                         'spec' => [
@@ -688,9 +683,9 @@ return [
                     ],
                     'as-card' => true,
                 ],
-                'attributes' => [
-                    // 'class' => 'card-body',
-                ],
+                // 'attributes' => [
+                //     'class' => 'card-body',
+                // ],
                 'elements' => [
                     [
                         'spec' => [
@@ -1084,23 +1079,17 @@ return [
                         'nein' => [
                             'value' => 'nein',
                             'label' => 'Ich verzichte auf die Beantwortung weiterer Fragen und wähle aus dem Vergleich einen Tarif, der meinen Bedarf erfüllt.',
-                            'attributes' => [
-                                'id' => 'zusatzfragen_nein',
-                            ],
+                            'attributes' => ['id' => 'zusatzfragen_nein'],
                         ],
                         'ja' => [
                             'value' => 'ja',
                             'label' => 'Ich möchte weitere Angaben zum gewünschten Versicherungsschutz machen. Es werden dann nur Tarife angezeigt, welche die Vorgaben erfüllen.',
-                            'attributes' => [
-                                'id' => 'zusatzfragen_ja',
-                            ],
+                            'attributes' => ['id' => 'zusatzfragen_ja'],
                         ],
                     ],
                     'col_attributes' => ['class' => 'col-12', 'data-toogle' => '1'],
                 ],
-                'attributes' => [
-                    'id' => 'zusatzfragen',
-                ],
+                'attributes' => ['id' => 'zusatzfragen'],
             ],
         ],
         [

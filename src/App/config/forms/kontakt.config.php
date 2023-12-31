@@ -16,7 +16,6 @@ declare(strict_types = 1);
 
 namespace Application;
 
-use Laminas\Form\Element\Button;
 use Laminas\Form\Element\Checkbox;
 use Laminas\Form\Element\Email;
 use Laminas\Form\Element\Hidden;
@@ -80,9 +79,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'vorname',
-                'options' => [
-                    'label' => 'Vorname',
-                ],
+                'options' => ['label' => 'Vorname'],
                 'attributes' => [
                     'id' => 'vorname',
                     'autocomplete' => 'off',
@@ -95,9 +92,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'nachname',
-                'options' => [
-                    'label' => 'Nachname',
-                ],
+                'options' => ['label' => 'Nachname'],
                 'attributes' => [
                     'id' => 'nachname',
                     'autocomplete' => 'off',
@@ -123,9 +118,7 @@ return [
             'spec' => [
                 'type' => Email::class,
                 'name' => 'email',
-                'options' => [
-                    'label' => 'E-Mail-Adresse',
-                ],
+                'options' => ['label' => 'E-Mail-Adresse'],
                 'attributes' => [
                     'id' => 'email',
                     'autocomplete' => 'off',
@@ -151,9 +144,7 @@ return [
             'spec' => [
                 'type' => Textarea::class,
                 'name' => 'message',
-                'options' => [
-                    'label' => 'Ihre Nachricht',
-                ],
+                'options' => ['label' => 'Ihre Nachricht'],
                 'attributes' => [
                     'id' => 'message',
                     'autocomplete' => 'off',
