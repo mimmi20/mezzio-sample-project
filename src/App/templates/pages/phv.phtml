@@ -1,0 +1,36 @@
+<?php
+/* @var $form \Laminas\Form\Form */
+
+$form->prepare();
+?>
+
+<div id="hr-start">
+    <h1 class="headline mx-3">Haftpflicht</h1>
+    <div class="text-container mx-3">
+        <strong>Lorem ipsum dolor sit amet, consetetur</strong>
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod</p>
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore</p>
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore</p>
+    </div>
+    <div class="card mx-3">
+        <div class="card-body">
+            <div class="card-title">Haftpflicht berechnen</div>
+            <div class="alert alert-danger" role="alert">
+                Es ist ein Fehler aufgetreten!
+            </div>
+            <div class="alert alert-warning" role="alert">
+                Ihre angegebenen Daten sind nicht korrekt!
+            </div>
+
+            <?= $this->form()->setIndent(16)->render($form) ?>
+        </div>
+    </div>
+    <div class="text-container mx-3">
+        <strong>Lorem ipsum dolor sit amet, consetetur</strong>
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod</p>
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore</p>
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore</p>
+    </div>
+</div>
+
+<?php $this->inlineScript()->appendFile('/js/form.js'); ?>

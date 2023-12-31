@@ -6,32 +6,30 @@
 $form->prepare();
 ?>
 
-<div class="container">
-    <div class="card mb-3">
-        <div class="card-body">
-            <h1 class="card-title">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod</h1>
-            <div class="card-text">
-                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et</p>
-                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo</p>
-            </div>
-        </div>
-    </div>
-    <div class="card mb-3">
-        <div class="row g-0">
-            <div class="col-md-6">
-                <div class="card-body">
-                    <h1 class="card-title">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt</h1>
-                    <div class="card-text row justify-content-start align-items-top">
-                        <div class="col-12 col-sm-auto col-lg-12">
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed</p>
-                            <p>Lorem ipsum dolor sit amet</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 row my-0 mx-0 px-3 py-3">
-                <?= $this->form($form) ?>
-            </div>
+<div class="card m-3">
+    <div class="card-body">
+        <h1 class="card-title">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod</h1>
+        <div class="card-text">
+            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et</p>
+            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo</p>
         </div>
     </div>
 </div>
+<div class="card m-3">
+    <div class="card-body row">
+        <div class="col-md-6">
+            <h1 class="card-title">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt</h1>
+            <div class="card-text row justify-content-start align-items-top">
+                <div class="col-12 col-sm-auto col-lg-12">
+                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed</p>
+                    <p>Lorem ipsum dolor sit amet</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <?= $this->form($form) ?>
+        </div>
+    </div>
+</div>
+
+<?php $this->inlineScript()->appendFile('/js/form.js'); ?>

@@ -1,16 +1,11 @@
-<footer class="footer">
-    <div class="container">
-        <div class="row align-items-md-center">
-            <div class="col-3 col-md-2">
-                <a class="footer-logo" href="<?= $this->serverUrl('/') ?>" title="zur Startseite"></a>
-            </div>
-            <div class="col-6 col-md-10 offset-1 offset-md-0">
-                <div class="row justify-content-between align-items-md-center">
-                    <div class="col-12 col-md-8">
-                        <?= $this->navigation('Mimmi20\\Mezzio\\Navigation\\Bottom')->menu()->renderMenu(null, ['ulClass' => 'list-inline text-center text-lg-right mb-0 footer-list', 'liActiveClass' => 'active']); ?>
-                    </div>
-                </div>
-            </div>
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="<?= $this->serverUrl('/') ?>" title="Hier gelangen Sie zur Startseite">Navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkupBottom" aria-controls="navbarNavAltMarkupBottom" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="navbarNavAltMarkupBottom" class="collapse navbar-collapse">
+            <?= $this->navigation('Mimmi20\\Mezzio\\Navigation\\Bottom')->menu()->renderMenu(null, ['in-navbar' => true, 'fill' => true, 'pills' => true, 'style' => 'ul', 'sublink' => 'details', 'onlyActiveBranch' => false, 'renderParents' => true, 'minDepth' => 0, 'ulClass' => 'justify-content-end']); ?>
         </div>
     </div>
-</footer>
+</nav>
