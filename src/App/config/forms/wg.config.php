@@ -12,6 +12,7 @@ declare(strict_types = 1);
 
 namespace Calculator;
 
+use Laminas\Form\Element\Button;
 use Laminas\Form\Element\Checkbox;
 use Laminas\Form\Element\Hidden;
 use Laminas\Form\Element\Radio;
@@ -26,16 +27,17 @@ return [
         'layout' => \Mimmi20\Mezzio\BootstrapForm\LaminasView\View\Helper\Form::LAYOUT_HORIZONTAL,
         'form-required-mark' => '<div class="mt-2 text-info-required"><sup>*</sup> Pflichtfeld</div>',
         'field-required-mark' => '<span class="text-info-required"><sup>*</sup></span>',
+        'row_attributes' => ['class' => 'my-2'],
         'col_attributes' => ['class' => 'col-sm'],
         'label_attributes' => ['class' => 'col-sm text-sm-right'],
         'help_attributes' => ['class' => 'help-content'],
     ],
     'attributes' => [
         'method' => 'post',
+        'class' => 'g-0',
         'accept-charset' => 'utf-8',
-        'action' => '/calculator/unfall/1/input/2sd515abmh4pi3b81bekub79f1?subid=A-00-000',
-        'class' => 'form input-form js-help has-help has-preloader js-form-validation-base col-12 js-input-form-init',
-        'data-show-arrow' => 'left',
+        'novalidate' => 'novalidate',
+        'data-needs-validation' => true,
         'id' => 'unfall-form',
     ],
     'elements' => [
@@ -71,7 +73,7 @@ return [
                 ],
                 'attributes' => [
                     'id' => 'plz',
-                    'class' => 'form-control form-control-input form-control-short js-special-zip-message',
+                    'class' => ' js-special-zip-message',
                     'required' => 'required',
                     'pattern' => '^\d{5}$',
                     'minlength' => '5',
@@ -110,7 +112,7 @@ return [
                 ],
                 'attributes' => [
                     'id' => 'versbeginn_datum',
-                    'class' => 'form-control form-control-input datepicker js-datepicker',
+                    'class' => ' datepicker js-datepicker',
                     'required' => 'required',
                 ],
             ],
@@ -347,7 +349,7 @@ return [
                 'attributes' => [
                     'id' => 'name1',
                     'data-pers' => 1,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -362,7 +364,7 @@ return [
                 'attributes' => [
                     'id' => 'name2',
                     'data-pers' => 2,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -377,7 +379,7 @@ return [
                 'attributes' => [
                     'id' => 'name3',
                     'data-pers' => 3,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -392,7 +394,7 @@ return [
                 'attributes' => [
                     'id' => 'name4',
                     'data-pers' => 4,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -407,7 +409,7 @@ return [
                 'attributes' => [
                     'id' => 'name5',
                     'data-pers' => 5,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -422,7 +424,7 @@ return [
                 'attributes' => [
                     'id' => 'name6',
                     'data-pers' => 6,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -437,7 +439,7 @@ return [
                 'attributes' => [
                     'id' => 'name7',
                     'data-pers' => 7,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -452,7 +454,7 @@ return [
                 'attributes' => [
                     'id' => 'name8',
                     'data-pers' => 8,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -468,7 +470,7 @@ return [
                 'attributes' => [
                     'id' => 'gebdatum1',
                     'data-pers' => 1,
-                    'class' => 'form-control form-control-input datepicker js-datepicker',
+                    'class' => ' datepicker js-datepicker',
                     'placeholder' => 'TT.MM.JJJJ',
                     'required' => 'required',
                     'data-date-format' => 'de',
@@ -488,7 +490,7 @@ return [
                 'attributes' => [
                     'id' => 'gebdatum2',
                     'data-pers' => 2,
-                    'class' => 'form-control form-control-input datepicker js-datepicker',
+                    'class' => ' datepicker js-datepicker',
                     'placeholder' => 'TT.MM.JJJJ',
                     'required' => 'required',
                     'data-date-format' => 'de',
@@ -508,7 +510,7 @@ return [
                 'attributes' => [
                     'id' => 'gebdatum3',
                     'data-pers' => 3,
-                    'class' => 'form-control form-control-input datepicker js-datepicker',
+                    'class' => ' datepicker js-datepicker',
                     'placeholder' => 'TT.MM.JJJJ',
                     'required' => 'required',
                     'data-date-format' => 'de',
@@ -528,7 +530,7 @@ return [
                 'attributes' => [
                     'id' => 'gebdatum4',
                     'data-pers' => 4,
-                    'class' => 'form-control form-control-input datepicker js-datepicker',
+                    'class' => ' datepicker js-datepicker',
                     'placeholder' => 'TT.MM.JJJJ',
                     'required' => 'required',
                     'data-date-format' => 'de',
@@ -548,7 +550,7 @@ return [
                 'attributes' => [
                     'id' => 'gebdatum5',
                     'data-pers' => 5,
-                    'class' => 'form-control form-control-input datepicker js-datepicker',
+                    'class' => ' datepicker js-datepicker',
                     'placeholder' => 'TT.MM.JJJJ',
                     'required' => 'required',
                     'data-date-format' => 'de',
@@ -568,7 +570,7 @@ return [
                 'attributes' => [
                     'id' => 'gebdatum6',
                     'data-pers' => 6,
-                    'class' => 'form-control form-control-input datepicker js-datepicker',
+                    'class' => ' datepicker js-datepicker',
                     'placeholder' => 'TT.MM.JJJJ',
                     'required' => 'required',
                     'data-date-format' => 'de',
@@ -588,7 +590,7 @@ return [
                 'attributes' => [
                     'id' => 'gebdatum7',
                     'data-pers' => 7,
-                    'class' => 'form-control form-control-input datepicker js-datepicker',
+                    'class' => ' datepicker js-datepicker',
                     'placeholder' => 'TT.MM.JJJJ',
                     'required' => 'required',
                     'data-date-format' => 'de',
@@ -608,7 +610,7 @@ return [
                 'attributes' => [
                     'id' => 'gebdatum8',
                     'data-pers' => 8,
-                    'class' => 'form-control form-control-input datepicker js-datepicker',
+                    'class' => ' datepicker js-datepicker',
                     'placeholder' => 'TT.MM.JJJJ',
                     'required' => 'required',
                     'data-date-format' => 'de',
@@ -772,7 +774,7 @@ return [
                 'attributes' => [
                     'id' => 'beruf_master1',
                     'data-pers' => 1,
-                    'class' => 'form-control form-control-input js-job-autocomplete',
+                    'class' => ' js-job-autocomplete',
                 ],
             ],
         ],
@@ -788,7 +790,7 @@ return [
                 'attributes' => [
                     'id' => 'beruf_master2',
                     'data-pers' => 2,
-                    'class' => 'form-control form-control-input js-job-autocomplete',
+                    'class' => ' js-job-autocomplete',
                 ],
             ],
         ],
@@ -804,7 +806,7 @@ return [
                 'attributes' => [
                     'id' => 'beruf_master3',
                     'data-pers' => 3,
-                    'class' => 'form-control form-control-input js-job-autocomplete',
+                    'class' => ' js-job-autocomplete',
                 ],
             ],
         ],
@@ -820,7 +822,7 @@ return [
                 'attributes' => [
                     'id' => 'beruf_master4',
                     'data-pers' => 4,
-                    'class' => 'form-control form-control-input js-job-autocomplete',
+                    'class' => ' js-job-autocomplete',
                 ],
             ],
         ],
@@ -836,7 +838,7 @@ return [
                 'attributes' => [
                     'id' => 'beruf_master5',
                     'data-pers' => 5,
-                    'class' => 'form-control form-control-input js-job-autocomplete',
+                    'class' => ' js-job-autocomplete',
                 ],
             ],
         ],
@@ -852,7 +854,7 @@ return [
                 'attributes' => [
                     'id' => 'beruf_master6',
                     'data-pers' => 6,
-                    'class' => 'form-control form-control-input js-job-autocomplete',
+                    'class' => ' js-job-autocomplete',
                 ],
             ],
         ],
@@ -868,7 +870,7 @@ return [
                 'attributes' => [
                     'id' => 'beruf_master7',
                     'data-pers' => 7,
-                    'class' => 'form-control form-control-input js-job-autocomplete',
+                    'class' => ' js-job-autocomplete',
                 ],
             ],
         ],
@@ -884,7 +886,7 @@ return [
                 'attributes' => [
                     'id' => 'beruf_master8',
                     'data-pers' => 8,
-                    'class' => 'form-control form-control-input js-job-autocomplete',
+                    'class' => ' js-job-autocomplete',
                 ],
             ],
         ],
@@ -896,7 +898,7 @@ return [
                 'attributes' => [
                     'id' => 'beruf_master1_id',
                     'data-pers' => 1,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                     'required' => 'required',
                     'autocomplete' => 'off',
                 ],
@@ -910,7 +912,7 @@ return [
                 'attributes' => [
                     'id' => 'beruf_master2_id',
                     'data-pers' => 2,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                     'required' => 'required',
                     'autocomplete' => 'off',
                 ],
@@ -924,7 +926,7 @@ return [
                 'attributes' => [
                     'id' => 'beruf_master3_id',
                     'data-pers' => 3,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                     'required' => 'required',
                     'autocomplete' => 'off',
                 ],
@@ -938,7 +940,7 @@ return [
                 'attributes' => [
                     'id' => 'beruf_master4_id',
                     'data-pers' => 4,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                     'required' => 'required',
                     'autocomplete' => 'off',
                 ],
@@ -952,7 +954,7 @@ return [
                 'attributes' => [
                     'id' => 'beruf_master5_id',
                     'data-pers' => 5,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                     'required' => 'required',
                     'autocomplete' => 'off',
                 ],
@@ -966,7 +968,7 @@ return [
                 'attributes' => [
                     'id' => 'beruf_master6_id',
                     'data-pers' => 6,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                     'required' => 'required',
                     'autocomplete' => 'off',
                 ],
@@ -980,7 +982,7 @@ return [
                 'attributes' => [
                     'id' => 'beruf_master7_id',
                     'data-pers' => 7,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                     'required' => 'required',
                     'autocomplete' => 'off',
                 ],
@@ -994,7 +996,7 @@ return [
                 'attributes' => [
                     'id' => 'beruf_master8_id',
                     'data-pers' => 8,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                     'required' => 'required',
                     'autocomplete' => 'off',
                 ],
@@ -1012,7 +1014,7 @@ return [
                 'attributes' => [
                     'id' => 'grund1',
                     'data-pers' => 1,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                     'required' => 'required',
                     'min' => '25000',
                 ],
@@ -1030,7 +1032,7 @@ return [
                 'attributes' => [
                     'id' => 'grund2',
                     'data-pers' => 2,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                     'required' => 'required',
                     'min' => '25000',
                 ],
@@ -1048,7 +1050,7 @@ return [
                 'attributes' => [
                     'id' => 'grund3',
                     'data-pers' => 3,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                     'required' => 'required',
                     'min' => '25000',
                 ],
@@ -1066,7 +1068,7 @@ return [
                 'attributes' => [
                     'id' => 'grund4',
                     'data-pers' => 4,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                     'required' => 'required',
                     'min' => '25000',
                 ],
@@ -1084,7 +1086,7 @@ return [
                 'attributes' => [
                     'id' => 'grund5',
                     'data-pers' => 5,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                     'required' => 'required',
                     'min' => '25000',
                 ],
@@ -1102,7 +1104,7 @@ return [
                 'attributes' => [
                     'id' => 'grund6',
                     'data-pers' => 6,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                     'required' => 'required',
                     'min' => '25000',
                 ],
@@ -1120,7 +1122,7 @@ return [
                 'attributes' => [
                     'id' => 'grund7',
                     'data-pers' => 7,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                     'required' => 'required',
                     'min' => '25000',
                 ],
@@ -1138,7 +1140,7 @@ return [
                 'attributes' => [
                     'id' => 'grund8',
                     'data-pers' => 8,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                     'required' => 'required',
                     'min' => '25000',
                 ],
@@ -1339,7 +1341,7 @@ return [
                 'attributes' => [
                     'id' => 'voll1',
                     'data-pers' => 1,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -1354,7 +1356,7 @@ return [
                 'attributes' => [
                     'id' => 'voll2',
                     'data-pers' => 2,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -1369,7 +1371,7 @@ return [
                 'attributes' => [
                     'id' => 'voll3',
                     'data-pers' => 3,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -1384,7 +1386,7 @@ return [
                 'attributes' => [
                     'id' => 'voll4',
                     'data-pers' => 4,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -1399,7 +1401,7 @@ return [
                 'attributes' => [
                     'id' => 'voll5',
                     'data-pers' => 5,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -1414,7 +1416,7 @@ return [
                 'attributes' => [
                     'id' => 'voll6',
                     'data-pers' => 6,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -1429,7 +1431,7 @@ return [
                 'attributes' => [
                     'id' => 'voll7',
                     'data-pers' => 7,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -1444,7 +1446,7 @@ return [
                 'attributes' => [
                     'id' => 'voll8',
                     'data-pers' => 8,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -1459,7 +1461,7 @@ return [
                 'attributes' => [
                     'id' => 'tod1',
                     'data-pers' => 1,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -1474,7 +1476,7 @@ return [
                 'attributes' => [
                     'id' => 'tod2',
                     'data-pers' => 2,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -1489,7 +1491,7 @@ return [
                 'attributes' => [
                     'id' => 'tod3',
                     'data-pers' => 3,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -1504,7 +1506,7 @@ return [
                 'attributes' => [
                     'id' => 'tod4',
                     'data-pers' => 4,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -1519,7 +1521,7 @@ return [
                 'attributes' => [
                     'id' => 'tod5',
                     'data-pers' => 5,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -1534,7 +1536,7 @@ return [
                 'attributes' => [
                     'id' => 'tod6',
                     'data-pers' => 6,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -1549,7 +1551,7 @@ return [
                 'attributes' => [
                     'id' => 'tod7',
                     'data-pers' => 7,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -1564,7 +1566,7 @@ return [
                 'attributes' => [
                     'id' => 'tod8',
                     'data-pers' => 8,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -1579,7 +1581,7 @@ return [
                 'attributes' => [
                     'id' => 'ueber1',
                     'data-pers' => 1,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -1594,7 +1596,7 @@ return [
                 'attributes' => [
                     'id' => 'ueber2',
                     'data-pers' => 2,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -1609,7 +1611,7 @@ return [
                 'attributes' => [
                     'id' => 'ueber3',
                     'data-pers' => 3,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -1624,7 +1626,7 @@ return [
                 'attributes' => [
                     'id' => 'ueber4',
                     'data-pers' => 4,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -1639,7 +1641,7 @@ return [
                 'attributes' => [
                     'id' => 'ueber5',
                     'data-pers' => 5,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -1654,7 +1656,7 @@ return [
                 'attributes' => [
                     'id' => 'ueber6',
                     'data-pers' => 6,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -1669,7 +1671,7 @@ return [
                 'attributes' => [
                     'id' => 'ueber7',
                     'data-pers' => 7,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -1684,7 +1686,7 @@ return [
                 'attributes' => [
                     'id' => 'ueber8',
                     'data-pers' => 8,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -1699,7 +1701,7 @@ return [
                 'attributes' => [
                     'id' => 'kh1',
                     'data-pers' => 1,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -1714,7 +1716,7 @@ return [
                 'attributes' => [
                     'id' => 'kh2',
                     'data-pers' => 2,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -1729,7 +1731,7 @@ return [
                 'attributes' => [
                     'id' => 'kh3',
                     'data-pers' => 3,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -1744,7 +1746,7 @@ return [
                 'attributes' => [
                     'id' => 'kh4',
                     'data-pers' => 4,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -1759,7 +1761,7 @@ return [
                 'attributes' => [
                     'id' => 'kh5',
                     'data-pers' => 5,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -1774,7 +1776,7 @@ return [
                 'attributes' => [
                     'id' => 'kh6',
                     'data-pers' => 6,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -1789,7 +1791,7 @@ return [
                 'attributes' => [
                     'id' => 'kh7',
                     'data-pers' => 7,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -1804,7 +1806,7 @@ return [
                 'attributes' => [
                     'id' => 'kh8',
                     'data-pers' => 8,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -2011,7 +2013,7 @@ return [
                 'attributes' => [
                     'id' => 'utgeur1',
                     'data-pers' => 1,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -2026,7 +2028,7 @@ return [
                 'attributes' => [
                     'id' => 'utgeur2',
                     'data-pers' => 2,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -2041,7 +2043,7 @@ return [
                 'attributes' => [
                     'id' => 'utgeur3',
                     'data-pers' => 3,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -2056,7 +2058,7 @@ return [
                 'attributes' => [
                     'id' => 'utgeur4',
                     'data-pers' => 4,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -2071,7 +2073,7 @@ return [
                 'attributes' => [
                     'id' => 'utgeur5',
                     'data-pers' => 5,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -2086,7 +2088,7 @@ return [
                 'attributes' => [
                     'id' => 'utgeur6',
                     'data-pers' => 6,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -2101,7 +2103,7 @@ return [
                 'attributes' => [
                     'id' => 'utgeur7',
                     'data-pers' => 7,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -2116,7 +2118,7 @@ return [
                 'attributes' => [
                     'id' => 'utgeur8',
                     'data-pers' => 8,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -2131,7 +2133,7 @@ return [
                 'attributes' => [
                     'id' => 'rente1',
                     'data-pers' => 1,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -2146,7 +2148,7 @@ return [
                 'attributes' => [
                     'id' => 'rente2',
                     'data-pers' => 2,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -2161,7 +2163,7 @@ return [
                 'attributes' => [
                     'id' => 'rente3',
                     'data-pers' => 3,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -2176,7 +2178,7 @@ return [
                 'attributes' => [
                     'id' => 'rente4',
                     'data-pers' => 4,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -2191,7 +2193,7 @@ return [
                 'attributes' => [
                     'id' => 'rente5',
                     'data-pers' => 5,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -2206,7 +2208,7 @@ return [
                 'attributes' => [
                     'id' => 'rente6',
                     'data-pers' => 6,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -2221,7 +2223,7 @@ return [
                 'attributes' => [
                     'id' => 'rente7',
                     'data-pers' => 7,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -2236,7 +2238,7 @@ return [
                 'attributes' => [
                     'id' => 'rente8',
                     'data-pers' => 8,
-                    'class' => 'form-control form-control-input',
+                    'class' => '',
                 ],
             ],
         ],
@@ -2885,6 +2887,7 @@ return [
                 'type' => Checkbox::class,
                 'name' => 'chkErstinfo',
                 'options' => [
+                    'label' => 'Ich bestätige, die Erstinformation für Versicherungsmakler gemäß § 15 VersVermV heruntergeladen und gelesen zu haben.',
                     'use_hidden_element' => true,
                     'checked_value' => '1',
                     'unchecked_value' => '0',
@@ -2935,10 +2938,17 @@ return [
         ],
         [
             'spec' => [
-                'type' => Submit::class,
-                'name' => 'recalc',
-                'options' => ['label' => 'neu berechnen'],
-                'attributes' => ['value' => 'neu berechnen'],
+                'type' => Button::class,
+                'name' => 'btn_berechnen',
+                'options' => ['label' => 'Berechnen'],
+                'attributes' => [
+                    'type' => 'submit',
+                    'class' => 'btn btn-primary',
+                    'data-event-type' => 'click',
+                    'data-event-category' => 'versicherung',
+                    'data-event-action' => 'calculate',
+                    'data-event-label' => 'phv',
+                ],
             ],
         ],
     ],

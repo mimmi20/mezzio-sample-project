@@ -12,11 +12,11 @@ declare(strict_types = 1);
 
 namespace Calculator;
 
+use Laminas\Form\Element\Button;
 use Laminas\Form\Element\Checkbox;
 use Laminas\Form\Element\Hidden;
 use Laminas\Form\Element\Radio;
 use Laminas\Form\Element\Select;
-use Laminas\Form\Element\Submit;
 use Laminas\Form\Element\Text;
 use Laminas\Form\Form;
 use Mimmi20\Form\Element\Group\ElementGroup;
@@ -25,19 +25,18 @@ use Mimmi20\Form\Links\Element\Links;
 return [
     'type' => Form::class,
     'options' => [
-        'layout' => \Mimmi20\Mezzio\BootstrapForm\LaminasView\View\Helper\Form::LAYOUT_HORIZONTAL,
+        'layout' => \Mimmi20\Mezzio\BootstrapForm\LaminasView\View\Helper\Form::LAYOUT_VERTICAL,
         'form-required-mark' => '<div class="mt-2 text-info-required"><sup>*</sup> Pflichtfeld</div>',
         'field-required-mark' => '<span class="text-info-required"><sup>*</sup></span>',
-        'col_attributes' => ['class' => 'col-sm'],
-        'label_attributes' => ['class' => 'col-sm text-sm-right'],
+        'col_attributes' => ['class' => 'my-2'],
         'help_attributes' => ['class' => 'help-content'],
     ],
     'attributes' => [
         'method' => 'post',
+        'class' => 'g-0',
         'accept-charset' => 'utf-8',
-        'action' => '/calculator/phv/1/input/hdi8atj8urkn4vmp93uuc4s9ov?subid=A-00-000',
-        'class' => 'form input-form js-help has-help has-preloader js-form-validation-base col-12 js-input-form-init',
-        'data-show-arrow' => 'left',
+        'novalidate' => 'novalidate',
+        'data-needs-validation' => true,
         'id' => 'phv-form',
     ],
     'fieldsets' => [
@@ -1448,12 +1447,12 @@ return [
         ],
         [
             'spec' => [
-                'type' => Submit::class,
+                'type' => Button::class,
                 'name' => 'btn_berechnen',
                 'options' => ['label' => 'Berechnen'],
                 'attributes' => [
-                    'value' => 'Berechnen',
-                    'class' => 'btn btn-default js-gtm-event',
+                    'type' => 'submit',
+                    'class' => 'btn btn-primary',
                     'data-event-type' => 'click',
                     'data-event-category' => 'versicherung',
                     'data-event-action' => 'calculate',

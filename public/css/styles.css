@@ -77,6 +77,15 @@ legend.form-label, legend.card-title {
     line-height: var(--bs-body-line-height);
 }
 
+.form-floating > .form-control:focus,
+.form-floating > .form-control:not(:placeholder-shown),
+.form-floating > .form-control-plaintext:focus,
+.form-floating > .form-control-plaintext:not(:placeholder-shown),
+.form-floating > .card {
+    padding-top: 1.625rem;
+    padding-bottom: 0;
+}
+
 .form-floating > legend.form-label {
     position: absolute;
     top: 0;
@@ -98,7 +107,8 @@ legend.form-label, legend.card-title {
 }
 
 /* fix for forms when placing .form-check inside a .form-control using floating labels */
-.form-floating > .form-control {
+.form-floating > .form-control,
+.form-floating > .card {
     height: fit-content;
 }
 
@@ -116,6 +126,7 @@ legend.form-label, legend.card-title {
     color: var(--bs-body-color);
 }
 .was-validated .form-control:has(:valid),
+.was-validated .card:has(:valid),
 .was-validated:has(> .form-check) .form-check:not(.form-check-inline):has(:valid) {
     border-color: var(--bs-form-valid-color, #198754);
     padding-right: calc(1.5em + 0.75rem);
@@ -125,6 +136,7 @@ legend.form-label, legend.card-title {
     background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
 }
 .was-validated .form-control:has(:user-invalid),
+.was-validated .card.required:has(:user-invalid),
 .was-validated:has(> .form-check) .form-check:not(.form-check-inline):has(:user-invalid) {
     border-color: var(--bs-form-invalid-color, #dc3545);
     padding-right: calc(1.5em + 0.75rem);
@@ -151,7 +163,8 @@ legend.form-label, legend.card-title {
 
 /* fix for rows inside cards */
 .card .row,
-.card .col-12 {
+.card .col-12,
+.card .card-body:has(.form-check) {
     flex-shrink: unset;
     flex-grow: unset;
 }

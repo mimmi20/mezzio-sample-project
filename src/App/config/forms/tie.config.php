@@ -12,7 +12,9 @@ declare(strict_types = 1);
 
 namespace Calculator;
 
+use Laminas\Form\Element\Button;
 use Laminas\Form\Element\Checkbox;
+use Laminas\Form\Element\Date;
 use Laminas\Form\Element\Hidden;
 use Laminas\Form\Element\Radio;
 use Laminas\Form\Element\Select;
@@ -28,16 +30,17 @@ return [
         'layout' => \Mimmi20\Mezzio\BootstrapForm\LaminasView\View\Helper\Form::LAYOUT_HORIZONTAL,
         'form-required-mark' => '<div class="mt-2 text-info-required"><sup>*</sup> Pflichtfeld</div>',
         'field-required-mark' => '<span class="text-info-required"><sup>*</sup></span>',
+        'row_attributes' => ['class' => 'my-2'],
         'col_attributes' => ['class' => 'col-sm'],
         'label_attributes' => ['class' => 'col-sm text-sm-right'],
         'help_attributes' => ['class' => 'help-content'],
     ],
     'attributes' => [
         'method' => 'post',
+        'class' => 'g-0',
         'accept-charset' => 'utf-8',
-        'action' => '/calculator/tier/1/input/u0u4gdbkooufei2q7gh23kr46o?subid=A-00-000',
-        'class' => 'form input-form js-help has-help has-preloader js-form-validation-base col-12 js-input-form-init',
-        'data-show-arrow' => 'left',
+        'novalidate' => 'novalidate',
+        'data-needs-validation' => true,
         'id' => 'tier-form',
     ],
     'elements' => [
@@ -58,7 +61,7 @@ return [
         ],
         [
             'spec' => [
-                'type' => Text::class,
+                'type' => Date::class,
                 'name' => 'gebdatum',
                 'options' => [
                     'label' => 'Geburtsdatum',
@@ -67,7 +70,7 @@ return [
                 ],
                 'attributes' => [
                     'id' => 'gebdatum',
-                    'class' => 'form-control form-control-input datepicker js-datepicker',
+                    'class' => ' datepicker js-datepicker',
                     'placeholder' => 'TT.MM.JJJJ',
                     'required' => 'required',
                     'data-date-format' => 'de',
@@ -132,7 +135,7 @@ return [
                 ],
                 'attributes' => [
                     'id' => 'Rasse_Tier1',
-                    'class' => 'form-control form-control-input js-pet-autocomplete',
+                    'class' => ' js-pet-autocomplete',
                     'required' => 'required',
                     'pattern' => '[A-Za-z_äâàÄÂÀöÖüÜßÉÊÈéèêç()\'\s.-]{2,}',
                 ],
@@ -149,7 +152,7 @@ return [
                 ],
                 'attributes' => [
                     'id' => 'Rasse_Tier2',
-                    'class' => 'form-control form-control-input js-pet-autocomplete',
+                    'class' => ' js-pet-autocomplete',
                     'required' => 'required',
                     'pattern' => '[A-Za-z_äâàÄÂÀöÖüÜßÉÊÈéèêç()\'\s.-]{2,}',
                 ],
@@ -166,7 +169,7 @@ return [
                 ],
                 'attributes' => [
                     'id' => 'Rasse_Tier3',
-                    'class' => 'form-control form-control-input js-pet-autocomplete',
+                    'class' => ' js-pet-autocomplete',
                     'required' => 'required',
                     'pattern' => '[A-Za-z_äâàÄÂÀöÖüÜßÉÊÈéèêç()\'\s.-]{2,}',
                 ],
@@ -183,7 +186,7 @@ return [
                 ],
                 'attributes' => [
                     'id' => 'Rasse_Tier4',
-                    'class' => 'form-control form-control-input js-pet-autocomplete',
+                    'class' => ' js-pet-autocomplete',
                     'required' => 'required',
                     'pattern' => '[A-Za-z_äâàÄÂÀöÖüÜßÉÊÈéèêç()\'\s.-]{2,}',
                 ],
@@ -200,7 +203,7 @@ return [
                 ],
                 'attributes' => [
                     'id' => 'Rasse_Tier5',
-                    'class' => 'form-control form-control-input js-pet-autocomplete',
+                    'class' => ' js-pet-autocomplete',
                     'required' => 'required',
                     'pattern' => '[A-Za-z_äâàÄÂÀöÖüÜßÉÊÈéèêç()\'\s.-]{2,}',
                 ],
@@ -217,7 +220,7 @@ return [
                 ],
                 'attributes' => [
                     'id' => 'Rasse_Tier6',
-                    'class' => 'form-control form-control-input js-pet-autocomplete',
+                    'class' => ' js-pet-autocomplete',
                     'required' => 'required',
                     'pattern' => '[A-Za-z_äâàÄÂÀöÖüÜßÉÊÈéèêç()\'\s.-]{2,}',
                 ],
@@ -324,7 +327,7 @@ return [
                 ],
                 'attributes' => [
                     'id' => 'Rasse_Tier1a',
-                    'class' => 'form-control form-control-input js-pet-autocomplete',
+                    'class' => ' js-pet-autocomplete',
                     'required' => 'required',
                     'pattern' => '[A-Za-z_äâàÄÂÀöÖüÜßÉÊÈéèêç()\'\s.-]{2,}',
                 ],
@@ -341,7 +344,7 @@ return [
                 ],
                 'attributes' => [
                     'id' => 'Rasse_Tier2a',
-                    'class' => 'form-control form-control-input js-pet-autocomplete',
+                    'class' => ' js-pet-autocomplete',
                     'required' => 'required',
                     'pattern' => '[A-Za-z_äâàÄÂÀöÖüÜßÉÊÈéèêç()\'\s.-]{2,}',
                 ],
@@ -358,7 +361,7 @@ return [
                 ],
                 'attributes' => [
                     'id' => 'Rasse_Tier3a',
-                    'class' => 'form-control form-control-input js-pet-autocomplete',
+                    'class' => ' js-pet-autocomplete',
                     'required' => 'required',
                     'pattern' => '[A-Za-z_äâàÄÂÀöÖüÜßÉÊÈéèêç()\'\s.-]{2,}',
                 ],
@@ -375,7 +378,7 @@ return [
                 ],
                 'attributes' => [
                     'id' => 'Rasse_Tier4a',
-                    'class' => 'form-control form-control-input js-pet-autocomplete',
+                    'class' => ' js-pet-autocomplete',
                     'required' => 'required',
                     'pattern' => '[A-Za-z_äâàÄÂÀöÖüÜßÉÊÈéèêç()\'\s.-]{2,}',
                 ],
@@ -392,7 +395,7 @@ return [
                 ],
                 'attributes' => [
                     'id' => 'Rasse_Tier5a',
-                    'class' => 'form-control form-control-input js-pet-autocomplete',
+                    'class' => ' js-pet-autocomplete',
                     'required' => 'required',
                     'pattern' => '[A-Za-z_äâàÄÂÀöÖüÜßÉÊÈéèêç()\'\s.-]{2,}',
                 ],
@@ -409,7 +412,7 @@ return [
                 ],
                 'attributes' => [
                     'id' => 'Rasse_Tier6a',
-                    'class' => 'form-control form-control-input js-pet-autocomplete',
+                    'class' => ' js-pet-autocomplete',
                     'required' => 'required',
                     'pattern' => '[A-Za-z_äâàÄÂÀöÖüÜßÉÊÈéèêç()\'\s.-]{2,}',
                 ],
@@ -1325,6 +1328,7 @@ return [
                 'type' => Checkbox::class,
                 'name' => 'chkErstinfo',
                 'options' => [
+                    'label' => 'Ich bestätige, die Erstinformation für Versicherungsmakler gemäß § 15 VersVermV heruntergeladen und gelesen zu haben.',
                     'use_hidden_element' => true,
                     'checked_value' => '1',
                     'unchecked_value' => '0',
@@ -1359,10 +1363,17 @@ return [
         ],
         [
             'spec' => [
-                'type' => Submit::class,
-                'name' => 'recalc',
-                'options' => ['label' => 'neu berechnen'],
-                'attributes' => ['value' => 'neu berechnen'],
+                'type' => Button::class,
+                'name' => 'btn_berechnen',
+                'options' => ['label' => 'Berechnen'],
+                'attributes' => [
+                    'type' => 'submit',
+                    'class' => 'btn btn-primary',
+                    'data-event-type' => 'click',
+                    'data-event-category' => 'versicherung',
+                    'data-event-action' => 'calculate',
+                    'data-event-label' => 'phv',
+                ],
             ],
         ],
     ],
