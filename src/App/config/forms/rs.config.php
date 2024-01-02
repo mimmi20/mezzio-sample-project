@@ -12,6 +12,7 @@ declare(strict_types = 1);
 
 namespace Calculator;
 
+use Laminas\Form\Element\Button;
 use Laminas\Form\Element\Checkbox;
 use Laminas\Form\Element\Hidden;
 use Laminas\Form\Element\Radio;
@@ -26,16 +27,17 @@ return [
         'layout' => \Mimmi20\Mezzio\BootstrapForm\LaminasView\View\Helper\Form::LAYOUT_HORIZONTAL,
         'form-required-mark' => '<div class="mt-2 text-info-required"><sup>*</sup> Pflichtfeld</div>',
         'field-required-mark' => '<span class="text-info-required"><sup>*</sup></span>',
+        'row_attributes' => ['class' => 'my-2'],
         'col_attributes' => ['class' => 'col-sm'],
         'label_attributes' => ['class' => 'col-sm text-sm-right'],
         'help_attributes' => ['class' => 'help-content'],
     ],
     'attributes' => [
         'method' => 'post',
+        'class' => 'g-0',
         'accept-charset' => 'utf-8',
-        'action' => '/calculator/rs/1/input/9tg777op2su1m853kvse5qfc26?subid=A-00-000',
-        'class' => 'form input-form js-help has-help has-preloader js-form-validation-base col-12 js-input-form-init',
-        'data-show-arrow' => 'left',
+        'novalidate' => 'novalidate',
+        'data-needs-validation' => true,
         'id' => 'rs-form',
     ],
     'elements' => [
@@ -51,7 +53,7 @@ return [
                 ],
                 'attributes' => [
                     'id' => 'tarif_privat',
-                    'class' => 'form-control area-selector js-tarif-privat',
+                    'class' => ' area-selector js-tarif-privat',
                     'data-toggle' => 'collapse',
                     'data-target' => '.collapse-more-questions',
                     'aria-expanded' => 'true',
@@ -72,7 +74,7 @@ return [
                 ],
                 'attributes' => [
                     'id' => 'tarif_beruf',
-                    'class' => 'form-control area-selector js-tarif-beruf',
+                    'class' => ' area-selector js-tarif-beruf',
                 ],
             ],
         ],
@@ -88,7 +90,7 @@ return [
                 ],
                 'attributes' => [
                     'id' => 'tarif_verkehr_familie',
-                    'class' => 'form-control area-selector js-tarif-verkehr-familie',
+                    'class' => ' area-selector js-tarif-verkehr-familie',
                 ],
             ],
         ],
@@ -104,7 +106,7 @@ return [
                 ],
                 'attributes' => [
                     'id' => 'tarif_miete',
-                    'class' => 'form-control area-selector js-tarif-miete',
+                    'class' => ' area-selector js-tarif-miete',
                     'data-toggle' => 'collapse',
                     'aria-expanded' => 'false',
                     'role' => 'button',
@@ -123,7 +125,7 @@ return [
                 ],
                 'attributes' => [
                     'id' => 'tarif_verkehr',
-                    'class' => 'form-control area-selector js-tarif-verkehr',
+                    'class' => ' area-selector js-tarif-verkehr',
                 ],
             ],
         ],
@@ -158,7 +160,7 @@ return [
                 ],
                 'attributes' => [
                     'id' => 'OB1',
-                    'class' => 'form-control form-control-input',
+
                     'required' => 'required',
                     'title' => 'Bitte geben Sie die Jahresmiete an!',
                     'pattern' => '^\d{1,}$',
@@ -176,7 +178,7 @@ return [
                 ],
                 'attributes' => [
                     'id' => 'OB2',
-                    'class' => 'form-control form-control-input',
+
                     'required' => 'required',
                     'title' => 'Bitte geben Sie die Jahresmiete an!',
                     'pattern' => '^\d{1,}$',
@@ -194,7 +196,7 @@ return [
                 ],
                 'attributes' => [
                     'id' => 'OB3',
-                    'class' => 'form-control form-control-input',
+
                     'required' => 'required',
                     'title' => 'Bitte geben Sie die Jahresmiete an!',
                     'pattern' => '^\d{1,}$',
@@ -212,7 +214,7 @@ return [
                 ],
                 'attributes' => [
                     'id' => 'OB4',
-                    'class' => 'form-control form-control-input',
+
                     'required' => 'required',
                     'title' => 'Bitte geben Sie die Jahresmiete an!',
                     'pattern' => '^\d{1,}$',
@@ -230,7 +232,7 @@ return [
                 ],
                 'attributes' => [
                     'id' => 'OB5',
-                    'class' => 'form-control form-control-input',
+
                     'required' => 'required',
                     'title' => 'Bitte geben Sie die Jahresmiete an!',
                     'pattern' => '^\d{1,}$',
@@ -248,7 +250,7 @@ return [
                 ],
                 'attributes' => [
                     'id' => 'OB6',
-                    'class' => 'form-control form-control-input',
+
                     'required' => 'required',
                     'title' => 'Bitte geben Sie die Jahresmiete an!',
                     'pattern' => '^\d{1,}$',
@@ -280,7 +282,7 @@ return [
                 ],
                 'attributes' => [
                     'id' => 'plz',
-                    'class' => 'form-control form-control-input form-control-short',
+                    'class' => ' -short',
                 ],
             ],
         ],
@@ -312,7 +314,7 @@ return [
                 ],
                 'attributes' => [
                     'id' => 'gebdatum',
-                    'class' => 'form-control form-control-input datepicker js-datepicker',
+                    'class' => ' datepicker js-datepicker',
                     'placeholder' => 'TT.MM.JJJJ',
                     'required' => 'required',
                     'data-date-format' => 'de',
@@ -333,7 +335,7 @@ return [
                 ],
                 'attributes' => [
                     'id' => 'geburtsdatumPartner',
-                    'class' => 'form-control form-control-input datepicker js-datepicker',
+                    'class' => ' datepicker js-datepicker',
                     'placeholder' => 'TT.MM.JJJJ',
                     'required' => 'required',
                     'data-date-format' => 'de',
@@ -811,6 +813,7 @@ return [
                 'type' => Checkbox::class,
                 'name' => 'chkErstinfo',
                 'options' => [
+                    'label' => 'Ich bestätige, die Erstinformation für Versicherungsmakler gemäß § 15 VersVermV heruntergeladen und gelesen zu haben.',
                     'use_hidden_element' => true,
                     'checked_value' => '1',
                     'unchecked_value' => '0',
@@ -877,10 +880,17 @@ return [
         ],
         [
             'spec' => [
-                'type' => Submit::class,
-                'name' => 'recalc',
-                'options' => ['label' => 'neu berechnen'],
-                'attributes' => ['value' => 'neu berechnen'],
+                'type' => Button::class,
+                'name' => 'btn_berechnen',
+                'options' => ['label' => 'Berechnen'],
+                'attributes' => [
+                    'type' => 'submit',
+                    'class' => 'btn btn-primary',
+                    'data-event-type' => 'click',
+                    'data-event-category' => 'versicherung',
+                    'data-event-action' => 'calculate',
+                    'data-event-label' => 'phv',
+                ],
             ],
         ],
     ],

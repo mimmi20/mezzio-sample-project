@@ -1119,7 +1119,7 @@ return [
                 ],
                 'attributes' => [
                     'type' => 'submit',
-                    'class' => 'btn btn-primary js-gtm-event',
+                    'class' => 'btn btn-primary',
                     'data-event-type' => 'click',
                     'data-event-category' => 'versicherung',
                     'data-event-action' => 'calculate',
