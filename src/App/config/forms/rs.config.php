@@ -12,12 +12,14 @@ declare(strict_types = 1);
 
 namespace Calculator;
 
+use DateInterval;
+use DateTimeImmutable;
 use Laminas\Form\Element\Button;
 use Laminas\Form\Element\Checkbox;
+use Laminas\Form\Element\Date;
 use Laminas\Form\Element\Hidden;
 use Laminas\Form\Element\Radio;
 use Laminas\Form\Element\Select;
-use Laminas\Form\Element\Submit;
 use Laminas\Form\Element\Text;
 use Laminas\Form\Form;
 
@@ -28,13 +30,14 @@ return [
         'form-required-mark' => '<div class="mt-2 text-info-required"><sup>*</sup> Pflichtfeld</div>',
         'field-required-mark' => '<span class="text-info-required"><sup>*</sup></span>',
         'row_attributes' => ['class' => 'my-2'],
-        'col_attributes' => ['class' => 'col-sm'],
-        'label_attributes' => ['class' => 'col-sm text-sm-right'],
-        'help_attributes' => ['class' => 'help-content'],
+        'label_col_attributes' => ['class' => 'col-2'],
+        'col_attributes' => ['class' => 'col-8'],
+        'help_attributes' => ['class' => 'col-2 help-content'],
+        'label_attributes' => ['class' => 'stretched-link'],
     ],
     'attributes' => [
         'method' => 'post',
-        'class' => 'g-0',
+        'class' => 'g-0 needs-validation was-validated',
         'accept-charset' => 'utf-8',
         'novalidate' => 'novalidate',
         'data-needs-validation' => true,
@@ -50,6 +53,7 @@ return [
                     'use_hidden_element' => true,
                     'checked_value' => '1',
                     'unchecked_value' => '0',
+                    'help_content' => 'Help-Content',
                 ],
                 'attributes' => [
                     'id' => 'tarif_privat',
@@ -71,6 +75,7 @@ return [
                     'use_hidden_element' => true,
                     'checked_value' => '1',
                     'unchecked_value' => '0',
+                    'help_content' => 'Help-Content',
                 ],
                 'attributes' => [
                     'id' => 'tarif_beruf',
@@ -87,6 +92,7 @@ return [
                     'use_hidden_element' => true,
                     'checked_value' => '1',
                     'unchecked_value' => '0',
+                    'help_content' => 'Help-Content',
                 ],
                 'attributes' => [
                     'id' => 'tarif_verkehr_familie',
@@ -103,6 +109,7 @@ return [
                     'use_hidden_element' => true,
                     'checked_value' => '1',
                     'unchecked_value' => '0',
+                    'help_content' => 'Help-Content',
                 ],
                 'attributes' => [
                     'id' => 'tarif_miete',
@@ -122,6 +129,7 @@ return [
                     'use_hidden_element' => true,
                     'checked_value' => '1',
                     'unchecked_value' => '0',
+                    'help_content' => 'Help-Content',
                 ],
                 'attributes' => [
                     'id' => 'tarif_verkehr',
@@ -135,7 +143,8 @@ return [
                 'name' => 'vermiet',
                 'options' => [
                     'label' => 'Vermietete Wohneinheiten',
-                    'label_attributes' => ['class' => 'col-sm text-sm-right'],
+                    'help_content' => 'Help-Content',
+
                     'value_options' => [
                         'nein' => 'nein',
                         '1' => '1 vermietete WE',
@@ -155,8 +164,7 @@ return [
                 'name' => 'OB1',
                 'options' => [
                     'label' => 'WE 1 Jahresbruttomiete EUR',
-
-                    'label_attributes' => ['class' => 'col-sm text-sm-right'],
+                    'help_content' => 'Help-Content',
                 ],
                 'attributes' => [
                     'id' => 'OB1',
@@ -173,8 +181,7 @@ return [
                 'name' => 'OB2',
                 'options' => [
                     'label' => 'WE 2 Jahresbruttomiete EUR',
-
-                    'label_attributes' => ['class' => 'col-sm text-sm-right'],
+                    'help_content' => 'Help-Content',
                 ],
                 'attributes' => [
                     'id' => 'OB2',
@@ -191,8 +198,7 @@ return [
                 'name' => 'OB3',
                 'options' => [
                     'label' => 'WE 3 Jahresbruttomiete EUR',
-
-                    'label_attributes' => ['class' => 'col-sm text-sm-right'],
+                    'help_content' => 'Help-Content',
                 ],
                 'attributes' => [
                     'id' => 'OB3',
@@ -209,8 +215,7 @@ return [
                 'name' => 'OB4',
                 'options' => [
                     'label' => 'WE 4 Jahresbruttomiete EUR',
-
-                    'label_attributes' => ['class' => 'col-sm text-sm-right'],
+                    'help_content' => 'Help-Content',
                 ],
                 'attributes' => [
                     'id' => 'OB4',
@@ -227,8 +232,7 @@ return [
                 'name' => 'OB5',
                 'options' => [
                     'label' => 'WE 5 Jahresbruttomiete EUR',
-
-                    'label_attributes' => ['class' => 'col-sm text-sm-right'],
+                    'help_content' => 'Help-Content',
                 ],
                 'attributes' => [
                     'id' => 'OB5',
@@ -245,8 +249,7 @@ return [
                 'name' => 'OB6',
                 'options' => [
                     'label' => 'WE 6 Jahresbruttomiete EUR',
-
-                    'label_attributes' => ['class' => 'col-sm text-sm-right'],
+                    'help_content' => 'Help-Content',
                 ],
                 'attributes' => [
                     'id' => 'OB6',
@@ -263,7 +266,8 @@ return [
                 'name' => 'cyber',
                 'options' => [
                     'label' => 'Erweiterter Internet-Schutz',
-                    'label_attributes' => ['class' => 'col-sm text-sm-right'],
+                    'help_content' => 'Help-Content',
+
                     'value_options' => [
                         'nein' => 'nein',
                         'ja' => 'ja',
@@ -278,11 +282,12 @@ return [
                 'name' => 'plz',
                 'options' => [
                     'label' => 'PLZ des Antragsstellers',
-                    'label_attributes' => ['class' => 'col-sm text-sm-right'],
+                    'help_content' => 'Help-Content',
                 ],
                 'attributes' => [
                     'id' => 'plz',
                     'class' => ' -short',
+                    'placeholder' => ' ',
                 ],
             ],
         ],
@@ -292,7 +297,8 @@ return [
                 'name' => 'famstand',
                 'options' => [
                     'label' => 'Familiäre Verhältnisse',
-                    'label_attributes' => ['class' => 'col-sm text-sm-right'],
+                    'help_content' => 'Help-Content',
+
                     'value_options' => [
                         'Familie' => 'Familie',
                         'Paar' => 'Paar',
@@ -305,22 +311,34 @@ return [
         ],
         [
             'spec' => [
-                'type' => Text::class,
+                'type' => Date::class,
                 'name' => 'gebdatum',
                 'options' => [
                     'label' => 'Geburtsdatum des Versicherungsnehmers',
-
-                    'label_attributes' => ['class' => 'col-sm text-sm-right'],
+                    'help_content' => 'Help-Content',
+                    'messages' => [
+                        [
+                            'attributes' => ['class' => 'invalid-feedback'],
+                            'content' => 'nicht in Ordnung',
+                        ],
+                        [
+                            'attributes' => ['class' => 'invalid-max-feedback'],
+                            'content' => 'zu jung',
+                        ],
+                        [
+                            'attributes' => ['class' => 'valid-feedback'],
+                            'content' => 'in Ordnung',
+                        ],
+                    ],
                 ],
                 'attributes' => [
                     'id' => 'gebdatum',
-                    'class' => ' datepicker js-datepicker',
                     'placeholder' => 'TT.MM.JJJJ',
-                    'required' => 'required',
-                    'data-date-format' => 'de',
-                    'data-date-format-message' => 'Bitte geben Sie ein korrektes Geburtsdatum an!',
-                    'data-min-age' => '18y',
-                    'data-min-age-message' => 'Sie sind leider zu jung, um eine Versicherung abzuschließen.',
+
+                    'autocomplete' => 'off',
+                    'max' => (new DateTimeImmutable())->sub(
+                        new DateInterval('P18Y'),
+                    )->format('Y-m-d'),
                 ],
             ],
         ],
@@ -330,8 +348,7 @@ return [
                 'name' => 'geburtsdatumPartner',
                 'options' => [
                     'label' => 'Geburtsdatum des Ehe- oder Lebenspartners',
-
-                    'label_attributes' => ['class' => 'col-sm text-sm-right'],
+                    'help_content' => 'Help-Content',
                 ],
                 'attributes' => [
                     'id' => 'geburtsdatumPartner',
@@ -351,7 +368,8 @@ return [
                 'name' => 'anag',
                 'options' => [
                     'label' => 'Aktuelle Tätigkeit',
-                    'label_attributes' => ['class' => 'col-sm text-sm-right'],
+                    'help_content' => 'Help-Content',
+
                     'value_options' => [
                         'Arbeitnehmer' => 'Arbeitnehmer',
                         'ohne berufliche Tätigkeit' => 'ohne berufliche Tätigkeit',
@@ -375,7 +393,8 @@ return [
                 'name' => 'umsatzselbst',
                 'options' => [
                     'label' => 'Jahresumsatz',
-                    'label_attributes' => ['class' => 'col-sm text-sm-right'],
+                    'help_content' => 'Help-Content',
+
                     'value_options' => [
                         '10000' => '1 - 10.000 EUR',
                         '15000' => '10.001 - 15.000 EUR',
@@ -393,7 +412,8 @@ return [
                 'name' => 'laufzeit',
                 'options' => [
                     'label' => 'Laufzeit',
-                    'label_attributes' => ['class' => 'col-sm text-sm-right'],
+                    'help_content' => 'Help-Content',
+
                     'value_options' => [
                         '1' => '1 Jahr',
                         '3' => '3 Jahre',
@@ -408,8 +428,8 @@ return [
                 'name' => 'vorvers5',
                 'options' => [
                     'label' => 'Wie lange bestehen oder bestanden für den Antragsteller und/oder den mitversicherten Lebenspartner Vorversicherungen?',
+                    'help_content' => 'Help-Content',
 
-                    'label_attributes' => ['class' => 'col-sm text-sm-right'],
                     'value_options' => [
                         '' => '-- Bitte wählen --',
                         'keine Vorversicherung' => 'keine Vorversicherung',
@@ -434,8 +454,8 @@ return [
                 'name' => 'wannschaden',
                 'options' => [
                     'label' => 'Wann wurde der letzte Schaden gemeldet?',
+                    'help_content' => 'Help-Content',
 
-                    'label_attributes' => ['class' => 'col-sm text-sm-right'],
                     'value_options' => [
                         '' => '-- Bitte wählen --',
                         'vor mehr als 5 Jahren oder schadenfrei' => 'vor mehr als 5 Jahren oder schadenfrei',
@@ -459,18 +479,23 @@ return [
                 'name' => 'kombirabatte',
                 'options' => [
                     'label' => 'Kombirabatte mit berechnen?',
-                    'label_attributes' => ['class' => 'col-sm text-sm-right'],
+                    'help_content' => '<strong>Kombirabatte mit berechnen?</strong><p>Welche Verträge haben Sie schon oder haben vor, sie zu versichern? Je mehr Verträge Sie bei einer Gesellschaft haben, umso günstiger wird der Preis.</p>',
                     'value_options' => [
-                        'nein' => 'nein',
-                        'ja' => 'ja',
+                        [
+                            'label' => 'nein',
+                            'value' => 'nein',
+                            'attributes' => ['id' => 'kr_n'],
+                        ],
+                        [
+                            'label' => 'ja',
+                            'value' => 'ja',
+                            'attributes' => ['id' => 'kr_j'],
+                        ],
                     ],
+
+                    'col_attributes' => ['data-toogle' => '1'],
                 ],
-                'attributes' => [
-                    'id' => 'kombirabatte',
-                    'class' => 'toggle-trigger',
-                    'data-toggle-modus' => 'show',
-                    'data-toggle-value' => 'ja',
-                ],
+                'attributes' => ['id' => 'kombirabatte'],
             ],
         ],
         [
@@ -479,7 +504,8 @@ return [
                 'name' => 'KrPHV',
                 'options' => [
                     'label' => 'Privathaftpflicht',
-                    'label_attributes' => ['class' => 'col-sm text-sm-right check-label'],
+                    'help_content' => 'Help-Content',
+
                     'use_hidden_element' => false,
                     'checked_value' => '1',
                     'unchecked_value' => '0',
@@ -496,7 +522,8 @@ return [
                 'name' => 'KrTIE',
                 'options' => [
                     'label' => 'Tierhalterhaftpflicht',
-                    'label_attributes' => ['class' => 'col-sm text-sm-right check-label'],
+                    'help_content' => 'Help-Content',
+
                     'use_hidden_element' => false,
                     'checked_value' => '1',
                     'unchecked_value' => '0',
@@ -513,7 +540,8 @@ return [
                 'name' => 'KrHUG',
                 'options' => [
                     'label' => 'Haus-Grundbesitzer Haftpflicht',
-                    'label_attributes' => ['class' => 'col-sm text-sm-right check-label'],
+                    'help_content' => 'Help-Content',
+
                     'use_hidden_element' => false,
                     'checked_value' => '1',
                     'unchecked_value' => '0',
@@ -530,7 +558,8 @@ return [
                 'name' => 'KrOEL',
                 'options' => [
                     'label' => 'Gewässerschaden/Öltank',
-                    'label_attributes' => ['class' => 'col-sm text-sm-right check-label'],
+                    'help_content' => 'Help-Content',
+
                     'use_hidden_element' => false,
                     'checked_value' => '1',
                     'unchecked_value' => '0',
@@ -547,7 +576,8 @@ return [
                 'name' => 'KrWG',
                 'options' => [
                     'label' => 'Wohngebäude',
-                    'label_attributes' => ['class' => 'col-sm text-sm-right check-label'],
+                    'help_content' => 'Help-Content',
+
                     'use_hidden_element' => false,
                     'checked_value' => '1',
                     'unchecked_value' => '0',
@@ -564,7 +594,8 @@ return [
                 'name' => 'KrWGGLS',
                 'options' => [
                     'label' => 'Wohngebäude-Glas',
-                    'label_attributes' => ['class' => 'col-sm text-sm-right check-label'],
+                    'help_content' => 'Help-Content',
+
                     'use_hidden_element' => false,
                     'checked_value' => '1',
                     'unchecked_value' => '0',
@@ -581,7 +612,8 @@ return [
                 'name' => 'KrHR',
                 'options' => [
                     'label' => 'Hausrat',
-                    'label_attributes' => ['class' => 'col-sm text-sm-right check-label'],
+                    'help_content' => 'Help-Content',
+
                     'use_hidden_element' => false,
                     'checked_value' => '1',
                     'unchecked_value' => '0',
@@ -598,7 +630,8 @@ return [
                 'name' => 'KrHRGLS',
                 'options' => [
                     'label' => 'Hausrat-Glas',
-                    'label_attributes' => ['class' => 'col-sm text-sm-right check-label'],
+                    'help_content' => 'Help-Content',
+
                     'use_hidden_element' => false,
                     'checked_value' => '1',
                     'unchecked_value' => '0',
@@ -615,7 +648,8 @@ return [
                 'name' => 'KrUNF',
                 'options' => [
                     'label' => 'Unfall',
-                    'label_attributes' => ['class' => 'col-sm text-sm-right check-label'],
+                    'help_content' => 'Help-Content',
+
                     'use_hidden_element' => false,
                     'checked_value' => '1',
                     'unchecked_value' => '0',
@@ -632,7 +666,8 @@ return [
                 'name' => 'KrRS',
                 'options' => [
                     'label' => 'Rechtsschutz',
-                    'label_attributes' => ['class' => 'col-sm text-sm-right check-label'],
+                    'help_content' => 'Help-Content',
+
                     'use_hidden_element' => false,
                     'checked_value' => '1',
                     'unchecked_value' => '0',
@@ -644,6 +679,7 @@ return [
             ],
         ],
         [
+            'flags' => ['priority' => 17],
             'spec' => [
                 'type' => Radio::class,
                 'name' => 'zusatzfragen',
@@ -653,38 +689,16 @@ return [
                         'nein' => [
                             'value' => 'nein',
                             'label' => 'Ich verzichte auf die Beantwortung weiterer Fragen und wähle aus dem Vergleich einen Tarif, der meinen Bedarf erfüllt.',
-                            'attributes' => [
-                                'id' => 'zusatzfragen_nein',
-                                'class' => 'form-check-input form-radio-input',
-                                'required' => 'required',
-                            ],
-                            'label_attributes' => [
-                                'class' => 'form-radio js-gtm-event',
-                                'for' => 'zusatzfragen_nein',
-                                'data-event-type' => 'click',
-                                'data-event-category' => 'versicherung',
-                                'data-event-action' => 'no additional questions',
-                                'data-event-label' => 'rs',
-                            ],
+                            'attributes' => ['id' => 'zusatzfragen_nein'],
                         ],
                         'ja' => [
                             'value' => 'ja',
                             'label' => 'Ich möchte weitere Angaben zum gewünschten Versicherungsschutz machen. Es werden dann nur Tarife angezeigt, welche die Vorgaben erfüllen.',
-                            'attributes' => [
-                                'id' => 'zusatzfragen_ja',
-                                'class' => 'form-check-input form-radio-input',
-                                'required' => 'required',
-                            ],
-                            'label_attributes' => [
-                                'class' => 'form-radio js-gtm-event',
-                                'for' => 'zusatzfragen_ja',
-                                'data-event-type' => 'click',
-                                'data-event-category' => 'versicherung',
-                                'data-event-action' => 'additional questions requested',
-                                'data-event-label' => 'rs',
-                            ],
+                            'attributes' => ['id' => 'zusatzfragen_ja'],
                         ],
                     ],
+                    'col_attributes' => ['data-toogle' => '1'],
+                    'help_content' => 'Help-Content',
                 ],
                 'attributes' => ['id' => 'zusatzfragen'],
             ],
@@ -695,7 +709,8 @@ return [
                 'name' => 'vs_v',
                 'options' => [
                     'label' => 'Deckungssumme?',
-                    'label_attributes' => ['class' => 'col-sm text-sm-right'],
+                    'help_content' => 'Help-Content',
+
                     'value_options' => [
                         'o100000' => [
                             'value' => '100000',
@@ -725,7 +740,8 @@ return [
                 'name' => 'kaution_v',
                 'options' => [
                     'label' => 'Strafkautionen?',
-                    'label_attributes' => ['class' => 'col-sm text-sm-right'],
+                    'help_content' => 'Help-Content',
+
                     'value_options' => [
                         'o50000' => [
                             'value' => '50000',
@@ -750,7 +766,8 @@ return [
                 'name' => 'folge_v',
                 'options' => [
                     'label' => 'Schadensregulierung nach Folgeereignistheorie',
-                    'label_attributes' => ['class' => 'col-sm text-sm-right'],
+                    'help_content' => 'Help-Content',
+
                     'value_options' => [
                         'nein' => 'nein',
                         'ja' => 'ja (AK Empfehlung)',
@@ -765,7 +782,8 @@ return [
                 'name' => 'ehestreit_v',
                 'options' => [
                     'label' => 'Rechtsschutz in Ehesachen (nur wenn verheiratet)',
-                    'label_attributes' => ['class' => 'col-sm text-sm-right'],
+                    'help_content' => 'Help-Content',
+
                     'value_options' => [
                         'nein' => 'nein',
                         'beratung' => 'mindestens Beratungsleistung',
@@ -782,7 +800,8 @@ return [
                 'name' => 'unterhalt_v',
                 'options' => [
                     'label' => 'Rechtsschutz für Unterhalt',
-                    'label_attributes' => ['class' => 'col-sm text-sm-right'],
+                    'help_content' => 'Help-Content',
+
                     'value_options' => [
                         'nein' => 'nein',
                         'beratung' => 'mindestens Beratungsleistung',
@@ -799,13 +818,31 @@ return [
                 'name' => 'spezialstraf_v',
                 'options' => [
                     'label' => 'Einschluss Spezial-Straf-Rechtschutz',
-                    'label_attributes' => ['class' => 'col-sm text-sm-right'],
+                    'help_content' => 'Help-Content',
+
                     'value_options' => [
                         'nein' => 'nein',
                         'ja' => 'ja',
                     ],
                 ],
                 'attributes' => ['id' => 'spezialstraf_v'],
+            ],
+        ],
+        [
+            'spec' => [
+                'type' => Select::class,
+                'name' => 'zahlweise',
+                'options' => [
+                    'label' => 'Zahlweise',
+                    'help_content' => 'Help-Content',
+                    'value_options' => [
+                        '1' => 'jährlich',
+                        '2' => 'halbjährlich',
+                        '4' => 'vierteljährlich',
+                        '12' => 'monatlich',
+                    ],
+                ],
+                'attributes' => ['id' => 'zahlweise'],
             ],
         ],
         [
@@ -817,6 +854,7 @@ return [
                     'use_hidden_element' => true,
                     'checked_value' => '1',
                     'unchecked_value' => '0',
+                    'help_content' => 'Help-Content',
                 ],
                 'attributes' => [
                     'id' => 'mrmoErstinfo',
@@ -843,39 +881,8 @@ return [
         ],
         [
             'spec' => [
-                'type' => Select::class,
-                'name' => 'zahlweise',
-                'options' => [
-                    'label' => 'Zahlweise',
-                    'value_options' => [
-                        '1' => 'jährlich',
-                        '2' => 'halbjährlich',
-                        '4' => 'vierteljährlich',
-                        '12' => 'monatlich',
-                    ],
-                ],
-                'attributes' => ['id' => 'zahlweise'],
-            ],
-        ],
-        [
-            'spec' => [
                 'type' => Hidden::class,
                 'name' => 'sToken',
-            ],
-        ],
-        [
-            'spec' => [
-                'type' => Submit::class,
-                'name' => 'btn_berechnen',
-                'options' => ['label' => 'Berechnen'],
-                'attributes' => [
-                    'value' => 'Berechnen',
-                    'class' => 'btn btn-default js-gtm-event',
-                    'data-event-type' => 'click',
-                    'data-event-category' => 'versicherung',
-                    'data-event-action' => 'calculate',
-                    'data-event-label' => 'rs',
-                ],
             ],
         ],
         [
@@ -886,10 +893,6 @@ return [
                 'attributes' => [
                     'type' => 'submit',
                     'class' => 'btn btn-primary',
-                    'data-event-type' => 'click',
-                    'data-event-category' => 'versicherung',
-                    'data-event-action' => 'calculate',
-                    'data-event-label' => 'phv',
                 ],
             ],
         ],

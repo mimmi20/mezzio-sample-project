@@ -12,8 +12,11 @@ declare(strict_types = 1);
 
 namespace Calculator;
 
+use DateInterval;
+use DateTimeImmutable;
 use Laminas\Form\Element\Button;
 use Laminas\Form\Element\Checkbox;
+use Laminas\Form\Element\Date;
 use Laminas\Form\Element\Hidden;
 use Laminas\Form\Element\Radio;
 use Laminas\Form\Element\Select;
@@ -27,13 +30,12 @@ return [
     'options' => [
         'layout' => \Mimmi20\Mezzio\BootstrapForm\LaminasView\View\Helper\Form::LAYOUT_VERTICAL,
         'form-required-mark' => '<div class="mt-2 text-info-required"><sup>*</sup> Pflichtfeld</div>',
-        'field-required-mark' => '<span class="text-info-required"><sup>*</sup></span>',
         'col_attributes' => ['class' => 'my-2'],
         'help_attributes' => ['class' => 'help-content'],
     ],
     'attributes' => [
         'method' => 'post',
-        'class' => 'g-0',
+        'class' => 'g-0 was-validated',
         'accept-charset' => 'utf-8',
         'novalidate' => 'novalidate',
         'data-needs-validation' => true,
@@ -48,16 +50,356 @@ return [
                 'options' => [
                     'label' => 'Was möchten Sie versichern?',
                     'label_options' => ['always_wrap' => true],
-                    'label_attributes' => ['class' => 'headline-calculator'],
+                    'label_attributes' => ['class' => 'card-title'],
+                    'col_attributes' => ['class' => 'col-12 my-2'],
+                    'as-card' => true,
+                ],
+                'fieldsets' => [
+                    [
+                        'flags' => ['priority' => 5],
+                        'spec' => [
+                            'type' => ElementGroup::class,
+                            'name' => 'h1',
+                            'options' => [
+                                'label' => 'Hund 1',
+                                'label_options' => ['always_wrap' => true],
+                                'label_attributes' => ['class' => 'card-title'],
+                                'col_attributes' => ['class' => 'col-12 my-2', 'data-show' => '1'],
+                                'as-card' => true,
+                            ],
+                            'elements' => [
+                                [
+                                    'spec' => [
+                                        'type' => Text::class,
+                                        'name' => 'Rasse_Tier1',
+                                        'options' => [
+                                            'label' => 'Rasse Hund 1 eingeben',
+                                            'help_content' => '<strong>Rasse Hund 1 eingeben</strong><p>Geben Sie hier die Rasse Ihres Hundes an. Wenn Sie diese nicht genau kennen, geben Sie eine Rasse an, die dem am nächsten kommt. Achten Sie aber vor allem bei kampfhundähnlichen Rassen auf die genaue Angabe.</p>',
+                                        ],
+                                        'attributes' => [
+                                            'id' => 'Rasse_Tier1',
+                                            'class' => 'js-pet-autocomplete',
+
+                                            'pattern' => '[A-Za-z_äâàÄÂÀöÖüÜßÉÊÈéèêç()\s.-]{2,}',
+                                        ],
+                                    ],
+                                ],
+                                [
+                                    'spec' => [
+                                        'type' => Select::class,
+                                        'name' => 'mischling_hund1',
+                                        'options' => [
+                                            'label' => 'Ist Hund 1 ein Mischling?',
+                                            'help_content' => '<strong>Ist Hund 1 ein Mischling?</strong><p>Ist Ihr Hund ein Mischling?</p>',
+                                            'value_options' => [
+                                                'nein' => 'nein',
+                                                'ja' => 'ja',
+                                            ],
+
+                                            'col_attributes' => ['data-toogle' => '1'],
+                                        ],
+                                        'attributes' => ['id' => 'mischling_hund1'],
+                                    ],
+                                ],
+                                [
+                                    'spec' => [
+                                        'type' => Text::class,
+                                        'name' => 'Rasse_Tier1a',
+                                        'options' => [
+                                            'label' => 'Mischlingsrasse Hund 1',
+                                            'help_content' => '<strong>Mischlingsrasse Hund 1</strong><p>Geben Sie hier die Mischlings-Rasse Ihres Hundes an. Wenn Sie diese nicht genau kennen, geben Sie eine Mischlings-Rasse an, die dem am nächsten kommt. Achten Sie aber vor allem bei kampfhundähnlichen Rassen auf die genaue Angabe.</p>',
+
+                                            'col_attributes' => ['data-show' => 'ja'],
+                                        ],
+                                        'attributes' => [
+                                            'id' => 'Rasse_Tier1a',
+                                            'class' => 'js-pet-autocomplete',
+
+                                            'pattern' => '[A-Za-z_äâàÄÂÀöÖüÜßÉÊÈéèêç()\s.-]{2,}',
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                    [
+                        'flags' => ['priority' => 4],
+                        'spec' => [
+                            'type' => ElementGroup::class,
+                            'name' => 'h2',
+                            'options' => [
+                                'label' => 'Hund 2',
+                                'label_options' => ['always_wrap' => true],
+                                'label_attributes' => ['class' => 'card-title'],
+                                'col_attributes' => ['class' => 'col-12 my-2', 'data-show' => '2'],
+                                'as-card' => true,
+                            ],
+                            'elements' => [
+                                [
+                                    'spec' => [
+                                        'type' => Text::class,
+                                        'name' => 'Rasse_Tier2',
+                                        'options' => [
+                                            'label' => 'Rasse Hund 2 eingeben',
+                                            'help_content' => '<strong>Rasse Hund 2 eingeben</strong><p>Geben Sie hier die Rasse Ihres Hundes an. Wenn Sie diese nicht genau kennen, geben Sie eine Rasse an, die dem am nächsten kommt. Achten Sie aber vor allem bei kampfhundähnlichen Rassen auf die genaue Angabe.</p>',
+                                        ],
+                                        'attributes' => [
+                                            'id' => 'Rasse_Tier2',
+                                            'class' => 'js-pet-autocomplete',
+
+                                            'pattern' => '[A-Za-z_äâàÄÂÀöÖüÜßÉÊÈéèêç()\s.-]{2,}',
+                                        ],
+                                    ],
+                                ],
+                                [
+                                    'spec' => [
+                                        'type' => Select::class,
+                                        'name' => 'mischling_hund2',
+                                        'options' => [
+                                            'label' => 'Ist Hund 2 ein Mischling?',
+                                            'help_content' => '<strong>Ist Hund 2 ein Mischling?</strong><p>Ist Ihr Hund ein Mischling?</p>',
+                                            'value_options' => [
+                                                'nein' => 'nein',
+                                                'ja' => 'ja',
+                                            ],
+
+                                            'col_attributes' => ['data-toogle' => '1'],
+                                        ],
+                                        'attributes' => ['id' => 'mischling_hund2'],
+                                    ],
+                                ],
+                                [
+                                    'spec' => [
+                                        'type' => Text::class,
+                                        'name' => 'Rasse_Tier2a',
+                                        'options' => [
+                                            'label' => 'Mischlingsrasse Hund 2',
+                                            'help_content' => '<strong>Mischlingsrasse Hund 2</strong><p>Geben Sie hier die Mischlings-Rasse Ihres Hundes an. Wenn Sie diese nicht genau kennen, geben Sie eine Mischlings-Rasse an, die dem am nächsten kommt. Achten Sie aber vor allem bei kampfhundähnlichen Rassen auf die genaue Angabe.</p>',
+
+                                            'col_attributes' => ['data-show' => 'ja'],
+                                        ],
+                                        'attributes' => [
+                                            'id' => 'Rasse_Tier2a',
+                                            'class' => 'js-pet-autocomplete',
+
+                                            'pattern' => '[A-Za-z_äâàÄÂÀöÖüÜßÉÊÈéèêç()\s.-]{2,}',
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                    [
+                        'flags' => ['priority' => 3],
+                        'spec' => [
+                            'type' => ElementGroup::class,
+                            'name' => 'h3',
+                            'options' => [
+                                'label' => 'Hund 3',
+                                'label_options' => ['always_wrap' => true],
+                                'label_attributes' => ['class' => 'card-title'],
+                                'col_attributes' => ['class' => 'col-12 my-2', 'data-show' => '3'],
+                                'as-card' => true,
+                            ],
+                            'elements' => [
+                                [
+                                    'spec' => [
+                                        'type' => Text::class,
+                                        'name' => 'Rasse_Tier3',
+                                        'options' => [
+                                            'label' => 'Rasse Hund 3 eingeben',
+                                            'help_content' => '<strong>Rasse Hund 3 eingeben</strong><p>Geben Sie hier die Rasse Ihres Hundes an. Wenn Sie diese nicht genau kennen, geben Sie eine Rasse an, die dem am nächsten kommt. Achten Sie aber vor allem bei kampfhundähnlichen Rassen auf die genaue Angabe.</p>',
+                                        ],
+                                        'attributes' => [
+                                            'id' => 'Rasse_Tier3',
+                                            'class' => 'js-pet-autocomplete',
+
+                                            'pattern' => '[A-Za-z_äâàÄÂÀöÖüÜßÉÊÈéèêç()\s.-]{2,}',
+                                        ],
+                                    ],
+                                ],
+                                [
+                                    'spec' => [
+                                        'type' => Select::class,
+                                        'name' => 'mischling_hund3',
+                                        'options' => [
+                                            'label' => 'Ist Hund 3 ein Mischling?',
+                                            'help_content' => '<strong>Ist Hund 3 ein Mischling?</strong><p>Ist Ihr Hund ein Mischling?</p>',
+                                            'value_options' => [
+                                                'nein' => 'nein',
+                                                'ja' => 'ja',
+                                            ],
+
+                                            'col_attributes' => ['data-toogle' => '1'],
+                                        ],
+                                        'attributes' => ['id' => 'mischling_hund3'],
+                                    ],
+                                ],
+                                [
+                                    'spec' => [
+                                        'type' => Text::class,
+                                        'name' => 'Rasse_Tier3a',
+                                        'options' => [
+                                            'label' => 'Mischlingsrasse Hund 3',
+                                            'help_content' => '<strong>Mischlingsrasse Hund 3</strong><p>Geben Sie hier die Mischlings-Rasse Ihres Hundes an. Wenn Sie diese nicht genau kennen, geben Sie eine Mischlings-Rasse an, die dem am nächsten kommt. Achten Sie aber vor allem bei kampfhundähnlichen Rassen auf die genaue Angabe.</p>',
+
+                                            'col_attributes' => ['data-show' => 'ja'],
+                                        ],
+                                        'attributes' => [
+                                            'id' => 'Rasse_Tier3a',
+                                            'class' => 'js-pet-autocomplete',
+
+                                            'pattern' => '[A-Za-z_äâàÄÂÀöÖüÜßÉÊÈéèêç()\s.-]{2,}',
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                    [
+                        'flags' => ['priority' => 2],
+                        'spec' => [
+                            'type' => ElementGroup::class,
+                            'name' => 'h4',
+                            'options' => [
+                                'label' => 'Hund 4',
+                                'label_options' => ['always_wrap' => true],
+                                'label_attributes' => ['class' => 'card-title'],
+                                'col_attributes' => ['class' => 'col-12 my-2', 'data-show' => '4'],
+                                'as-card' => true,
+                            ],
+                            'elements' => [
+                                [
+                                    'spec' => [
+                                        'type' => Text::class,
+                                        'name' => 'Rasse_Tier4',
+                                        'options' => [
+                                            'label' => 'Rasse Hund 4 eingeben',
+                                            'help_content' => '<strong>Rasse Hund 4 eingeben</strong><p>Geben Sie hier die Rasse Ihres Hundes an. Wenn Sie diese nicht genau kennen, geben Sie eine Rasse an, die dem am nächsten kommt. Achten Sie aber vor allem bei kampfhundähnlichen Rassen auf die genaue Angabe.</p>',
+                                        ],
+                                        'attributes' => [
+                                            'id' => 'Rasse_Tier4',
+                                            'class' => 'js-pet-autocomplete',
+
+                                            'pattern' => '[A-Za-z_äâàÄÂÀöÖüÜßÉÊÈéèêç()\s.-]{2,}',
+                                        ],
+                                    ],
+                                ],
+                                [
+                                    'spec' => [
+                                        'type' => Select::class,
+                                        'name' => 'mischling_hund4',
+                                        'options' => [
+                                            'label' => 'Ist Hund 4 ein Mischling?',
+                                            'help_content' => '<strong>Ist Hund 4 ein Mischling?</strong><p>Ist Ihr Hund ein Mischling?</p>',
+                                            'value_options' => [
+                                                'nein' => 'nein',
+                                                'ja' => 'ja',
+                                            ],
+
+                                            'col_attributes' => ['data-toogle' => '1'],
+                                        ],
+                                        'attributes' => ['id' => 'mischling_hund4'],
+                                    ],
+                                ],
+                                [
+                                    'spec' => [
+                                        'type' => Text::class,
+                                        'name' => 'Rasse_Tier4a',
+                                        'options' => [
+                                            'label' => 'Mischlingsrasse Hund 4',
+                                            'help_content' => '<strong>Mischlingsrasse Hund 4</strong><p>Geben Sie hier die Mischlings-Rasse Ihres Hundes an. Wenn Sie diese nicht genau kennen, geben Sie eine Mischlings-Rasse an, die dem am nächsten kommt. Achten Sie aber vor allem bei kampfhundähnlichen Rassen auf die genaue Angabe.</p>',
+
+                                            'col_attributes' => ['data-show' => 'ja'],
+                                        ],
+                                        'attributes' => [
+                                            'id' => 'Rasse_Tier4a',
+                                            'class' => 'js-pet-autocomplete',
+
+                                            'pattern' => '[A-Za-z_äâàÄÂÀöÖüÜßÉÊÈéèêç()\s.-]{2,}',
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                    [
+                        'flags' => ['priority' => 1],
+                        'spec' => [
+                            'type' => ElementGroup::class,
+                            'name' => 'h5',
+                            'options' => [
+                                'label' => 'Hund 5',
+                                'label_options' => ['always_wrap' => true],
+                                'label_attributes' => ['class' => 'card-title'],
+                                'col_attributes' => ['class' => 'col-12 my-2', 'data-show' => '5'],
+                                'as-card' => true,
+                            ],
+                            'elements' => [
+                                [
+                                    'spec' => [
+                                        'type' => Text::class,
+                                        'name' => 'Rasse_Tier5',
+                                        'options' => [
+                                            'label' => 'Rasse Hund 5 eingeben',
+                                            'help_content' => '<strong>Rasse Hund 5 eingeben</strong><p>Geben Sie hier die Rasse Ihres Hundes an. Wenn Sie diese nicht genau kennen, geben Sie eine Rasse an, die dem am nächsten kommt. Achten Sie aber vor allem bei kampfhundähnlichen Rassen auf die genaue Angabe.</p>',
+                                        ],
+                                        'attributes' => [
+                                            'id' => 'Rasse_Tier5',
+                                            'class' => 'js-pet-autocomplete',
+
+                                            'pattern' => '[A-Za-z_äâàÄÂÀöÖüÜßÉÊÈéèêç()\s.-]{2,}',
+                                        ],
+                                    ],
+                                ],
+                                [
+                                    'spec' => [
+                                        'type' => Select::class,
+                                        'name' => 'mischling_hund5',
+                                        'options' => [
+                                            'label' => 'Ist Hund 5 ein Mischling?',
+                                            'help_content' => '<strong>Ist Hund 5 ein Mischling?</strong><p>Ist Ihr Hund ein Mischling?</p>',
+                                            'value_options' => [
+                                                'nein' => 'nein',
+                                                'ja' => 'ja',
+                                            ],
+
+                                            'col_attributes' => ['data-toogle' => '1'],
+                                        ],
+                                        'attributes' => ['id' => 'mischling_hund5'],
+                                    ],
+                                ],
+                                [
+                                    'spec' => [
+                                        'type' => Text::class,
+                                        'name' => 'Rasse_Tier5a',
+                                        'options' => [
+                                            'label' => 'Mischlingsrasse Hund 5',
+                                            'help_content' => '<strong>Mischlingsrasse Hund 5</strong><p>Geben Sie hier die Mischlings-Rasse Ihres Hundes an. Wenn Sie diese nicht genau kennen, geben Sie eine Mischlings-Rasse an, die dem am nächsten kommt. Achten Sie aber vor allem bei kampfhundähnlichen Rassen auf die genaue Angabe.</p>',
+
+                                            'col_attributes' => ['data-show' => 'ja'],
+                                        ],
+                                        'attributes' => [
+                                            'id' => 'Rasse_Tier5a',
+                                            'class' => 'js-pet-autocomplete',
+
+                                            'pattern' => '[A-Za-z_äâàÄÂÀöÖüÜßÉÊÈéèêç()\s.-]{2,}',
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
                 'elements' => [
                     [
+                        'flags' => ['priority' => 12],
                         'spec' => [
                             'type' => Select::class,
                             'name' => 'single',
                             'options' => [
                                 'label' => 'Tarifauswahl',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
+
                                 'value_options' => [
                                     'Familie/Lebensgemeinschaft mit Kinder' => 'Familie/Lebensgemeinschaft mit Kind(ern)',
                                     'Familie/Lebensgemeinschaft ohne Kinder' => 'Familie/Lebensgemeinschaft ohne Kinder',
@@ -70,13 +412,13 @@ return [
                         ],
                     ],
                     [
+                        'flags' => ['priority' => 11],
                         'spec' => [
                             'type' => Text::class,
                             'name' => 'plz',
                             'options' => [
                                 'label' => 'PLZ des Antragsstellers',
                                 'help_content' => '<strong>Warum fragen wir das?</strong><p>Die Postleitzahl Ihrer Wohnung wird für die Risikobeurteilung /Beitragsberechnung benötigt. Die Beitragshöhe ist nicht nur abhängig von Ihren gewünschten Leistungen, sondern wird auch anhand Art und Anzahl der Schäden, die in Ihrem Wohnort durchschnittlich gemeldet werden, bemessen.</p>',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
                             ],
                             'attributes' => [
                                 'id' => 'plz',
@@ -85,16 +427,18 @@ return [
                                 'pattern' => '^\d{5}$',
                                 'minlength' => '5',
                                 'maxlength' => '5',
+                                'placeholder' => ' ',
                             ],
                         ],
                     ],
                     [
+                        'flags' => ['priority' => 10],
                         'spec' => [
                             'type' => Select::class,
                             'name' => 'beamte',
                             'options' => [
                                 'label' => 'Tarifgruppe',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
+
                                 'help_content' => '<strong>Warum fragen wir das?</strong><p>Einige Versicherer bieten Beitragsnachlässe für Beamte und Angestellte im öffentlichen Dienst.</p><strong>Hinweis zur Auswahl</strong><p>Wählen Sie auch &quot;öffentlicher Dienst&quot;, wenn Sie Beamter sind oder früher im öffentlichen Dienst beschäftigt waren und sich mittlerweile im Ruhestand befinden.</p>',
                                 'value_options' => [
                                     'Normal' => 'Normal',
@@ -106,33 +450,33 @@ return [
                         ],
                     ],
                     [
+                        'flags' => ['priority' => 9],
                         'spec' => [
-                            'type' => Text::class,
+                            'type' => Date::class,
                             'name' => 'gebdatum',
                             'options' => [
                                 'label' => 'Geburtsdatum des Versicherungsnehmers',
                                 'help_content' => '<strong>Warum fragen wir das?</strong><p>Die Angabe Ihres Geburtsdatums ist relevant für die Höhe des Beitrags. Einige Versicherungs­gesellschaften bieten Beitragsnachlässe für bestimmte Altersgruppen.</p>',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
                             ],
                             'attributes' => [
                                 'id' => 'gebdatum',
-                                'class' => 'datepicker js-datepicker',
                                 'placeholder' => 'TT.MM.JJJJ',
 
-                                'data-date-format' => 'de',
-                                'data-date-format-message' => 'Bitte geben Sie ein korrektes Geburtsdatum an!',
-                                'data-min-age' => '18y',
-                                'data-min-age-message' => 'Sie sind leider zu jung, um eine Versicherung abzuschließen.',
+                                'autocomplete' => 'off',
+                                'max' => (new DateTimeImmutable())->sub(
+                                    new DateInterval('P18Y'),
+                                )->format('Y-m-d'),
                             ],
                         ],
                     ],
                     [
+                        'flags' => ['priority' => 8],
                         'spec' => [
                             'type' => Select::class,
                             'name' => 'ausfall',
                             'options' => [
                                 'label' => 'Ausfalldeckung',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
+
                                 'help_content' => '<strong>Ausfalldeckung</strong><p>Wir empfehlen Ihnen, die sogenannte Forderungs­ausfalldeckung in Ihren Versicherungs­schutz aufzunehmen. Ihr Versicherer erstattet dann auch Schäden, die Ihnen durch fremde Personen zugefügt werden, die selbst über keine Privathaftpflicht­versicherung verfügen und finanziell nicht in der Lage sind, Ihnen den entstandenen Schaden zu ersetzen. Voraussetzung für die Begleichung des Schadens ist ein rechtskräftiges Urteil des Verursachers. Die meisten Versicherer legen für die Erstattung eine Mindest­schadenshöhe fest (siehe Leistungs­vergleich).</p>',
                                 'value_options' => [
                                     'nein' => 'nein',
@@ -148,12 +492,13 @@ return [
                         ],
                     ],
                     [
+                        'flags' => ['priority' => 7],
                         'spec' => [
                             'type' => Select::class,
                             'name' => 'delikt',
                             'options' => [
                                 'label' => 'Deliktunfähige Kinder unter 7 Jahre mitversichern?',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
+
                                 'help_content' => '<strong>Deliktunfähige Kinder unter 7 Jahre mitversichern?</strong><p>Eltern haften nicht für unter 7-jährige Kinder (bei Verkehr nicht bis unter 10 Jahre), wenn sie Ihrer Aufsichtspflicht nachkommen. Diese Schäden können Sie hier versichern.</p>',
                                 'value_options' => [
                                     'nein' => 'nein',
@@ -164,12 +509,13 @@ return [
                         ],
                     ],
                     [
+                        'flags' => ['priority' => 6],
                         'spec' => [
                             'type' => Select::class,
                             'name' => 'Hundn',
                             'options' => [
                                 'label' => 'Hund mitversichern? (kein Kampfhund!)',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
+
                                 'help_content' => '<strong>Hund mitversichern? (kein Kampfhund!)</strong><p>Je nach Gesellschaft gibt es Hunderassen, die nicht versichert werden können. Dazu gehören z.B. folgende Rassen sowie deren Kreuzungen: Bandog, Bordeaux-Dogge, Bulldog, Bullterrier (auch Staffordshire Bullterrier), Dogo Argentino, Fila Brasileiro, Kangal, Mastiff (auch Bullmastiff), Mastino Espanol, Mastino Napoletano, Owtscharka (alle Unterrassen), Pitbullterrier (auch American Pitbullterrier), Rhodesian Ridgeback, Staffordshire Terrier (auch American Staffordshire Terrier bzw. American Stafford Terrier) und Tosa Ino.</p>',
                                 'value_options' => [
                                     '0' => '0',
@@ -179,271 +525,10 @@ return [
                                     '4' => '4 Hunde',
                                     '5' => '5 Hunde',
                                 ],
+
+                                'col_attributes' => ['data-toogle' => '1'],
                             ],
                             'attributes' => ['id' => 'Hundn'],
-                        ],
-                    ],
-                    [
-                        'spec' => [
-                            'type' => Text::class,
-                            'name' => 'Rasse_Tier1',
-                            'options' => [
-                                'label' => 'Rasse Hund 1 eingeben',
-                                'help_content' => '<strong>Rasse Hund 1 eingeben</strong><p>Geben Sie hier die Rasse Ihres Hundes an. Wenn Sie diese nicht genau kennen, geben Sie eine Rasse an, die dem am nächsten kommt. Achten Sie aber vor allem bei kampfhundähnlichen Rassen auf die genaue Angabe.</p>',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
-                                'row_attributes' => ['class' => 'collapse collapse-dogs'],
-                            ],
-                            'attributes' => [
-                                'id' => 'Rasse_Tier1',
-                                'class' => 'js-pet-autocomplete',
-
-                                'pattern' => '[A-Za-z_äâàÄÂÀöÖüÜßÉÊÈéèêç()\s.-]{2,}',
-                            ],
-                        ],
-                    ],
-                    [
-                        'spec' => [
-                            'type' => Select::class,
-                            'name' => 'mischling_hund1',
-                            'options' => [
-                                'label' => 'Ist Hund 1 ein Mischling?',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
-                                'help_content' => '<strong>Ist Hund 1 ein Mischling?</strong><p>Ist Ihr Hund ein Mischling?</p>',
-                                'value_options' => [
-                                    'nein' => 'nein',
-                                    'ja' => 'ja',
-                                ],
-                                'row_attributes' => ['class' => 'collapse collapse-dogs'],
-                            ],
-                            'attributes' => ['id' => 'mischling_hund1'],
-                        ],
-                    ],
-                    [
-                        'spec' => [
-                            'type' => Text::class,
-                            'name' => 'Rasse_Tier1a',
-                            'options' => [
-                                'label' => 'Mischlingsrasse Hund 1',
-                                'help_content' => '<strong>Mischlingsrasse Hund 1</strong><p>Geben Sie hier die Mischlings-Rasse Ihres Hundes an. Wenn Sie diese nicht genau kennen, geben Sie eine Mischlings-Rasse an, die dem am nächsten kommt. Achten Sie aber vor allem bei kampfhundähnlichen Rassen auf die genaue Angabe.</p>',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
-                                'row_attributes' => ['class' => 'collapse collapse-dogs'],
-                            ],
-                            'attributes' => [
-                                'id' => 'Rasse_Tier1a',
-                                'class' => 'js-pet-autocomplete',
-
-                                'pattern' => '[A-Za-z_äâàÄÂÀöÖüÜßÉÊÈéèêç()\s.-]{2,}',
-                            ],
-                        ],
-                    ],
-                    [
-                        'spec' => [
-                            'type' => Text::class,
-                            'name' => 'Rasse_Tier2',
-                            'options' => [
-                                'label' => 'Rasse Hund 2 eingeben',
-                                'help_content' => '<strong>Rasse Hund 2 eingeben</strong><p>Geben Sie hier die Rasse Ihres Hundes an. Wenn Sie diese nicht genau kennen, geben Sie eine Rasse an, die dem am nächsten kommt. Achten Sie aber vor allem bei kampfhundähnlichen Rassen auf die genaue Angabe.</p>',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
-                                'row_attributes' => ['class' => 'collapse collapse-dogs'],
-                            ],
-                            'attributes' => [
-                                'id' => 'Rasse_Tier2',
-                                'class' => 'js-pet-autocomplete',
-
-                                'pattern' => '[A-Za-z_äâàÄÂÀöÖüÜßÉÊÈéèêç()\s.-]{2,}',
-                            ],
-                        ],
-                    ],
-                    [
-                        'spec' => [
-                            'type' => Select::class,
-                            'name' => 'mischling_hund2',
-                            'options' => [
-                                'label' => 'Ist Hund 2 ein Mischling?',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
-                                'help_content' => '<strong>Ist Hund 2 ein Mischling?</strong><p>Ist Ihr Hund ein Mischling?</p>',
-                                'value_options' => [
-                                    'nein' => 'nein',
-                                    'ja' => 'ja',
-                                ],
-                                'row_attributes' => ['class' => 'collapse collapse-dogs'],
-                            ],
-                            'attributes' => ['id' => 'mischling_hund2'],
-                        ],
-                    ],
-                    [
-                        'spec' => [
-                            'type' => Text::class,
-                            'name' => 'Rasse_Tier2a',
-                            'options' => [
-                                'label' => 'Mischlingsrasse Hund 2',
-                                'help_content' => '<strong>Mischlingsrasse Hund 2</strong><p>Geben Sie hier die Mischlings-Rasse Ihres Hundes an. Wenn Sie diese nicht genau kennen, geben Sie eine Mischlings-Rasse an, die dem am nächsten kommt. Achten Sie aber vor allem bei kampfhundähnlichen Rassen auf die genaue Angabe.</p>',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
-                                'row_attributes' => ['class' => 'collapse collapse-dogs'],
-                            ],
-                            'attributes' => [
-                                'id' => 'Rasse_Tier2a',
-                                'class' => 'js-pet-autocomplete',
-
-                                'pattern' => '[A-Za-z_äâàÄÂÀöÖüÜßÉÊÈéèêç()\s.-]{2,}',
-                            ],
-                        ],
-                    ],
-                    [
-                        'spec' => [
-                            'type' => Text::class,
-                            'name' => 'Rasse_Tier3',
-                            'options' => [
-                                'label' => 'Rasse Hund 3 eingeben',
-                                'help_content' => '<strong>Rasse Hund 3 eingeben</strong><p>Geben Sie hier die Rasse Ihres Hundes an. Wenn Sie diese nicht genau kennen, geben Sie eine Rasse an, die dem am nächsten kommt. Achten Sie aber vor allem bei kampfhundähnlichen Rassen auf die genaue Angabe.</p>',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
-                                'row_attributes' => ['class' => 'collapse collapse-dogs'],
-                            ],
-                            'attributes' => [
-                                'id' => 'Rasse_Tier3',
-                                'class' => 'js-pet-autocomplete',
-
-                                'pattern' => '[A-Za-z_äâàÄÂÀöÖüÜßÉÊÈéèêç()\s.-]{2,}',
-                            ],
-                        ],
-                    ],
-                    [
-                        'spec' => [
-                            'type' => Select::class,
-                            'name' => 'mischling_hund3',
-                            'options' => [
-                                'label' => 'Ist Hund 3 ein Mischling?',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
-                                'help_content' => '<strong>Ist Hund 3 ein Mischling?</strong><p>Ist Ihr Hund ein Mischling?</p>',
-                                'value_options' => [
-                                    'nein' => 'nein',
-                                    'ja' => 'ja',
-                                ],
-                                'row_attributes' => ['class' => 'collapse collapse-dogs'],
-                            ],
-                            'attributes' => ['id' => 'mischling_hund3'],
-                        ],
-                    ],
-                    [
-                        'spec' => [
-                            'type' => Text::class,
-                            'name' => 'Rasse_Tier3a',
-                            'options' => [
-                                'label' => 'Mischlingsrasse Hund 3',
-                                'help_content' => '<strong>Mischlingsrasse Hund 3</strong><p>Geben Sie hier die Mischlings-Rasse Ihres Hundes an. Wenn Sie diese nicht genau kennen, geben Sie eine Mischlings-Rasse an, die dem am nächsten kommt. Achten Sie aber vor allem bei kampfhundähnlichen Rassen auf die genaue Angabe.</p>',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
-                                'row_attributes' => ['class' => 'collapse collapse-dogs'],
-                            ],
-                            'attributes' => [
-                                'id' => 'Rasse_Tier3a',
-                                'class' => 'js-pet-autocomplete',
-
-                                'pattern' => '[A-Za-z_äâàÄÂÀöÖüÜßÉÊÈéèêç()\s.-]{2,}',
-                            ],
-                        ],
-                    ],
-                    [
-                        'spec' => [
-                            'type' => Text::class,
-                            'name' => 'Rasse_Tier4',
-                            'options' => [
-                                'label' => 'Rasse Hund 4 eingeben',
-                                'help_content' => '<strong>Rasse Hund 4 eingeben</strong><p>Geben Sie hier die Rasse Ihres Hundes an. Wenn Sie diese nicht genau kennen, geben Sie eine Rasse an, die dem am nächsten kommt. Achten Sie aber vor allem bei kampfhundähnlichen Rassen auf die genaue Angabe.</p>',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
-                                'row_attributes' => ['class' => 'collapse collapse-dogs'],
-                            ],
-                            'attributes' => [
-                                'id' => 'Rasse_Tier4',
-                                'class' => 'js-pet-autocomplete',
-
-                                'pattern' => '[A-Za-z_äâàÄÂÀöÖüÜßÉÊÈéèêç()\s.-]{2,}',
-                            ],
-                        ],
-                    ],
-                    [
-                        'spec' => [
-                            'type' => Select::class,
-                            'name' => 'mischling_hund4',
-                            'options' => [
-                                'label' => 'Ist Hund 4 ein Mischling?',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
-                                'help_content' => '<strong>Ist Hund 4 ein Mischling?</strong><p>Ist Ihr Hund ein Mischling?</p>',
-                                'value_options' => [
-                                    'nein' => 'nein',
-                                    'ja' => 'ja',
-                                ],
-                                'row_attributes' => ['class' => 'collapse collapse-dogs'],
-                            ],
-                            'attributes' => ['id' => 'mischling_hund4'],
-                        ],
-                    ],
-                    [
-                        'spec' => [
-                            'type' => Text::class,
-                            'name' => 'Rasse_Tier4a',
-                            'options' => [
-                                'label' => 'Mischlingsrasse Hund 4',
-                                'help_content' => '<strong>Mischlingsrasse Hund 4</strong><p>Geben Sie hier die Mischlings-Rasse Ihres Hundes an. Wenn Sie diese nicht genau kennen, geben Sie eine Mischlings-Rasse an, die dem am nächsten kommt. Achten Sie aber vor allem bei kampfhundähnlichen Rassen auf die genaue Angabe.</p>',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
-                                'row_attributes' => ['class' => 'collapse collapse-dogs'],
-                            ],
-                            'attributes' => [
-                                'id' => 'Rasse_Tier4a',
-                                'class' => 'js-pet-autocomplete',
-
-                                'pattern' => '[A-Za-z_äâàÄÂÀöÖüÜßÉÊÈéèêç()\s.-]{2,}',
-                            ],
-                        ],
-                    ],
-                    [
-                        'spec' => [
-                            'type' => Text::class,
-                            'name' => 'Rasse_Tier5',
-                            'options' => [
-                                'label' => 'Rasse Hund 5 eingeben',
-                                'help_content' => '<strong>Rasse Hund 5 eingeben</strong><p>Geben Sie hier die Rasse Ihres Hundes an. Wenn Sie diese nicht genau kennen, geben Sie eine Rasse an, die dem am nächsten kommt. Achten Sie aber vor allem bei kampfhundähnlichen Rassen auf die genaue Angabe.</p>',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
-                                'row_attributes' => ['class' => 'collapse collapse-dogs'],
-                            ],
-                            'attributes' => [
-                                'id' => 'Rasse_Tier5',
-                                'class' => 'js-pet-autocomplete',
-
-                                'pattern' => '[A-Za-z_äâàÄÂÀöÖüÜßÉÊÈéèêç()\s.-]{2,}',
-                            ],
-                        ],
-                    ],
-                    [
-                        'spec' => [
-                            'type' => Select::class,
-                            'name' => 'mischling_hund5',
-                            'options' => [
-                                'label' => 'Ist Hund 5 ein Mischling?',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
-                                'help_content' => '<strong>Ist Hund 5 ein Mischling?</strong><p>Ist Ihr Hund ein Mischling?</p>',
-                                'value_options' => [
-                                    'nein' => 'nein',
-                                    'ja' => 'ja',
-                                ],
-                            ],
-                            'attributes' => ['id' => 'mischling_hund5'],
-                        ],
-                    ],
-                    [
-                        'spec' => [
-                            'type' => Text::class,
-                            'name' => 'Rasse_Tier5a',
-                            'options' => [
-                                'label' => 'Mischlingsrasse Hund 5',
-                                'help_content' => '<strong>Mischlingsrasse Hund 5</strong><p>Geben Sie hier die Mischlings-Rasse Ihres Hundes an. Wenn Sie diese nicht genau kennen, geben Sie eine Mischlings-Rasse an, die dem am nächsten kommt. Achten Sie aber vor allem bei kampfhundähnlichen Rassen auf die genaue Angabe.</p>',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
-                            ],
-                            'attributes' => [
-                                'id' => 'Rasse_Tier5a',
-                                'class' => 'js-pet-autocomplete',
-
-                                'pattern' => '[A-Za-z_äâàÄÂÀöÖüÜßÉÊÈéèêç()\s.-]{2,}',
-                            ],
                         ],
                     ],
                 ],
@@ -457,7 +542,9 @@ return [
                 'options' => [
                     'label' => 'Rabattrelevante Angaben',
                     'label_options' => ['always_wrap' => true],
-                    'label_attributes' => ['class' => 'headline-calculator'],
+                    'label_attributes' => ['class' => 'card-title'],
+                    'col_attributes' => ['class' => 'col-12 my-2'],
+                    'as-card' => true,
                 ],
                 'elements' => [
                     'laufzeit' => [
@@ -466,7 +553,7 @@ return [
                             'name' => 'laufzeit',
                             'options' => [
                                 'label' => 'Laufzeit',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
+
                                 'value_options' => [
                                     '1' => '1 Jahr',
                                     '3' => '3 Jahre',
@@ -484,7 +571,7 @@ return [
                             'options' => [
                                 'label' => 'Bestand in den letzten 5 Jahren eine Vorversicherung?',
                                 'help_content' => '<strong>Bestand in den letzten 5 Jahren eine Vorversicherung?</strong><p>Bei einigen Versicherungen gibt es bis zu 30% Rabatt, wenn Sie einen Vertrag hatten, der schadenfrei lief.</p>',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
+
                                 'value_options' => [
                                     '' => '-- Bitte wählen --',
                                     'nein' => 'nein',
@@ -501,7 +588,7 @@ return [
                             'options' => [
                                 'label' => 'Schäden in den letzten 5 Jahren',
                                 'help_content' => '<strong>Schäden in den letzten 5 Jahren</strong><p>Teilen Sie mit, ob und wieviele Schäden Sie innerhalb der letzten 5 Jahre verursacht haben. Waren Sie in dieser Zeit schadensfrei, erhalten Sie bei einigen Versicherern einen Beitragsnachlass.</p>',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
+
                                 'value_options' => [
                                     '' => '-- Bitte wählen --',
                                     '0' => '0',
@@ -520,19 +607,23 @@ return [
                             'name' => 'kombirabatte',
                             'options' => [
                                 'label' => 'Kombirabatte mit berechnen?',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
-                                'value_options' => [
-                                    'nein' => 'nein',
-                                    'ja' => 'ja',
-                                ],
                                 'help_content' => '<strong>Kombirabatte mit berechnen?</strong><p>Welche Verträge haben Sie schon oder haben vor, sie zu versichern? Je mehr Verträge Sie bei einer Gesellschaft haben, umso günstiger wird der Preis.</p>',
+                                'value_options' => [
+                                    [
+                                        'label' => 'nein',
+                                        'value' => 'nein',
+                                        'attributes' => ['id' => 'kr_n'],
+                                    ],
+                                    [
+                                        'label' => 'ja',
+                                        'value' => 'ja',
+                                        'attributes' => ['id' => 'kr_j'],
+                                    ],
+                                ],
+
+                                'col_attributes' => ['data-toogle' => '1'],
                             ],
-                            'attributes' => [
-                                'id' => 'kombirabatte',
-                                'class' => 'toggle-trigger',
-                                'data-toggle-modus' => 'show',
-                                'data-toggle-value' => 'ja',
-                            ],
+                            'attributes' => ['id' => 'kombirabatte'],
                         ],
                     ],
                 ],
@@ -546,9 +637,15 @@ return [
                 'options' => [
                     'label' => 'Kombirabatte für folgende Sparten-Kombinationen berücksichtigen',
                     'label_options' => ['always_wrap' => true],
-                    'label_attributes' => ['class' => 'headline-calculator'],
+                    'label_attributes' => ['class' => 'card-title'],
+                    'col_attributes' => [
+                        'class' => 'col-12 my-2',
+                        'data-show' => 'ja',
+                        'data-optional' => '1',
+                    ],
+                    'as-card' => true,
                 ],
-                'attributes' => ['class' => 'collapse toggle-box-kombirabatte discount'],
+                // 'attributes' => ['class' => 'collapse toggle-box-kombirabatte discount'],
                 'elements' => [
                     [
                         'spec' => [
@@ -731,9 +828,15 @@ return [
                 'options' => [
                     'label' => 'Optionale Detailfragen',
                     'label_options' => ['always_wrap' => true],
-                    'label_attributes' => ['class' => 'headline-calculator'],
+                    'label_attributes' => ['class' => 'card-title'],
+                    'col_attributes' => [
+                        'class' => 'col-12 my-2',
+                        'data-show' => 'ja',
+                        'data-detail' => '1',
+                    ],
+                    'as-card' => true,
                 ],
-                'attributes' => ['class' => 'collapse collapse-questions'],
+                // 'attributes' => ['class' => 'collapse collapse-questions'],
                 'elements' => [
                     [
                         'spec' => [
@@ -772,7 +875,7 @@ return [
                             'name' => 'vs_v',
                             'options' => [
                                 'label' => 'Mindest-Versicherungssumme Personen/Sachschäden',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
+
                                 'value_options' => [
                                     'o3000000' => [
                                         'value' => '3000000',
@@ -798,7 +901,7 @@ return [
                             'name' => 'vsm_v',
                             'options' => [
                                 'label' => 'Mindest-Versicherungssumme für Mietsachschäden',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
+
                                 'value_options' => [
                                     '300000' => 'mind. 300.000 EUR (AK Empfehlung)',
                                     '500000' => 'mind. 500.000 EUR',
@@ -817,7 +920,7 @@ return [
                             'name' => 'vsv_v',
                             'options' => [
                                 'label' => 'Mindest-Versicherungssumme für Vermögensschäden',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
+
                                 'value_options' => [
                                     '50000' => 'mind. 50.000 EUR (AK Empfehlung)',
                                     '100000' => 'mind. 100.000 EUR',
@@ -835,7 +938,7 @@ return [
                             'name' => 'best_v',
                             'options' => [
                                 'label' => 'Best-Leistungsgarantie',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
+
                                 'value_options' => [
                                     'nein' => 'nein',
                                     'ja' => 'ja',
@@ -851,7 +954,7 @@ return [
                             'name' => 'sgwe_v',
                             'options' => [
                                 'label' => 'Selbstgenutztes Wohneigentum',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
+
                                 'value_options' => [
                                     '0 kein Wohneigentum' => 'kein Wohneigentum',
                                     '1 Wohnung' => 'Wohnung',
@@ -871,7 +974,7 @@ return [
                             'name' => 'ew_v',
                             'options' => [
                                 'label' => 'Eigentumswohnungen in Deutschland, vermietet',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
+
                                 'value_options' => [
                                     'nein' => 'nein',
                                     'ja' => 'ja',
@@ -887,7 +990,7 @@ return [
                             'name' => 'unbgru_v',
                             'options' => [
                                 'label' => 'Unbebautes Grundstück',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
+
                                 'value_options' => [
                                     'nein' => 'nein',
                                     'ja' => 'ja',
@@ -903,7 +1006,7 @@ return [
                             'name' => 'einlw_v',
                             'options' => [
                                 'label' => 'Einliegerwohnung vermietet im selbstbewohnten Haus',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
+
                                 'value_options' => [
                                     'nein' => 'nein',
                                     'ja' => 'ja',
@@ -919,7 +1022,7 @@ return [
                             'name' => 'fewoi_v',
                             'options' => [
                                 'label' => 'Ferienhaus-/Wohnung im Inland selbstgenutzt',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
+
                                 'value_options' => [
                                     'nein' => 'nein',
                                     'ja' => 'ja',
@@ -935,7 +1038,7 @@ return [
                             'name' => 'fewoa_v',
                             'options' => [
                                 'label' => 'Wohnung / Ferienwohnung / Ferienhaus im europ. Ausland ohne Vermietung',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
+
                                 'value_options' => [
                                     'nein' => 'nein',
                                     'ja' => 'ja',
@@ -951,7 +1054,7 @@ return [
                             'name' => 'fach_v',
                             'options' => [
                                 'label' => 'Fachpraktischer Unterricht (Laborarbeiten)',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
+
                                 'value_options' => [
                                     'nein' => 'nein',
                                     'ja' => 'ja (AK Empfehlung)',
@@ -967,7 +1070,7 @@ return [
                             'name' => 'tier_v',
                             'options' => [
                                 'label' => 'Hüten eines fremden Hundes/Pferdes',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
+
                                 'value_options' => [
                                     'nein' => 'nein',
                                     'ja' => 'ja (AK Empfehlung)',
@@ -983,7 +1086,7 @@ return [
                             'name' => 'oel_v',
                             'options' => [
                                 'label' => 'Einschluss Öltankhaftpflicht',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
+
                                 'value_options' => [
                                     'kein Tank vorhanden' => 'kein Tank vorhanden',
                                     '3000' => 'bis 3.000 Liter',
@@ -1009,7 +1112,7 @@ return [
                             'name' => 'oelwo_v',
                             'options' => [
                                 'label' => 'Wo befindet sich der Öltank?',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
+
                                 'value_options' => [
                                     'oberirdisch' => 'oberirdisch',
                                     'unterirdisch' => 'unterirdisch',
@@ -1025,7 +1128,7 @@ return [
                             'name' => 'allm_v',
                             'options' => [
                                 'label' => 'Allmählichkeitsschäden',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
+
                                 'value_options' => [
                                     'nein' => 'nein',
                                     'ja' => 'mind. 3 Mio (AK Empfehlung)',
@@ -1041,7 +1144,7 @@ return [
                             'name' => 'gewsa_v',
                             'options' => [
                                 'label' => 'Gewässerschaden-Risiko, z.B. Farben',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
+
                                 'value_options' => [
                                     'nein' => 'nein',
                                     'ja' => 'ja (AK Empfehlung)',
@@ -1057,7 +1160,7 @@ return [
                             'name' => 'abwa_v',
                             'options' => [
                                 'label' => 'Schäden durch häusliche Abwässer',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
+
                                 'value_options' => [
                                     'nein' => 'nein',
                                     'ja' => 'mind. 3 Mio (AK Empfehlung)',
@@ -1073,7 +1176,7 @@ return [
                             'name' => 'inet_v',
                             'options' => [
                                 'label' => 'Schäden durch elektronischen Datenaustausch/Internetnutzung',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
+
                                 'value_options' => [
                                     'nein' => 'nein',
                                     'ja' => 'ja (AK Empfehlung)',
@@ -1089,7 +1192,7 @@ return [
                             'name' => 'gef_v',
                             'options' => [
                                 'label' => 'Gefälligkeitsschäden',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
+
                                 'value_options' => [
                                     'nein' => 'nein',
                                     'ja' => 'ja',
@@ -1105,7 +1208,7 @@ return [
                             'name' => 'geli_v',
                             'options' => [
                                 'label' => 'Gemietete oder geliehene Sachen',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
+
                                 'value_options' => [
                                     'nein' => 'nein',
                                     'ja' => 'ja',
@@ -1121,7 +1224,7 @@ return [
                             'name' => 'sv_v',
                             'options' => [
                                 'label' => 'Schlüsselverlust, fremder privater Schlüssel (Mietwohnung)',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
+
                                 'value_options' => [
                                     'nein' => 'nein',
                                     'ja' => 'ja',
@@ -1137,7 +1240,7 @@ return [
                             'name' => 'sva_v',
                             'options' => [
                                 'label' => 'Schlüsselverlust für Zentrale Schließanlage (keine Eigenschäden)',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
+
                                 'value_options' => [
                                     'nein' => 'nein',
                                     'ja' => 'ja',
@@ -1153,7 +1256,7 @@ return [
                             'name' => 'svd_v',
                             'options' => [
                                 'label' => 'Schlüsselverlust von fremden Dienstschlüsseln',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
+
                                 'value_options' => [
                                     'nein' => 'nein',
                                     'ja' => 'ja',
@@ -1169,7 +1272,7 @@ return [
                             'name' => 'welt_v',
                             'options' => [
                                 'label' => 'Weltweite Deckung gewünscht (Standard ist Europa oder EU)',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
+
                                 'value_options' => [
                                     'nein' => 'nein',
                                     'ja' => 'ja',
@@ -1185,7 +1288,7 @@ return [
                             'name' => 'elt_v',
                             'options' => [
                                 'label' => 'Alleinstehendes Elternteil im Haushalt lebend',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
+
                                 'value_options' => [
                                     'nein' => 'nein',
                                     'ja' => 'ja',
@@ -1201,7 +1304,7 @@ return [
                             'name' => 'ehr_v',
                             'options' => [
                                 'label' => 'Ehrenamtliche Tätigkeit',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
+
                                 'value_options' => [
                                     'nein' => 'nein',
                                     'ja' => 'ja',
@@ -1217,7 +1320,7 @@ return [
                             'name' => 'tagmu_v',
                             'options' => [
                                 'label' => 'Tätigkeit als Tagesmutter',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
+
                                 'value_options' => [
                                     'nein' => 'nein',
                                     'ja' => 'ja',
@@ -1233,7 +1336,7 @@ return [
                             'name' => 'regr_v',
                             'options' => [
                                 'label' => 'Regressansprüche von Sozialversicherungsträgern von mitversicherten Personen',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
+
                                 'value_options' => [
                                     'nein' => 'nein',
                                     'ja' => 'ja (AK Empfehlung)',
@@ -1249,7 +1352,7 @@ return [
                             'name' => 'bau_v',
                             'options' => [
                                 'label' => 'Bauherrenhaftpflicht am Haus oder Grundstück',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
+
                                 'value_options' => [
                                     '0' => 'nein',
                                     '50000' => 'bis 50.000 EUR (AK Empfehlung)',
@@ -1268,7 +1371,7 @@ return [
                             'name' => 'surf_v',
                             'options' => [
                                 'label' => 'Eigene Surfbretter',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
+
                                 'value_options' => [
                                     'nein' => 'nein',
                                     'ja' => 'ja',
@@ -1284,7 +1387,7 @@ return [
                             'name' => 'tiere_v',
                             'options' => [
                                 'label' => 'Besitzen Sie Hunde, Pferde, Rinder, landwirtschaftliche Tiere?',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
+
                                 'value_options' => [
                                     'nein' => 'nein',
                                     'ja, evtl. extra Vertrag notwendig!' => 'ja, evtl. extra Vertrag notwendig!',
@@ -1300,7 +1403,7 @@ return [
                             'name' => 'wafa_v',
                             'options' => [
                                 'label' => 'Benutzen Sie eigene Wasserfahrzeuge?',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
+
                                 'value_options' => [
                                     'nein' => 'nein',
                                     'ja, extra Vertrag notwendig!' => 'ja, extra Vertrag notwendig!',
@@ -1316,7 +1419,7 @@ return [
                             'name' => 'flug_v',
                             'options' => [
                                 'label' => 'Besitzen Sie Modellflugzeuge, Ballone oder Drachen?',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
+
                                 'value_options' => [
                                     'nein' => 'nein',
                                     'ja, evtl. extra Vertrag notwendig!' => 'ja, evtl. extra Vertrag notwendig!',
@@ -1332,7 +1435,7 @@ return [
                             'name' => 'drohne_v',
                             'options' => [
                                 'label' => 'Besitzen Sie privat genutzte Drohnen?',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
+
                                 'value_options' => [
                                     'nein' => 'nein',
                                     'ja' => 'ja',
@@ -1348,7 +1451,7 @@ return [
                             'name' => 'jagd_v',
                             'options' => [
                                 'label' => 'Gehen Sie auf die Jagd?',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
+
                                 'value_options' => [
                                     'nein' => 'nein',
                                     'ja, evtl. extra Vertrag notwendig!' => 'ja, evtl. extra Vertrag notwendig!',
@@ -1364,7 +1467,7 @@ return [
                             'name' => 'foto_v',
                             'options' => [
                                 'label' => 'Betreiben Sie eine Photovoltaikanlage?',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
+
                                 'value_options' => [
                                     'nein' => 'nein',
                                     'ja, evtl. extra Vertrag notwendig!' => 'ja, evtl. extra Vertrag notwendig!',
@@ -1380,7 +1483,7 @@ return [
                             'name' => 'rsausfall',
                             'options' => [
                                 'label' => 'Rechtsschutz zur Ausfalldeckung',
-                                'label_attributes' => ['class' => 'col-sm text-sm-right'],
+
                                 'value_options' => [
                                     'nein' => 'nein',
                                     'ja' => 'ja',
@@ -1406,28 +1509,15 @@ return [
                         'nein' => [
                             'value' => 'nein',
                             'label' => 'Ich verzichte auf die Beantwortung weiterer Fragen und wähle aus dem Vergleich einen Tarif, der meinen Bedarf erfüllt.',
-                            'attributes' => [
-                                'id' => 'zusatzfragen_nein',
-                                'class' => 'form-check-input form-radio-input js-gtm-event',
-                                'data-event-type' => 'click',
-                                'data-event-category' => 'versicherung',
-                                'data-event-action' => 'no additional questions',
-                                'data-event-label' => 'phv',
-                            ],
+                            'attributes' => ['id' => 'zusatzfragen_nein'],
                         ],
                         'ja' => [
                             'value' => 'ja',
                             'label' => 'Ich möchte weitere Angaben zum gewünschten Versicherungsschutz machen. Es werden dann nur Tarife angezeigt, welche die Vorgaben erfüllen.',
-                            'attributes' => [
-                                'id' => 'zusatzfragen_ja',
-                                'class' => 'form-check-input form-radio-input js-gtm-event',
-                                'data-event-type' => 'click',
-                                'data-event-category' => 'versicherung',
-                                'data-event-action' => 'additional questions requested',
-                                'data-event-label' => 'phv',
-                            ],
+                            'attributes' => ['id' => 'zusatzfragen_ja'],
                         ],
                     ],
+                    'col_attributes' => ['class' => 'col-12', 'data-toogle' => '1'],
                 ],
                 'attributes' => ['id' => 'zusatzfragen'],
             ],
@@ -1441,6 +1531,7 @@ return [
                     'use_hidden_element' => true,
                     'checked_value' => '1',
                     'unchecked_value' => '0',
+                    'col_attributes' => ['class' => 'col-12 my-2'],
                 ],
                 'attributes' => ['id' => 'mrmoErstinfo'],
             ],

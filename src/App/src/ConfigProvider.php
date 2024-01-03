@@ -54,7 +54,6 @@ final class ConfigProvider
             'factories' => [
                 Handler\HomePageHandler::class => Handler\HomePageHandlerFactory::class,
                 Handler\InfoPageHandler::class => Handler\InfoPageHandlerFactory::class,
-                Config\ServiceConfigInterface::class => Config\ServiceConfigFactory::class,
                 Factory::class => InvokableFactory::class,
             ],
         ];
