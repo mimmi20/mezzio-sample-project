@@ -38,7 +38,7 @@ return [
     ],
     'attributes' => [
         'method' => 'post',
-        'class' => 'g-0',
+        'class' => 'g-0 was-validated',
         'accept-charset' => 'utf-8',
         'novalidate' => 'novalidate',
         'data-needs-validation' => true,
@@ -115,6 +115,7 @@ return [
                                 'pattern' => '^\d{5}$',
                                 'minlength' => '5',
                                 'maxlength' => '5',
+                                'placeholder' => ' ',
                             ],
                         ],
                     ],
@@ -164,11 +165,9 @@ return [
                             'name' => 'gebdatum',
                             'options' => [
                                 'label' => 'Geburtsdatum',
-                                'col_attributes' => ['class' => 'date datepicker-group js-datepicker-group'],
                             ],
                             'attributes' => [
                                 'id' => 'gebdatum',
-                                'class' => 'datepicker js-datepicker',
                                 'placeholder' => 'TT.MM.JJJJ',
 
                                 'autocomplete' => 'off',

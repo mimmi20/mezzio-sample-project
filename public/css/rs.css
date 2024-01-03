@@ -1,13 +1,5 @@
-/*[data-show], [data-show].row, [data-show].card {
+[data-show], [data-show].row, [data-show].card {
     display: none;
-}
-
-[data-toogle]:has([value="datum"]:checked) ~ [data-show="datum"] {
-    display: block;
-}
-
-[data-toogle]:has([value="manuell"]:checked) ~ [data-show="manuell"] {
-    display: block;
 }
 
 form:has(#kr_j:checked) [data-optional][data-show="ja"] {
@@ -16,7 +8,28 @@ form:has(#kr_j:checked) [data-optional][data-show="ja"] {
 
 form:has(#zusatzfragen_ja:checked) [data-detail][data-show="ja"] {
     display: block;
-}*/
+}
+
+.invalid-feedback, .invalid-min-max-feedback, .invalid-min-feedback, .invalid-max-feedback {
+    display: none;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: .875em;
+    color: var(--bs-form-invalid-color);
+}
+
+.form-container :invalid~.invalid-feedback,
+.was-edited:invalid~.invalid-feedback,
+.form-container [min][max]:out-of-range~.invalid-min-max-feedback:not(:is(.age-63, .age-65, .age-67)),
+.was-edited[min][max]:out-of-range~.invalid-min-max-feedback:not(:is(.age-63, .age-65, .age-67)),
+.form-container [min]:not([max]):out-of-range~.invalid-min-feedback,
+.was-edited[min]:not([max]):out-of-range~.invalid-min-feedback,
+.form-container [max]:not([mmin]):out-of-range~.invalid-max-feedback,
+.was-edited[max]:not([min]):out-of-range~.invalid-max-feedback,
+.form-container:has(.form-control:user-invalid, .form-select:user-invalid) .alert-warning,
+.card-body:has(.form-control:user-invalid, .form-select:user-invalid) .alert-warning {
+    display: block;
+}
 
 .alert-danger {
     display: none;
