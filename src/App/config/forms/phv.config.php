@@ -12,6 +12,8 @@ declare(strict_types = 1);
 
 namespace Calculator;
 
+use DateInterval;
+use DateTimeImmutable;
 use Laminas\Form\Element\Button;
 use Laminas\Form\Element\Checkbox;
 use Laminas\Form\Element\Date;
@@ -461,13 +463,14 @@ return [
                                 'placeholder' => 'TT.MM.JJJJ',
 
                                 'autocomplete' => 'off',
-                                'max' => (new \DateTimeImmutable())->sub(
-                                    new \DateInterval('P18Y'),
+                                'max' => (new DateTimeImmutable())->sub(
+                                    new DateInterval('P18Y'),
                                 )->format('Y-m-d'),
                             ],
                         ],
                     ],
-                    ['flags' => ['priority' => 8],
+                    [
+                        'flags' => ['priority' => 8],
                         'spec' => [
                             'type' => Select::class,
                             'name' => 'ausfall',
@@ -620,9 +623,7 @@ return [
 
                                 'col_attributes' => ['data-toogle' => '1'],
                             ],
-                            'attributes' => [
-                                'id' => 'kombirabatte',
-                            ],
+                            'attributes' => ['id' => 'kombirabatte'],
                         ],
                     ],
                 ],

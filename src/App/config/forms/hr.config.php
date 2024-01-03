@@ -163,9 +163,7 @@ return [
                         'spec' => [
                             'type' => Date::class,
                             'name' => 'gebdatum',
-                            'options' => [
-                                'label' => 'Geburtsdatum',
-                            ],
+                            'options' => ['label' => 'Geburtsdatum'],
                             'attributes' => [
                                 'id' => 'gebdatum',
                                 'placeholder' => 'TT.MM.JJJJ',

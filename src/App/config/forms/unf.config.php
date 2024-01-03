@@ -67,11 +67,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'plz',
-                'options' => [
-                    'label' => 'PLZ des Antragsstellers',
-
-
-                ],
+                'options' => ['label' => 'PLZ des Antragsstellers'],
                 'attributes' => [
                     'id' => 'plz',
                     'class' => ' js-special-zip-message',
@@ -106,11 +102,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'versbeginn_datum',
-                'options' => [
-                    'label' => 'Beginn am',
-
-
-                ],
+                'options' => ['label' => 'Beginn am'],
                 'attributes' => [
                     'id' => 'versbeginn_datum',
                     'class' => ' datepicker js-datepicker',
@@ -171,9 +163,7 @@ return [
 
                     'col_attributes' => ['data-toogle' => '1'],
                 ],
-                'attributes' => [
-                    'id' => 'kombirabatte',
-                ],
+                'attributes' => ['id' => 'kombirabatte'],
             ],
         ],
         [
@@ -350,10 +340,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'name1',
-                'options' => [
-                    'label' => 'Vorname',
-
-                ],
+                'options' => ['label' => 'Vorname'],
                 'attributes' => [
                     'id' => 'name1',
                     'data-pers' => 1,
@@ -365,10 +352,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'name2',
-                'options' => [
-                    'label' => 'Vorname',
-
-                ],
+                'options' => ['label' => 'Vorname'],
                 'attributes' => [
                     'id' => 'name2',
                     'data-pers' => 2,
@@ -380,10 +364,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'name3',
-                'options' => [
-                    'label' => 'Vorname',
-
-                ],
+                'options' => ['label' => 'Vorname'],
                 'attributes' => [
                     'id' => 'name3',
                     'data-pers' => 3,
@@ -395,10 +376,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'name4',
-                'options' => [
-                    'label' => 'Vorname',
-
-                ],
+                'options' => ['label' => 'Vorname'],
                 'attributes' => [
                     'id' => 'name4',
                     'data-pers' => 4,
@@ -410,10 +388,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'name5',
-                'options' => [
-                    'label' => 'Vorname',
-
-                ],
+                'options' => ['label' => 'Vorname'],
                 'attributes' => [
                     'id' => 'name5',
                     'data-pers' => 5,
@@ -425,10 +400,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'name6',
-                'options' => [
-                    'label' => 'Vorname',
-
-                ],
+                'options' => ['label' => 'Vorname'],
                 'attributes' => [
                     'id' => 'name6',
                     'data-pers' => 6,
@@ -440,10 +412,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'name7',
-                'options' => [
-                    'label' => 'Vorname',
-
-                ],
+                'options' => ['label' => 'Vorname'],
                 'attributes' => [
                     'id' => 'name7',
                     'data-pers' => 7,
@@ -455,10 +424,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'name8',
-                'options' => [
-                    'label' => 'Vorname',
-
-                ],
+                'options' => ['label' => 'Vorname'],
                 'attributes' => [
                     'id' => 'name8',
                     'data-pers' => 8,
@@ -470,9 +436,7 @@ return [
             'spec' => [
                 'type' => Date::class,
                 'name' => 'gebdatum1',
-                'options' => [
-                    'label' => 'Geburtsdatum',
-                ],
+                'options' => ['label' => 'Geburtsdatum'],
                 'attributes' => [
                     'id' => 'gebdatum1',
                     'data-pers' => 1,
@@ -486,9 +450,7 @@ return [
             'spec' => [
                 'type' => Date::class,
                 'name' => 'gebdatum2',
-                'options' => [
-                    'label' => 'Geburtsdatum',
-                ],
+                'options' => ['label' => 'Geburtsdatum'],
                 'attributes' => [
                     'id' => 'gebdatum2',
                     'data-pers' => 2,
@@ -502,9 +464,7 @@ return [
             'spec' => [
                 'type' => Date::class,
                 'name' => 'gebdatum3',
-                'options' => [
-                    'label' => 'Geburtsdatum',
-                ],
+                'options' => ['label' => 'Geburtsdatum'],
                 'attributes' => [
                     'id' => 'gebdatum3',
                     'data-pers' => 3,
@@ -518,9 +478,7 @@ return [
             'spec' => [
                 'type' => Date::class,
                 'name' => 'gebdatum4',
-                'options' => [
-                    'label' => 'Geburtsdatum',
-                ],
+                'options' => ['label' => 'Geburtsdatum'],
                 'attributes' => [
                     'id' => 'gebdatum4',
                     'data-pers' => 4,
@@ -534,9 +492,7 @@ return [
             'spec' => [
                 'type' => Date::class,
                 'name' => 'gebdatum5',
-                'options' => [
-                    'label' => 'Geburtsdatum',
-                ],
+                'options' => ['label' => 'Geburtsdatum'],
                 'attributes' => [
                     'id' => 'gebdatum5',
                     'data-pers' => 5,
@@ -550,9 +506,7 @@ return [
             'spec' => [
                 'type' => Date::class,
                 'name' => 'gebdatum6',
-                'options' => [
-                    'label' => 'Geburtsdatum',
-                ],
+                'options' => ['label' => 'Geburtsdatum'],
                 'attributes' => [
                     'id' => 'gebdatum6',
                     'data-pers' => 6,
@@ -566,9 +520,7 @@ return [
             'spec' => [
                 'type' => Date::class,
                 'name' => 'gebdatum7',
-                'options' => [
-                    'label' => 'Geburtsdatum',
-                ],
+                'options' => ['label' => 'Geburtsdatum'],
                 'attributes' => [
                     'id' => 'gebdatum7',
                     'data-pers' => 7,
@@ -582,9 +534,7 @@ return [
             'spec' => [
                 'type' => Date::class,
                 'name' => 'gebdatum8',
-                'options' => [
-                    'label' => 'Geburtsdatum',
-                ],
+                'options' => ['label' => 'Geburtsdatum'],
                 'attributes' => [
                     'id' => 'gebdatum8',
                     'data-pers' => 8,
@@ -742,11 +692,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'beruf_master1',
-                'options' => [
-                    'label' => 'Beruf',
-
-
-                ],
+                'options' => ['label' => 'Beruf'],
                 'attributes' => [
                     'id' => 'beruf_master1',
                     'data-pers' => 1,
@@ -758,11 +704,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'beruf_master2',
-                'options' => [
-                    'label' => 'Beruf',
-
-
-                ],
+                'options' => ['label' => 'Beruf'],
                 'attributes' => [
                     'id' => 'beruf_master2',
                     'data-pers' => 2,
@@ -774,11 +716,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'beruf_master3',
-                'options' => [
-                    'label' => 'Beruf',
-
-
-                ],
+                'options' => ['label' => 'Beruf'],
                 'attributes' => [
                     'id' => 'beruf_master3',
                     'data-pers' => 3,
@@ -790,11 +728,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'beruf_master4',
-                'options' => [
-                    'label' => 'Beruf',
-
-
-                ],
+                'options' => ['label' => 'Beruf'],
                 'attributes' => [
                     'id' => 'beruf_master4',
                     'data-pers' => 4,
@@ -806,11 +740,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'beruf_master5',
-                'options' => [
-                    'label' => 'Beruf',
-
-
-                ],
+                'options' => ['label' => 'Beruf'],
                 'attributes' => [
                     'id' => 'beruf_master5',
                     'data-pers' => 5,
@@ -822,11 +752,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'beruf_master6',
-                'options' => [
-                    'label' => 'Beruf',
-
-
-                ],
+                'options' => ['label' => 'Beruf'],
                 'attributes' => [
                     'id' => 'beruf_master6',
                     'data-pers' => 6,
@@ -838,11 +764,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'beruf_master7',
-                'options' => [
-                    'label' => 'Beruf',
-
-
-                ],
+                'options' => ['label' => 'Beruf'],
                 'attributes' => [
                     'id' => 'beruf_master7',
                     'data-pers' => 7,
@@ -854,11 +776,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'beruf_master8',
-                'options' => [
-                    'label' => 'Beruf',
-
-
-                ],
+                'options' => ['label' => 'Beruf'],
                 'attributes' => [
                     'id' => 'beruf_master8',
                     'data-pers' => 8,
@@ -982,11 +900,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'grund1',
-                'options' => [
-                    'label' => 'Grundinvalidität',
-
-
-                ],
+                'options' => ['label' => 'Grundinvalidität'],
                 'attributes' => [
                     'id' => 'grund1',
                     'data-pers' => 1,
@@ -1000,11 +914,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'grund2',
-                'options' => [
-                    'label' => 'Grundinvalidität',
-
-
-                ],
+                'options' => ['label' => 'Grundinvalidität'],
                 'attributes' => [
                     'id' => 'grund2',
                     'data-pers' => 2,
@@ -1018,11 +928,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'grund3',
-                'options' => [
-                    'label' => 'Grundinvalidität',
-
-
-                ],
+                'options' => ['label' => 'Grundinvalidität'],
                 'attributes' => [
                     'id' => 'grund3',
                     'data-pers' => 3,
@@ -1036,11 +942,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'grund4',
-                'options' => [
-                    'label' => 'Grundinvalidität',
-
-
-                ],
+                'options' => ['label' => 'Grundinvalidität'],
                 'attributes' => [
                     'id' => 'grund4',
                     'data-pers' => 4,
@@ -1054,11 +956,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'grund5',
-                'options' => [
-                    'label' => 'Grundinvalidität',
-
-
-                ],
+                'options' => ['label' => 'Grundinvalidität'],
                 'attributes' => [
                     'id' => 'grund5',
                     'data-pers' => 5,
@@ -1072,11 +970,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'grund6',
-                'options' => [
-                    'label' => 'Grundinvalidität',
-
-
-                ],
+                'options' => ['label' => 'Grundinvalidität'],
                 'attributes' => [
                     'id' => 'grund6',
                     'data-pers' => 6,
@@ -1090,11 +984,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'grund7',
-                'options' => [
-                    'label' => 'Grundinvalidität',
-
-
-                ],
+                'options' => ['label' => 'Grundinvalidität'],
                 'attributes' => [
                     'id' => 'grund7',
                     'data-pers' => 7,
@@ -1108,11 +998,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'grund8',
-                'options' => [
-                    'label' => 'Grundinvalidität',
-
-
-                ],
+                'options' => ['label' => 'Grundinvalidität'],
                 'attributes' => [
                     'id' => 'grund8',
                     'data-pers' => 8,
@@ -1310,10 +1196,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'voll1',
-                'options' => [
-                    'label' => 'Vollinvalidität',
-
-                ],
+                'options' => ['label' => 'Vollinvalidität'],
                 'attributes' => [
                     'id' => 'voll1',
                     'data-pers' => 1,
@@ -1325,10 +1208,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'voll2',
-                'options' => [
-                    'label' => 'Vollinvalidität',
-
-                ],
+                'options' => ['label' => 'Vollinvalidität'],
                 'attributes' => [
                     'id' => 'voll2',
                     'data-pers' => 2,
@@ -1340,10 +1220,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'voll3',
-                'options' => [
-                    'label' => 'Vollinvalidität',
-
-                ],
+                'options' => ['label' => 'Vollinvalidität'],
                 'attributes' => [
                     'id' => 'voll3',
                     'data-pers' => 3,
@@ -1355,10 +1232,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'voll4',
-                'options' => [
-                    'label' => 'Vollinvalidität',
-
-                ],
+                'options' => ['label' => 'Vollinvalidität'],
                 'attributes' => [
                     'id' => 'voll4',
                     'data-pers' => 4,
@@ -1370,10 +1244,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'voll5',
-                'options' => [
-                    'label' => 'Vollinvalidität',
-
-                ],
+                'options' => ['label' => 'Vollinvalidität'],
                 'attributes' => [
                     'id' => 'voll5',
                     'data-pers' => 5,
@@ -1385,10 +1256,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'voll6',
-                'options' => [
-                    'label' => 'Vollinvalidität',
-
-                ],
+                'options' => ['label' => 'Vollinvalidität'],
                 'attributes' => [
                     'id' => 'voll6',
                     'data-pers' => 6,
@@ -1400,10 +1268,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'voll7',
-                'options' => [
-                    'label' => 'Vollinvalidität',
-
-                ],
+                'options' => ['label' => 'Vollinvalidität'],
                 'attributes' => [
                     'id' => 'voll7',
                     'data-pers' => 7,
@@ -1415,10 +1280,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'voll8',
-                'options' => [
-                    'label' => 'Vollinvalidität',
-
-                ],
+                'options' => ['label' => 'Vollinvalidität'],
                 'attributes' => [
                     'id' => 'voll8',
                     'data-pers' => 8,
@@ -1430,10 +1292,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'tod1',
-                'options' => [
-                    'label' => 'Todesfall',
-
-                ],
+                'options' => ['label' => 'Todesfall'],
                 'attributes' => [
                     'id' => 'tod1',
                     'data-pers' => 1,
@@ -1445,10 +1304,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'tod2',
-                'options' => [
-                    'label' => 'Todesfall',
-
-                ],
+                'options' => ['label' => 'Todesfall'],
                 'attributes' => [
                     'id' => 'tod2',
                     'data-pers' => 2,
@@ -1460,10 +1316,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'tod3',
-                'options' => [
-                    'label' => 'Todesfall',
-
-                ],
+                'options' => ['label' => 'Todesfall'],
                 'attributes' => [
                     'id' => 'tod3',
                     'data-pers' => 3,
@@ -1475,10 +1328,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'tod4',
-                'options' => [
-                    'label' => 'Todesfall',
-
-                ],
+                'options' => ['label' => 'Todesfall'],
                 'attributes' => [
                     'id' => 'tod4',
                     'data-pers' => 4,
@@ -1490,10 +1340,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'tod5',
-                'options' => [
-                    'label' => 'Todesfall',
-
-                ],
+                'options' => ['label' => 'Todesfall'],
                 'attributes' => [
                     'id' => 'tod5',
                     'data-pers' => 5,
@@ -1505,10 +1352,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'tod6',
-                'options' => [
-                    'label' => 'Todesfall',
-
-                ],
+                'options' => ['label' => 'Todesfall'],
                 'attributes' => [
                     'id' => 'tod6',
                     'data-pers' => 6,
@@ -1520,10 +1364,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'tod7',
-                'options' => [
-                    'label' => 'Todesfall',
-
-                ],
+                'options' => ['label' => 'Todesfall'],
                 'attributes' => [
                     'id' => 'tod7',
                     'data-pers' => 7,
@@ -1535,10 +1376,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'tod8',
-                'options' => [
-                    'label' => 'Todesfall',
-
-                ],
+                'options' => ['label' => 'Todesfall'],
                 'attributes' => [
                     'id' => 'tod8',
                     'data-pers' => 8,
@@ -1550,10 +1388,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'ueber1',
-                'options' => [
-                    'label' => 'Übergangsleistung',
-
-                ],
+                'options' => ['label' => 'Übergangsleistung'],
                 'attributes' => [
                     'id' => 'ueber1',
                     'data-pers' => 1,
@@ -1565,10 +1400,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'ueber2',
-                'options' => [
-                    'label' => 'Übergangsleistung',
-
-                ],
+                'options' => ['label' => 'Übergangsleistung'],
                 'attributes' => [
                     'id' => 'ueber2',
                     'data-pers' => 2,
@@ -1580,10 +1412,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'ueber3',
-                'options' => [
-                    'label' => 'Übergangsleistung',
-
-                ],
+                'options' => ['label' => 'Übergangsleistung'],
                 'attributes' => [
                     'id' => 'ueber3',
                     'data-pers' => 3,
@@ -1595,10 +1424,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'ueber4',
-                'options' => [
-                    'label' => 'Übergangsleistung',
-
-                ],
+                'options' => ['label' => 'Übergangsleistung'],
                 'attributes' => [
                     'id' => 'ueber4',
                     'data-pers' => 4,
@@ -1610,10 +1436,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'ueber5',
-                'options' => [
-                    'label' => 'Übergangsleistung',
-
-                ],
+                'options' => ['label' => 'Übergangsleistung'],
                 'attributes' => [
                     'id' => 'ueber5',
                     'data-pers' => 5,
@@ -1625,10 +1448,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'ueber6',
-                'options' => [
-                    'label' => 'Übergangsleistung',
-
-                ],
+                'options' => ['label' => 'Übergangsleistung'],
                 'attributes' => [
                     'id' => 'ueber6',
                     'data-pers' => 6,
@@ -1640,10 +1460,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'ueber7',
-                'options' => [
-                    'label' => 'Übergangsleistung',
-
-                ],
+                'options' => ['label' => 'Übergangsleistung'],
                 'attributes' => [
                     'id' => 'ueber7',
                     'data-pers' => 7,
@@ -1655,10 +1472,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'ueber8',
-                'options' => [
-                    'label' => 'Übergangsleistung',
-
-                ],
+                'options' => ['label' => 'Übergangsleistung'],
                 'attributes' => [
                     'id' => 'ueber8',
                     'data-pers' => 8,
@@ -1670,10 +1484,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'kh1',
-                'options' => [
-                    'label' => 'Krankenhaustage- und Genesungsgeld',
-
-                ],
+                'options' => ['label' => 'Krankenhaustage- und Genesungsgeld'],
                 'attributes' => [
                     'id' => 'kh1',
                     'data-pers' => 1,
@@ -1685,10 +1496,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'kh2',
-                'options' => [
-                    'label' => 'Krankenhaustage- und Genesungsgeld',
-
-                ],
+                'options' => ['label' => 'Krankenhaustage- und Genesungsgeld'],
                 'attributes' => [
                     'id' => 'kh2',
                     'data-pers' => 2,
@@ -1700,10 +1508,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'kh3',
-                'options' => [
-                    'label' => 'Krankenhaustage- und Genesungsgeld',
-
-                ],
+                'options' => ['label' => 'Krankenhaustage- und Genesungsgeld'],
                 'attributes' => [
                     'id' => 'kh3',
                     'data-pers' => 3,
@@ -1715,10 +1520,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'kh4',
-                'options' => [
-                    'label' => 'Krankenhaustage- und Genesungsgeld',
-
-                ],
+                'options' => ['label' => 'Krankenhaustage- und Genesungsgeld'],
                 'attributes' => [
                     'id' => 'kh4',
                     'data-pers' => 4,
@@ -1730,10 +1532,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'kh5',
-                'options' => [
-                    'label' => 'Krankenhaustage- und Genesungsgeld',
-
-                ],
+                'options' => ['label' => 'Krankenhaustage- und Genesungsgeld'],
                 'attributes' => [
                     'id' => 'kh5',
                     'data-pers' => 5,
@@ -1745,10 +1544,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'kh6',
-                'options' => [
-                    'label' => 'Krankenhaustage- und Genesungsgeld',
-
-                ],
+                'options' => ['label' => 'Krankenhaustage- und Genesungsgeld'],
                 'attributes' => [
                     'id' => 'kh6',
                     'data-pers' => 6,
@@ -1760,10 +1556,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'kh7',
-                'options' => [
-                    'label' => 'Krankenhaustage- und Genesungsgeld',
-
-                ],
+                'options' => ['label' => 'Krankenhaustage- und Genesungsgeld'],
                 'attributes' => [
                     'id' => 'kh7',
                     'data-pers' => 7,
@@ -1775,10 +1568,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'kh8',
-                'options' => [
-                    'label' => 'Krankenhaustage- und Genesungsgeld',
-
-                ],
+                'options' => ['label' => 'Krankenhaustage- und Genesungsgeld'],
                 'attributes' => [
                     'id' => 'kh8',
                     'data-pers' => 8,
@@ -1982,10 +1772,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'utgeur1',
-                'options' => [
-                    'label' => 'Höhe Unfall-Krankentagegeld',
-
-                ],
+                'options' => ['label' => 'Höhe Unfall-Krankentagegeld'],
                 'attributes' => [
                     'id' => 'utgeur1',
                     'data-pers' => 1,
@@ -1997,10 +1784,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'utgeur2',
-                'options' => [
-                    'label' => 'Höhe Unfall-Krankentagegeld',
-
-                ],
+                'options' => ['label' => 'Höhe Unfall-Krankentagegeld'],
                 'attributes' => [
                     'id' => 'utgeur2',
                     'data-pers' => 2,
@@ -2012,10 +1796,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'utgeur3',
-                'options' => [
-                    'label' => 'Höhe Unfall-Krankentagegeld',
-
-                ],
+                'options' => ['label' => 'Höhe Unfall-Krankentagegeld'],
                 'attributes' => [
                     'id' => 'utgeur3',
                     'data-pers' => 3,
@@ -2027,10 +1808,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'utgeur4',
-                'options' => [
-                    'label' => 'Höhe Unfall-Krankentagegeld',
-
-                ],
+                'options' => ['label' => 'Höhe Unfall-Krankentagegeld'],
                 'attributes' => [
                     'id' => 'utgeur4',
                     'data-pers' => 4,
@@ -2042,10 +1820,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'utgeur5',
-                'options' => [
-                    'label' => 'Höhe Unfall-Krankentagegeld',
-
-                ],
+                'options' => ['label' => 'Höhe Unfall-Krankentagegeld'],
                 'attributes' => [
                     'id' => 'utgeur5',
                     'data-pers' => 5,
@@ -2057,10 +1832,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'utgeur6',
-                'options' => [
-                    'label' => 'Höhe Unfall-Krankentagegeld',
-
-                ],
+                'options' => ['label' => 'Höhe Unfall-Krankentagegeld'],
                 'attributes' => [
                     'id' => 'utgeur6',
                     'data-pers' => 6,
@@ -2072,10 +1844,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'utgeur7',
-                'options' => [
-                    'label' => 'Höhe Unfall-Krankentagegeld',
-
-                ],
+                'options' => ['label' => 'Höhe Unfall-Krankentagegeld'],
                 'attributes' => [
                     'id' => 'utgeur7',
                     'data-pers' => 7,
@@ -2087,10 +1856,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'utgeur8',
-                'options' => [
-                    'label' => 'Höhe Unfall-Krankentagegeld',
-
-                ],
+                'options' => ['label' => 'Höhe Unfall-Krankentagegeld'],
                 'attributes' => [
                     'id' => 'utgeur8',
                     'data-pers' => 8,
@@ -2102,10 +1868,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'rente1',
-                'options' => [
-                    'label' => 'Unfall-Rente',
-
-                ],
+                'options' => ['label' => 'Unfall-Rente'],
                 'attributes' => [
                     'id' => 'rente1',
                     'data-pers' => 1,
@@ -2117,10 +1880,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'rente2',
-                'options' => [
-                    'label' => 'Unfall-Rente',
-
-                ],
+                'options' => ['label' => 'Unfall-Rente'],
                 'attributes' => [
                     'id' => 'rente2',
                     'data-pers' => 2,
@@ -2132,10 +1892,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'rente3',
-                'options' => [
-                    'label' => 'Unfall-Rente',
-
-                ],
+                'options' => ['label' => 'Unfall-Rente'],
                 'attributes' => [
                     'id' => 'rente3',
                     'data-pers' => 3,
@@ -2147,10 +1904,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'rente4',
-                'options' => [
-                    'label' => 'Unfall-Rente',
-
-                ],
+                'options' => ['label' => 'Unfall-Rente'],
                 'attributes' => [
                     'id' => 'rente4',
                     'data-pers' => 4,
@@ -2162,10 +1916,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'rente5',
-                'options' => [
-                    'label' => 'Unfall-Rente',
-
-                ],
+                'options' => ['label' => 'Unfall-Rente'],
                 'attributes' => [
                     'id' => 'rente5',
                     'data-pers' => 5,
@@ -2177,10 +1928,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'rente6',
-                'options' => [
-                    'label' => 'Unfall-Rente',
-
-                ],
+                'options' => ['label' => 'Unfall-Rente'],
                 'attributes' => [
                     'id' => 'rente6',
                     'data-pers' => 6,
@@ -2192,10 +1940,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'rente7',
-                'options' => [
-                    'label' => 'Unfall-Rente',
-
-                ],
+                'options' => ['label' => 'Unfall-Rente'],
                 'attributes' => [
                     'id' => 'rente7',
                     'data-pers' => 7,
@@ -2207,10 +1952,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'rente8',
-                'options' => [
-                    'label' => 'Unfall-Rente',
-
-                ],
+                'options' => ['label' => 'Unfall-Rente'],
                 'attributes' => [
                     'id' => 'rente8',
                     'data-pers' => 8,

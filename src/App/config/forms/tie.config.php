@@ -12,6 +12,8 @@ declare(strict_types = 1);
 
 namespace Calculator;
 
+use DateInterval;
+use DateTimeImmutable;
 use Laminas\Form\Element\Button;
 use Laminas\Form\Element\Checkbox;
 use Laminas\Form\Element\Date;
@@ -63,16 +65,14 @@ return [
             'spec' => [
                 'type' => Date::class,
                 'name' => 'gebdatum',
-                'options' => [
-                    'label' => 'Geburtsdatum',
-                ],
+                'options' => ['label' => 'Geburtsdatum'],
                 'attributes' => [
                     'id' => 'gebdatum',
                     'placeholder' => 'TT.MM.JJJJ',
 
                     'autocomplete' => 'off',
-                    'max' => (new \DateTimeImmutable())->sub(
-                        new \DateInterval('P18Y'),
+                    'max' => (new DateTimeImmutable())->sub(
+                        new DateInterval('P18Y'),
                     )->format('Y-m-d'),
                 ],
             ],
@@ -125,11 +125,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'Rasse_Tier1',
-                'options' => [
-                    'label' => 'Rasse Hund 1 eingeben',
-
-
-                ],
+                'options' => ['label' => 'Rasse Hund 1 eingeben'],
                 'attributes' => [
                     'id' => 'Rasse_Tier1',
                     'class' => ' js-pet-autocomplete',
@@ -142,11 +138,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'Rasse_Tier2',
-                'options' => [
-                    'label' => 'Rasse Hund 2 eingeben',
-
-
-                ],
+                'options' => ['label' => 'Rasse Hund 2 eingeben'],
                 'attributes' => [
                     'id' => 'Rasse_Tier2',
                     'class' => ' js-pet-autocomplete',
@@ -159,11 +151,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'Rasse_Tier3',
-                'options' => [
-                    'label' => 'Rasse Hund 3 eingeben',
-
-
-                ],
+                'options' => ['label' => 'Rasse Hund 3 eingeben'],
                 'attributes' => [
                     'id' => 'Rasse_Tier3',
                     'class' => ' js-pet-autocomplete',
@@ -176,11 +164,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'Rasse_Tier4',
-                'options' => [
-                    'label' => 'Rasse Hund 4 eingeben',
-
-
-                ],
+                'options' => ['label' => 'Rasse Hund 4 eingeben'],
                 'attributes' => [
                     'id' => 'Rasse_Tier4',
                     'class' => ' js-pet-autocomplete',
@@ -193,11 +177,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'Rasse_Tier5',
-                'options' => [
-                    'label' => 'Rasse Hund 5 eingeben',
-
-
-                ],
+                'options' => ['label' => 'Rasse Hund 5 eingeben'],
                 'attributes' => [
                     'id' => 'Rasse_Tier5',
                     'class' => ' js-pet-autocomplete',
@@ -210,11 +190,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'Rasse_Tier6',
-                'options' => [
-                    'label' => 'Rasse Hund 6 eingeben',
-
-
-                ],
+                'options' => ['label' => 'Rasse Hund 6 eingeben'],
                 'attributes' => [
                     'id' => 'Rasse_Tier6',
                     'class' => ' js-pet-autocomplete',
@@ -317,11 +293,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'Rasse_Tier1a',
-                'options' => [
-                    'label' => 'Mischlingsrasse Hund 1',
-
-
-                ],
+                'options' => ['label' => 'Mischlingsrasse Hund 1'],
                 'attributes' => [
                     'id' => 'Rasse_Tier1a',
                     'class' => ' js-pet-autocomplete',
@@ -334,11 +306,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'Rasse_Tier2a',
-                'options' => [
-                    'label' => 'Mischlingsrasse Hund 2',
-
-
-                ],
+                'options' => ['label' => 'Mischlingsrasse Hund 2'],
                 'attributes' => [
                     'id' => 'Rasse_Tier2a',
                     'class' => ' js-pet-autocomplete',
@@ -351,11 +319,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'Rasse_Tier3a',
-                'options' => [
-                    'label' => 'Mischlingsrasse Hund 3',
-
-
-                ],
+                'options' => ['label' => 'Mischlingsrasse Hund 3'],
                 'attributes' => [
                     'id' => 'Rasse_Tier3a',
                     'class' => ' js-pet-autocomplete',
@@ -368,11 +332,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'Rasse_Tier4a',
-                'options' => [
-                    'label' => 'Mischlingsrasse Hund 4',
-
-
-                ],
+                'options' => ['label' => 'Mischlingsrasse Hund 4'],
                 'attributes' => [
                     'id' => 'Rasse_Tier4a',
                     'class' => ' js-pet-autocomplete',
@@ -385,11 +345,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'Rasse_Tier5a',
-                'options' => [
-                    'label' => 'Mischlingsrasse Hund 5',
-
-
-                ],
+                'options' => ['label' => 'Mischlingsrasse Hund 5'],
                 'attributes' => [
                     'id' => 'Rasse_Tier5a',
                     'class' => ' js-pet-autocomplete',
@@ -402,11 +358,7 @@ return [
             'spec' => [
                 'type' => Text::class,
                 'name' => 'Rasse_Tier6a',
-                'options' => [
-                    'label' => 'Mischlingsrasse Hund 6',
-
-
-                ],
+                'options' => ['label' => 'Mischlingsrasse Hund 6'],
                 'attributes' => [
                     'id' => 'Rasse_Tier6a',
                     'class' => ' js-pet-autocomplete',
@@ -620,7 +572,6 @@ return [
                 'options' => [
                     'label' => 'Bestand in den letzten 5 Jahren eine Vorversicherung?',
 
-
                     'value_options' => [
                         '' => '-- Bitte wählen --',
                         'nein' => 'nein',
@@ -640,7 +591,6 @@ return [
                 'name' => 'schaeden5',
                 'options' => [
                     'label' => 'Schäden in den letzten 5 Jahren',
-
 
                     'value_options' => [
                         '' => '-- Bitte wählen --',
@@ -665,7 +615,6 @@ return [
                 'options' => [
                     'label' => 'In welchem Jahr war der 1. Schaden?',
 
-
                     'value_options' => [
                         (string) date('Y') => (string) date('Y'),
                         (string) (date('Y') - 1) => (string) (date('Y') - 1),
@@ -684,7 +633,6 @@ return [
                 'name' => 'schaden2jahr',
                 'options' => [
                     'label' => 'In welchem Jahr war der 2. Schaden?',
-
 
                     'value_options' => [
                         (string) date('Y') => (string) date('Y'),
@@ -705,7 +653,6 @@ return [
                 'options' => [
                     'label' => 'In welchem Jahr war der 3. Schaden?',
 
-
                     'value_options' => [
                         (string) date('Y') => (string) date('Y'),
                         (string) (date('Y') - 1) => (string) (date('Y') - 1),
@@ -724,7 +671,6 @@ return [
                 'name' => 'schaden4jahr',
                 'options' => [
                     'label' => 'In welchem Jahr war der 4. Schaden?',
-
 
                     'value_options' => [
                         (string) date('Y') => (string) date('Y'),
@@ -790,9 +736,7 @@ return [
 
                     'col_attributes' => ['data-toogle' => '1'],
                 ],
-                'attributes' => [
-                    'id' => 'kombirabatte',
-                ],
+                'attributes' => ['id' => 'kombirabatte'],
             ],
         ],
         [
