@@ -680,7 +680,7 @@ return [
                 'name' => 'KrRS',
                 'options' => [
                     'label' => 'Rechtsschutz',
-                    //'label_attributes' => ['class' => 'stretched-link'],
+                    // 'label_attributes' => ['class' => 'stretched-link'],
                     'help_content' => '<strong class="toast-header">Header for Help</strong><p class="toast-body">Help-Content</p>',
 
                     'use_hidden_element' => false,
