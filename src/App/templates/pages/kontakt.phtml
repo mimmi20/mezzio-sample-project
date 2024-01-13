@@ -4,17 +4,13 @@
 $form->prepare();
 ?>
 
-<div class="card m-3">
-    <div class="card-body">
-        <h1 class="card-title">Lorem ipsum dolor sit amet, consetetur sadipscing</h1>
-        <div class="card-text">
-            <strong>Lorem ipsum dolor sit amet</strong>
-            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat</p>
-        </div>
+<h1 class="card-header">Lorem ipsum dolor sit amet, consetetur sadipscing</h1>
+<div class="card-body">
+    <div class="card-text">
+        <strong>Lorem ipsum dolor sit amet</strong>
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat</p>
     </div>
-</div>
-<div class="card m-3">
-    <div class="card-body row g-0">
+    <div class="row g-0">
         <div class="col-md-6">
             <h1 class="card-title">Lorem ipsum dolor</h1>
             <div class="card-text row justify-content-start align-items-top">
@@ -25,7 +21,11 @@ $form->prepare();
             </div>
         </div>
         <div class="col-md-6">
-            <?= $this->form($form) ?>
+            <div class="card">
+                <div class="card-body">
+                    <?= $this->form($form) ?>
+                </div>
+            </div>
         </div>
     </div>
 </div>

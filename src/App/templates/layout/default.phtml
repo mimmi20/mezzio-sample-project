@@ -26,18 +26,20 @@
         <!-- Head Scripts -->
         <?= $this->partial('branding::header_scripts'); ?>
     </head>
-    <body data-bs-theme="light">
-        <div class="wrapper">
-            <main class="container mx-3 my-2" id="rl-start">
-                <?= $this->content ?>
-            </main>
-            <header class="card m-3 mb-2">
+    <body class="wrapper" data-bs-theme="light">
+        <main class="card mx-3 my-2">
+            <?= $this->content ?>
+        </main>
+        <header class="card m-3 mb-2">
+            <div class="card-body">
                 <?= $this->partial('header::default'); ?>
-            </header>
-            <footer class="card m-3 mt-2">
+            </div>
+        </header>
+        <footer class="card m-3 mt-2">
+            <div class="card-body">
                 <?= $this->partial('footer::default'); ?>
-            </footer>
-        </div>
+            </div>
+        </footer>
 
         <!-- Footer Scripts -->
         <?= $this->partial('branding::footer_scripts'); ?>

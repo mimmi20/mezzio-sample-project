@@ -29,10 +29,10 @@ return [
         'layout' => \Mimmi20\Mezzio\BootstrapForm\LaminasView\View\Helper\Form::LAYOUT_HORIZONTAL,
         'form-required-mark' => '<div class="mt-2 text-info-required"><sup>*</sup> Pflichtfeld</div>',
         'field-required-mark' => '<span class="text-info-required"><sup>*</sup></span>',
-        'row_attributes' => ['class' => 'my-2'],
+        'row_attributes' => ['class' => 'my-2 align-items-center'],
         'label_col_attributes' => ['class' => 'col-2'],
-        'col_attributes' => ['class' => 'col-8'],
-        'help_attributes' => ['class' => 'col-2 help-content'],
+        'col_attributes' => ['class' => 'col-8 field-content'],
+        'help_attributes' => ['class' => 'col-2 help-content toast'],
         'label_attributes' => ['class' => 'stretched-link'],
     ],
     'attributes' => [
@@ -50,10 +50,11 @@ return [
                 'name' => 'tarif_privat',
                 'options' => [
                     'label' => 'Privater Bereich',
+                    'label_attributes' => ['class' => 'stretched-link'],
                     'use_hidden_element' => true,
                     'checked_value' => '1',
                     'unchecked_value' => '0',
-                    'help_content' => 'Help-Content',
+                    'help_content' => '<strong class="toast-header">Header for Help</strong><p class="toast-body">Help-Content</p>',
                 ],
                 'attributes' => [
                     'id' => 'tarif_privat',
@@ -72,10 +73,11 @@ return [
                 'name' => 'tarif_beruf',
                 'options' => [
                     'label' => 'Arbeit & Beruf',
+                    'label_attributes' => ['class' => 'stretched-link'],
                     'use_hidden_element' => true,
                     'checked_value' => '1',
                     'unchecked_value' => '0',
-                    'help_content' => 'Help-Content',
+                    'help_content' => '<strong class="toast-header">Header for Help</strong><p class="toast-body">Help-Content</p>',
                 ],
                 'attributes' => [
                     'id' => 'tarif_beruf',
@@ -89,10 +91,11 @@ return [
                 'name' => 'tarif_verkehr_familie',
                 'options' => [
                     'label' => 'Verkehr Familie (für alle KFZ)',
+                    'label_attributes' => ['class' => 'stretched-link'],
                     'use_hidden_element' => true,
                     'checked_value' => '1',
                     'unchecked_value' => '0',
-                    'help_content' => 'Help-Content',
+                    'help_content' => '<strong class="toast-header">Header for Help</strong><p class="toast-body">Help-Content</p>',
                 ],
                 'attributes' => [
                     'id' => 'tarif_verkehr_familie',
@@ -106,10 +109,11 @@ return [
                 'name' => 'tarif_miete',
                 'options' => [
                     'label' => 'Eigentum & Mieter',
+                    'label_attributes' => ['class' => 'stretched-link'],
                     'use_hidden_element' => true,
                     'checked_value' => '1',
                     'unchecked_value' => '0',
-                    'help_content' => 'Help-Content',
+                    'help_content' => '<strong class="toast-header">Header for Help</strong><p class="toast-body">Help-Content</p>',
                 ],
                 'attributes' => [
                     'id' => 'tarif_miete',
@@ -126,10 +130,11 @@ return [
                 'name' => 'tarif_verkehr',
                 'options' => [
                     'label' => 'Verkehr nur für den VN',
+                    'label_attributes' => ['class' => 'stretched-link'],
                     'use_hidden_element' => true,
                     'checked_value' => '1',
                     'unchecked_value' => '0',
-                    'help_content' => 'Help-Content',
+                    'help_content' => '<strong class="toast-header">Header for Help</strong><p class="toast-body">Help-Content</p>',
                 ],
                 'attributes' => [
                     'id' => 'tarif_verkehr',
@@ -143,7 +148,7 @@ return [
                 'name' => 'vermiet',
                 'options' => [
                     'label' => 'Vermietete Wohneinheiten',
-                    'help_content' => 'Help-Content',
+                    'help_content' => '<strong class="toast-header">Header for Help</strong><p class="toast-body">Help-Content</p>',
 
                     'value_options' => [
                         'nein' => 'nein',
@@ -164,7 +169,7 @@ return [
                 'name' => 'OB1',
                 'options' => [
                     'label' => 'WE 1 Jahresbruttomiete EUR',
-                    'help_content' => 'Help-Content',
+                    'help_content' => '<strong class="toast-header">Header for Help</strong><p class="toast-body">Help-Content</p>',
                 ],
                 'attributes' => [
                     'id' => 'OB1',
@@ -181,7 +186,7 @@ return [
                 'name' => 'OB2',
                 'options' => [
                     'label' => 'WE 2 Jahresbruttomiete EUR',
-                    'help_content' => 'Help-Content',
+                    'help_content' => '<strong class="toast-header">Header for Help</strong><p class="toast-body">Help-Content</p>',
                 ],
                 'attributes' => [
                     'id' => 'OB2',
@@ -198,7 +203,7 @@ return [
                 'name' => 'OB3',
                 'options' => [
                     'label' => 'WE 3 Jahresbruttomiete EUR',
-                    'help_content' => 'Help-Content',
+                    'help_content' => '<strong class="toast-header">Header for Help</strong><p class="toast-body">Help-Content</p>',
                 ],
                 'attributes' => [
                     'id' => 'OB3',
@@ -215,7 +220,7 @@ return [
                 'name' => 'OB4',
                 'options' => [
                     'label' => 'WE 4 Jahresbruttomiete EUR',
-                    'help_content' => 'Help-Content',
+                    'help_content' => '<strong class="toast-header">Header for Help</strong><p class="toast-body">Help-Content</p>',
                 ],
                 'attributes' => [
                     'id' => 'OB4',
@@ -232,7 +237,7 @@ return [
                 'name' => 'OB5',
                 'options' => [
                     'label' => 'WE 5 Jahresbruttomiete EUR',
-                    'help_content' => 'Help-Content',
+                    'help_content' => '<strong class="toast-header">Header for Help</strong><p class="toast-body">Help-Content</p>',
                 ],
                 'attributes' => [
                     'id' => 'OB5',
@@ -249,7 +254,7 @@ return [
                 'name' => 'OB6',
                 'options' => [
                     'label' => 'WE 6 Jahresbruttomiete EUR',
-                    'help_content' => 'Help-Content',
+                    'help_content' => '<strong class="toast-header">Header for Help</strong><p class="toast-body">Help-Content</p>',
                 ],
                 'attributes' => [
                     'id' => 'OB6',
@@ -266,7 +271,7 @@ return [
                 'name' => 'cyber',
                 'options' => [
                     'label' => 'Erweiterter Internet-Schutz',
-                    'help_content' => 'Help-Content',
+                    'help_content' => '<strong class="toast-header">Header for Help</strong><p class="toast-body">Help-Content</p>',
 
                     'value_options' => [
                         'nein' => 'nein',
@@ -282,7 +287,7 @@ return [
                 'name' => 'plz',
                 'options' => [
                     'label' => 'PLZ des Antragsstellers',
-                    'help_content' => 'Help-Content',
+                    'help_content' => '<strong class="toast-header">Header for Help</strong><p class="toast-body">Help-Content</p>',
                 ],
                 'attributes' => [
                     'id' => 'plz',
@@ -297,7 +302,7 @@ return [
                 'name' => 'famstand',
                 'options' => [
                     'label' => 'Familiäre Verhältnisse',
-                    'help_content' => 'Help-Content',
+                    'help_content' => '<strong class="toast-header">Header for Help</strong><p class="toast-body">Help-Content</p>',
 
                     'value_options' => [
                         'Familie' => 'Familie',
@@ -315,7 +320,7 @@ return [
                 'name' => 'gebdatum',
                 'options' => [
                     'label' => 'Geburtsdatum des Versicherungsnehmers',
-                    'help_content' => 'Help-Content',
+                    'help_content' => '<strong class="toast-header">Header for Help</strong><p class="toast-body">Help-Content</p>',
                     'messages' => [
                         [
                             'attributes' => ['class' => 'invalid-feedback'],
@@ -348,7 +353,7 @@ return [
                 'name' => 'geburtsdatumPartner',
                 'options' => [
                     'label' => 'Geburtsdatum des Ehe- oder Lebenspartners',
-                    'help_content' => 'Help-Content',
+                    'help_content' => '<strong class="toast-header">Header for Help</strong><p class="toast-body">Help-Content</p>',
                 ],
                 'attributes' => [
                     'id' => 'geburtsdatumPartner',
@@ -368,7 +373,7 @@ return [
                 'name' => 'anag',
                 'options' => [
                     'label' => 'Aktuelle Tätigkeit',
-                    'help_content' => 'Help-Content',
+                    'help_content' => '<strong class="toast-header">Header for Help</strong><p class="toast-body">Help-Content</p>',
 
                     'value_options' => [
                         'Arbeitnehmer' => 'Arbeitnehmer',
@@ -393,7 +398,7 @@ return [
                 'name' => 'umsatzselbst',
                 'options' => [
                     'label' => 'Jahresumsatz',
-                    'help_content' => 'Help-Content',
+                    'help_content' => '<strong class="toast-header">Header for Help</strong><p class="toast-body">Help-Content</p>',
 
                     'value_options' => [
                         '10000' => '1 - 10.000 EUR',
@@ -412,7 +417,7 @@ return [
                 'name' => 'laufzeit',
                 'options' => [
                     'label' => 'Laufzeit',
-                    'help_content' => 'Help-Content',
+                    'help_content' => '<strong class="toast-header">Header for Help</strong><p class="toast-body">Help-Content</p>',
 
                     'value_options' => [
                         '1' => '1 Jahr',
@@ -428,7 +433,7 @@ return [
                 'name' => 'vorvers5',
                 'options' => [
                     'label' => 'Wie lange bestehen oder bestanden für den Antragsteller und/oder den mitversicherten Lebenspartner Vorversicherungen?',
-                    'help_content' => 'Help-Content',
+                    'help_content' => '<strong class="toast-header">Header for Help</strong><p class="toast-body">Help-Content</p>',
 
                     'value_options' => [
                         '' => '-- Bitte wählen --',
@@ -454,7 +459,7 @@ return [
                 'name' => 'wannschaden',
                 'options' => [
                     'label' => 'Wann wurde der letzte Schaden gemeldet?',
-                    'help_content' => 'Help-Content',
+                    'help_content' => '<strong class="toast-header">Header for Help</strong><p class="toast-body">Help-Content</p>',
 
                     'value_options' => [
                         '' => '-- Bitte wählen --',
@@ -479,7 +484,7 @@ return [
                 'name' => 'kombirabatte',
                 'options' => [
                     'label' => 'Kombirabatte mit berechnen?',
-                    'help_content' => '<strong>Kombirabatte mit berechnen?</strong><p>Welche Verträge haben Sie schon oder haben vor, sie zu versichern? Je mehr Verträge Sie bei einer Gesellschaft haben, umso günstiger wird der Preis.</p>',
+                    'help_content' => '<strong class="toast-header">Kombirabatte mit berechnen?</strong><p class="toast-body">Welche Verträge haben Sie schon oder haben vor, sie zu versichern? Je mehr Verträge Sie bei einer Gesellschaft haben, umso günstiger wird der Preis.</p>',
                     'value_options' => [
                         [
                             'label' => 'nein',
@@ -504,7 +509,8 @@ return [
                 'name' => 'KrPHV',
                 'options' => [
                     'label' => 'Privathaftpflicht',
-                    'help_content' => 'Help-Content',
+                    'label_attributes' => ['class' => 'stretched-link'],
+                    'help_content' => '<strong class="toast-header">Header for Help</strong><p class="toast-body">Help-Content</p>',
 
                     'use_hidden_element' => false,
                     'checked_value' => '1',
@@ -522,7 +528,8 @@ return [
                 'name' => 'KrTIE',
                 'options' => [
                     'label' => 'Tierhalterhaftpflicht',
-                    'help_content' => 'Help-Content',
+                    'label_attributes' => ['class' => 'stretched-link'],
+                    'help_content' => '<strong class="toast-header">Header for Help</strong><p class="toast-body">Help-Content</p>',
 
                     'use_hidden_element' => false,
                     'checked_value' => '1',
@@ -540,7 +547,8 @@ return [
                 'name' => 'KrHUG',
                 'options' => [
                     'label' => 'Haus-Grundbesitzer Haftpflicht',
-                    'help_content' => 'Help-Content',
+                    'label_attributes' => ['class' => 'stretched-link'],
+                    'help_content' => '<strong class="toast-header">Header for Help</strong><p class="toast-body">Help-Content</p>',
 
                     'use_hidden_element' => false,
                     'checked_value' => '1',
@@ -558,7 +566,8 @@ return [
                 'name' => 'KrOEL',
                 'options' => [
                     'label' => 'Gewässerschaden/Öltank',
-                    'help_content' => 'Help-Content',
+                    'label_attributes' => ['class' => 'stretched-link'],
+                    'help_content' => '<strong class="toast-header">Header for Help</strong><p class="toast-body">Help-Content</p>',
 
                     'use_hidden_element' => false,
                     'checked_value' => '1',
@@ -576,7 +585,8 @@ return [
                 'name' => 'KrWG',
                 'options' => [
                     'label' => 'Wohngebäude',
-                    'help_content' => 'Help-Content',
+                    'label_attributes' => ['class' => 'stretched-link'],
+                    'help_content' => '<strong class="toast-header">Header for Help</strong><p class="toast-body">Help-Content</p>',
 
                     'use_hidden_element' => false,
                     'checked_value' => '1',
@@ -594,7 +604,8 @@ return [
                 'name' => 'KrWGGLS',
                 'options' => [
                     'label' => 'Wohngebäude-Glas',
-                    'help_content' => 'Help-Content',
+                    'label_attributes' => ['class' => 'stretched-link'],
+                    'help_content' => '<strong class="toast-header">Header for Help</strong><p class="toast-body">Help-Content</p>',
 
                     'use_hidden_element' => false,
                     'checked_value' => '1',
@@ -612,7 +623,8 @@ return [
                 'name' => 'KrHR',
                 'options' => [
                     'label' => 'Hausrat',
-                    'help_content' => 'Help-Content',
+                    'label_attributes' => ['class' => 'stretched-link'],
+                    'help_content' => '<strong class="toast-header">Header for Help</strong><p class="toast-body">Help-Content</p>',
 
                     'use_hidden_element' => false,
                     'checked_value' => '1',
@@ -630,7 +642,8 @@ return [
                 'name' => 'KrHRGLS',
                 'options' => [
                     'label' => 'Hausrat-Glas',
-                    'help_content' => 'Help-Content',
+                    'label_attributes' => ['class' => 'stretched-link'],
+                    'help_content' => '<strong class="toast-header">Header for Help</strong><p class="toast-body">Help-Content</p>',
 
                     'use_hidden_element' => false,
                     'checked_value' => '1',
@@ -648,7 +661,8 @@ return [
                 'name' => 'KrUNF',
                 'options' => [
                     'label' => 'Unfall',
-                    'help_content' => 'Help-Content',
+                    'label_attributes' => ['class' => 'stretched-link'],
+                    'help_content' => '<strong class="toast-header">Header for Help</strong><p class="toast-body">Help-Content</p>',
 
                     'use_hidden_element' => false,
                     'checked_value' => '1',
@@ -666,7 +680,8 @@ return [
                 'name' => 'KrRS',
                 'options' => [
                     'label' => 'Rechtsschutz',
-                    'help_content' => 'Help-Content',
+                    //'label_attributes' => ['class' => 'stretched-link'],
+                    'help_content' => '<strong class="toast-header">Header for Help</strong><p class="toast-body">Help-Content</p>',
 
                     'use_hidden_element' => false,
                     'checked_value' => '1',
@@ -679,7 +694,6 @@ return [
             ],
         ],
         [
-            'flags' => ['priority' => 17],
             'spec' => [
                 'type' => Radio::class,
                 'name' => 'zusatzfragen',
@@ -698,7 +712,7 @@ return [
                         ],
                     ],
                     'col_attributes' => ['data-toogle' => '1'],
-                    'help_content' => 'Help-Content',
+                    'help_content' => '<strong class="toast-header">Header for Help</strong><p class="toast-body">Help-Content</p>',
                 ],
                 'attributes' => ['id' => 'zusatzfragen'],
             ],
@@ -709,7 +723,7 @@ return [
                 'name' => 'vs_v',
                 'options' => [
                     'label' => 'Deckungssumme?',
-                    'help_content' => 'Help-Content',
+                    'help_content' => '<strong class="toast-header">Header for Help</strong><p class="toast-body">Help-Content</p>',
 
                     'value_options' => [
                         'o100000' => [
@@ -740,7 +754,7 @@ return [
                 'name' => 'kaution_v',
                 'options' => [
                     'label' => 'Strafkautionen?',
-                    'help_content' => 'Help-Content',
+                    'help_content' => '<strong class="toast-header">Header for Help</strong><p class="toast-body">Help-Content</p>',
 
                     'value_options' => [
                         'o50000' => [
@@ -766,7 +780,7 @@ return [
                 'name' => 'folge_v',
                 'options' => [
                     'label' => 'Schadensregulierung nach Folgeereignistheorie',
-                    'help_content' => 'Help-Content',
+                    'help_content' => '<strong class="toast-header">Header for Help</strong><p class="toast-body">Help-Content</p>',
 
                     'value_options' => [
                         'nein' => 'nein',
@@ -782,7 +796,7 @@ return [
                 'name' => 'ehestreit_v',
                 'options' => [
                     'label' => 'Rechtsschutz in Ehesachen (nur wenn verheiratet)',
-                    'help_content' => 'Help-Content',
+                    'help_content' => '<strong class="toast-header">Header for Help</strong><p class="toast-body">Help-Content</p>',
 
                     'value_options' => [
                         'nein' => 'nein',
@@ -800,7 +814,7 @@ return [
                 'name' => 'unterhalt_v',
                 'options' => [
                     'label' => 'Rechtsschutz für Unterhalt',
-                    'help_content' => 'Help-Content',
+                    'help_content' => '<strong class="toast-header">Header for Help</strong><p class="toast-body">Help-Content</p>',
 
                     'value_options' => [
                         'nein' => 'nein',
@@ -818,7 +832,7 @@ return [
                 'name' => 'spezialstraf_v',
                 'options' => [
                     'label' => 'Einschluss Spezial-Straf-Rechtschutz',
-                    'help_content' => 'Help-Content',
+                    'help_content' => '<strong class="toast-header">Header for Help</strong><p class="toast-body">Help-Content</p>',
 
                     'value_options' => [
                         'nein' => 'nein',
@@ -834,7 +848,7 @@ return [
                 'name' => 'zahlweise',
                 'options' => [
                     'label' => 'Zahlweise',
-                    'help_content' => 'Help-Content',
+                    'help_content' => '<strong class="toast-header">Header for Help</strong><p class="toast-body">Help-Content</p>',
                     'value_options' => [
                         '1' => 'jährlich',
                         '2' => 'halbjährlich',
@@ -854,7 +868,7 @@ return [
                     'use_hidden_element' => true,
                     'checked_value' => '1',
                     'unchecked_value' => '0',
-                    'help_content' => 'Help-Content',
+                    'help_content' => '<strong class="toast-header">Header for Help</strong><p class="toast-body">Help-Content</p>',
                 ],
                 'attributes' => [
                     'id' => 'mrmoErstinfo',
