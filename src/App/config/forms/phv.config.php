@@ -28,7 +28,7 @@ use Mimmi20\Form\Links\Element\Links;
 return [
     'type' => Form::class,
     'options' => [
-        'layout' => \Mimmi20\Mezzio\BootstrapForm\LaminasView\View\Helper\Form::LAYOUT_VERTICAL,
+        'layout' => \Mimmi20\LaminasView\BootstrapForm\Form::LAYOUT_VERTICAL,
         'form-required-mark' => '<div class="mt-2 text-info-required"><sup>*</sup> Pflichtfeld</div>',
         'col_attributes' => ['class' => 'my-2'],
         'help_attributes' => ['class' => 'help-content'],

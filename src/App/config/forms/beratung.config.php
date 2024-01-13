@@ -29,7 +29,7 @@ return [
     'type' => Form::class,
     'options' => [
         'col_attributes' => ['class' => 'col-12 col-md-6'],
-        'layout' => \Mimmi20\Mezzio\BootstrapForm\LaminasView\View\Helper\Form::LAYOUT_VERTICAL,
+        'layout' => \Mimmi20\LaminasView\BootstrapForm\Form::LAYOUT_VERTICAL,
         'form-required-mark' => '<div class="mt-2 text-info-required"><sup>*</sup> Pflichtfeld</div>',
     ],
     'attributes' => [
