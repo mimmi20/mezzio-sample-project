@@ -1,6 +1,6 @@
 <?= $this->doctype() ?>
 
-<html lang="de">
+<html lang="de"<?php if ($this->doctype()->isXhtml()): ?> xmlns="http://www.w3.org/1999/xhtml"<?php if ($this->doctype()->isRdfa()): ?> xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml"<?php endif; ?><?php endif; ?>>
     <head>
         <meta charset="utf-8">
         <?= $this->headTitle('Seiten-Titel')->setSeparator(' - ')->setAutoEscape(false) ?>

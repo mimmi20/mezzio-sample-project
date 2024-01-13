@@ -18,19 +18,6 @@ form:has(#zusatzfragen_ja:checked) [data-detail][data-show="ja"] {
     color: var(--bs-form-invalid-color);
 }
 
-.form-container :invalid~.invalid-feedback,
-.was-edited:invalid~.invalid-feedback,
-.form-container [min][max]:out-of-range~.invalid-min-max-feedback:not(:is(.age-63, .age-65, .age-67)),
-.was-edited[min][max]:out-of-range~.invalid-min-max-feedback:not(:is(.age-63, .age-65, .age-67)),
-.form-container [min]:not([max]):out-of-range~.invalid-min-feedback,
-.was-edited[min]:not([max]):out-of-range~.invalid-min-feedback,
-.form-container [max]:not([mmin]):out-of-range~.invalid-max-feedback,
-.was-edited[max]:not([min]):out-of-range~.invalid-max-feedback,
-.form-container:has(.form-control:user-invalid, .form-select:user-invalid) .alert-warning,
-.card-body:has(.form-control:user-invalid, .form-select:user-invalid) .alert-warning {
-    display: block;
-}
-
 .alert-danger {
     display: none;
     --bs-alert-bg: var(--bs-danger-text-emphasis);
@@ -42,4 +29,17 @@ form:has(#zusatzfragen_ja:checked) [data-detail][data-show="ja"] {
     --bs-alert-bg: var(--bs-warning-text-emphasis);
     --bs-alert-color: #000000;
     --bs-alert-border-color: var(--bs-form-invalid-border-color);
+}
+
+.form-container :invalid~.invalid-feedback,
+.was-edited:invalid~.invalid-feedback,
+.form-container [min][max]:out-of-range~.invalid-min-max-feedback:not(:is(.age-63, .age-65, .age-67)),
+.was-edited[min][max]:out-of-range~.invalid-min-max-feedback:not(:is(.age-63, .age-65, .age-67)),
+.form-container [min]:not([max]):out-of-range~.invalid-min-feedback,
+.was-edited[min]:not([max]):out-of-range~.invalid-min-feedback,
+.form-container [max]:not([mmin]):out-of-range~.invalid-max-feedback,
+.was-edited[max]:not([min]):out-of-range~.invalid-max-feedback,
+.form-container:has(.form-control:user-invalid, .form-select:user-invalid) .alert-warning,
+.card-body:has(.form-control:user-invalid, .form-select:user-invalid) .alert-warning {
+    display: block;
 }
