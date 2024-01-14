@@ -52,9 +52,12 @@ return static function (Application $app, MiddlewareFactory $factory, ContainerI
     // - $app->pipe('/docs', $apiDocMiddleware);
     // - $app->pipe('/files', $filesMiddleware);
 
+    $app->pipe(\App\Middleware\SetLocaleMiddleware::class);
+    $app->pipe(\Mimmi20\Mezzio\Navigation\NavigationMiddleware::class);
+
     // Register the routing middleware in the middleware pipeline.
     // This middleware registers the Mezzio\Router\RouteResult request attribute.
-    $app->pipe(RouteMiddleware::class);
+    $app->pipe((new \Mezzio\Router\Middleware\RouteMiddlewareFactory(\Mezzio\Router\RouterInterface::class))($container));
 
     // The following handle routing failures for common conditions:
     // - HEAD request but no routes answer that method

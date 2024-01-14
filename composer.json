@@ -24,8 +24,10 @@
         "laminas/laminas-diactoros": "^3.3.0",
         "laminas/laminas-form": "^3.19.1",
         "laminas/laminas-i18n": "^2.26.0",
+        "laminas/laminas-i18n-resources": "^2.10.0",
         "laminas/laminas-servicemanager": "^3.22.1",
         "laminas/laminas-stdlib": "^3.18.0",
+        "laminas/laminas-validator": "dev-feature-mezzio as 2.47.0",
         "mezzio/mezzio": "^3.18.0",
         "mezzio/mezzio-helpers": "^5.16.0",
         "mezzio/mezzio-laminasrouter": "^3.9.0",
@@ -117,5 +119,11 @@
         "serve": "php -S 0.0.0.0:8080 -t public/",
         "test": "phpunit --colors=always",
         "test-coverage": "phpunit --colors=always --coverage-clover clover.xml"
-    }
+    },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/mimmi20/laminas-validator"
+        }
+    ]
 }

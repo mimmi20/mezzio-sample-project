@@ -25,6 +25,8 @@ fields.forEach((field) => {
       event.stopPropagation();
 
       field.classList.add('was-edited');
+      field.classList.remove('is-invalid');
+      field.classList.remove('is-valid');
     },
     {once: true},
   );

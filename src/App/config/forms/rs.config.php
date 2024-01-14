@@ -310,6 +310,7 @@ return [
                         'Single' => 'Single',
                         'Alleinerziehend' => 'Alleinerziehend',
                     ],
+                    'valid-class' => 'is-valid',
                 ],
                 'attributes' => ['id' => 'famstand'],
             ],

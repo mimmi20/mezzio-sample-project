@@ -15,6 +15,7 @@ namespace App\Handler;
 use Laminas\Diactoros\Exception\InvalidArgumentException;
 use Laminas\Diactoros\Response\HtmlResponse;
 use Laminas\Form\Factory;
+use Laminas\Form\Form;
 use Laminas\View\Model\ViewModel;
 use Mezzio\Template\TemplateRendererInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -53,10 +54,16 @@ final class InfoPageHandler implements RequestHandlerInterface
         } else {
             try {
                 $form = $this->factory->create(require $file);
+                assert($form instanceof Form);
             } catch (Throwable $e) {
                 $this->logger->error($e);
                 $form = null;
             }
+        }
+
+        if ($id === 'rs' && $form !== null) {
+            $form->setData(['zahlweise' => '-1', 'famstand' => 'Single']);
+            $form->isValid();
         }
 
         $layout = new ViewModel(
@@ -71,6 +78,7 @@ final class InfoPageHandler implements RequestHandlerInterface
                     'page' => $id,
                     'form' => $form,
                     'layout' => $layout,
+                    'request' => $request,
                 ],
             );
         } catch (Throwable $e) {
