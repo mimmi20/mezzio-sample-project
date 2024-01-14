@@ -12,22 +12,35 @@ declare(strict_types = 1);
 
 namespace App\Container;
 
+use Laminas\I18n\Translator\TranslatorInterface;
 use Laminas\Router\Http\TranslatorAwareTreeRouteStack;
 use Laminas\ServiceManager\Factory\FactoryInterface;
 use Mezzio\Router\LaminasRouter;
+use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
+use Psr\Container\NotFoundExceptionInterface;
+
+use function assert;
 
 final class RouterFactory implements FactoryInterface
 {
     /**
-     * @param ContainerInterface $container
      * @param string $requestedName
-     * @param array|null $options
-     * @return LaminasRouter
+     *
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     *
+     * @phpcsSuppress SlevomatCodingStandard.Functions.UnusedParameter.UnusedParameter
+     * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
      */
-    public function __invoke(ContainerInterface $container, $requestedName, array|null $options = null)
-    {
-        $translator = $container->get(\Laminas\I18n\Translator\TranslatorInterface::class);
+    public function __invoke(
+        ContainerInterface $container,
+        $requestedName,
+        array | null $options = null,
+    ): LaminasRouter {
+        $translator = $container->get(TranslatorInterface::class);
+
+        assert($translator instanceof TranslatorInterface || $translator === null);
 
         $router = new TranslatorAwareTreeRouteStack();
         $router->setTranslator($translator, 'routing');

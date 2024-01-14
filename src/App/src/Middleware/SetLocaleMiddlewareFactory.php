@@ -12,17 +12,12 @@ declare(strict_types = 1);
 
 namespace App\Middleware;
 
-use App\Handler\InfoPageHandler;
 use InvalidArgumentException;
-use Laminas\Form\Factory;
-use Mezzio\Helper\UrlHelper;
-use Mezzio\Template\TemplateRendererInterface;
-use Mimmi20\Mezzio\Navigation\NavigationMiddleware;
+use Laminas\I18n\Translator\Translator;
+use Laminas\I18n\Translator\TranslatorInterface;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Server\MiddlewareInterface;
-use Psr\Http\Server\RequestHandlerInterface;
-use Psr\Log\LoggerInterface;
 
 use function assert;
 
@@ -34,9 +29,10 @@ final class SetLocaleMiddlewareFactory
      */
     public function __invoke(ContainerInterface $container): MiddlewareInterface
     {
-        return new SetLocaleMiddleware(
-            $container->get(\Laminas\I18n\Translator\TranslatorInterface::class),
-            'de_DE'
-        );
+        $translator = $container->get(TranslatorInterface::class);
+
+        assert($translator instanceof Translator);
+
+        return new SetLocaleMiddleware($translator, 'de_DE');
     }
 }

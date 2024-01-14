@@ -14,6 +14,7 @@ namespace App\Handler;
 
 use Laminas\Diactoros\Exception\InvalidArgumentException;
 use Laminas\Diactoros\Response\HtmlResponse;
+use Laminas\Form\Exception\DomainException;
 use Laminas\Form\Factory;
 use Laminas\Form\Form;
 use Laminas\View\Model\ViewModel;
@@ -40,7 +41,11 @@ final class InfoPageHandler implements RequestHandlerInterface
         // nothing to do
     }
 
-    /** @throws InvalidArgumentException */
+    /**
+     * @throws InvalidArgumentException
+     * @throws \Laminas\Form\Exception\InvalidArgumentException
+     * @throws DomainException
+     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $id = $request->getAttribute('id');
