@@ -131,7 +131,7 @@ legend.form-label, legend.card-title {
     color: var(--bs-body-color);
 }
 .was-validated .form-control:has(:valid),
-.was-validated .card.has-validation:not(:has(.form-control, .form-select)):has(:valid),
+.was-validated .card.has-validation:not(:has(.form-control, .form-select)):not(:has(.form-control.is-invalid, .form-select.is-invalid)):has(:valid),
 .was-validated:has(> .form-check) .form-check:not(.form-check-inline):has(:valid) {
     border-color: var(--bs-form-valid-color, #198754);
     padding-right: calc(1.5em + 0.75rem);

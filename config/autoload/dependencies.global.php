@@ -10,6 +10,8 @@
 
 declare(strict_types = 1);
 
+use Laminas\Form\Factory;
+use Laminas\ServiceManager\Factory\InvokableFactory;
 use Mezzio\Application;
 use Mezzio\Container\ApplicationConfigInjectionDelegator;
 
@@ -22,16 +24,16 @@ return [
         // key is the alias name, the value is the service to which it points.
         'aliases' => [
             // Fully\Qualified\ClassOrInterfaceName::class => Fully\Qualified\ClassName::class,
-        ],
-        // Use 'invokables' for constructor-less services, or services that do
-        // not require arguments to the constructor. Map a service name to the
-        // class name.
-        'invokables' => [
-            // Fully\Qualified\InterfaceName::class => Fully\Qualified\ClassName::class,
+            \Mezzio\Router\RouterInterface::class => \Mezzio\Router\LaminasRouter::class,
         ],
         // Use 'factories' for services provided by callbacks/factory classes.
         'factories' => [
             // Fully\Qualified\ClassName::class => Fully\Qualified\FactoryName::class,
+            \Mezzio\Router\LaminasRouter::class => \App\Container\RouterFactory::class,
+            \App\Middleware\SetLocaleMiddleware::class => \App\Middleware\SetLocaleMiddlewareFactory::class,
+            \App\Handler\HomePageHandler::class => \App\Handler\HomePageHandlerFactory::class,
+            \App\Handler\InfoPageHandler::class => \App\Handler\InfoPageHandlerFactory::class,
+            Factory::class => InvokableFactory::class,
         ],
 
         'delegators' => [

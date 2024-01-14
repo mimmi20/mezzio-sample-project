@@ -1,12 +1,15 @@
+<?php
+/** @var $request \Psr\Http\Message\ServerRequestInterface */
+?>
 <?= $this->doctype() ?>
 
-<html lang="de"<?php if ($this->doctype()->isXhtml()): ?> xmlns="http://www.w3.org/1999/xhtml"<?php if ($this->doctype()->isRdfa()): ?> xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml"<?php endif; ?><?php endif; ?>>
+<html<?php if (isset($request) && $request->getAttribute('language')): ?> lang="<?= $this->escapeHtml($request->getAttribute('language')) ?>"<?php endif; ?><?php if ($this->doctype()->isXhtml()): ?> xmlns="http://www.w3.org/1999/xhtml"<?php if ($this->doctype()->isRdfa()): ?> xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml"<?php endif; ?><?php endif; ?>>
     <head>
         <meta charset="utf-8">
-        <?= $this->headTitle('Seiten-Titel')->setSeparator(' - ')->setAutoEscape(false) ?>
+        <?= $this->headTitle($this->translate('Seiten-Titel'))->setSeparator(' - ')->setAutoEscape(false) ?>
 
         <?= $this->headMeta()->setAutoEscape(false)
-            ->appendName('description', 'Die Seitenbeschreibung')
+            ->appendName('description', $this->translate('Die Seitenbeschreibung'))
             ->appendName('viewport', 'width=device-width, initial-scale=1.0')
             ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
         ?>
@@ -25,23 +28,39 @@
 
         <!-- Head Scripts -->
         <?= $this->partial('branding::header_scripts'); ?>
+
     </head>
     <body class="wrapper" data-bs-theme="light">
         <main class="card mx-3 my-2">
+            <!-- main - start -->
+
             <?= $this->content ?>
+
+            <!-- main - end -->
         </main>
         <header class="card m-3 mb-2">
             <div class="card-body">
+                <!-- header - start -->
+
                 <?= $this->partial('header::default'); ?>
+
+                <!-- header - end -->
             </div>
         </header>
         <footer class="card m-3 mt-2">
             <div class="card-body">
-                <?= $this->partial('footer::default'); ?>
+                <!-- footer - start -->
+
+                <?= $this->partial('footer::default', ['request' => $this->request]); ?>
+
+                <!-- footer - end -->
             </div>
         </footer>
 
-        <!-- Footer Scripts -->
+        <!-- Footer Scripts -start -->
+
         <?= $this->partial('branding::footer_scripts'); ?>
+
+        <!-- Footer Scripts - end -->
     </body>
 </html>

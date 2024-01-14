@@ -39,7 +39,10 @@ final class HomePageHandler implements RequestHandlerInterface
         return new HtmlResponse(
             $this->template->render(
                 'app::home-page',
-                ['layout' => $layout],
+                [
+                    'layout' => $layout,
+                    'request' => $request,
+                ],
             ),
         );
     }

@@ -13,27 +13,20 @@ declare(strict_types = 1);
 use App\Handler\HomePageHandler;
 use App\Handler\InfoPageHandler;
 use Fig\Http\Message\RequestMethodInterface;
-use Mimmi20\Mezzio\Navigation\NavigationMiddleware;
 
 return [
     'routes' => [
         'startpage' => [
             'path' => '/',
             'middleware' => [
-                NavigationMiddleware::class,
                 HomePageHandler::class,
             ],
             'allowed_methods' => [RequestMethodInterface::METHOD_GET, RequestMethodInterface::METHOD_POST],
-            'options' => [
-                'stuff' => 'to',
-                'pass' => 'to',
-                'the' => 'underlying router',
-            ],
+            'options' => [],
         ],
         'info' => [
             'path' => '/:id[/]',
             'middleware' => [
-                NavigationMiddleware::class,
                 InfoPageHandler::class,
             ],
             'allowed_methods' => [RequestMethodInterface::METHOD_GET, RequestMethodInterface::METHOD_POST],
