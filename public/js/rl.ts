@@ -14,17 +14,9 @@
 
         if (valid) {
           const data = new FormData(form),
-            state = data.get('state'),
-            stkl = data.get('stkl'),
-            netto = data.get('netto'),
-            anzahl = data.get('anzahl'),
-            geb = data.get('geb'),
-            rente = data.get('rente'),
-            alter = data.get('alter'),
-            inflationsrate = data.get('inflationsrate'),
-            inflationAn = data.get('inflationAn');
+            netto = data.get('netto');
 
-          if (null !== state && null !== stkl && null !== netto) {
+          if (null !== netto) {
             const bestehendeVorsorge = 100;
             const calculationResult = {
               valid: true,
