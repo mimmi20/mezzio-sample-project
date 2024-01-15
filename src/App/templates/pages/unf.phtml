@@ -33,6 +33,6 @@ $form->prepare();
     </div>
 </div>
 
-<?php $this->headLink()->appendStylesheet('/css/unf.css', 'screen', ['rel' => 'stylesheet']); ?>
-<?php $this->inlineScript()->appendFile('/js/form.js'); ?>
-<?php $this->inlineScript()->appendFile('/js/unf.js'); ?>
+<?php $this->headLink()->appendStylesheet($this->viteUrl()->css('public/css/unf.css'), 'screen', ['rel' => 'stylesheet']); ?>
+<?php $this->inlineScript()->appendFile($this->viteUrl()->js('public/js/form.ts')); ?>
+<?php $this->inlineScript()->appendFile($this->viteUrl()->js('public/js/unf.ts')); ?>

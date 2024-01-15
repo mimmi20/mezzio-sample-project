@@ -56,6 +56,54 @@ updates:
 #        versions:
 #          - ">= 0"
 
+  - package-ecosystem: "npm"
+
+    directory: "/"
+
+    schedule:
+      interval: "weekly"
+      day: "saturday"
+      time: "04:00"
+      timezone: "Europe/Berlin"
+
+    groups:
+      # Specify a name for the group, which will be used in pull request titles
+      # and branch names
+      minor-patch-dependencies:
+        # Define patterns to include dependencies in the group (based on
+        # dependency name)
+        patterns:
+          - "*"
+        # update-types:
+        #   - "minor"
+        #   - "patch"
+        # exclude-patterns:
+        #   - "gc_ruboconfig"
+
+    open-pull-requests-limit: 10
+
+    reviewers:
+      - "mimmi20"
+
+    assignees:
+      - "mimmi20"
+
+    labels:
+      - "dependencies"
+
+    versioning-strategy: "increase"
+
+    target-branch: "master"
+
+    commit-message:
+      include: "scope"
+      prefix: "npm"
+
+    ignore:
+      - dependency-name: "supports-color"
+        versions:
+          - ">= 8.0.0"
+
   - package-ecosystem: "github-actions"
 
     directory: "/"

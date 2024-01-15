@@ -49,6 +49,7 @@ $aggregator = new ConfigAggregator(
         \Mimmi20\LaminasView\BootstrapForm\ConfigProvider::class,
         \Mimmi20\Mezzio\Navigation\LaminasView\ConfigProvider::class,
         \Mimmi20\Mezzio\Navigation\LaminasView\View\Helper\BootstrapNavigation\ConfigProvider::class,
+        \Mimmi20\LaminasView\ViteUrl\ConfigProvider::class,
         \Laminas\HttpHandlerRunner\ConfigProvider::class,
         \Laminas\Validator\ConfigProvider::class,
         \Mezzio\Helper\ConfigProvider::class,

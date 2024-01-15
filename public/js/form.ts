@@ -1,4 +1,4 @@
-const forms = document.querySelectorAll('[data-needs-validation]');
+const forms = document.querySelectorAll<HTMLFormElement>('[data-needs-validation]');
 
 forms.forEach((form) => {
   form.addEventListener(
@@ -15,7 +15,7 @@ forms.forEach((form) => {
   );
 });
 
-const fields = document.querySelectorAll('[data-needs-validation] :is(input:not([type="button"]):not([type="submit"]), select)');
+const fields = document.querySelectorAll<HTMLInputElement | HTMLSelectElement>('[data-needs-validation] :is(input:not([type="button"]):not([type="submit"]), select)');
 
 fields.forEach((field) => {
   field.addEventListener(
