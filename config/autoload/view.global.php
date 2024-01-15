@@ -26,4 +26,8 @@ return [
         ],
         'layout' => 'layout::default',
     ],
+    'vite-url' => [
+        'public-dir' => 'public',
+        'build-dir' => 'dist',
+    ],
 ];
