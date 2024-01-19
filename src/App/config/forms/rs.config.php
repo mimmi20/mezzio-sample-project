@@ -41,6 +41,7 @@ return [
         'accept-charset' => 'utf-8',
         'novalidate' => 'novalidate',
         'data-needs-validation' => true,
+        'data-layout' => 'horizontal',
         'id' => 'rs-form',
     ],
     'elements' => [

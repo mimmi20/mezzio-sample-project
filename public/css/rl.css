@@ -18,6 +18,10 @@
     container-name: rl;
 }
 
+.card:has(> .calculation-container) {
+    --bs-card-bg: #f4f4f4;
+}
+
 .calculation-container {
     display: grid;
     grid-template-columns: [form-start button-start] 6fr [form-end result-start head-start graph-start overview-start change-start] 4fr [graph-end inflation-start] 2fr [result-end button-end head-end inflation-end overview-end change-end];
@@ -47,11 +51,19 @@
     color: var(--vt-form-color, #212529);
 }
 .form-container {
+    --bs-card-title-spacer-y: 35px;
+    --bs-card-title-color: #212529;
+
     grid-area: form;
 
     display: grid;
     grid-auto-rows: min-content;
     grid-template-columns: 1fr;
+
+    & .card-title {
+        font-size: 1.25rem;
+        font-weight: 300;
+    }
 }
 .result-container {
     grid-area: result;
@@ -67,6 +79,24 @@
 }
 .button-container {
     grid-area: button;
+
+    margin: 0.5rem auto;
+}
+.button-container .btn {
+    --bs-btn-bg: #000;
+    --bs-btn-color: #fff;
+    --bs-btn-border-color: #000;
+    --bs-btn-border-radius: 0;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #000;
+    --bs-btn-hover-border-color: #000;
+    --bs-btn-line-height: 1.25;
+    --bs-btn-font-weight: 300;
+    --bs-btn-font-size: 1.125rem;
+    --bs-btn-padding-y: 13px;
+    --bs-btn-padding-x: 12px;
+
+    width: 100%;
 }
 :is(.form-container, .result-container) .headline {
     padding-bottom: 2.1875rem;

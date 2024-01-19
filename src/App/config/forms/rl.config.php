@@ -27,9 +27,9 @@ return [
     'type' => Form::class,
     'options' => [
         'floating-labels' => true,
-        'col_attributes' => ['class' => 'col-12 mb-3'],
-        'label_col_attributes' => ['class' => 'col-4'],
-        'row_attributes' => ['class' => 'mb-3'],
+        'col_attributes' => ['class' => 'col-12 mb-3 mt-2 row align-items-center'],
+        'help_attributes' => ['class' => 'col-2 help-content toast'],
+        'label_attributes' => ['class' => 'stretched-link'],
         'layout' => \Mimmi20\LaminasView\BootstrapForm\Form::LAYOUT_VERTICAL,
         'form-required-mark' => '<div class="mt-2 text-info-required"><sup>*</sup> Pflichtfeld</div>',
     ],
@@ -41,6 +41,7 @@ return [
         'id' => 'renten-form',
         'novalidate' => 'novalidate',
         'data-needs-validation' => true,
+        'data-layout' => 'vertical',
     ],
     'elements' => [
         [
@@ -53,7 +54,6 @@ return [
                     'legend_attributes' => ['class' => 'form-label'],
                     // 'row_attributes' => ['class' => 'gx-3 gy-2 align-items-center'],
                     'help_content' => 'Ihr Nettogehalt, bzw. der Netto-Arbeitslohn, ist die Summe, die nach Abzug aller Abgaben und Steuern von Gehalt oder Lohn übrig bleibt und von Ihrem Arbeitgeber an Sie ausgezahlt wird.',
-                    'help_attributes' => ['class' => 'form-text'],
                 ],
                 'attributes' => [
                     'id' => 'netto',
@@ -89,7 +89,6 @@ return [
                     // 'row_attributes' => ['class' => 'gx-3 gy-2 align-items-center'],
                     // 'layout' => \Mimmi20\LaminasView\BootstrapForm\Form::LAYOUT_INLINE,
                     'help_content' => 'Wie viele Gehälter werden Ihnen im Jahr insgesamt ausgezahlt? In vielen Branchen ist ein 13. oder 14. Gehalt üblich.',
-                    'help_attributes' => ['class' => 'form-text'],
                 ],
                 'attributes' => [
                     'id' => 'anzahl',
@@ -140,7 +139,6 @@ return [
                     // 'row_attributes' => ['class' => 'gx-3 gy-2 align-items-center'],
                     // 'layout' => \Mimmi20\LaminasView\BootstrapForm\Form::LAYOUT_INLINE,
                     'help_content' => 'Die Steuerklasse richtet sich in erster Linie nach dem Familienstand: Steuerklasse 1 gilt automatisch für alle ledigen, verwitweten, geschiedenen oder dauernd getrennt lebenden Arbeitnehmer. Alleinerziehende zählt das Finanzamt zur Steuerklasse 2. Verheiratete können je nach Steuerklasse des Ehepartners den Steuerklassen 3 bis 5 angehören. Wer mehr als einen Job hat, fällt ab dem zweiten Job in die Steuerklasse 6.',
-                    'help_attributes' => ['class' => 'form-text'],
                 ],
                 'attributes' => [
                     'id' => 'stkl',
@@ -183,7 +181,6 @@ return [
                     // 'row_attributes' => ['class' => 'gx-3 gy-2 align-items-center'],
                     // 'layout' => \Mimmi20\LaminasView\BootstrapForm\Form::LAYOUT_INLINE,
                     'help_content' => 'Je nach Bundesland können der Berechnung verschiedene Werte zugrunde liegen.',
-                    'help_attributes' => ['class' => 'form-text'],
                 ],
                 'attributes' => [
                     'id' => 'state',
@@ -223,7 +220,6 @@ return [
                     'legend_attributes' => ['class' => 'form-label'],
                     // 'row_attributes' => ['class' => 'gx-3 gy-2 align-items-center'],
                     'help_content' => 'In welchem Alter haben Sie begonnen, als Arbeitnehmer eine Tätigkeit gegen Entgelt zu entrichten? Diese Angabe wird benötigt, um zu ermitteln, wie lang Sie bereits in die Rentenversicherung eingezahlt haben. Es zählt bereits der Beginn einer Berufsausbildung.',
-                    'help_attributes' => ['class' => 'form-text'],
                 ],
                 'attributes' => [
                     'id' => 'alter',
@@ -264,7 +260,6 @@ return [
                     // 'row_attributes' => ['class' => 'gx-3 gy-2 align-items-center'],
                     // 'layout' => \Mimmi20\LaminasView\BootstrapForm\Form::LAYOUT_INLINE,
                     'help_content' => 'Das gewünschte Renteneintrittsalter hat Einfluss auf die Höhe Ihrer Rente.',
-                    'help_attributes' => ['class' => 'form-text'],
                 ],
                 'attributes' => [
                     'id' => 'rente',

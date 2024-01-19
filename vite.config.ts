@@ -48,6 +48,7 @@ export default defineConfig({
         path.resolve(__dirname, 'public/css/themes/glass.css'),
         // general css
         path.resolve(__dirname, 'public/css/404.css'),
+        path.resolve(__dirname, 'public/css/help.css'),
         path.resolve(__dirname, 'public/css/hr.css'),
         path.resolve(__dirname, 'public/css/phv.css'),
         path.resolve(__dirname, 'public/css/rl.css'),
