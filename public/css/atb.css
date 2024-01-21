@@ -1,0 +1,55 @@
+#insuranceSelection {
+    flex-direction: row;
+
+    & .col {
+        flex-basis: auto;
+    }
+}
+
+.has-spinner {
+    position: relative;
+}
+.has-spinner::after {
+    position: absolute;
+    content: '';
+    width: 2rem;
+    height: 2rem;
+    vertical-align: -0.125em;
+    border-radius: 50%;
+    animation: 0.75s linear infinite spinner-border;
+    right: 0;
+    top: 0;
+    translate: -3rem 2.2rem;
+    border-style: solid;
+    border-width: 0.25rem;
+    border-color: red;
+    border-right-color: transparent;
+    z-index: 1;
+}
+
+.was-validated .has-spinner:not(:disabled):has(:invalid, :valid)::after,
+.has-spinner:not(:disabled):has(.is-invalid)::after {
+    translate: -4rem 2.2rem;
+}
+
+.alert-danger {
+    display: none;
+    --bs-alert-bg: var(--bs-danger-text-emphasis);
+    --bs-alert-color: #000000;
+    --bs-alert-border-color: var(--bs-form-invalid-border-color);
+}
+.alert-warning {
+    display: none;
+    --bs-alert-bg: var(--bs-warning-text-emphasis);
+    --bs-alert-color: #000000;
+    --bs-alert-border-color: var(--bs-form-invalid-border-color);
+}
+
+.btn.info-layer-trigger {
+    --bs-btn-padding-y: 0;
+    --bs-btn-padding-x: 0;
+
+    border: none;
+    z-index: 100;
+    cursor: pointer;
+}

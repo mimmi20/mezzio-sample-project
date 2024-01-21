@@ -31,7 +31,31 @@ return [
             ],
             'allowed_methods' => [RequestMethodInterface::METHOD_GET, RequestMethodInterface::METHOD_POST],
             'options' => [
-                'constraints' => ['id' => '(faq|ueber-uns|beratung|kontakt|impressum|datenschutz|erstinfo|cookie-layer|cookies|rl|hr|phv|rs|tie|unf|wg)'],
+                'constraints' => ['id' => '(faq|ueber-uns|beratung|impressum|datenschutz|erstinfo|cookie-layer|cookies|rl|hr|phv|rs|tie|unf|wg)'],
+            ],
+        ],
+        'kontakt' => [
+            'path' => '/{kontakt}[/]',
+            'middleware' => [
+                InfoPageHandler::class,
+            ],
+            'allowed_methods' => [RequestMethodInterface::METHOD_GET, RequestMethodInterface::METHOD_POST],
+            'options' => [
+                'defaults' => [
+                    'id' => 'kontakt',
+                ],
+            ],
+        ],
+        'atb' => [
+            'path' => '/{atb}[/]',
+            'middleware' => [
+                InfoPageHandler::class,
+            ],
+            'allowed_methods' => [RequestMethodInterface::METHOD_GET, RequestMethodInterface::METHOD_POST],
+            'options' => [
+                'defaults' => [
+                    'id' => 'atb',
+                ],
             ],
         ],
     ],

@@ -44,6 +44,7 @@ export default defineConfig({
         path.resolve(__dirname, 'public/js/tie.ts'),
         path.resolve(__dirname, 'public/js/unf.ts'),
         path.resolve(__dirname, 'public/js/wg.ts'),
+        path.resolve(__dirname, 'public/js/atb.ts'),
         // glass theme
         path.resolve(__dirname, 'public/css/themes/glass.css'),
         // general css
@@ -57,6 +58,8 @@ export default defineConfig({
         path.resolve(__dirname, 'public/css/tie.css'),
         path.resolve(__dirname, 'public/css/unf.css'),
         path.resolve(__dirname, 'public/css/wg.css'),
+        path.resolve(__dirname, 'public/css/atb.css'),
+        path.resolve(__dirname, 'node_modules/@fortawesome/fontawesome-free/css/all.css'),
       ],
       output: {
         // dir: 'public/dist',

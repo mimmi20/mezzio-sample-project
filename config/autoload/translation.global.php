@@ -20,13 +20,13 @@ return [
         'translation_file_patterns' => [
             [
                 'type' => 'phparray',
-                'base_dir' => __DIR__ . '/../language',
+                'base_dir' => __DIR__ . '/../../language',
                 'pattern' => '%s.php',
                 'text_domain' => 'default',
             ],
             [
                 'type' => 'phparray',
-                'base_dir' => __DIR__ . '/../language',
+                'base_dir' => __DIR__ . '/../../language',
                 'pattern' => '%s.casually.php',
                 'text_domain' => 'casually',
             ],
@@ -39,9 +39,15 @@ return [
             ],
             [
                 'type' => 'phparray',
-                'base_dir' => __DIR__ . '/../language',
+                'base_dir' => __DIR__ . '/../../language',
                 'pattern' => '%s.routing.php',
                 'text_domain' => 'routing',
+            ],
+            [
+                'type' => 'phparray',
+                'base_dir' => __DIR__ . '/../../language',
+                'pattern' => '%s.navigation.php',
+                'text_domain' => 'navigation',
             ],
         ],
         'event_manager_enabled' => true,

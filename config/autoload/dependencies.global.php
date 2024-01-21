@@ -28,7 +28,6 @@ return [
         ],
         // Use 'factories' for services provided by callbacks/factory classes.
         'factories' => [
-            // Fully\Qualified\ClassName::class => Fully\Qualified\FactoryName::class,
             \Mezzio\Router\LaminasRouter::class => \App\Container\RouterFactory::class,
             \App\Middleware\SetLocaleMiddleware::class => \App\Middleware\SetLocaleMiddlewareFactory::class,
             \App\Handler\HomePageHandler::class => \App\Handler\HomePageHandlerFactory::class,

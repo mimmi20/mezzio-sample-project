@@ -1,0 +1,169 @@
+<?php
+/* @var $form \Laminas\Form\Form */
+
+$form->prepare();
+?>
+
+<h1 class="card-header">Alttarifbewertung</h1>
+<div class="card-body" id="atb-start">
+    <div class="text-container">
+        <strong>Lorem ipsum dolor sit amet, consetetur</strong>
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod</p>
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore</p>
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore</p>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <div class="card-title">Alttarifbewertung</div>
+            <div class="alert alert-danger" role="alert">
+                Es ist ein Fehler aufgetreten!
+            </div>
+            <div class="alert alert-warning" role="alert">
+                Ihre angegebenen Daten sind nicht korrekt!
+            </div>
+
+            <?= $this->form()->openTag($form); ?>
+                <fieldset class="col">
+                    <legend class="form-label">Vertragsart</legend>
+                    <select class="form-select is-invalid" name="productType" id="productType" data-next="company" required data-required-message="Bitte wählen Sie eine Vertragsart." aria-label="Vertragsart" autocomplete="off">
+                        <option value="">Vertragsart wählen</option>
+                        <option value="12 ">Hausrat</option>
+                        <option value="123 ">Privathaftpflicht</option>
+                        <option value="1234 ">Rechtsschutz</option>
+                        <option value="12345 ">Tierhalterhaftpflicht für Hunde</option>
+                        <option value="123456 ">Tierhalterhaftpflicht für Pferde</option>
+                        <option value="1234567 ">Unfall</option>
+                        <option value="12345678 ">Wohngebäude</option>
+                    </select>
+                    <div class="invalid-feedback">Bitte wählen Sie eine Vertragsart.</div>
+                </fieldset>
+
+                <fieldset class="col" data-name="company" disabled>
+                    <legend class="form-label position-relative pe-4">Versicherer <button class="btn info-layer-trigger position-absolute bottom-0 end-0" data-layer="info-layer-company"><i class="fa-solid fa-circle-info"></i></button></legend>
+                    <select class="form-select is-invalid" name="company" id="company" data-next="year" required aria-label="Versicherer" autocomplete="off">
+                        <option value="">Versicherer wählen</option>
+                        <option value="1234 ">Allianz</option>
+                        <option value="12345 ">nicht Allianz</option>
+                    </select>
+                    <div class="invalid-feedback">Bitte wählen Sie einen Versicherer.</div>
+                </fieldset>
+
+                <fieldset class="col position-relative" data-name="year" disabled>
+                    <legend class="form-label position-relative pe-4">Tarifstand <button class="btn info-layer-trigger position-absolute bottom-0 end-0" data-layer="info-layer-year"><i class="fa-solid fa-circle-info"></i></button></legend>
+                    <select class="form-select" name="year" id="year" data-next="product" required aria-label="Tarifstand" autocomplete="off">
+                        <option value="">Tarifstand wählen</option>
+                        <option value="1234 ">heute</option>
+                        <option value="12345 ">gestern</option>
+                    </select>
+                    <div class="invalid-feedback">Bitte wählen Sie einen Tarifstand.</div>
+                    <div class="form-text">
+                        <strong>Tipp:</strong> <?= $this->escapeHtml($this->translate('type the tariff generation to improve results')) ?>
+                    </div>
+                </fieldset>
+
+                <fieldset class="col" data-name="product" disabled>
+                    <legend class="form-label">Tarifname</legend>
+                    <select class="form-select" name="product" id="product" data-next="prod-opt" required aria-label="Tarifname" autocomplete="off">
+                        <option value="">Tarifname wählen</option>
+                        <option value="1234 ">Tarif 1</option>
+                        <option value="12345 ">Tarif 2</option>
+                    </select>
+                    <div class="invalid-feedback">Bitte wählen Sie einen Tarifnamen.</div>
+                </fieldset>
+
+                <fieldset class="col" data-name="prod-opt" disabled>
+                    <legend class="form-label">Tarifausprägungen</legend>
+                    <select class="form-select" name="prod-opt" id="prod-opt" aria-label="Tarifausprägungen" autocomplete="off">
+                        <option value="">Tarifausprägungen wählen</option>
+                        <option value="1234 ">alles enthalten</option>
+                        <option value="12345 ">nichts enthalten</option>
+                    </select>
+                    <div class="invalid-feedback">Bitte wählen Sie eine Tarifausprägung aus.</div>
+                </fieldset>
+
+                <!-- RS -->
+                <fieldset class="col d-none has-spinner" data-name="contract-type" disabled>
+                    <legend class="form-label align-items-center">Vertragsart <span class="form-text">(Mehrfachauswahl möglich)</span></legend>
+                </fieldset>
+
+                <!-- WG -->
+                <fieldset class="col d-none has-spinner" data-name="danger-type" disabled>
+                    <legend class="form-label align-items-center">Gefahren <span class="form-text">(Mehrfachauswahl möglich)</span></legend>
+                    <div class="invalid-feedback">Bitte wählen Sie die versicherten Gefahren aus.</div>
+                </fieldset>
+
+                <!-- Unfall -->
+                <fieldset class="col d-none" data-name="tax-type" disabled>
+                    <legend class="form-label">Gliedertaxen</legend>
+                    <select class="form-select" name="tax-type" id="tax-type" required aria-label="Gliedertaxen" autocomplete="off">
+                        <option value="">Gliedertaxe wählen</option>
+                    </select>
+                    <div class="invalid-feedback">Bitte wählen Sie die Gliedertaxe aus.</div>
+                </fieldset>
+
+                <div class="col button-group text-center">
+                    <button type="submit" class="btn btn-primary loading-btn js-gtm-event"
+                        data-event-type="click"
+                        data-event-category="alttarifbewertung"
+                        data-event-action="evaluation"
+                        data-event-label=""
+                    >
+                        weiter
+                    </button>
+                </div>
+                <div class="form-text"><sup class="text-danger">*</sup> Pflichtfeld</div>
+            <?= $this->form()->closeTag() ?>
+
+            <?php //layer ?>
+            <dialog class="modal" id="info-layer-company" aria-hidden="true" aria-labelledby="modal-title-insurer" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <header class="modal-header">
+                            <h5 class="modal-title" id="modal-title-insurer">Versicherer</h5>
+                            <button type="button" class="btn-close close" aria-label="Close" data-bs-dismiss="modal"></button>
+                        </header>
+                        <section class="modal-body">
+                            <p>
+                                <?= $this->escapeHtml($this->translate('choose your current insurer')) ?>
+                            </p>
+                            <p>
+                                <?= $this->escapeHtml($this->translate('if the insurer is not in our list')) ?>
+                            </p>
+                        </section>
+                        <footer class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </footer>
+                    </div>
+                </div>
+            </dialog>
+            <dialog class="modal" id="info-layer-year" aria-hidden="true" aria-labelledby="modal-title-tariff" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <header class="modal-header">
+                            <h5 class="modal-title" id="modal-title-tariff">Tarifgeneration</h5>
+                            <button type="button" class="btn-close close" aria-label="Close"></button>
+                        </header>
+                        <section class="modal-body">
+                            <p>
+                                <?= $this->escapeHtml($this->translate('choose the generation of your current tariff')) ?>
+                            </p>
+                        </section>
+                    </div>
+                </div>
+            </dialog>
+        </div>
+    </div>
+    <div class="text-container">
+        <strong>Lorem ipsum dolor sit amet, consetetur</strong>
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod</p>
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore</p>
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore</p>
+    </div>
+</div>
+<div class="card-body" id="atb-result">
+</div>
+
+<?php $this->headLink()->appendStylesheet($this->viteUrl()->css('public/css/atb.css'), 'screen', ['rel' => 'stylesheet']); ?>
+<?php $this->headLink()->appendStylesheet($this->viteUrl()->css('node_modules/@fortawesome/fontawesome-free/css/all.css'), 'screen', ['rel' => 'stylesheet']); ?>
+<?php $this->inlineScript()->appendFile($this->viteUrl()->js('public/js/form.ts')); ?>
+<?php $this->inlineScript()->appendFile($this->viteUrl()->js('public/js/atb.ts'), 'module', ['id' => 'functional-script']); ?>

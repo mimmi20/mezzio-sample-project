@@ -2,8 +2,8 @@ const versbeginn = document.querySelectorAll<HTMLInputElement>('[name="versbegin
 const versbeginnDatum = document.getElementById('versbeginn_datum');
 
 if (versbeginn && versbeginnDatum) {
-  versbeginn.forEach((element) => {
-    element.addEventListener('click', (event) => {
+  versbeginn.forEach((element: HTMLInputElement): void => {
+    element.addEventListener('click', (event: MouseEvent): void => {
       if (element.value === 'datum') {
         versbeginnDatum.setAttribute('required', 'required');
       } else {
@@ -17,8 +17,8 @@ const verssummeauto = document.querySelectorAll<HTMLInputElement>('[name="verssu
 const verssumme = document.getElementById('verssumme');
 
 if (verssummeauto && verssumme) {
-  verssummeauto.forEach((element) => {
-    element.addEventListener('click', (event) => {
+  verssummeauto.forEach((element: HTMLInputElement): void => {
+    element.addEventListener('click', (event: MouseEvent): void => {
       if (element.value === 'manuell') {
         verssumme.setAttribute('required', 'required');
       } else {
