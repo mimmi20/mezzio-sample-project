@@ -6,7 +6,7 @@ $form->prepare();
 
 <h1 class="card-header">Rentenlückenrechner</h1>
 <div class="card-body" id="rl-start">
-    <div class="text-container">
+    <div class="text-container pt-5">
         <strong>Lorem ipsum dolor sit amet, consetetur</strong>
         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod</p>
         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore</p>
@@ -127,8 +127,8 @@ $form->prepare();
                     </li>
                 </ul>
             </div>
-            <div class="text-center button-container">
-                <button type="submit" name="btn-berechnen" class="btn btn-primary" form="renten-form">Berechnen</button>
+            <div class="button-container">
+                <button type="submit" name="btn-berechnen" class="btn" form="renten-form">Berechnen</button>
             </div>
         </div>
     </div>
@@ -140,5 +140,5 @@ $form->prepare();
     </div>
 </div>
 
-<?php $this->headLink()->appendStylesheet('/css/rl.css', 'screen', ['rel' => 'stylesheet']); ?>
-<?php $this->inlineScript()->appendFile('/js/rl.js'); ?>
+<?php $this->headLink()->appendStylesheet($this->viteUrl()->css('public/css/rl.css'), 'screen', ['rel' => 'stylesheet']); ?>
+<?php $this->inlineScript()->appendFile($this->viteUrl()->js('public/js/rl.ts')); ?>

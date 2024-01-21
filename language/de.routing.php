@@ -2,4 +2,5 @@
 
 return [
     'kontakt' => 'kontakt',
+    'atb' => 'alttarifbewertung',
 ];

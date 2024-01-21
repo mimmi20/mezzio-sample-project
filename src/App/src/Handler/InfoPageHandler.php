@@ -87,7 +87,13 @@ final class InfoPageHandler implements RequestHandlerInterface
                 ],
             );
         } catch (Throwable $e) {
-            $this->logger->error($e);
+            $this->logger->error(
+                $e,
+                [
+                    'Page' => $id,
+                    'File' => $file,
+                ],
+            );
             $html = '';
         }
 

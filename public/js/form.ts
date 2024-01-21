@@ -1,14 +1,13 @@
 const forms = document.querySelectorAll<HTMLFormElement>('[data-needs-validation]');
 
-forms.forEach((form) => {
+forms.forEach((form: HTMLFormElement): void => {
   form.addEventListener(
     'submit',
-    (event) => {
+    (event: SubmitEvent): void => {
       event.preventDefault();
       event.stopPropagation();
 
-      const valid = form.checkValidity();
-
+      form.checkValidity();
       form.classList.add('was-validated');
     },
     false,
@@ -17,10 +16,10 @@ forms.forEach((form) => {
 
 const fields = document.querySelectorAll<HTMLInputElement | HTMLSelectElement>('[data-needs-validation] :is(input:not([type="button"]):not([type="submit"]), select)');
 
-fields.forEach((field) => {
+fields.forEach((field: HTMLInputElement | HTMLSelectElement): void => {
   field.addEventListener(
     'blur',
-    (event) => {
+    (event: Event): void => {
       event.preventDefault();
       event.stopPropagation();
 

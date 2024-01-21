@@ -13,15 +13,15 @@
     grid-auto-rows: min-content;
     grid-template-columns: 1fr;
 
-    & header {
+    & > header {
         grid-area: header;
     }
 
-    & main {
+    & > main {
         grid-area: main;
     }
 
-    & footer {
+    & > footer {
         grid-area: footer;
         bottom: 0;
     }
@@ -162,6 +162,13 @@ legend.form-label, legend.card-title {
     padding-left: 0.25rem;
     inset: unset;
 }
+:is(label:not(.form-check-label), .form-label):has(~ .input-group:has(:is(:required, .required)))::after {
+    position: absolute;
+    content: ' *';
+    color: var(--bs-form-invalid-color);
+    padding-left: 0.25rem;
+    inset: unset;
+}
 .text-info-required sup {
     color: var(--bs-form-invalid-color);
 }
@@ -183,46 +190,6 @@ legend.form-label, legend.card-title {
 .card.has-validation:has(.form-control, .form-select) .card-body {
     --bs-card-spacer-y: 0;
     --bs-card-spacer-x: 0;
-}
-
-.help-content {
-    --bs-toast-max-width: 15%;
-    --bs-toast-border-radius: 10px;
-    --bs-toast-bg: var(--bs-card-bg);
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    right: 0;
-}
-.help-content:before {
-    --arrow-size: 10px;
-    content: '';
-    display: block;
-    position: absolute;
-    left: calc(-1 * var(--arrow-size) / 2 - 1px);
-    top: 50%;
-    transform: translateY(-50%) rotate(45deg);
-    width: var(--arrow-size);
-    height: var(--arrow-size);
-    background-color: var(--bs-toast-bg);
-    border-left: var(--bs-toast-border-width) solid var(--bs-toast-header-border-color);
-    border-bottom: var(--bs-toast-border-width) solid var(--bs-toast-header-border-color);
-}
-
-.row:has(.help-content) > .field-content > :is(.card.has-validation)::after {
-    position: absolute;
-    content: '';
-    right: calc(-1.5em - 0.75rem);
-    height: 100%;
-    padding-right: calc(1.5em + 0.75rem);
-    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-question-circle' viewBox='0 0 16 16'><path d='M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16'/> <path d='M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286m1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94'/></svg>");
-    background-repeat: no-repeat;
-    background-position: right calc(0.375em + 0.1875rem) center;
-    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
-}
-
-.row:has( > .field-content > :is(.card.has-validation, .form-select, .form-control)):is(:focus-within, :hover) .help-content {
-    display: flex;
 }
 
 .card:not(.has-validation) {
@@ -353,6 +320,75 @@ legend.form-label, legend.card-title {
             color: var(--checked-color);
         }
     }
+}
+/* fix for modals when using a <dialog> element */
+dialog[open] {
+    display: block;
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.modal[open] {
+    width: var(--bs-modal-width);
+    height: fit-content;
+    border: none;
+    background-color: transparent;
+    padding: 0;
+
+    & .modal-dialog {
+        margin: 0;
+    }
+}
+
+/* fix for validation messages */
+:is(.invalid-feedback, .invalid-min-max-feedback, .invalid-min-feedback, .invalid-max-feedback, .invalid-tooltip) {
+    display: none;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: .875em;
+    color: var(--bs-form-invalid-color);
+}
+
+:is(.invalid-feedback, .invalid-min-max-feedback, .invalid-min-feedback, .invalid-max-feedback, .invalid-tooltip) :is(ul, ol) {
+    margin-block-start: 0;
+    margin-block-end: 0;
+    padding-left: 0;
+}
+
+:is(.valid-feedback, .valid-tooltip):not(:has(ul, ol)),
+:is(.valid-feedback, .valid-tooltip) :is(ul, ol) li {
+    list-style: none;
+    padding-left: calc(1.5em + 0.75rem);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23198754' d='M2.3 6.73.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: left calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+:is(.invalid-feedback, .invalid-min-max-feedback, .invalid-min-feedback, .invalid-max-feedback, .invalid-tooltip):not(:has(ul, ol)),
+:is(.invalid-feedback, .invalid-min-max-feedback, .invalid-min-feedback, .invalid-max-feedback, .invalid-tooltip) :is(ul, ol) li {
+    list-style: none;
+    color: var(--bs-form-invalid-color);
+    padding-left: calc(1.5em + 0.75rem);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: left calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+.was-edited:valid~.valid-feedback,
+.card.has-validation:has(.form-control, .form-select):has(:valid)~.valid-feedback,
+.card.has-validation:has(.form-control.is-valid, .form-select.is-valid)~.valid-feedback {
+    display: block;
+}
+
+.was-edited:invalid~:is(.invalid-feedback, .invalid-tooltip),
+.card.has-validation:has(.form-control, .form-select):has(:invalid)~:is(.invalid-feedback, .invalid-tooltip),
+.card.has-validation:has(.form-control.is-invalid, .form-select.is-invalid)~:is(.invalid-feedback, .invalid-tooltip),
+.card-body:has(.form-control:user-invalid, .form-select:user-invalid) .alert-warning {
+    display: block;
 }
 
 /*.container[id] {
