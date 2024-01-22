@@ -53,3 +53,191 @@
     z-index: 100;
     cursor: pointer;
 }
+
+[id="atb-start"],
+[id="atb-result"] {
+    display: none;
+}
+
+[id="atb-start"]:target {
+    display: block;
+}
+
+[id="atb-result"]:target {
+    display: block;
+}
+
+.pie-chart {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+/*.result-container {
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
+}
+.result-container hr {
+    margin-bottom: 2.1875rem;
+}
+.result-container .capacity-container .text {
+    padding-bottom: 1.5625rem;
+}
+.result-container .capacity-container .current-rate,
+.result-container .capacity-container .best-rate {
+    padding-bottom: 3.125rem;
+}
+.result-container .note-rate .note-rate-container {
+    max-width: 18.75rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+.result-container .progress {
+    position: relative;
+    width: 100%;
+    --bs-progress-height: 0.3125rem;
+    --bs-border-radius: 0.15625rem;
+}
+.result-container .progress div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0.3125rem;
+    border-radius: 0.15625rem;
+}
+.result-container .criterion-row + .criterion-row,
+.result-container .criterion-row + .accordion-default + .criterion-row,
+.result-container .criterion-row + .accordion-input + .accordion-default + .criterion-row,
+.result-container .accordion-default > .criterion-row {
+    margin-top: 0.9375rem;
+}
+.result-container .addition {
+    margin: 0 calc(-1.5rem / 2);
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+}*/
+.flex-wrapper {
+    max-width: 8.75rem;
+    height: auto;
+    margin: 0 auto;
+    position: relative;
+}
+.single-chart {
+    display: grid;
+    max-width: 100%;
+    justify-content: space-around;
+    position: relative;
+    margin: 1rem auto;
+}
+.circular-chart {
+    display: block;
+    position: relative;
+    margin: 0.625rem auto;
+    width: 15.625rem;
+    height: 15.625rem;
+}
+.circular-chart .circle-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    fill: none;
+}
+
+.circular-chart .circle-bg.secondary {
+    stroke: #959595;
+    stroke-linecap: round;
+}
+.circular-chart .circle-bg.bg {
+    stroke: #d1d1d1;
+}
+.circular-chart .circle-bg.primary {
+    stroke: #0099cc;
+    stroke-linecap: round;
+}
+.circular-chart .text {
+    font-size: 10px;
+    text-anchor: middle;
+    dominant-baseline: middle;
+}
+.circular-chart .text.secondary {
+    fill: #959595;
+}
+.circular-chart .text.primary {
+    fill: #0099cc;
+}
+.circular-chart .circle.animate {
+    -webkit-animation: progress 1s ease-out forwards;
+    animation: progress 1s ease-out forwards;
+}
+.percentage {
+    width: 100%;
+    margin: auto auto;
+}
+@-webkit-keyframes progress {
+    0% {
+        stroke-dasharray: 0 100;
+    }
+}
+@keyframes progress {
+    0% {
+        stroke-dasharray: 0 100;
+    }
+}
+
+progress {
+    display: block; /* default: inline-block */
+    width: 100%;
+    background: var(--bs-secondary-bg);
+    border-width: 2px;
+    border-style: solid;
+    border-color: var(--bs-secondary-bg);
+    border-radius: var(--bs-border-radius);
+    box-shadow: var(--bs-box-shadow-inset);
+}
+progress::-moz-progress-bar {
+    border-radius: var(--bs-border-radius);
+    background: #0d6efd;
+    box-shadow: inset 0 -2px 4px rgba(0,0,0,0.4), 0 2px 5px 0 rgba(0,0,0,0.3);
+
+}
+/* webkit */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    progress {
+        height: 1rem;
+    }
+}
+progress::-webkit-progress-bar {
+    background: transparent;
+}
+progress::-webkit-progress-value {
+    border-radius: var(--bs-border-radius);
+    background: #0d6efd;
+    box-shadow: inset 0 -2px 4px rgba(0,0,0,0.4), 0 2px 5px 0 rgba(0,0,0,0.3);
+}
+
+meter {
+    place-self: center;
+    width: 100%;
+    overflow: hidden;
+    height: 1rem;
+    border-width: 2px;
+    border-style: solid;
+    border-color: var(--bs-secondary-bg);
+    border-radius: var(--bs-border-radius);
+    background: var(--bs-secondary-bg);
+}
+meter::-webkit-meter-bar {
+    overflow: hidden;
+    height: 1rem;
+    border-radius: var(--bs-border-radius);
+    /*background: var(--bs-secondary-bg);*/
+}
+meter::-webkit-meter-optimum-value {
+    border-radius: var(--bs-border-radius);
+    /*background: #0d6efd;*/
+}
+meter::-moz-meter-bar {
+    border-radius: var(--bs-border-radius);
+    /*background: #0d6efd;*/
+}

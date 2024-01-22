@@ -102,12 +102,7 @@ $form->prepare();
                 </fieldset>
 
                 <div class="col button-group text-center">
-                    <button type="submit" class="btn btn-primary loading-btn js-gtm-event"
-                        data-event-type="click"
-                        data-event-category="alttarifbewertung"
-                        data-event-action="evaluation"
-                        data-event-label=""
-                    >
+                    <button type="submit" class="btn btn-primary loading-btn js-gtm-event">
                         weiter
                     </button>
                 </div>
@@ -161,6 +156,125 @@ $form->prepare();
     </div>
 </div>
 <div class="card-body" id="atb-result">
+    <div class="card mb-3">
+        <div class="card-header">
+            <div class="headline">Leistung</div>
+            <hr/>
+            <div class="text text-center">bis zu <strong>xx%</strong> mehr Leistung</div>
+        </div>
+        <div class="card-body">
+            <div class="pie-chart">
+                <div class="align-self-center current-rate">
+                    <svg viewBox="0 0 36 36" class="circular-chart">
+                        <path class="circle-bg bg" stroke-dasharray="101 101" d="M18 2 a 16 16 0 0 1 0 32 a 16 16 0 0 1 0 -32" />
+                        <path class="circle-bg secondary circle" stroke-dasharray="19 100" d="M18 2 a 16 16 0 0 1 0 32 a 16 16 0 0 1 0 -32" />
+                        <text x="50%" y="50%" class="text secondary">41%</text>
+                    </svg>
+                    <div class="description text-center"><?= $this->escapeHtml($this->translate('your tariff')) ?></div>
+                </div>
+
+                <div class="align-self-center best-rate">
+                    <svg viewBox="0 0 36 36" class="circular-chart">
+                        <path class="circle-bg bg" stroke-dasharray="101 101" d="M18 2 a 16 16 0 0 1 0 32 a 16 16 0 0 1 0 -32" />
+                        <path class="circle-bg primary" stroke-dasharray="20 100" d="M18 2 a 16 16 0 0 1 0 32 a 16 16 0 0 1 0 -32" />
+                        <text x="50%" y="50%" class="text primary">42%</text>
+                    </svg>
+                    <div class="description text-center"><?= $this->escapeHtml($this->translate('best tariff')) ?></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <div class="headline">Leistungskriterien</div>
+            <hr/>
+        </div>
+        <div class="card-body">
+            <?php // Main ?>
+            <div class="row criterion-row g-0">
+                <div class="col-12 col-md-5 position-relative g-2">
+                    <div class="input-group">
+                        <label class="accordion-default-trigger d-block text-truncate col-11" for="accordion-input-1">
+                            Text 1
+                        </label>
+                        <!-- <button class="info-layer-trigger col-1" type="button" data-layer="info-layer-input-1"><span class="type-icon"></span></button> -->
+                    </div>
+                </div>
+                <div class="col-12 col-md-7 position-relative g-2">
+                    <div class="row g-0">
+                        <div class="col-12 row gx-2 align-items-center">
+                            <div class="col-11 progress-chart-current-rate less">
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 82%" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <div class="col-1 progress-chart-text text-end">82 %</div>
+                        </div>
+                        <div class="col-12 row gx-2 align-items-center">
+                            <div class="col-11 progress-chart-best-rate">
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 92%" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <div class="col-1 progress-chart-text text-end">92 %</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <?php // Details ?>
+            <div class="accordion-default">
+                <div class="row criterion-row position-relative g-0">
+                    <div class="col-12 col-md-5 position-relative accordion-default-header text-truncate g-2">
+                        <div class="input-group justify-content-end">
+                            <span class="col-10 text-truncate">text</span>
+                            <!-- <button class="info-layer-trigger col-1" type="button" data-layer="info-layer-detailcriteria-input-1-1"><span class="type-icon"></span></button> -->
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-7 g-2">
+                        <div class="row g-0">
+                            <div class="col-12 row gx-2 align-items-center">
+                                <div class="col-11 progress-chart-current-rate less">
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 42%" aria-valuenow="42" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                <div class="col-1 progress-chart-text text-end">42 %</div>
+                                <div class="col-11 progress-chart-best-rate">
+                                    <meter id="fuel" min="0" low="52" high="52" optimum="100" max="100" value="42">at 42/100</meter>
+                                </div>
+                                <div class="col-1 progress-chart-text text-end">42 %</div>
+                                <div class="col-11 progress-chart-best-rate">
+                                    <progress max="100" value="42"></progress>
+                                </div>
+                                <div class="col-1 progress-chart-text text-end">42 %</div>
+                            </div>
+                            <div class="col-12 row gx-2 align-items-center">
+                                <div class="col-11 progress-chart-best-rate">
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 52%" aria-valuenow="52" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                <div class="col-1 progress-chart-text text-end">52 %</div>
+                                <div class="col-11 progress-chart-current-rate less">
+                                    <meter id="fuel" min="0" low="33" high="66" optimum="100" max="100" value="52">at 52/100</meter>
+                                </div>
+                                <div class="col-1 progress-chart-text text-end">52 %</div>
+                                <div class="col-11 progress-chart-current-rate less">
+                                    <progress max="100" value="52"></progress>
+                                </div>
+                                <div class="col-1 progress-chart-text text-end">52 %</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-center">
+            <a class="default-link text-decoration-none" href="javascript:history.back()"> &laquo; Angaben ändern</a>
+        </div>
+    </div>
 </div>
 
 <?php $this->headLink()->appendStylesheet($this->viteUrl()->css('public/css/atb.css'), 'screen', ['rel' => 'stylesheet']); ?>
