@@ -184,12 +184,6 @@ legend.form-label, legend.card-title {
     color: var(--bs-card-color);
 }
 
-.card a.btn-primary,
-.card a.btn-secondary,
-.btn-secondary {
-    color: var(--bs-btn-color);
-}
-
 .card a.navbar-brand {
     --bs-navbar-brand-color: var(--bs-primary-text-emphasis);
     color: var(--bs-navbar-brand-color);

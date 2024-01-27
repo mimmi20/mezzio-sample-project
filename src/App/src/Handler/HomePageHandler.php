@@ -19,12 +19,16 @@ use Mezzio\Template\TemplateRendererInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use Psr\Log\LoggerInterface;
+use Throwable;
 
 final class HomePageHandler implements RequestHandlerInterface
 {
     /** @throws void */
-    public function __construct(private readonly TemplateRendererInterface $template)
-    {
+    public function __construct(
+        private readonly TemplateRendererInterface $template,
+        private readonly LoggerInterface $logger,
+    ) {
         // nothing to do
     }
 
@@ -36,14 +40,25 @@ final class HomePageHandler implements RequestHandlerInterface
         );
         $layout->setTemplate('layout::default');
 
-        return new HtmlResponse(
-            $this->template->render(
+        try {
+            $html = $this->template->render(
                 'app::home-page',
                 [
                     'layout' => $layout,
                     'request' => $request,
                 ],
-            ),
-        );
+            );
+        } catch (Throwable $e) {
+            $this->logger->error(
+                $e,
+                [
+                    'Page' => 'home-page',
+                    'File' => 'home-page',
+                ],
+            );
+            $html = '';
+        }
+
+        return (new HtmlResponse($html))->withHeader('X-Content-Type-Options', 'nosniff');
     }
 }
