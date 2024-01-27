@@ -33,6 +33,7 @@ $form->prepare();
     </div>
 </div>
 
+<?php $this->headLink()->appendStylesheet('https://cdn.jsdelivr.net/npm/bootswatch@5.3.2/dist/quartz/bootstrap.css', 'screen', ['rel' => 'stylesheet']); ?>
 <?php $this->headLink()->appendStylesheet($this->viteUrl()->css('public/css/hr.css'), 'screen', ['rel' => 'stylesheet']); ?>
 <?php $this->inlineScript()->appendFile($this->viteUrl()->js('public/js/form.ts')); ?>
 <?php $this->inlineScript()->appendFile($this->viteUrl()->js('public/js/hr.ts')); ?>

@@ -32,4 +32,5 @@ $form->prepare();
     </div>
 </div>
 
+<?php $this->inlineScript()->appendFile($this->viteUrl()->css('node_modules/bootstrap/dist/css/bootstrap.css')); ?>
 <?php $this->inlineScript()->appendFile($this->viteUrl()->js('public/js/form.ts')); ?>

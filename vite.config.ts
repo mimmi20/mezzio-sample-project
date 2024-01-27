@@ -59,7 +59,13 @@ export default defineConfig({
         path.resolve(__dirname, 'public/css/unf.css'),
         path.resolve(__dirname, 'public/css/wg.css'),
         path.resolve(__dirname, 'public/css/atb.css'),
-        path.resolve(__dirname, 'node_modules/@fortawesome/fontawesome-free/css/all.css'),
+        // Bootstrap
+        path.resolve(__dirname, 'node_modules/bootstrap/dist/css/bootstrap.css'),
+        path.resolve(__dirname, 'node_modules/bootstrap/dist/js/bootstrap.esm.js'),
+        // Bootstrap Icons
+        path.resolve(__dirname, 'node_modules/bootstrap-icons/font/bootstrap-icons.css'),
+        // Themes
+        path.resolve(__dirname, 'node_modules/bootswatch/dist/morph/bootstrap.css'),
       ],
       output: {
         // dir: 'public/dist',

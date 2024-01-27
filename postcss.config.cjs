@@ -16,6 +16,7 @@ module.exports = function (ctx) {
       require('postcss-strip-inline-comments'),
       require('postcss-will-change'),
       require('postcss-color-rebeccapurple')({preserve: true}),
+      require('css-declaration-sorter')({order: 'smacss', keepOverrides: true}),
       require('postcss-color-rgba-fallback'),
       //require('postcss-prefixwrap')('.base-container'),// no prefix here, will be added in the next step
       //require('postcss-prefix-selector')(),

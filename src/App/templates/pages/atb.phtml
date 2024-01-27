@@ -39,7 +39,7 @@ $form->prepare();
                 </fieldset>
 
                 <fieldset class="col" data-name="company" disabled>
-                    <legend class="form-label position-relative pe-4">Versicherer <button class="btn info-layer-trigger position-absolute bottom-0 end-0" data-layer="info-layer-company"><i class="fa-solid fa-circle-info"></i></button></legend>
+                    <legend class="form-label position-relative pe-4">Versicherer <button class="btn info-layer-trigger position-absolute bottom-0 end-0" data-layer="info-layer-company"><i class="bi bi-info-circle"></i></i></button></legend>
                     <select class="form-select is-invalid" name="company" id="company" data-next="year" required aria-label="Versicherer" autocomplete="off">
                         <option value="">Versicherer wählen</option>
                         <option value="1234 ">Allianz</option>
@@ -49,7 +49,7 @@ $form->prepare();
                 </fieldset>
 
                 <fieldset class="col position-relative" data-name="year" disabled>
-                    <legend class="form-label position-relative pe-4">Tarifstand <button class="btn info-layer-trigger position-absolute bottom-0 end-0" data-layer="info-layer-year"><i class="fa-solid fa-circle-info"></i></button></legend>
+                    <legend class="form-label position-relative pe-4">Tarifstand <button class="btn info-layer-trigger position-absolute bottom-0 end-0" data-layer="info-layer-year"><i class="bi bi-info-circle"></i></i></button></legend>
                     <select class="form-select" name="year" id="year" data-next="product" required aria-label="Tarifstand" autocomplete="off">
                         <option value="">Tarifstand wählen</option>
                         <option value="1234 ">heute</option>
@@ -147,6 +147,19 @@ $form->prepare();
                 </div>
             </dialog>
         </div>
+
+        <div class="card position-relative">
+            <label for="customRange2" class="form-label">Example range</label>
+            <input type="range" class="form-range" value="0" min="0" max="5" id="customRange2" list="values">
+            <datalist id="values">
+                <option value="0" label="very cold!"></option>
+                <option value="1" label="cool"></option>
+                <option value="2" label="medium"></option>
+                <option value="3" label="getting warm!"></option>
+                <option value="4" label="hot!"></option>
+                <option value="5" label="super hot!"></option>
+            </datalist>
+        </div>
     </div>
     <div class="text-container">
         <strong>Lorem ipsum dolor sit amet, consetetur</strong>
@@ -188,7 +201,6 @@ $form->prepare();
     <div class="card">
         <div class="card-header">
             <div class="headline">Leistungskriterien</div>
-            <hr/>
         </div>
         <div class="card-body">
             <?php // Main ?>
@@ -241,12 +253,12 @@ $form->prepare();
                                     </div>
                                 </div>
                                 <div class="col-1 progress-chart-text text-end">42 %</div>
-                                <div class="col-11 progress-chart-best-rate">
-                                    <meter id="fuel" min="0" low="52" high="52" optimum="100" max="100" value="42">at 42/100</meter>
+                                <div class="col-11 progress-chart-best-rate secondary">
+                                    <meter class="progress" min="0" low="52" high="52" optimum="100" max="100" value="42">at 42/100</meter>
                                 </div>
                                 <div class="col-1 progress-chart-text text-end">42 %</div>
-                                <div class="col-11 progress-chart-best-rate">
-                                    <progress max="100" value="42"></progress>
+                                <div class="col-11 progress-chart-best-rate secondary">
+                                    <progress class="progress" max="100" value="42"></progress>
                                 </div>
                                 <div class="col-1 progress-chart-text text-end">42 %</div>
                             </div>
@@ -257,12 +269,12 @@ $form->prepare();
                                     </div>
                                 </div>
                                 <div class="col-1 progress-chart-text text-end">52 %</div>
-                                <div class="col-11 progress-chart-current-rate less">
-                                    <meter id="fuel" min="0" low="33" high="66" optimum="100" max="100" value="52">at 52/100</meter>
+                                <div class="col-11 progress-chart-current-rate primary">
+                                    <meter class="progress" min="0" low="33" high="66" optimum="100" max="100" value="52">at 52/100</meter>
                                 </div>
                                 <div class="col-1 progress-chart-text text-end">52 %</div>
-                                <div class="col-11 progress-chart-current-rate less">
-                                    <progress max="100" value="52"></progress>
+                                <div class="col-11 progress-chart-current-rate primary">
+                                    <progress class="progress" max="100" value="52"></progress>
                                 </div>
                                 <div class="col-1 progress-chart-text text-end">52 %</div>
                             </div>
@@ -277,7 +289,7 @@ $form->prepare();
     </div>
 </div>
 
+<?php $this->headLink()->appendStylesheet('https://cdn.jsdelivr.net/npm/bootswatch@5.3.2/dist/morph/bootstrap.css', 'screen', ['rel' => 'stylesheet']); ?>
 <?php $this->headLink()->appendStylesheet($this->viteUrl()->css('public/css/atb.css'), 'screen', ['rel' => 'stylesheet']); ?>
-<?php $this->headLink()->appendStylesheet($this->viteUrl()->css('node_modules/@fortawesome/fontawesome-free/css/all.css'), 'screen', ['rel' => 'stylesheet']); ?>
 <?php $this->inlineScript()->appendFile($this->viteUrl()->js('public/js/form.ts')); ?>
 <?php $this->inlineScript()->appendFile($this->viteUrl()->js('public/js/atb.ts'), 'module', ['id' => 'functional-script']); ?>
