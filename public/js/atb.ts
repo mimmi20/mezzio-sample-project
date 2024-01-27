@@ -154,11 +154,9 @@ class AtbBase {
         }
 
         if (typeof thatScript.dataset.url === 'undefined') {
-          console.error('url dataset is not valid');
-
           nextElement.parentElement?.classList.add('has-spinner');
 
-          await sleep(3000); // Pausiert die Funktion für 3 Sekunden
+          await sleep(500); // Pausiert die Funktion für 0,5 Sekunden
 
           nextElement.parentElement?.classList.remove('has-spinner');
           nextElement.parentElement?.removeAttribute('disabled');
@@ -173,7 +171,7 @@ class AtbBase {
 
         select.classList.remove('text-danger'); // indicate error
 
-        await sleep(3000); // Pausiert die Funktion für 3 Sekunden
+        await sleep(500); // Pausiert die Funktion für 0,5 Sekunden
 
         const results = await that.fetch(
           urls[next],
@@ -225,19 +223,21 @@ class AtbBase {
       });
     });
 
-    form.addEventListener('submit', async function (event: SubmitEvent): Promise<void> {
-      event.preventDefault();
-      event.stopPropagation();
+    form.addEventListener('submit', async function (event: SubmitEvent): Promise<boolean> {
+      //event.preventDefault();
+      // event.stopPropagation();
 
       const valid = form.checkValidity();
 
       form.classList.add('was-validated');
 
       if (!valid) {
-        return;
+        return false;
       }
 
       await that.handleForm(form);
+
+      return true;
     });
   }
 
@@ -289,6 +289,34 @@ class AtbBase {
     return results;
   }
 
+  getSelected (form: HTMLFormElement, name: string): any[] {
+    const data: any[] = [];
+    const options = form.querySelectorAll<HTMLOptionElement>('select[name="' + name + '"] option');
+
+    options.forEach(function (option) {
+      if (!option.selected) {
+        return;
+      }
+
+      data.push(option.innerText);
+    });
+
+    return data;
+  }
+
+  getOptions(form: HTMLFormElement): any[] {
+    const data: any[] = [];
+    const options = form.querySelectorAll<HTMLInputElement>('input[name="prod-opt[]"]:checked');
+
+    options.forEach(function (option) {
+      const optionLabel = form.querySelectorAll<HTMLLabelElement>('label[for="' + option.id + '"]')[0];
+
+      data.push(optionLabel.innerText);
+    });
+
+    return data;
+  }
+
   async handleForm(form: HTMLFormElement): Promise<void> {
     const action = form.getAttribute('action');
 
@@ -306,104 +334,53 @@ class AtbBase {
       button.setAttribute('disabled', 'disabled');
     });
 
-    const results = await that.fetch(
-      action,
-      form,
-      submitter,
-      function(error: Error): void {
-        console.error(error);
-      }
+    let resultData = {
+      "type": that.getSelected(form, 'productType')[0],
+      "insurer": that.getSelected(form, 'company')[0],
+      "tariffgeneration": that.getSelected(form, 'year')[0],
+      "tariffname": that.getSelected(form, 'product')[0],
+      "options": that.getOptions(form),
+      "actualTariff": 0.0,
+      "bestTariff": 0.0
+    };
+
+    setTimeout(function () {
+      const circles = form.querySelectorAll('.circle');
+      circles.forEach(function (circle) {
+        circle.classList.add('animate');
+      });
+
+      that.setActiveClassForAccordion();
+      that.initLayer();
+
+      const charts = document.querySelectorAll('.progress-chart .non-width');
+
+      charts.forEach(function (chart) {
+        chart.classList.remove('non-width');
+      });
+    }, 500);
+
+    const productType = form.querySelectorAll<HTMLSelectElement>('select[name="productType"]')[0];
+
+    document.dispatchEvent(
+      new CustomEvent(
+        'atb.result-event',
+        {
+          'detail': productType.value
+        }
+      )
     );
 
-    if (typeof results === 'object' && results.hasOwnProperty('content')) {
-      const CUSTOM_EVENT_TRIGGER_NAMESPACE = 'custom_atb_result_event';
+    document.dispatchEvent(
+      new CustomEvent(
+        'atb.data-event',
+        {
+          'detail': resultData
+        }
+      )
+    );
 
-      const getOptions = function () {
-        const data: any[] = [];
-        const options = form.querySelectorAll('input[name="prod-opt[]"]:checked');
-
-        options.forEach(function (option) {
-          const optionLabel = form.querySelectorAll<HTMLLabelElement>('label[for="' + option.id + '"]')[0];
-
-          data.push(optionLabel.innerText);
-        });
-
-        return data;
-      };
-
-      const getSelected = function (name: string) {
-        const data: any[] = [];
-        const options = form.querySelectorAll<HTMLOptionElement>('select[name="' + name + '"] option');
-
-        options.forEach(function (option) {
-          if (!option.selected) {
-            return;
-          }
-
-          data.push(option.innerText);
-        });
-
-        return data;
-      };
-
-      let resultData = {
-        "type": getSelected('productType')[0],
-        "insurer": getSelected('company')[0],
-        "tariffgeneration": getSelected('year')[0],
-        "tariffname": getSelected('product')[0],
-        "options": getOptions(),
-        "actualTariff": 0.0,
-        "bestTariff": 0.0
-      };
-
-      if (results.hasOwnProperty('best')) {
-        resultData['bestTariff'] = results.best;
-      }
-
-      if (results.hasOwnProperty('current')) {
-        resultData['actualTariff'] = results.current;
-      }
-
-      resultContainer.innerHTML = results.content;
-
-      setTimeout(function () {
-        const circles = form.querySelectorAll('.circle');
-        circles.forEach(function (circle) {
-          circle.classList.add('animate');
-        });
-
-        that.setActiveClassForAccordion();
-        that.initLayer();
-
-        const charts = document.querySelectorAll('.progress-chart .non-width');
-
-        charts.forEach(function (chart) {
-          chart.classList.remove('non-width');
-        });
-      }, 500);
-
-      const productType = form.querySelectorAll<HTMLSelectElement>('select[name="productType"]')[0];
-
-      document.dispatchEvent(
-        new CustomEvent(
-          CUSTOM_EVENT_TRIGGER_NAMESPACE,
-          {
-            'detail': productType.value
-          }
-        )
-      );
-
-      document.dispatchEvent(
-        new CustomEvent(
-          'jdcatb.event',
-          {
-            'detail': resultData
-          }
-        )
-      );
-
-      that.setHistory('result');
-    }
+    that.setHistory('atb-result');
 
     thatSubmitBtns.forEach(function(button) {
       button.classList.remove('active');
@@ -527,26 +504,6 @@ class AtbBase {
     });
   }
 
-  setProductForTracking(): void {
-    const dataSteps = document.querySelectorAll<HTMLElement>('[data-step="index"]');
-
-    dataSteps.forEach(function (dataStep: HTMLElement): void {
-      const select = dataStep.querySelectorAll<HTMLSelectElement>('[name="productType"]')[0];
-      const btnNext = dataStep.querySelectorAll<HTMLButtonElement>('button[data-event-action]')[0];
-
-      if (select === null || btnNext === null) {
-        return;
-      }
-
-      select.addEventListener('change', (event: Event): void => {
-        event.preventDefault();
-        event.stopPropagation();
-
-        btnNext.setAttribute('data-event-label', select.value);
-      });
-    });
-  }
-
   setActiveClassForAccordion(): void {
     const accordionInputs = document.querySelectorAll<HTMLInputElement>('.accordion-input');
     const activeClass = 'active';
@@ -593,7 +550,7 @@ class AtbBase {
   }
 
   handleHistory(): void {
-    const steps = ['index', 'result'];
+    const steps = ['atb-start', 'atb-result'];
 
     window.addEventListener('hashchange', function(): void {
       const cleanHash = this.location.hash.replace('#', '');
@@ -684,8 +641,7 @@ class AtbBase {
     this.initSelect();
     this.initForm();
     this.initCheckbox();
-    this.setProductForTracking();
-    this.setHistory('index');
+    this.setHistory('atb-start');
     this.handleHistory();
   }
 }

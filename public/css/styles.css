@@ -107,7 +107,7 @@ legend.form-label, legend.card-title {
     transform-origin: 0 0;
     transition: opacity .1s ease-in-out, transform .1s ease-in-out;
 
-    color: rgba(var(--bs-body-color-rgb), .65);
+    color: rgba(var(--bs-emphasis-color-rgb), .65);
     transform: scale(.85) translateY(-0.5rem) translateX(0.15rem);
 }
 
@@ -128,7 +128,7 @@ legend.form-label, legend.card-title {
 /* fix for form validation */
 .was-validated .form-check-input:invalid ~ .form-check-label,
 .form-check-input.is-invalid ~ .form-check-label {
-    color: var(--bs-body-color);
+    color: var(--bs-emphasis-color);
 }
 .was-validated .form-control:has(:valid),
 .was-validated .card.has-validation:not(:has(.form-control, .form-select)):not(:has(.form-control.is-invalid, .form-select.is-invalid)):has(:valid),
@@ -177,12 +177,46 @@ legend.form-label, legend.card-title {
     position: relative;
 }
 
+.card,
+.card-body {
+    --bs-card-color: var(--bs-primary-text-emphasis);
+    --bs-card-cap-color: var(--bs-primary-text-emphasis);
+    color: var(--bs-card-color);
+}
+
+.card a.btn-primary,
+.card a.btn-secondary,
+.btn-secondary {
+    color: var(--bs-btn-color);
+}
+
+.card a.navbar-brand {
+    --bs-navbar-brand-color: var(--bs-primary-text-emphasis);
+    color: var(--bs-navbar-brand-color);
+}
+
+.nav-pills .nav-link:hover,
+.nav-pills .nav-link:focus {
+    color: var(--bs-btn-hover-color);
+}
+
+.form-select {
+    color: var(--bs-emphasis-color);
+}
+
+.form-floating > .form-control:focus ~ label,
+.form-floating > .form-control:not(:placeholder-shown) ~ label,
+.form-floating > .form-control-plaintext ~ label,
+.form-floating > .form-select ~ label {
+    color: var(--bs-emphasis-color-rgb);
+}
+
 /* fix for rows inside cards */
 .card .col,
 .card .col-2,
 .card .col-8,
 .card .col-12,
-.card .card-body:has(.form-check) {
+.card .card-body:has(> .form-check) {
     flex-shrink: unset;
     flex-grow: unset;
 }
