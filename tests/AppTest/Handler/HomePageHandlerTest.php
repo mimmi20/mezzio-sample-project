@@ -20,30 +20,79 @@ use PHPUnit\Framework\Constraint\ArrayHasKey;
 use PHPUnit\Framework\Exception;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Log\LoggerInterface;
+use RuntimeException;
 
 final class HomePageHandlerTest extends TestCase
 {
     /**
      * @throws Exception
      * @throws InvalidArgumentException
+     * @throws RuntimeException
      */
     public function testReturnsHtmlResponseWhenTemplateRendererProvided(): void
     {
-        $renderer = $this->getMockBuilder(TemplateRendererInterface::class)
-            ->disableOriginalConstructor()
-            ->getMock();
+        $content = 'test-content';
+
+        $renderer = $this->createMock(TemplateRendererInterface::class);
         $renderer
             ->expects(self::once())
             ->method('render')
             ->with('app::home-page', new ArrayHasKey('layout'))
-            ->willReturn('');
+            ->willReturn($content);
 
-        $homePage = new HomePageHandler($renderer);
+        $logger = $this->createMock(LoggerInterface::class);
+        $logger
+            ->expects(self::never())
+            ->method('error');
+
+        $homePage = new HomePageHandler($renderer, $logger);
 
         $response = $homePage->handle(
             $this->createMock(ServerRequestInterface::class),
         );
 
         self::assertInstanceOf(HtmlResponse::class, $response);
+
+        self::assertSame($content, $response->getBody()->getContents());
+    }
+
+    /**
+     * @throws Exception
+     * @throws InvalidArgumentException
+     * @throws RuntimeException
+     */
+    public function testLogsError(): void
+    {
+        $exception = new \Exception();
+
+        $renderer = $this->createMock(TemplateRendererInterface::class);
+        $renderer
+            ->expects(self::once())
+            ->method('render')
+            ->with('app::home-page', new ArrayHasKey('layout'))
+            ->willThrowException($exception);
+
+        $logger = $this->createMock(LoggerInterface::class);
+        $logger
+            ->expects(self::once())
+            ->method('error')
+            ->with(
+                $exception,
+                [
+                    'Page' => 'home-page',
+                    'File' => 'home-page',
+                ],
+            );
+
+        $homePage = new HomePageHandler($renderer, $logger);
+
+        $response = $homePage->handle(
+            $this->createMock(ServerRequestInterface::class),
+        );
+
+        self::assertInstanceOf(HtmlResponse::class, $response);
+
+        self::assertSame('', $response->getBody()->getContents());
     }
 }

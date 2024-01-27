@@ -104,6 +104,7 @@ export default defineConfig({
         path.resolve(__dirname, 'node_modules/bootstrap-icons/font/bootstrap-icons.css'),
         // Themes
         path.resolve(__dirname, 'node_modules/bootswatch/dist/morph/bootstrap.css'),
+        path.resolve(__dirname, 'node_modules/bootswatch/dist/quartz/bootstrap.css'),
       ],
       output: {
         // dir: 'public/dist',

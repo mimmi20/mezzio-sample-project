@@ -19,6 +19,7 @@ use PHPUnit\Framework\Exception;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
+use Psr\Log\LoggerInterface;
 
 final class HomePageHandlerFactoryTest extends TestCase
 {
@@ -29,16 +30,26 @@ final class HomePageHandlerFactoryTest extends TestCase
     public function testFactory(): void
     {
         $renderer = $this->createMock(TemplateRendererInterface::class);
+        $logger   = $this->createMock(LoggerInterface::class);
 
-        $container = $this->getMockBuilder(ContainerInterface::class)
-            ->disableOriginalConstructor()
-            ->getMock();
-
+        $container = $this->createMock(ContainerInterface::class);
+        $matcher   = self::exactly(2);
         $container
-            ->expects(self::once())
+            ->expects($matcher)
             ->method('get')
-            ->with(TemplateRendererInterface::class)
-            ->willReturn($renderer);
+            ->willReturnCallback(
+                static function (string $id) use ($matcher, $renderer, $logger): mixed {
+                    match ($matcher->numberOfInvocations()) {
+                        1 => self::assertSame(TemplateRendererInterface::class, $id),
+                        default => self::assertSame(LoggerInterface::class, $id),
+                    };
+
+                    return match ($matcher->numberOfInvocations()) {
+                        1 => $renderer,
+                        default => $logger,
+                    };
+                },
+            );
 
         $factory = new HomePageHandlerFactory();
 

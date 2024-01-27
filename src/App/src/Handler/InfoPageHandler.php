@@ -97,6 +97,6 @@ final class InfoPageHandler implements RequestHandlerInterface
             $html = '';
         }
 
-        return new HtmlResponse($html);
+        return (new HtmlResponse($html))->withHeader('X-Content-Type-Options', 'nosniff');
     }
 }
