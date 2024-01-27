@@ -2,6 +2,14 @@ import {defineConfig} from 'vite';
 import * as path from 'path';
 import stylelint from 'vite-plugin-stylelint';
 import eslint from 'vite-plugin-eslint';
+import viteImagemin from '@vheemstra/vite-plugin-imagemin'
+import imageminJpegtran from '@yeanzhi/imagemin-jpegtran';
+import imageminPngquant from '@localnerve/imagemin-pngquant';
+import imageminGif from '@localnerve/imagemin-gifsicle';
+import imageminWebp from '@yeanzhi/imagemin-webp';
+import imageminGifToWebp from 'imagemin-gif2webp';
+import imageminAviv from '@vheemstra/imagemin-avifenc';
+import imageminSvgo from '@koddsson/imagemin-svgo';
 
 export default defineConfig({
   appType: 'custom',
@@ -11,6 +19,36 @@ export default defineConfig({
   plugins: [
     stylelint(),
     //eslint(),
+    viteImagemin({
+      plugins: {
+        jpg: imageminJpegtran(),
+        png: imageminPngquant({
+          quality: [0.6, 0.8]
+        }),
+        gif: imageminGif(),
+        svg: imageminSvgo({
+          plugins: [{
+            name: 'removeViewBox',
+            active: false
+          }]
+        }),
+      },
+      onlyAssets: true,
+      makeWebp: {
+        plugins: {
+          jpg: imageminWebp({quality: 100}),
+          gif: imageminGifToWebp(),
+        },
+        skipIfLargerThan: 'optimized',
+      },
+      makeAvif: {
+        plugins: {
+          jpg: imageminAviv({lossless: true}),
+          png: imageminAviv({lossless: true}),
+        },
+        skipIfLargerThan: 'optimized',
+      }
+    }),
   ],
   server: {
     host: 'localhost',
