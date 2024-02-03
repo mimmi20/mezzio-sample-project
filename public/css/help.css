@@ -1,4 +1,4 @@
-.help-content {
+.help-content.toast {
     --bs-toast-max-width: 15%;
     --bs-toast-border-radius: 10px;
     --bs-toast-bg: var(--bs-card-bg);
@@ -7,7 +7,7 @@
     position: absolute;
     right: 0;
 }
-.help-content:before {
+.help-content.toast:before {
     --arrow-size: 10px;
     content: '';
     display: block;

@@ -22,7 +22,128 @@ $form->prepare();
                 Ihre angegebenen Daten sind nicht korrekt!
             </div>
 
-            <?= $this->form()->setIndent(16)->render($form) ?>
+            <?= $this->form()->setIndent(16)->render(clone $form) ?>
+
+            -----------
+
+            <?= $this->form()->openTag($form) ?>
+            <fieldset class="card mb-3">
+                <legend class="card-header">Was möchten Sie versichern?</legend>
+                <div class="card-body">
+                <?= $this->formRow($form->get('versbeginn')->setOption('form', $form)) ?>
+                <?= $this->formRow($form->get('versbeginn_datum')->setOption('form', $form)) ?>
+                <?= $this->formRow($form->get('plz')->setOption('form', $form)) ?>
+                <?= $this->formRow($form->get('ort')->setOption('form', $form)) ?>
+                <?= $this->formRow($form->get('strasse')->setOption('form', $form)) ?>
+                <?= $this->formRow($form->get('hnr')->setOption('form', $form)) ?>
+
+                <div class="row">
+                    <div class="col-sm text-center">
+                        <a href="#modal-missing-street" class="js-trigger-missing-street" data-toggle="modal">Fehlende Adresse melden</a>
+                    </div>
+                </div>
+
+                <?= $this->formRow($form->get('geburtsdatum')->setOption('form', $form)) ?>
+                <?= $this->formRow($form->get('whg')->setOption('form', $form)) ?>
+                <?= $this->formRow($form->get('vermietet')->setOption('form', $form)) ?>
+                <?= $this->formRow($form->get('wohnfl')->setOption('form', $form)) ?>
+                <?= $this->formRow($form->get('wohnfl_kg')->setOption('form', $form)) ?>
+                <?= $this->formRow($form->get('kellerfl')->setOption('form', $form)) ?>
+                <?= $this->formRow($form->get('beamte')->setOption('form', $form)) ?>
+                <?= $this->formRow($form->get('verssummeauto')->setOption('form', $form)) ?>
+                <?= $this->formRow($form->get('verssumme')->setOption('form', $form)) ?>
+                <?= $this->formRow($form->get('fahrrad')->setOption('form', $form)) ?>
+                <?= $this->formRow($form->get('glas')->setOption('form', $form)) ?>
+                <?= $this->formRow($form->get('elem')->setOption('form', $form)) ?>
+                <?= $this->formRow($form->get('grob')->setOption('form', $form)) ?>
+                <?= $this->formRow($form->get('bauart')->setOption('form', $form)) ?>
+                </div>
+            </fieldset>
+            <fieldset class="card mb-3">
+                <legend class="card-header"><span>Rabattrelevante Angaben</span></legend>
+
+                <div class="card-body">
+                    <?= $this->formRow($form->get('selbst')->setOption('form', $form)) ?>
+                    <?= $this->formRow($form->get('laufzeit')->setOption('form', $form)) ?>
+                    <?= $this->formRow($form->get('vorvers5')->setOption('form', $form)) ?>
+                    <?= $this->formRow($form->get('schaeden5')->setOption('form', $form)) ?>
+                    <?= $this->formRow($form->get('kombirabatte')->setOption('form', $form)) ?>
+                </div>
+            </fieldset>
+
+            <fieldset class="card mb-3">
+                <legend class="card-header"><span>Kombirabatte für folgende Sparten-Kombinationen berücksichtigen</span></legend>
+
+                <div class="card-body">
+                    <p class="text-center pt-2 text-info-discount">Kombirabatte - Je mehr Verträge bei einer Gesellschaft, um so günstigere Preise.
+                        Welche Verträge haben Sie schon oder haben vor, sie zu versichern?</p>
+
+                    <?= $this->formRow($form->get('KrPHV')->setOption('form', $form)) ?>
+                    <?= $this->formRow($form->get('KrTIE')->setOption('form', $form)) ?>
+                    <?= $this->formRow($form->get('KrHUG')->setOption('form', $form)) ?>
+                    <?= $this->formRow($form->get('KrOEL')->setOption('form', $form)) ?>
+                    <?= $this->formRow($form->get('KrWG')->setOption('form', $form)) ?>
+                    <?= $this->formRow($form->get('KrWGGLS')->setOption('form', $form)) ?>
+                    <?= $this->formRow($form->get('KrHR')->setOption('form', $form)) ?>
+                    <?= $this->formRow($form->get('KrHRGLS')->setOption('form', $form)) ?>
+                    <?= $this->formRow($form->get('KrUNF')->setOption('form', $form)) ?>
+                    <?= $this->formRow($form->get('KrRS')->setOption('form', $form)) ?>
+                </div>
+            </fieldset>
+
+            <!-- Zusatzfragen -->
+            <div class="card mb-3">
+                <div class="card-body">
+                    <?= $this->formRow($form->get('zusatzfragen')->setOption('form', $form)) ?>
+                </div>
+            </div>
+
+            <fieldset class="card mb-3">
+                <legend class="card-header"><span>Optionale Detailfragen</span></legend>
+                <div class="card-body">
+                    <div class="form-group row pt-3" data-help-show="uver_v"
+                        data-help-content='<strong>Wählen Sie eine Vorgabe für Ihre Berechnung</strong><p>Die Vorgabe des Arbeitskreis Vermittlerrichlinie (AK-Empfehlung) bietet Ihnen einen empfohlenen Mindestschutz. Heute erfüllen alle wichtigen Tarife diese Vorgaben. Zu Ihrer Sicherheit sollten Sie diese Mindestvorgaben wählen.</p>'>
+                        <label class="col-sm col-form-label text-sm-right">Wählen Sie eine Vorgabe für Ihre Berechnung</label>
+                        <div class="col-sm">
+                            <div class="mx-auto mt-sm-2 text-center text-sm-left">
+                                <a href="#" class="js-standard js-gtm-event" data-event-type="click" data-event-category="versicherung" data-event-label="hr" data-event-action="choose standard options">Standard</a> |
+                                <a href="#" class="recommendation js-recommendation js-gtm-event"
+                                    title="Mindeststandards des Arbeitskreises EU-Vermittlerrichtlinie"
+                                    data-help-show="recommendation" data-help-content='<p>Diese Voreinstellung erfüllt die vom Arbeitskreis EU-Vermittlerrichtlinie entwickelten Mindeststandards.</p>'
+                                    data-event-type="click" data-event-category="versicherung" data-event-label="hr" data-event-action="choose AK recommentations">AK Empfehlung</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <?= $this->formRow($form->get('uver_v')->setOption('form', $form)) ?>
+                    <?= $this->formRow($form->get('ues_v')->setOption('form', $form)) ?>
+                    <?= $this->formRow($form->get('werts_v')->setOption('form', $form)) ?><span class="text-legend">EUR</span>
+                    <?= $this->formRow($form->get('dieb_v')->setOption('form', $form)) ?>
+                    <?= $this->formRow($form->get('dkfz_v')->setOption('form', $form)) ?>
+                    <?= $this->formRow($form->get('dkle_v')->setOption('form', $form)) ?>
+                    <?= $this->formRow($form->get('rauch_v')->setOption('form', $form)) ?>
+                    <?= $this->formRow($form->get('kfz_v')->setOption('form', $form)) ?>
+                    <?= $this->formRow($form->get('bank_v')->setOption('form', $form)) ?>
+                    <?= $this->formRow($form->get('dgar_v')->setOption('form', $form)) ?>
+                    <?= $this->formRow($form->get('was_v')->setOption('form', $form)) ?>
+                    <?= $this->formRow($form->get('seng_v')->setOption('form', $form)) ?>
+                    <?= $this->formRow($form->get('waver_v')->setOption('form', $form)) ?>
+                    <?= $this->formRow($form->get('hot_v')->setOption('form', $form)) ?>
+                    <?= $this->formRow($form->get('reis_v')->setOption('form', $form)) ?>
+                    <?= $this->formRow($form->get('arb_v')->setOption('form', $form)) ?>
+                    <?= $this->formRow($form->get('evors_v')->setOption('form', $form)) ?>
+                    <?= $this->formRow($form->get('all_v')->setOption('form', $form)) ?>
+                    <?= $this->formRow($form->get('sich_v')->setOption('form', $form)) ?>
+                    <?= $this->formRow($form->get('meld_v')->setOption('form', $form)) ?>
+                    <?= $this->formRow($form->get('bewo_v')->setOption('form', $form)) ?>
+                    <?= $this->formRow($form->get('tres_v')->setOption('form', $form)) ?>
+                    <?= $this->formRow($form->get('feu_v')->setOption('form', $form)) ?>
+                </div>
+            </fieldset>
+
+            <?= $this->formRow($form->get('chkErstinfo')->setOption('form', $form)) ?>
+            <div class="col-sm-4 pt-2"><?= $this->formRow($form->get('btn_berechnen')->setOption('form', $form)) ?></div>
+            <?= $this->form()->closeTag() ?>
         </div>
     </div>
     <div class="text-container">

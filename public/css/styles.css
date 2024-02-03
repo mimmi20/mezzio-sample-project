@@ -220,8 +220,8 @@ legend.form-label, legend.card-title {
     --bs-card-spacer-x: 0;
 }
 
-.card:not(.has-validation) {
-    box-shadow: var(--bs-box-shadow);
+.card.has-validation {
+    box-shadow: none;
 }
 
 /* new checkboxes */
