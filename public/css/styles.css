@@ -66,6 +66,7 @@
     position: absolute;
     left: 0;
     margin-top: calc(.125rem + var(--bs-dropdown-padding-y, 0));
+    width: 100%;
 }
 
 .nav-item details[open] ul {
@@ -127,7 +128,11 @@ legend.form-label, legend.card-title {
 
 /* fix for form validation */
 .was-validated .form-check-input:invalid ~ .form-check-label,
-.form-check-input.is-invalid ~ .form-check-label {
+.was-validated .form-check-input:valid ~ .form-check-label,
+.was-validated .form-check-label:has(.form-check-input:invalid, .form-check-input:valid),
+.form-check-input.is-invalid ~ .form-check-label,
+.form-check-input.is-valid ~ .form-check-label,
+.form-check-label:has(.form-check-input.is-invalid, .form-check-input.is-valid) {
     color: var(--bs-emphasis-color);
 }
 .was-validated .form-control:has(:valid),
@@ -182,6 +187,10 @@ legend.form-label, legend.card-title {
     --bs-card-color: var(--bs-primary-text-emphasis);
     --bs-card-cap-color: var(--bs-primary-text-emphasis);
     color: var(--bs-card-color);
+}
+
+.navbar-nav {
+    gap: 1rem;
 }
 
 .card a.navbar-brand {

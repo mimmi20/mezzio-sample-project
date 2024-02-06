@@ -23,7 +23,7 @@ $form->prepare();
             </div>
 
             <?= $this->form()->openTag($form); ?>
-                <fieldset class="col">
+                <fieldset class="col-12">
                     <legend class="form-label">Vertragsart</legend>
                     <select class="form-select is-invalid" name="productType" id="productType" data-next="company" required data-required-message="Bitte wählen Sie eine Vertragsart." aria-label="Vertragsart" autocomplete="off">
                         <option value="">Vertragsart wählen</option>
@@ -38,30 +38,36 @@ $form->prepare();
                     <div class="invalid-feedback">Bitte wählen Sie eine Vertragsart.</div>
                 </fieldset>
 
-                <fieldset class="col" data-name="company" disabled>
-                    <legend class="form-label position-relative pe-4">Versicherer <button class="btn info-layer-trigger position-absolute bottom-0 end-0" data-layer="info-layer-company"><i class="bi bi-info-circle"></i></i></button></legend>
-                    <select class="form-select is-invalid" name="company" id="company" data-next="year" required aria-label="Versicherer" autocomplete="off">
-                        <option value="">Versicherer wählen</option>
-                        <option value="1234 ">Allianz</option>
-                        <option value="12345 ">nicht Allianz</option>
-                    </select>
-                    <div class="invalid-feedback">Bitte wählen Sie einen Versicherer.</div>
-                </fieldset>
+                <div class="col-12 position-relative">
+                    <button class="btn info-layer-trigger position-absolute top-0 end-0 icon" data-layer="info-layer-company"><i class="bi bi-info-circle"></i></button>
+                    <fieldset class="col-12" data-name="company" disabled>
+                        <legend class="form-label position-relative pe-4">Versicherer</legend>
+                        <select class="form-select is-invalid" name="company" id="company" data-next="year" required aria-label="Versicherer" autocomplete="off">
+                            <option value="">Versicherer wählen</option>
+                            <option value="1234 ">Allianz</option>
+                            <option value="12345 ">nicht Allianz</option>
+                        </select>
+                        <div class="invalid-feedback">Bitte wählen Sie einen Versicherer.</div>
+                    </fieldset>
+                </div>
 
-                <fieldset class="col position-relative" data-name="year" disabled>
-                    <legend class="form-label position-relative pe-4">Tarifstand <button class="btn info-layer-trigger position-absolute bottom-0 end-0" data-layer="info-layer-year"><i class="bi bi-info-circle"></i></i></button></legend>
-                    <select class="form-select" name="year" id="year" data-next="product" required aria-label="Tarifstand" autocomplete="off">
-                        <option value="">Tarifstand wählen</option>
-                        <option value="1234 ">heute</option>
-                        <option value="12345 ">gestern</option>
-                    </select>
-                    <div class="invalid-feedback">Bitte wählen Sie einen Tarifstand.</div>
-                    <div class="form-text">
-                        <strong>Tipp:</strong> <?= $this->escapeHtml($this->translate('type the tariff generation to improve results')) ?>
-                    </div>
-                </fieldset>
+                <div class="col-12 position-relative">
+                    <button class="btn info-layer-trigger position-absolute top-0 end-0 icon" data-layer="info-layer-year"><i class="bi bi-info-circle"></i></button>
+                    <fieldset class="col-12 position-relative" data-name="year" disabled>
+                        <legend class="form-label position-relative pe-4">Tarifstand</legend>
+                        <select class="form-select" name="year" id="year" data-next="product" required aria-label="Tarifstand" autocomplete="off">
+                            <option value="">Tarifstand wählen</option>
+                            <option value="1234 ">heute</option>
+                            <option value="12345 ">gestern</option>
+                        </select>
+                        <div class="invalid-feedback">Bitte wählen Sie einen Tarifstand.</div>
+                        <div class="form-text">
+                            <strong>Tipp:</strong> <?= $this->escapeHtml($this->translate('type the tariff generation to improve results')) ?>
+                        </div>
+                    </fieldset>
+                </div>
 
-                <fieldset class="col" data-name="product" disabled>
+                <fieldset class="col-12" data-name="product" disabled>
                     <legend class="form-label">Tarifname</legend>
                     <select class="form-select" name="product" id="product" data-next="prod-opt" required aria-label="Tarifname" autocomplete="off">
                         <option value="">Tarifname wählen</option>
@@ -71,7 +77,7 @@ $form->prepare();
                     <div class="invalid-feedback">Bitte wählen Sie einen Tarifnamen.</div>
                 </fieldset>
 
-                <fieldset class="col" data-name="prod-opt" disabled>
+                <fieldset class="col-12" data-name="prod-opt" disabled>
                     <legend class="form-label">Tarifausprägungen</legend>
                     <select class="form-select" name="prod-opt" id="prod-opt" aria-label="Tarifausprägungen" autocomplete="off">
                         <option value="">Tarifausprägungen wählen</option>
@@ -82,18 +88,18 @@ $form->prepare();
                 </fieldset>
 
                 <!-- RS -->
-                <fieldset class="col d-none has-spinner" data-name="contract-type" disabled>
+                <fieldset class="col-12 d-none has-spinner" data-name="contract-type" disabled>
                     <legend class="form-label align-items-center">Vertragsart <span class="form-text">(Mehrfachauswahl möglich)</span></legend>
                 </fieldset>
 
                 <!-- WG -->
-                <fieldset class="col d-none has-spinner" data-name="danger-type" disabled>
+                <fieldset class="col-12 d-none has-spinner" data-name="danger-type" disabled>
                     <legend class="form-label align-items-center">Gefahren <span class="form-text">(Mehrfachauswahl möglich)</span></legend>
                     <div class="invalid-feedback">Bitte wählen Sie die versicherten Gefahren aus.</div>
                 </fieldset>
 
                 <!-- Unfall -->
-                <fieldset class="col d-none" data-name="tax-type" disabled>
+                <fieldset class="col-12 d-none" data-name="tax-type" disabled>
                     <legend class="form-label">Gliedertaxen</legend>
                     <select class="form-select" name="tax-type" id="tax-type" required aria-label="Gliedertaxen" autocomplete="off">
                         <option value="">Gliedertaxe wählen</option>
@@ -101,64 +107,13 @@ $form->prepare();
                     <div class="invalid-feedback">Bitte wählen Sie die Gliedertaxe aus.</div>
                 </fieldset>
 
-                <div class="col button-group text-center">
+                <div class="col-12 button-group text-center">
                     <button type="submit" class="btn btn-primary loading-btn js-gtm-event">
                         weiter
                     </button>
                 </div>
                 <div class="form-text"><sup class="text-danger">*</sup> Pflichtfeld</div>
-            <?= $this->form()->closeTag() ?>
-
-            <?php //layer ?>
-            <dialog class="modal" id="info-layer-company" aria-hidden="true" aria-labelledby="modal-title-insurer" role="dialog">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <header class="modal-header">
-                            <h5 class="modal-title" id="modal-title-insurer">Versicherer</h5>
-                            <button type="button" class="btn-close close" aria-label="Close" data-bs-dismiss="modal"></button>
-                        </header>
-                        <section class="modal-body">
-                            <p>
-                                <?= $this->escapeHtml($this->translate('choose your current insurer')) ?>
-                            </p>
-                            <p>
-                                <?= $this->escapeHtml($this->translate('if the insurer is not in our list')) ?>
-                            </p>
-                        </section>
-                        <footer class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        </footer>
-                    </div>
-                </div>
-            </dialog>
-            <dialog class="modal" id="info-layer-year" aria-hidden="true" aria-labelledby="modal-title-tariff" role="dialog">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <header class="modal-header">
-                            <h5 class="modal-title" id="modal-title-tariff">Tarifgeneration</h5>
-                            <button type="button" class="btn-close close" aria-label="Close"></button>
-                        </header>
-                        <section class="modal-body">
-                            <p>
-                                <?= $this->escapeHtml($this->translate('choose the generation of your current tariff')) ?>
-                            </p>
-                        </section>
-                    </div>
-                </div>
-            </dialog>
-        </div>
-
-        <div class="card position-relative">
-            <label for="customRange2" class="form-label">Example range</label>
-            <input type="range" class="form-range" value="0" min="0" max="5" id="customRange2" list="values">
-            <datalist id="values">
-                <option value="0" label="very cold!"></option>
-                <option value="1" label="cool"></option>
-                <option value="2" label="medium"></option>
-                <option value="3" label="getting warm!"></option>
-                <option value="4" label="hot!"></option>
-                <option value="5" label="super hot!"></option>
-            </datalist>
+            <?= $this->form()->closeTag(); ?>
         </div>
     </div>
     <div class="text-container">
@@ -203,84 +158,93 @@ $form->prepare();
             <div class="headline">Leistungskriterien</div>
         </div>
         <div class="card-body">
-            <?php // Main ?>
-            <div class="row criterion-row g-0">
-                <div class="col-12 col-md-5 position-relative g-2">
-                    <div class="input-group">
-                        <label class="accordion-default-trigger d-block text-truncate col-11" for="accordion-input-1">
-                            Text 1
-                        </label>
-                        <!-- <button class="info-layer-trigger col-1" type="button" data-layer="info-layer-input-1"><span class="type-icon"></span></button> -->
-                    </div>
-                </div>
-                <div class="col-12 col-md-7 position-relative g-2">
-                    <div class="row g-0">
-                        <div class="col-12 row gx-2 align-items-center">
-                            <div class="col-11 progress-chart-current-rate less">
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" style="width: 82%" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="accordion border-bottom-0" id="accordeon-0">
+                <details class="accordion-item border-bottom-0">
+                    <summary class="accordion-button">
+                        <div class="accordion-header user-select-none col-12">
+                            <div class="row g-0">
+                                <div class="col-12 col-md-5 position-relative g-2">
+                                    Text 1
+                                </div>
+                                <div class="col-12 col-md-7 position-relative g-2">
+                                    <div class="row gy-2 gx-0">
+                                        <div class="col-11 progress-chart-current-rate secondary">
+                                            <progress class="progress" max="100" value="82"></progress>
+                                        </div>
+                                        <div class="col-1 progress-chart-text text-end">82 %</div>
+                                        <div class="col-11 progress-chart-current-rate primary">
+                                            <progress class="progress" max="100" value="92"></progress>
+                                        </div>
+                                        <div class="col-1 progress-chart-text text-end">92 %</div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-1 progress-chart-text text-end">82 %</div>
                         </div>
-                        <div class="col-12 row gx-2 align-items-center">
-                            <div class="col-11 progress-chart-best-rate">
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" style="width: 92%" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                            <div class="col-1 progress-chart-text text-end">92 %</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <?php // Details ?>
-            <div class="accordion-default">
-                <div class="row criterion-row position-relative g-0">
-                    <div class="col-12 col-md-5 position-relative accordion-default-header text-truncate g-2">
-                        <div class="input-group justify-content-end">
-                            <span class="col-10 text-truncate">text</span>
-                            <!-- <button class="info-layer-trigger col-1" type="button" data-layer="info-layer-detailcriteria-input-1-1"><span class="type-icon"></span></button> -->
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-7 g-2">
+                    </summary>
+                    <div class="accordion-body">
                         <div class="row g-0">
-                            <div class="col-12 row gx-2 align-items-center">
-                                <div class="col-11 progress-chart-current-rate less">
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" style="width: 42%" aria-valuenow="42" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                                <div class="col-1 progress-chart-text text-end">42 %</div>
-                                <div class="col-11 progress-chart-best-rate secondary">
-                                    <meter class="progress" min="0" low="52" high="52" optimum="100" max="100" value="42">at 42/100</meter>
-                                </div>
-                                <div class="col-1 progress-chart-text text-end">42 %</div>
-                                <div class="col-11 progress-chart-best-rate secondary">
-                                    <progress class="progress" max="100" value="42"></progress>
-                                </div>
-                                <div class="col-1 progress-chart-text text-end">42 %</div>
+                            <div class="col-12 col-md-5 position-relative accordion-default-header text-truncate">
+                                text <button class="btn info-layer-trigger position-absolute top-0 end-0 icon" data-layer="info-layer-topic1"><i class="bi bi-info-circle"></i></button>
                             </div>
-                            <div class="col-12 row gx-2 align-items-center">
-                                <div class="col-11 progress-chart-best-rate">
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" style="width: 52%" aria-valuenow="52" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="col-12 col-md-7 g-2">
+                                <div class="row gx-0 gy-2">
+                                    <div class="col-11 progress-chart-best-rate secondary">
+                                        <progress class="progress" max="100" value="42"></progress>
                                     </div>
+                                    <div class="col-1 progress-chart-text text-end">42 %</div>
+
+                                    <div class="col-11 progress-chart-current-rate primary">
+                                        <progress class="progress" max="100" value="52"></progress>
+                                    </div>
+                                    <div class="col-1 progress-chart-text text-end">52 %</div>
                                 </div>
-                                <div class="col-1 progress-chart-text text-end">52 %</div>
-                                <div class="col-11 progress-chart-current-rate primary">
-                                    <meter class="progress" min="0" low="33" high="66" optimum="100" max="100" value="52">at 52/100</meter>
-                                </div>
-                                <div class="col-1 progress-chart-text text-end">52 %</div>
-                                <div class="col-11 progress-chart-current-rate primary">
-                                    <progress class="progress" max="100" value="52"></progress>
-                                </div>
-                                <div class="col-1 progress-chart-text text-end">52 %</div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </details>
+                <details class="accordion-item">
+                    <summary class="accordion-button">
+                        <div class="accordion-header user-select-none col-12">
+                            <div class="row g-0">
+                                <div class="col-12 col-md-5 position-relative g-2">
+                                    Text 2
+                                </div>
+                                <div class="col-12 col-md-7 position-relative g-2">
+                                    <div class="row gy-2 gx-0">
+                                        <div class="col-11 progress-chart-current-rate secondary">
+                                            <progress class="progress" max="100" value="12"></progress>
+                                        </div>
+                                        <div class="col-1 progress-chart-text text-end">12 %</div>
+                                        <div class="col-11 progress-chart-current-rate primary">
+                                            <progress class="progress" max="100" value="22"></progress>
+                                        </div>
+                                        <div class="col-1 progress-chart-text text-end">22 %</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </summary>
+                    <div class="accordion-body">
+                        <div class="row g-0">
+                            <div class="col-12 col-md-5 position-relative accordion-default-header text-truncate">
+                                text 2 <button class="btn info-layer-trigger position-absolute top-0 end-0 icon" data-layer="info-layer-topic2"><i class="bi bi-info-circle"></i></button>
+                            </div>
+                            <div class="col-12 col-md-7 g-2">
+                                <div class="row gx-0 gy-2">
+                                    <div class="col-11 progress-chart-best-rate secondary">
+                                        <progress class="progress" max="100" value="24"></progress>
+                                    </div>
+                                    <div class="col-1 progress-chart-text text-end">24 %</div>
+
+                                    <div class="col-11 progress-chart-current-rate primary">
+                                        <progress class="progress" max="100" value="64"></progress>
+                                    </div>
+                                    <div class="col-1 progress-chart-text text-end">64 %</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </details>
             </div>
         </div>
         <div class="card-footer text-center">
@@ -288,6 +252,79 @@ $form->prepare();
         </div>
     </div>
 </div>
+
+<?php //layer ?>
+<dialog class="modal" id="info-layer-company" aria-hidden="true" aria-labelledby="modal-title-insurer" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <header class="modal-header">
+                <h5 class="modal-title" id="modal-title-insurer">Versicherer</h5>
+                <button type="button" class="btn-close close" aria-label="Close" data-bs-dismiss="modal"></button>
+            </header>
+            <section class="modal-body">
+                <p>
+                    <?= $this->escapeHtml($this->translate('choose your current insurer')) ?>
+                </p>
+                <p>
+                    <?= $this->escapeHtml($this->translate('if the insurer is not in our list')) ?>
+                </p>
+            </section>
+            <footer class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </footer>
+        </div>
+    </div>
+</dialog>
+<dialog class="modal" id="info-layer-year" aria-hidden="true" aria-labelledby="modal-title-tariff" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <header class="modal-header">
+                <h5 class="modal-title" id="modal-title-tariff">Tarifgeneration</h5>
+                <button type="button" class="btn-close close" aria-label="Close" data-bs-dismiss="modal"></button>
+            </header>
+            <section class="modal-body">
+                <p>
+                    <?= $this->escapeHtml($this->translate('choose the generation of your current tariff')) ?>
+                </p>
+            </section>
+        </div>
+    </div>
+</dialog>
+
+<?php //layer ?>
+<dialog class="modal" id="info-layer-topic1" aria-hidden="true" aria-labelledby="modal-title-topic1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <header class="modal-header">
+                <h5 class="modal-title" id="modal-title-topic1">Topic 1</h5>
+                <button type="button" class="btn-close close" aria-label="Close" data-bs-dismiss="modal"></button>
+            </header>
+            <section class="modal-body">
+                <p>
+                    Topic 1
+                </p>
+            </section>
+            <footer class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </footer>
+        </div>
+    </div>
+</dialog>
+<dialog class="modal" id="info-layer-topic2" aria-hidden="true" aria-labelledby="modal-title-topic2" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <header class="modal-header">
+                <h5 class="modal-title" id="modal-title-topic2">Topic 2</h5>
+                <button type="button" class="btn-close close" aria-label="Close" data-bs-dismiss="modal"></button>
+            </header>
+            <section class="modal-body">
+                <p>
+                    Topic 2
+                </p>
+            </section>
+        </div>
+    </div>
+</dialog>
 
 <?php $this->headLink()->appendStylesheet($this->viteUrl()->css('node_modules/bootswatch/dist/morph/bootstrap.css'), 'screen', ['rel' => 'stylesheet']); ?>
 <?php $this->headLink()->appendStylesheet($this->viteUrl()->css('public/css/atb.css'), 'screen', ['rel' => 'stylesheet']); ?>

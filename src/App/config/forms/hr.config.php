@@ -30,10 +30,13 @@ return [
     'type' => Form::class,
     'options' => [
         'floating-labels' => true,
-        'layout' => \Mimmi20\LaminasView\BootstrapForm\Form::LAYOUT_VERTICAL,
+        'layout' => \Mimmi20\LaminasView\BootstrapForm\Form::LAYOUT_HORIZONTAL,
         'form-required-mark' => '<div class="mt-2 text-info-required"><sup>*</sup> Pflichtfeld</div>',
-        'col_attributes' => ['class' => 'my-2'],
-        'help_attributes' => ['class' => 'form-text'],
+        'row_attributes' => ['class' => 'my-2 align-items-center'],
+        'label_col_attributes' => ['class' => 'col-2'],
+        'col_attributes' => ['class' => 'col-8 field-content'],
+        'help_attributes' => ['class' => 'col-2 help-content toast'],
+        'label_attributes' => ['class' => 'stretched-link'],
     ],
     'attributes' => [
         'method' => 'post',
@@ -141,16 +144,40 @@ return [
 
                     'help_content' => '<strong>Hausnummer</strong><p>Die Hausnummer Ihrer zu versichernden Wohnung.</p>',
                 ],
-                'attributes' => ['id' => 'hnr'],
+                'attributes' => [
+                    'id' => 'hnr',
+                    'placeholder' => ' ',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'type' => Links::class,
+                'name' => 'link',
+                'options' => [
+                    'links' => [
+                        [
+                            'href' => '#modal-missing-street',
+                            'class' => 'js-trigger-missing-street',
+                            'label' => 'Fehlende Adresse melden',
+                        ],
+                    ],
+
+                    'as-form-control' => true,
+                    'floating' => false,
+                ],
+                'attributes' => [
+                    'data-toggle' => 'modal',
+                ],
             ],
         ],
         [
             'spec' => [
                 'type' => Date::class,
-                'name' => 'geburtsdatum',
+                'name' => 'gebdatum',
                 'options' => ['label' => 'Geburtsdatum'],
                 'attributes' => [
-                    'id' => 'geburtsdatum',
+                    'id' => 'gebdatum',
                     'placeholder' => 'TT.MM.JJJJ',
 
                     'autocomplete' => 'off',
@@ -186,16 +213,15 @@ return [
         ],
         [
             'spec' => [
-                'type' => Checkbox::class,
+                'type' => Radio::class,
                 'name' => 'vermietet',
                 'options' => [
                     'label' => 'Ist die Wohnung möbliert vermietet?',
 
-                    'use_hidden_element' => false,
-                    'checked_value' => 'ja',
-                    'unchecked_value' => 'nein',
-
-                    'switch' => true,
+                    'value_options' => [
+                        'nein' => 'nein',
+                        'ja' => 'ja',
+                    ],
 
                     'as-form-control' => true,
                 ],
@@ -215,6 +241,7 @@ return [
                     'class' => 'has-legend',
                     'min' => '10',
                     'max' => '2000',
+                    'placeholder' => ' ',
                 ],
             ],
         ],
@@ -229,6 +256,7 @@ return [
                 'attributes' => [
                     'id' => 'wohnfl_kg',
                     'class' => 'has-legend',
+                    'placeholder' => ' ',
                 ],
             ],
         ],
@@ -243,6 +271,7 @@ return [
                 'attributes' => [
                     'id' => 'kellerfl',
                     'class' => 'has-legend',
+                    'placeholder' => ' ',
                 ],
             ],
         ],
@@ -290,12 +319,11 @@ return [
                     'label' => 'Versicherungssumme selbst angeben',
                     'help_content' => '<strong>Versicherungssumme selbst angeben</strong><p>Die vereinbarte Versicherungssumme bildet die Höchst­entschädigungs­grenze nach einem Totalschaden. Wir empfehlen Unter­versicherungs­verzicht zu vereinbaren, damit nach einem Schaden durch den Versicherer keine Abzüge wegen möglicher Unterversicherung vorgenommen werden. Dieser Unter­versicherungs­verzicht erfordert je nach Anbieter und Tarif eine Versicherungssumme in Höhe von 600-700 EUR/qm Wohnfläche. Beachten Sie: Ohne Eingabe der Versicherungssumme wird automatisch der richtige Wert für den Unter­versicherungs­verzicht ermittelt.</p>',
                     'col_attributes' => ['data-show' => 'manuell'],
-
-                    'as-form-control' => true,
                 ],
                 'attributes' => [
                     'id' => 'verssumme',
                     'class' => 'has-legend',
+                    'placeholder' => ' ',
                 ],
             ],
         ],
@@ -311,6 +339,7 @@ return [
                     'id' => 'fahrrad',
                     'class' => 'has-legend',
                     'min' => '0',
+                    'placeholder' => ' ',
                 ],
             ],
         ],
@@ -348,7 +377,7 @@ return [
                 'attributes' => ['id' => 'elem'],
             ],
         ],
-        'grob' => [
+        [
             'spec' => [
                 'type' => Radio::class,
                 'name' => 'grob',
@@ -370,7 +399,7 @@ return [
                 'type' => Select::class,
                 'name' => 'bauart',
                 'options' => [
-                    'label' => 'Bauartklasse <a href="#modal-dialog-contruction-type" data-toggle="modal">Info</a>',
+                    'label' => 'Bauartklasse',
                     'help_content' => '<strong>Bauartklasse Info</strong><p>Die meisten Häuser sind massiv (aus Stein, Ziegel, Beton o. ä.) gebaut und verfügen über eine harte Dachung, z.B. aus Ziegeln, Metall, Beton, Schiefer. Sollten Sie aber z.B. in einem Fachwerkhaus wohnen oder Ihr Haus mit einer weichen Dachung z.B. aus Schilf, Reed, Holz ausgestattet sein, wird ein Zuschlag fällig.</p>',
                     'value_options' => [
                         'massive Bauweise mit harter Dachung (BAK I)' => 'massive Bauweise mit harter Dachung (BAK I)',
@@ -380,9 +409,29 @@ return [
                         'Fertighaus, massiv mit harter Dachung (FHG I, FHG II)' => 'Fertighaus, massiv mit harter Dachung (FHG I, FHG II)',
                         'Fertighaus mit harter Dachung (FHG III)' => 'Fertighaus mit harter Dachung (FHG III)',
                     ],
-                    'label_options' => ['disable_html_escape' => true],
                 ],
                 'attributes' => ['id' => 'bauart'],
+            ],
+        ],
+        [
+            'spec' => [
+                'type' => Links::class,
+                'name' => 'bauart-link',
+                'options' => [
+                    'links' => [
+                        [
+                            'href' => '#modal-dialog-contruction-type',
+                            'class' => 'js-trigger-missing-street',
+                            'label' => 'Information zu Bauarten',
+                        ],
+                    ],
+
+                    'as-form-control' => true,
+                    'floating' => false,
+                ],
+                'attributes' => [
+                    'data-toggle' => 'modal',
+                ],
             ],
         ],
         [
@@ -403,7 +452,7 @@ return [
                 'attributes' => ['id' => 'selbst'],
             ],
         ],
-        'laufzeit' => [
+        [
             'spec' => [
                 'type' => Select::class,
                 'name' => 'laufzeit',
@@ -426,6 +475,7 @@ return [
                 'options' => [
                     'label' => 'Bestand in den letzten 5 Jahren eine Vorversicherung?',
                     'help_content' => '<strong>Bestand in den letzten 5 Jahren eine Vorversicherung?</strong><p>Haben Sie eine Vorversicherung, die bislang schadenfrei verlief, können Sie von verschiedenen Versicherern einen Rabatt bis 25% erhalten.</p>',
+
                     'value_options' => [
                         'nein' => 'nein',
                         'ja' => 'ja',
@@ -489,9 +539,11 @@ return [
                 'options' => [
                     'label' => 'Privathaftpflicht',
                     'help_content' => '<strong>Warum fragen wir das?</strong><p>Klicken Sie hier, wenn Sie diese Versicherung schon besitzen oder diese neu beantragen möchten.</p>',
-                    'use_hidden_element' => false,
+                    'use_hidden_element' => true,
                     'checked_value' => '1',
                     'unchecked_value' => '0',
+
+                    'switch' => true,
 
                     'as-form-control' => true,
                 ],
@@ -505,9 +557,11 @@ return [
                 'options' => [
                     'label' => 'Tierhalterhaftpflicht',
                     'help_content' => '<strong>Warum fragen wir das?</strong><p>Klicken Sie hier, wenn Sie diese Versicherung schon besitzen oder diese neu beantragen möchten.</p>',
-                    'use_hidden_element' => false,
+                    'use_hidden_element' => true,
                     'checked_value' => '1',
                     'unchecked_value' => '0',
+
+                    'switch' => true,
 
                     'as-form-control' => true,
                 ],
@@ -521,9 +575,11 @@ return [
                 'options' => [
                     'label' => 'Haus-Grundbesitzer Haftpflicht',
                     'help_content' => '<strong>Warum fragen wir das?</strong><p>Klicken Sie hier, wenn Sie diese Versicherung schon besitzen oder diese neu beantragen möchten.</p>',
-                    'use_hidden_element' => false,
+                    'use_hidden_element' => true,
                     'checked_value' => '1',
                     'unchecked_value' => '0',
+
+                    'switch' => true,
 
                     'as-form-control' => true,
                 ],
@@ -537,9 +593,11 @@ return [
                 'options' => [
                     'label' => 'Gewässerschaden/Öltank',
                     'help_content' => '<strong>Warum fragen wir das?</strong><p>Klicken Sie hier, wenn Sie diese Versicherung schon besitzen oder diese neu beantragen möchten.</p>',
-                    'use_hidden_element' => false,
+                    'use_hidden_element' => true,
                     'checked_value' => '1',
                     'unchecked_value' => '0',
+
+                    'switch' => true,
 
                     'as-form-control' => true,
                 ],
@@ -553,9 +611,11 @@ return [
                 'options' => [
                     'label' => 'Wohngebäude',
                     'help_content' => '<strong>Warum fragen wir das?</strong><p>Klicken Sie hier, wenn Sie diese Versicherung schon besitzen oder diese neu beantragen möchten.</p>',
-                    'use_hidden_element' => false,
+                    'use_hidden_element' => true,
                     'checked_value' => '1',
                     'unchecked_value' => '0',
+
+                    'switch' => true,
 
                     'as-form-control' => true,
                 ],
@@ -569,9 +629,11 @@ return [
                 'options' => [
                     'label' => 'Wohngebäude-Glas',
                     'help_content' => '<strong>Warum fragen wir das?</strong><p>Klicken Sie hier, wenn Sie diese Versicherung schon besitzen oder diese neu beantragen möchten.</p>',
-                    'use_hidden_element' => false,
+                    'use_hidden_element' => true,
                     'checked_value' => '1',
                     'unchecked_value' => '0',
+
+                    'switch' => true,
 
                     'as-form-control' => true,
                 ],
@@ -585,9 +647,11 @@ return [
                 'options' => [
                     'label' => 'Hausrat',
                     'help_content' => '<strong>Warum fragen wir das?</strong><p>Klicken Sie hier, wenn Sie diese Versicherung schon besitzen oder diese neu beantragen möchten.</p>',
-                    'use_hidden_element' => false,
+                    'use_hidden_element' => true,
                     'checked_value' => '1',
                     'unchecked_value' => '0',
+
+                    'switch' => true,
 
                     'as-form-control' => true,
                 ],
@@ -601,9 +665,11 @@ return [
                 'options' => [
                     'label' => 'Hausrat-Glas',
                     'help_content' => '<strong>Warum fragen wir das?</strong><p>Klicken Sie hier, wenn Sie diese Versicherung schon besitzen oder diese neu beantragen möchten.</p>',
-                    'use_hidden_element' => false,
+                    'use_hidden_element' => true,
                     'checked_value' => '1',
                     'unchecked_value' => '0',
+
+                    'switch' => true,
 
                     'as-form-control' => true,
                 ],
@@ -617,9 +683,11 @@ return [
                 'options' => [
                     'label' => 'Unfall',
                     'help_content' => '<strong>Warum fragen wir das?</strong><p>Klicken Sie hier, wenn Sie diese Versicherung schon besitzen oder diese neu beantragen möchten.</p>',
-                    'use_hidden_element' => false,
+                    'use_hidden_element' => true,
                     'checked_value' => '1',
                     'unchecked_value' => '0',
+
+                    'switch' => true,
 
                     'as-form-control' => true,
                 ],
@@ -633,9 +701,11 @@ return [
                 'options' => [
                     'label' => 'Rechtsschutz',
                     'help_content' => '<strong>Warum fragen wir das?</strong><p>Klicken Sie hier, wenn Sie diese Versicherung schon besitzen oder diese neu beantragen möchten.</p>',
-                    'use_hidden_element' => false,
+                    'use_hidden_element' => true,
                     'checked_value' => '1',
                     'unchecked_value' => '0',
+
+                    'switch' => true,
 
                     'as-form-control' => true,
                 ],
@@ -644,8 +714,33 @@ return [
         ],
         [
             'spec' => [
+                'type' => Radio::class,
+                'name' => 'zusatzfragen',
+                'options' => [
+                    'label' => 'weitere Fragen',
+                    'value_options' => [
+                        'nein' => [
+                            'value' => 'nein',
+                            'label' => 'Ich verzichte auf die Beantwortung weiterer Fragen und wähle aus dem Vergleich einen Tarif, der meinen Bedarf erfüllt.',
+                            'attributes' => ['id' => 'zusatzfragen_nein'],
+                        ],
+                        'ja' => [
+                            'value' => 'ja',
+                            'label' => 'Ich möchte weitere Angaben zum gewünschten Versicherungsschutz machen. Es werden dann nur Tarife angezeigt, welche die Vorgaben erfüllen.',
+                            'attributes' => ['id' => 'zusatzfragen_ja'],
+                        ],
+                    ],
+                    'col_attributes' => ['data-toogle' => '1'],
+
+                    'as-form-control' => true,
+                ],
+                'attributes' => ['id' => 'zusatzfragen'],
+            ],
+        ],
+        [
+            'spec' => [
                 'type' => Links::class,
-                'name' => 'links',
+                'name' => 'links-standard',
                 'options' => [
                     'label' => 'Wählen Sie eine Vorgabe für Ihre Berechnung',
                     'help_content' => '<strong>Wählen Sie eine Vorgabe für Ihre Berechnung</strong><p>Die Vorgabe des Arbeitskreis Vermittlerrichlinie (AK-Empfehlung) bietet Ihnen einen empfohlenen Mindestschutz. Heute erfüllen alle wichtigen Tarife diese Vorgaben. Zu Ihrer Sicherheit sollten Sie diese Mindestvorgaben wählen.</p>',
@@ -719,6 +814,7 @@ return [
                     'id' => 'werts_v',
                     'class' => 'has-legend',
                     'min' => '0',
+                    'placeholder' => ' ',
                 ],
             ],
         ],
@@ -729,6 +825,7 @@ return [
                 'options' => [
                     'label' => 'Diebstahl von Kinderwagen und Krankenfahrstühlen?',
                     'help_content' => '<strong>Diebstahl von Kinderwagen und Krankenfahrstühlen?</strong><p>Einige Tarife schließen diesen Diebstahl bis zu einer begrenzten Summe mit ein.</p>',
+
                     'value_options' => [
                         'nein' => 'nein',
                         'ja' => 'ja',
@@ -746,6 +843,7 @@ return [
                 'options' => [
                     'label' => 'Diebstahl aus KFZ?',
                     'help_content' => '<strong>Diebstahl aus KFZ?</strong><p>Ausgeschlossen sind meist elektronische Geräte wie Notebook und Kameras.</p>',
+
                     'value_options' => [
                         'nein' => 'nein',
                         'ja' => 'ja',
@@ -763,6 +861,7 @@ return [
                 'options' => [
                     'label' => 'Diebstahl von Wäsche auf der Leine?',
                     'help_content' => '<strong>Diebstahl von Wäsche auf der Leine?</strong><p>Falls Ihre Wäsche von der Leine gestohlen wird, muss eine polizeiliche Meldung vorliegen, um Ersatz vom Versicherer zu erhalten.</p>',
+
                     'value_options' => [
                         'nein' => 'nein',
                         'ja' => 'ja',
@@ -780,6 +879,7 @@ return [
                 'options' => [
                     'label' => 'Schäden durch Verpuffung, Rauch und Ruß?',
                     'help_content' => '<strong>Schäden durch Verpuffung, Rauch und Ruß?</strong><p>In einer Heizung, die befeuert wird, entsteht durch sich entwickelnde Gase eine Verpuffung.</p>',
+
                     'value_options' => [
                         'nein' => 'nein',
                         'ja' => 'ja',
@@ -797,6 +897,7 @@ return [
                 'options' => [
                     'label' => 'Schäden durch Anprall von Landfahrzeugen?',
                     'help_content' => '<strong>Schäden durch Anprall von Landfahrzeugen?</strong><p>Fährt ein KFZ gegen Ihr Haus und es entsteht ein Schaden am Hausrat, wird dieser ersetzt.</p>',
+
                     'value_options' => [
                         'nein' => 'nein',
                         'ja' => 'ja',
@@ -814,6 +915,7 @@ return [
                 'options' => [
                     'label' => 'Sachen in Bankgewahrsam?',
                     'help_content' => '<strong>Sachen in Bankgewahrsam?</strong><p>Wenn z.B. Ihr Schmuck aus dem Banktresor gestohlen wird.</p>',
+
                     'value_options' => [
                         'nein' => 'nein',
                         'ja' => 'ja',
@@ -831,6 +933,7 @@ return [
                 'options' => [
                     'label' => 'Diebstahl von Gartenmöbeln/Geräten?',
                     'help_content' => '<strong>Diebstahl von Gartenmöbeln/Geräten?</strong><p>Falls Ihre Sitzgruppe gestohlen wird, ist diese hier mitversichert.</p>',
+
                     'value_options' => [
                         'nein' => 'nein',
                         'ja' => 'ja',
@@ -848,6 +951,7 @@ return [
                 'options' => [
                     'label' => 'Haben Sie Aquarien oder Wasserbetten (Wasserschäden)?',
                     'help_content' => '<strong>Haben Sie Aquarien oder Wasserbetten (Wasserschäden)?</strong><p>In der Regel werden nur die Folgen des Wasserschadens ersetzt, nicht das Wasserbett selbst.</p>',
+
                     'value_options' => [
                         'nein' => 'nein',
                         'ja' => 'ja',
@@ -865,6 +969,7 @@ return [
                 'options' => [
                     'label' => 'Sollen Sengschäden mitversichert werden?',
                     'help_content' => '<strong>Sollen Sengschäden mitversichert werden?</strong><p>Darunter versteht man Schäden, die ohne Feuer entstehen, sondern nur durch Hitzeeinwirkung (z.B. Bügeleisen).</p>',
+
                     'value_options' => [
                         'nein' => 'nein',
                         'ja' => 'ja',
@@ -882,6 +987,7 @@ return [
                 'options' => [
                     'label' => 'Soll Wasserverlust infolge Rohrbruch mitversichert werden?',
                     'help_content' => '<strong>Soll Wasserverlust infolge Rohrbruch mitversichert werden?</strong><p>Läuft längere Zeit Wasser weg, wird auch das bis zur Höchstgrenze erstattet.</p>',
+
                     'value_options' => [
                         'nein' => 'nein',
                         'ja' => 'ja',
@@ -899,6 +1005,7 @@ return [
                 'options' => [
                     'label' => 'Hotelkosten im Schadenfall?',
                     'help_content' => '<strong>Hotelkosten im Schadenfall?</strong><p>Wird Ihre Wohnung z.B. nach einem Wasserschaden unbewohnbar, werden Hotelkosten ersetzt.</p>',
+
                     'value_options' => [
                         'nein' => 'nein',
                         'ja' => 'ja',
@@ -916,6 +1023,7 @@ return [
                 'options' => [
                     'label' => 'Rückreisekosten aus dem Urlaub?',
                     'help_content' => '<strong>Rückreisekosten aus dem Urlaub?</strong><p>Wenn ein erheblicher Versicherungsfall eintritt, werden Fahrtmehrkosten für die Rückreise aus dem Urlaub ersetzt.</p>',
+
                     'value_options' => [
                         'nein' => 'nein',
                         'ja' => 'ja',
@@ -933,6 +1041,7 @@ return [
                 'options' => [
                     'label' => 'Sachen im häuslichen Arbeitszimmer?',
                     'help_content' => '<strong>Sachen im häuslichen Arbeitszimmer?</strong><p>Üben Sie Ihr Gewerbe aus Ihrer Wohnung aus, sind die gewerblichen Sachen bis zu einer Höchstgrenze bei diesem Einschluss mitversichert.</p>',
+
                     'value_options' => [
                         'nein' => 'nein',
                         'ja' => 'ja',
@@ -950,6 +1059,7 @@ return [
                 'options' => [
                     'label' => 'Erweiterte Vorsorge',
                     'help_content' => '<strong>Erweiterte Vorsorge</strong><p>Kein Deckungsnachteil gegenüber Mitbewerbern im Schadenfall. Im Versicherungsfall gelten Risiken, die im Rahmen des vereinbarten Vertrages nicht eingeschlossen sind, jedoch durch einen leistungsstärkeren, allgemein und für jedermann zugänglichen Tarif zur Hausratversicherung zum Zeitpunkt des Schadeneintritts eingeschlossen wären, automatisch entsprechend den dortigen Regelungen mitversichert.</p>',
+
                     'value_options' => [
                         'nein' => 'nein',
                         'ja' => 'ja',
@@ -967,6 +1077,7 @@ return [
                 'options' => [
                     'label' => 'Wünschen Sie für Ihren Hausrat eine Allgefahrendeckung?',
                     'help_content' => '<strong>Wünschen Sie für Ihren Hausrat eine Allgefahrendeckung?</strong><p>Bei der Allgefahrendeckung handelt es sich um einen weitreichenden, über die Leistungen einer klassischen Versicherung hinausgehenden Versicherungsschutz. Auf die gewohnte Aufzählung von versicherten Gefahren, z. B. Feuer, Leitungswasser oder Sturm, wird verzichtet: Schäden - Zerstörung, Beschädigung und Abhandenkommen von versicherten Gegenständen - gelten als Folge aller Gefahren als versichert, soweit diese nicht explizit vom Versicherungsschutz ausgenommen sind.</p>',
+
                     'value_options' => [
                         'nein' => 'nein',
                         'ja' => 'ja',
@@ -984,6 +1095,7 @@ return [
                 'options' => [
                     'label' => 'Sind an allen Haus- und sonstigen Eingangstüren Sicherheitsschlösser mit von außen nicht abschraubbaren, bündig montierten Sicherheitsbeschlägen vorhanden?',
                     'help_content' => '<strong>Sind an allen Haus- und sonstigen Eingangstüren Sicherheitsschlösser mit von außen nicht abschraubbaren, bündig montierten Sicherheitsbeschlägen vorhanden?</strong><p>Im Falle eines Einbruchdiebstahls wird überprüft, ob die Türen diesen Ansprüchen gerecht werden.</p>',
+
                     'value_options' => [
                         'nein' => 'nein',
                         'ja' => 'ja',
@@ -1001,6 +1113,7 @@ return [
                 'options' => [
                     'label' => 'Ist eine vom VdS (Verband der Sachversicherer) anerkannte Einbruchmeldeanlage vorhanden?',
                     'help_content' => '<strong>Ist eine vom VdS (Verband der Sachversicherer) anerkannte Einbruchmeldeanlage vorhanden?</strong><p>Diese Anforderung ist nützlich bei hohen Versicherungssummen oder besonderen Risiken. Im Normalfall spielt eine Meldeanlage im Schadensfall keine Rolle.</p>',
+
                     'value_options' => [
                         'nein' => 'nein',
                         'ja' => 'ja',
@@ -1018,6 +1131,7 @@ return [
                 'options' => [
                     'label' => 'Ist die Wohnung länger als 60 Tage ununterbrochen unbewohnt?',
                     'help_content' => '<strong>Ist die Wohnung länger als 60 Tage ununterbrochen unbewohnt?</strong><p>Bei einigen Gesellschaften erlischt der Versicherungsschutz, wenn die Wohnung länger als 60 Tage leer steht. Bewohnt heißt, dass eine erwachsene Person in der Wohnung übernachtet und sich dort im Normalfall aufhält.</p>',
+
                     'value_options' => [
                         'nein' => 'nein',
                         'ja' => 'ja',
@@ -1035,6 +1149,7 @@ return [
                 'options' => [
                     'label' => 'Ist ein mehrwandiger Stahlschrank mit einem Gewicht von > 200 kg oder ein eingemauerter Tresor mit mehrwandiger Tür vorhanden?',
                     'help_content' => '<strong>Ist ein mehrwandiger Stahlschrank mit einem Gewicht von > 200 kg oder ein eingemauerter Tresor mit mehrwandiger Tür vorhanden?</strong><p>Ist im Normalfall uninteressant. Bei besonderen Risiken muss das gesondert behandelt werden.</p>',
+
                     'value_options' => [
                         'nein' => 'nein',
                         'ja' => 'ja',
@@ -1052,6 +1167,7 @@ return [
                 'options' => [
                     'label' => 'Gibt es auf dem Versicherungsgrundstück oder in einer Entfernung von unter 10 m Betriebe / Lager, von denen eine erhöhte Feuergefahr ausgeht?',
                     'help_content' => '<strong>Gibt es auf dem Versicherungsgrundstück oder in einer Entfernung von unter 10 m Betriebe / Lager, von denen eine erhöhte Feuergefahr ausgeht?</strong><p>Es ist möglich, dass Versicherer bei erhöhtem Risiko den Vertrag ablehnen.</p>',
+
                     'value_options' => [
                         'nein' => 'nein',
                         'ja' => 'ja',
@@ -1064,35 +1180,11 @@ return [
         ],
         [
             'spec' => [
-                'type' => Radio::class,
-                'name' => 'zusatzfragen',
-                'options' => [
-                    'label' => 'weitere Fragen',
-                    'value_options' => [
-                        'nein' => [
-                            'value' => 'nein',
-                            'label' => 'Ich verzichte auf die Beantwortung weiterer Fragen und wähle aus dem Vergleich einen Tarif, der meinen Bedarf erfüllt.',
-                            'attributes' => ['id' => 'zusatzfragen_nein'],
-                        ],
-                        'ja' => [
-                            'value' => 'ja',
-                            'label' => 'Ich möchte weitere Angaben zum gewünschten Versicherungsschutz machen. Es werden dann nur Tarife angezeigt, welche die Vorgaben erfüllen.',
-                            'attributes' => ['id' => 'zusatzfragen_ja'],
-                        ],
-                    ],
-                    'col_attributes' => ['class' => 'col-12', 'data-toogle' => '1'],
-
-                    'as-form-control' => true,
-                ],
-                'attributes' => ['id' => 'zusatzfragen'],
-            ],
-        ],
-        [
-            'spec' => [
                 'type' => Checkbox::class,
                 'name' => 'chkErstinfo',
                 'options' => [
-                    'label' => 'Ich bestätige, die Erstinformation für Versicherungsmakler gemäß § 15 VersVermV heruntergeladen und gelesen zu haben.',
+                    'label' => 'Ich bestätige, die <strong>Erstinformation</strong> für Versicherungsmakler gemäß § 15 VersVermV und die <strong>Mitteilung zur Beratungsgrundlage</strong> gemäß § 60 VVG heruntergeladen und gelesen zu haben.',
+                    'label_options' => ['disable_html_escape' => true],
                     'use_hidden_element' => true,
                     'checked_value' => '1',
                     'unchecked_value' => '0',

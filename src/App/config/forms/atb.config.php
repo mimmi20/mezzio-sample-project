@@ -25,7 +25,7 @@ return [
     ],
     'attributes' => [
         'method' => 'post',
-        'class' => 'row g-2',
+        'class' => 'row gy-2 gx-0',
         'accept-charset' => 'utf-8',
         'novalidate' => 'novalidate',
         'data-needs-validation' => true,
