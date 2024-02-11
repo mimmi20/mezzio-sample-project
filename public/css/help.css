@@ -1,12 +1,18 @@
 .help-content.toast {
-    --bs-toast-max-width: 15%;
+    --bs-toast-max-width: clamp(20rem, 15%, 40rem);
     --bs-toast-border-radius: 10px;
     --bs-toast-bg: var(--bs-card-bg);
     display: none;
     flex-direction: column;
     position: absolute;
     right: 0;
+    z-index: 10;
 }
+
+.help-content.toast:not(:has(.toast-header, .toast-body)) {
+    padding: 1rem;
+}
+
 .help-content.toast:before {
     --arrow-size: 10px;
     content: '';
@@ -20,6 +26,10 @@
     background-color: var(--bs-toast-bg);
     border-left: var(--bs-toast-border-width) solid var(--bs-toast-header-border-color);
     border-bottom: var(--bs-toast-border-width) solid var(--bs-toast-header-border-color);
+}
+
+.help-content.toast .toast-body {
+    margin-bottom:0;
 }
 
 .row:has(.help-content) > .field-content > :is(.card.has-validation)::after,
@@ -36,6 +46,6 @@
 }
 
 .row:has( > .field-content > :is(.card.has-validation, .form-select, .form-control)):is(:focus-within, :hover) .help-content,
-.row > .col-12:has( > :is(.form-floating)):is(:focus-within, :hover) .help-content {
+.row .col-12:has( > :is(.form-floating)):is(:focus-within, :hover) .help-content {
     display: flex;
 }

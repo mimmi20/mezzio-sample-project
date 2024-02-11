@@ -1,51 +1,4 @@
 class AtbBase {
-  initLayer(): void {
-    const layerTriggers = document.querySelectorAll<HTMLElement>('.info-layer-trigger');
-    const that = this;
-
-    layerTriggers.forEach(function(layerTrigger: HTMLElement): void {
-      const layerId = layerTrigger.getAttribute('data-layer');
-
-      if (layerId === null) {
-        console.error('no layer-id')
-        return;
-      }
-
-      const dialog = document.getElementById(layerId);
-
-      if (!(dialog instanceof HTMLDialogElement)) {
-        console.log(`layer ${layerId} not found`);
-        return;
-      }
-
-      layerTrigger.addEventListener('click', (event: Event): void => {
-        console.log(`Button was clicked`);
-
-        event.preventDefault();
-        event.stopPropagation();
-
-        dialog.showModal();
-        dialog.setAttribute('aria-hidden', 'false')
-      });
-
-      that.initDialog(dialog);
-    });
-  }
-
-  initDialog(dialog: HTMLDialogElement): void {
-    const closeButtons = dialog.querySelectorAll<HTMLButtonElement>('[data-bs-dismiss="modal"]');
-
-    closeButtons.forEach(function (button: HTMLButtonElement): void {
-      button.addEventListener('click', (event: MouseEvent): void => {
-        event.preventDefault();
-        event.stopPropagation();
-
-        dialog.close();
-        dialog.setAttribute('aria-hidden', 'true')
-      });
-    });
-  }
-
   handleError(headline: string, text: string): void {
     const dialog = document.getElementById('error-layer');
 
@@ -351,7 +304,6 @@ class AtbBase {
       });
 
       that.setActiveClassForAccordion();
-      that.initLayer();
 
       const charts = document.querySelectorAll('.progress-chart .non-width');
 
@@ -637,12 +589,9 @@ class AtbBase {
   }
 
   init(): void {
-    this.initLayer();
     this.initSelect();
     this.initForm();
     this.initCheckbox();
-    this.setHistory('atb-start');
-    this.handleHistory();
   }
 }
 

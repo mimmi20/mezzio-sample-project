@@ -1,21 +1,25 @@
-[data-show], [data-show].row, [data-show].card {
-    display: none;
+[data-show], [data-show].row, [data-show].card, [data-show].d-flex {
+    display: none!important;
 }
 
-[data-toogle]:has([value="datum"]:checked) ~ [data-show="datum"] {
-    display: block;
+[data-toogle]:has([value="datum"]:checked) ~ [data-show="datum"]:not(.row) {
+    display: block!important;
+}
+
+[data-toogle]:has([value="datum"]:checked) ~ [data-show="datum"].row {
+    display: flex!important;
 }
 
 [data-toogle]:has([value="manuell"]:checked) ~ [data-show="manuell"] {
-    display: block;
+    display: block!important;
 }
 
 form:has(#kr_j:checked) [data-optional][data-show="ja"] {
-    display: block;
+    display: block!important;
 }
 
 form:has(#zusatzfragen_ja:checked) [data-detail][data-show="ja"] {
-    display: block;
+    display: block!important;
 }
 
 .alert-danger {

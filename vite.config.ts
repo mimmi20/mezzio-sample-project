@@ -83,6 +83,7 @@ export default defineConfig({
         path.resolve(__dirname, 'public/js/unf.ts'),
         path.resolve(__dirname, 'public/js/wg.ts'),
         path.resolve(__dirname, 'public/js/atb.ts'),
+        path.resolve(__dirname, 'public/js/dialog.ts'),
         // glass theme
         path.resolve(__dirname, 'public/css/themes/glass.css'),
         // general css

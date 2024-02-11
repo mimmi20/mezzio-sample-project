@@ -30,17 +30,15 @@ return [
     'type' => Form::class,
     'options' => [
         'floating-labels' => true,
-        'layout' => \Mimmi20\LaminasView\BootstrapForm\Form::LAYOUT_HORIZONTAL,
+        'layout' => \Mimmi20\LaminasView\BootstrapForm\Form::LAYOUT_VERTICAL,
         'form-required-mark' => '<div class="mt-2 text-info-required"><sup>*</sup> Pflichtfeld</div>',
-        'row_attributes' => ['class' => 'my-2 align-items-center'],
-        'label_col_attributes' => ['class' => 'col-2'],
-        'col_attributes' => ['class' => 'col-8 field-content'],
-        'help_attributes' => ['class' => 'col-2 help-content toast'],
+        'col_attributes' => ['class' => 'my-2 col-12 position-relative align-items-center d-flex'],
+        'help_attributes' => ['class' => 'help-content toast'],
         'label_attributes' => ['class' => 'stretched-link'],
     ],
     'attributes' => [
         'method' => 'post',
-        'class' => 'g-0 was-validated',
+        'class' => 'g-0 was-validated my-3',
         'accept-charset' => 'utf-8',
         'novalidate' => 'novalidate',
         'data-needs-validation' => true,
@@ -96,7 +94,7 @@ return [
                 'options' => [
                     'label' => 'PLZ - Risiko-Anschrift',
 
-                    'help_content' => '<strong>Warum fragen wir das?</strong><p>Die Postleitzahl Ihrer Wohnung wird für die Risikobeurteilung /Beitragsberechnung benötigt. Die Beitragshöhe ist nicht nur abhängig von Ihren gewünschten Leistungen, sondern wird auch anhand Art und Anzahl der Schäden, die in Ihrem Wohnort durchschnittlich gemeldet werden, bemessen.</p>',
+                    'help_content' => '<strong class="toast-header">Warum fragen wir das?</strong><p class="toast-body">Die Postleitzahl Ihrer Wohnung wird für die Risikobeurteilung /Beitragsberechnung benötigt. Die Beitragshöhe ist nicht nur abhängig von Ihren gewünschten Leistungen, sondern wird auch anhand Art und Anzahl der Schäden, die in Ihrem Wohnort durchschnittlich gemeldet werden, bemessen.</p>',
                 ],
                 'attributes' => [
                     'id' => 'plz',
@@ -116,7 +114,7 @@ return [
 
                     'value_options' => ['' => 'Bitte zuerst PLZ eintragen'],
                     'disable_inarray_validator' => true,
-                    'help_content' => '<strong>Ort</strong><p>Der Ort Ihrer zu versichernden Wohnung.</p>',
+                    'help_content' => '<strong class="toast-header">Ort</strong><p class="toast-body">Der Ort Ihrer zu versichernden Wohnung.</p>',
                 ],
                 'attributes' => ['id' => 'ort'],
             ],
@@ -130,7 +128,7 @@ return [
 
                     'value_options' => ['' => 'Bitte zuerst Ort wählen'],
                     'disable_inarray_validator' => true,
-                    'help_content' => '<strong>Straße</strong><p>Die Straße Ihrer zu versichernden Wohnung.</p>',
+                    'help_content' => '<strong class="toast-header">Straße</strong><p class="toast-body">Die Straße Ihrer zu versichernden Wohnung.</p>',
                 ],
                 'attributes' => ['id' => 'strasse'],
             ],
@@ -142,7 +140,7 @@ return [
                 'options' => [
                     'label' => 'Hausnummer',
 
-                    'help_content' => '<strong>Hausnummer</strong><p>Die Hausnummer Ihrer zu versichernden Wohnung.</p>',
+                    'help_content' => ['header' => '<strong>Hausnummer</strong>', 'content' => 'Die Hausnummer Ihrer zu versichernden Wohnung.'],
                 ],
                 'attributes' => [
                     'id' => 'hnr',
@@ -158,8 +156,9 @@ return [
                     'links' => [
                         [
                             'href' => '#modal-missing-street',
-                            'class' => 'js-trigger-missing-street',
+                            'class' => 'info-layer-trigger',
                             'label' => 'Fehlende Adresse melden',
+                            'data-layer' => 'modal-missing-street',
                         ],
                     ],
 
@@ -201,7 +200,7 @@ return [
                         'Doppelhaushälfte' => 'Doppelhaushälfte',
                         'Reihenhaus' => 'Reihenhaus',
                     ],
-                    'help_content' => '<strong>Wo wohnen Sie</strong><p>Wählen Sie hier, in welchem Haus sich die zu versichernde Wohnung befindet.</p>',
+                    'help_content' => '<strong class="toast-header">Wo wohnen Sie</strong><p class="toast-body">Wählen Sie hier, in welchem Haus sich die zu versichernde Wohnung befindet.</p>',
                 ],
                 'attributes' => [
                     'id' => 'whg',
@@ -234,7 +233,15 @@ return [
                 'name' => 'wohnfl',
                 'options' => [
                     'label' => 'Ihre gesamte Wohnfläche im Haus',
-                    'help_content' => '<strong>Ihre gesamte Wohnfläche im Haus</strong><p>Als Wohnfläche gilt die Grundfläche aller Räume der versicherten Wohnung. Räume, die zu Hobbyzwecken genutzt werden, gelten immer als Wohnfläche. Nicht zu berücksichtigen sind: Zubehörräume, Keller- und Speicherräume, die nicht zu Wohnzwecken genutzt werden, nicht ausgebaute Dachböden, Treppen, Balkone, Terrassen, Loggien, Garagen.</p>',
+                    'help_content' => '<strong class="toast-header">Ihre gesamte Wohnfläche im Haus</strong><p class="toast-body">Als Wohnfläche gilt die Grundfläche aller Räume der versicherten Wohnung. Räume, die zu Hobbyzwecken genutzt werden, gelten immer als Wohnfläche. Nicht zu berücksichtigen sind: Zubehörräume, Keller- und Speicherräume, die nicht zu Wohnzwecken genutzt werden, nicht ausgebaute Dachböden, Treppen, Balkone, Terrassen, Loggien, Garagen.</p>',
+                    'in-group' => true,
+
+                    'group-suffixes' => [
+                        [
+                            'attributes' => ['class' => 'input-group-text'],
+                            'content' => 'm<sup>2</sup>',
+                        ],
+                    ],
                 ],
                 'attributes' => [
                     'id' => 'wohnfl',
@@ -251,7 +258,15 @@ return [
                 'name' => 'wohnfl_kg',
                 'options' => [
                     'label' => 'Davon sind im Keller',
-                    'help_content' => '<strong>Davon sind im Keller</strong><p>Geben Sie hier eine evtl. Wohnfläche im Keller an. Diese muss aber im o.g. Feld schon enthalten sein. Definition siehe oben. (z.B. Hobbyraum)</p>',
+                    'help_content' => '<strong class="toast-header">Davon sind im Keller</strong><p>Geben Sie hier eine evtl. Wohnfläche im Keller an. Diese muss aber im o.g. Feld schon enthalten sein. Definition siehe oben. (z.B. Hobbyraum)</p>',
+                    'in-group' => true,
+
+                    'group-suffixes' => [
+                        [
+                            'attributes' => ['class' => 'input-group-text'],
+                            'content' => 'm<sup>2</sup>',
+                        ],
+                    ],
                 ],
                 'attributes' => [
                     'id' => 'wohnfl_kg',
@@ -266,7 +281,15 @@ return [
                 'name' => 'kellerfl',
                 'options' => [
                     'label' => 'Grundfläche des Kellers',
-                    'help_content' => '<strong>Grundfläche des Kellers</strong><p>Geben Sie hier die gesamte Grundfläche Ihres Kellers in qm an.</p>',
+                    'help_content' => '<strong class="toast-header">Grundfläche des Kellers</strong><p>Geben Sie hier die gesamte Grundfläche Ihres Kellers in qm an.</p>',
+                    'in-group' => true,
+
+                    'group-suffixes' => [
+                        [
+                            'attributes' => ['class' => 'input-group-text'],
+                            'content' => 'm<sup>2</sup>',
+                        ],
+                    ],
                 ],
                 'attributes' => [
                     'id' => 'kellerfl',
@@ -334,6 +357,14 @@ return [
                 'options' => [
                     'label' => 'Fahrraddiebstahl bis',
                     'help_content' => '<strong>Fahrraddiebstahl bis</strong><p>Auch bei Fahrraddiebstahl gilt Neuwertersatz. Achten Sie besonders auf Anbieter, die auf die Nachtzeitklausel verzichten und auch dann Schadenersatz leisten, wenn das Fahrrad in der Zeit zwischen 22:00-06:00 Uhr entwendet wurde. Bedingung: Das Fahrrad muss vor dem Diebstahl in geeigneter Weise gesichert (angeschlossen) gewesen sein. Schaden-Beispiel: Sie fahren mit Ihrem Fahrrad einkaufen, schließen es vor dem Geschäft ordnungsgemäß an. Trotzdem wird Ihr Fahrrad gestohlen.</p>',
+                    'in-group' => true,
+
+                    'group-suffixes' => [
+                        [
+                            'attributes' => ['class' => 'input-group-text'],
+                            'content' => '&euro;',
+                        ],
+                    ],
                 ],
                 'attributes' => [
                     'id' => 'fahrrad',
@@ -421,8 +452,9 @@ return [
                     'links' => [
                         [
                             'href' => '#modal-dialog-contruction-type',
-                            'class' => 'js-trigger-missing-street',
+                            'class' => 'info-layer-trigger',
                             'label' => 'Information zu Bauarten',
+                            'data-layer' => 'modal-dialog-contruction-type',
                         ],
                     ],
 
@@ -730,7 +762,7 @@ return [
                             'attributes' => ['id' => 'zusatzfragen_ja'],
                         ],
                     ],
-                    'col_attributes' => ['data-toogle' => '1'],
+                    'row_attributes' => ['data-toogle' => '1'],
 
                     'as-form-control' => true,
                 ],

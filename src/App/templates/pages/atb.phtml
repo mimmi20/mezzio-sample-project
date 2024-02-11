@@ -108,7 +108,7 @@ $form->prepare();
                 </fieldset>
 
                 <div class="col-12 button-group text-center">
-                    <button type="submit" class="btn btn-primary loading-btn js-gtm-event">
+                    <button type="submit" class="btn btn-primary loading-btn">
                         weiter
                     </button>
                 </div>
@@ -330,3 +330,4 @@ $form->prepare();
 <?php $this->headLink()->appendStylesheet($this->viteUrl()->css('public/css/atb.css'), 'screen', ['rel' => 'stylesheet']); ?>
 <?php $this->inlineScript()->appendFile($this->viteUrl()->js('public/js/form.ts')); ?>
 <?php $this->inlineScript()->appendFile($this->viteUrl()->js('public/js/atb.ts'), 'module', ['id' => 'functional-script']); ?>
+<?php $this->inlineScript()->appendFile($this->viteUrl()->js('public/js/dialog.ts'), 'module'); ?>
