@@ -33,7 +33,7 @@ return [
         'layout' => \Mimmi20\LaminasView\BootstrapForm\Form::LAYOUT_VERTICAL,
         'form-required-mark' => '<div class="mt-2 text-info-required"><sup>*</sup> Pflichtfeld</div>',
         'col_attributes' => ['class' => 'my-2 col-12 position-relative align-items-center d-flex'],
-        'help_attributes' => ['class' => 'help-content toast'],
+        'help_attributes' => ['class' => 'help-content'],
         'label_attributes' => ['class' => 'stretched-link'],
     ],
     'attributes' => [
@@ -165,9 +165,7 @@ return [
                     'as-form-control' => true,
                     'floating' => false,
                 ],
-                'attributes' => [
-                    'data-toggle' => 'modal',
-                ],
+                'attributes' => ['data-toggle' => 'modal'],
             ],
         ],
         [
@@ -258,7 +256,7 @@ return [
                 'name' => 'wohnfl_kg',
                 'options' => [
                     'label' => 'Davon sind im Keller',
-                    'help_content' => '<strong class="toast-header">Davon sind im Keller</strong><p>Geben Sie hier eine evtl. Wohnfläche im Keller an. Diese muss aber im o.g. Feld schon enthalten sein. Definition siehe oben. (z.B. Hobbyraum)</p>',
+                    'help_content' => '<strong class="toast-header">Davon sind im Keller</strong><p class="toast-body">Geben Sie hier eine evtl. Wohnfläche im Keller an. Diese muss aber im o.g. Feld schon enthalten sein. Definition siehe oben. (z.B. Hobbyraum)</p>',
                     'in-group' => true,
 
                     'group-suffixes' => [
@@ -281,7 +279,7 @@ return [
                 'name' => 'kellerfl',
                 'options' => [
                     'label' => 'Grundfläche des Kellers',
-                    'help_content' => '<strong class="toast-header">Grundfläche des Kellers</strong><p>Geben Sie hier die gesamte Grundfläche Ihres Kellers in qm an.</p>',
+                    'help_content' => '<strong class="toast-header">Grundfläche des Kellers</strong><p class="toast-body">Geben Sie hier die gesamte Grundfläche Ihres Kellers in qm an.</p>',
                     'in-group' => true,
 
                     'group-suffixes' => [
@@ -461,9 +459,7 @@ return [
                     'as-form-control' => true,
                     'floating' => false,
                 ],
-                'attributes' => [
-                    'data-toggle' => 'modal',
-                ],
+                'attributes' => ['data-toggle' => 'modal'],
             ],
         ],
         [

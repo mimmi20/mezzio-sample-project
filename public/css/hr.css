@@ -21,16 +21,3 @@ form:has(#kr_j:checked) [data-optional][data-show="ja"] {
 form:has(#zusatzfragen_ja:checked) [data-detail][data-show="ja"] {
     display: block!important;
 }
-
-.alert-danger {
-    display: none;
-    --bs-alert-bg: var(--bs-danger-text-emphasis);
-    --bs-alert-color: #000000;
-    --bs-alert-border-color: var(--bs-form-invalid-border-color);
-}
-.alert-warning {
-    display: none;
-    --bs-alert-bg: var(--bs-warning-text-emphasis);
-    --bs-alert-color: #000000;
-    --bs-alert-border-color: var(--bs-form-invalid-border-color);
-}

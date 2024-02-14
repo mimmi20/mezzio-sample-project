@@ -6,7 +6,7 @@ $form->prepare();
 
 <h1 class="card-header">Alttarifbewertung</h1>
 <div class="card-body" id="atb-start">
-    <div class="text-container">
+    <div class="text-wrapper">
         <strong>Lorem ipsum dolor sit amet, consetetur</strong>
         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod</p>
         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore</p>
@@ -116,7 +116,7 @@ $form->prepare();
             <?= $this->form()->closeTag(); ?>
         </div>
     </div>
-    <div class="text-container">
+    <div class="text-wrapper">
         <strong>Lorem ipsum dolor sit amet, consetetur</strong>
         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod</p>
         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore</p>
@@ -326,8 +326,9 @@ $form->prepare();
     </div>
 </dialog>
 
-<?php $this->headLink()->appendStylesheet($this->viteUrl()->css('node_modules/bootswatch/dist/morph/bootstrap.css'), 'screen', ['rel' => 'stylesheet']); ?>
+<?php $this->headLink()->prependStylesheet($this->viteUrl()->css('node_modules/bootswatch/dist/morph/bootstrap.css'), 'screen', ['rel' => 'stylesheet']); ?>
 <?php $this->headLink()->appendStylesheet($this->viteUrl()->css('public/css/atb.css'), 'screen', ['rel' => 'stylesheet']); ?>
+<?php $this->headLink()->appendStylesheet($this->viteUrl()->css('public/css/accordion.css'), 'screen', ['rel' => 'stylesheet']); ?>
 <?php $this->inlineScript()->appendFile($this->viteUrl()->js('public/js/form.ts')); ?>
 <?php $this->inlineScript()->appendFile($this->viteUrl()->js('public/js/atb.ts'), 'module', ['id' => 'functional-script']); ?>
 <?php $this->inlineScript()->appendFile($this->viteUrl()->js('public/js/dialog.ts'), 'module'); ?>

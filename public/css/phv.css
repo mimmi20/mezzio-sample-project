@@ -1,5 +1,9 @@
-[data-show], [data-show].row, [data-show].card {
+[data-show], [data-show].row, [data-show].card, [data-show].d-flex {
     display: none;
+}
+
+[data-toogle]:has([value="datum"]:checked) ~ [data-show="datum"]:not(.row) {
+    display: block;
 }
 
 [data-toogle]:has([value="1"]:checked) ~ [data-show="1"] {
@@ -66,19 +70,19 @@ form:has(#kr_j:checked) [data-optional][data-show="ja"] {
     display: block;
 }
 
-form:has(#zusatzfragen_ja:checked) [data-detail][data-show="ja"] {
+form:has(#ausfall_j:checked) [data-ausfall][data-show="ja"] {
     display: block;
 }
 
-.alert-danger {
-    display: none;
-    --bs-alert-bg: var(--bs-danger-text-emphasis);
-    --bs-alert-color: #000000;
-    --bs-alert-border-color: var(--bs-form-invalid-border-color);
+[data-toogle]:has([value="3000"]:checked) ~ [data-show="3000"],
+[data-toogle]:has([value="5000"]:checked) ~ [data-show="3000"],
+[data-toogle]:has([value="10000"]:checked) ~ [data-show="3000"],
+[data-toogle]:has([value="20000"]:checked) ~ [data-show="3000"],
+[data-toogle]:has([value="50000"]:checked) ~ [data-show="3000"],
+[data-toogle]:has([value="100000"]:checked) ~ [data-show="3000"] {
+    display: block;
 }
-.alert-warning {
-    display: none;
-    --bs-alert-bg: var(--bs-warning-text-emphasis);
-    --bs-alert-color: #000000;
-    --bs-alert-border-color: var(--bs-form-invalid-border-color);
+
+form:has(#zusatzfragen_ja:checked) [data-detail][data-show="ja"] {
+    display: block;
 }

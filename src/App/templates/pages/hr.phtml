@@ -6,18 +6,20 @@ $form->prepare();
 
 <h1 class="card-header">Hausrat</h1>
 <div class="card-body" id="hr-start">
-    <div class="text-container">
+    <div class="text-wrapper">
         <strong>Lorem ipsum dolor sit amet, consetetur</strong>
         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod</p>
         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore</p>
         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore</p>
     </div>
     <?= $this->form()->openTag($form); ?>
+    <div class="alert alert-warning" role="alert">
+        Ihre angegebenen Daten sind nicht korrekt!
+    </div>
     <fieldset class="card mb-2">
-        <legend class="card-header"><span>Was möchten Sie versichern?</span></legend>
+        <legend class="card-header">Was möchten Sie versichern?</legend>
 
         <div class="card-body">
-            <!-- form fields -->
             <?= $this->formRow($form->get('versbeginn')->setOption('form', $form)); ?>
             <?= $this->formRow($form->get('versbeginn_datum')->setOption('form', $form)); ?>
             <?= $this->formRow($form->get('plz')->setOption('form', $form)); ?>
@@ -44,7 +46,7 @@ $form->prepare();
     </fieldset>
 
     <fieldset class="card mb-2">
-        <legend class="card-header"><span>Rabattrelevante Angaben</span></legend>
+        <legend class="card-header">Rabattrelevante Angaben</legend>
 
         <div class="card-body">
             <?= $this->formRow($form->get('selbst')->setOption('form', $form)); ?>
@@ -56,12 +58,11 @@ $form->prepare();
     </fieldset>
 
     <fieldset class="card mb-2" data-optional="1" data-show="ja">
-        <legend class="card-header"><span>Kombirabatte für folgende Sparten-Kombinationen berücksichtigen</span></legend>
+        <legend class="card-header">Kombirabatte für folgende Sparten-Kombinationen berücksichtigen</legend>
 
         <div class="card-body">
             <p class="text-center pt-2 text-info-discount">Kombirabatte - Je mehr Verträge bei einer Gesellschaft, um so günstigere Preise.
                 Welche Verträge haben Sie schon oder haben vor, sie zu versichern?</p>
-
 
             <?= $this->formRow($form->get('KrPHV')->setOption('form', $form)); ?>
             <?= $this->formRow($form->get('KrTIE')->setOption('form', $form)); ?>
@@ -83,7 +84,7 @@ $form->prepare();
     </fieldset>
 
     <fieldset class="card mb-2" data-detail="1" data-show="ja">
-        <legend class="card-header"><span>Optionale Detailfragen</span></legend>
+        <legend class="card-header">Optionale Detailfragen</legend>
         <div class="card-body">
             <?= $this->formRow($form->get('links-standard')->setOption('form', $form)); ?>
             <?= $this->formRow($form->get('uver_v')->setOption('form', $form)); ?>
@@ -152,7 +153,7 @@ $form->prepare();
     </div>
 
     <div class="card">
-        <div class="card-body">
+        <div class="card-body no-margin">
             <div class="row align-items-center">
                 <div class="col-sm-8">
                     <div class="row g-0 align-items-center">
@@ -173,8 +174,11 @@ $form->prepare();
         </div>
     </div>
 
+    <?= $this->formHidden($form->get('zahlweise')->setOption('form', $form)); ?>
+    <?= $this->formHidden($form->get('chkFilterNachhaltigkeit')->setOption('form', $form)); ?>
+
     <?= $this->form()->closeTag(); ?>
-    <div class="text-container">
+    <div class="text-wrapper">
         <strong>Lorem ipsum dolor sit amet, consetetur</strong>
         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod</p>
         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore</p>
@@ -361,9 +365,13 @@ $form->prepare();
     </div>
 </dialog>
 
-<?php // $this->headLink()->appendStylesheet($this->viteUrl()->css('node_modules/bootswatch/dist/quartz/bootstrap.css'), 'screen', ['rel' => 'stylesheet']); ?>
-<?php $this->headLink()->appendStylesheet($this->viteUrl()->css('node_modules/bootstrap/dist/css/bootstrap.css'), 'screen', ['rel' => 'stylesheet']); ?>
+<?php // $this->headLink()->prependStylesheet($this->viteUrl()->css('node_modules/bootswatch/dist/quartz/bootstrap.css'), 'screen', ['rel' => 'stylesheet']); ?>
+<?php $this->headLink()->prependStylesheet($this->viteUrl()->css('node_modules/bootstrap/dist/css/bootstrap.css'), 'screen', ['rel' => 'stylesheet']); ?>
 <?php $this->headLink()->appendStylesheet($this->viteUrl()->css('public/css/hr.css'), 'screen', ['rel' => 'stylesheet']); ?>
+<?php $this->headLink()->appendStylesheet($this->viteUrl()->css('public/css/help.css'), 'screen', ['rel' => 'stylesheet']); ?>
+<?php $this->headLink()->appendStylesheet($this->viteUrl()->css('public/css/navigation.css'), 'screen', ['rel' => 'stylesheet']); ?>
+<?php $this->headLink()->appendStylesheet($this->viteUrl()->css('public/css/accordion.css'), 'screen', ['rel' => 'stylesheet']); ?>
 <?php $this->inlineScript()->appendFile($this->viteUrl()->js('public/js/form.ts')); ?>
 <?php $this->inlineScript()->appendFile($this->viteUrl()->js('public/js/hr.ts')); ?>
+<?php $this->inlineScript()->appendFile($this->viteUrl()->js('public/js/versbeginn.ts')); ?>
 <?php $this->inlineScript()->appendFile($this->viteUrl()->js('public/js/dialog.ts'), 'module'); ?>

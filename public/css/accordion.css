@@ -1,0 +1,19 @@
+/* fixes for accordeon to work work with <details> */
+.accordion-item:not([open]) .accordion-button {
+    background-color: var(--bs-accordion-bg);
+}
+
+.accordion-item:not([open]):last-of-type .accordion-button {
+    border-bottom-right-radius: var(--bs-border-radius);
+    border-bottom-left-radius: var(--bs-border-radius);
+}
+
+.accordion-item:not([open]) .accordion-button::after {
+    background-image: var(--bs-accordion-btn-active-icon);
+    transform: unset;
+}
+
+.accordion-item[open] .accordion-button::after {
+    background-image: var(--bs-accordion-btn-icon);
+    transform: var(--bs-accordion-btn-icon-transform);
+}

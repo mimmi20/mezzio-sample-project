@@ -1,35 +1,55 @@
-/*const versbeginn = document.querySelectorAll('[name="versbeginn"]');
-const versbeginnDatum = document.getElementById('versbeginn_datum');
+const hundn = document.getElementById('Hundn');
 
-if (versbeginn && versbeginnDatum) {
-  versbeginn.forEach((element) => {
-    element.addEventListener(
-      'click',
-      (event) => {
-        if (element.value === 'datum') {
-          versbeginnDatum.setAttribute('required', 'required');
-        } else {
-          versbeginnDatum.removeAttribute('required');
+if (hundn instanceof HTMLSelectElement) {
+  const handleMh = function(event: Event) {
+    if (!(event.target instanceof HTMLSelectElement) && !(event.target instanceof HTMLInputElement)) {
+      return;
+    }
+
+    const val = event.target.value;
+    const dog = event.target.getAttribute('data-dog');
+
+    const rta = document.getElementById('Rasse_Tier' + dog + 'a');
+
+    if (val === 'ja') {
+      rta?.setAttribute('required', 'required');
+    } else {
+      rta?.removeAttribute('required');
+    }
+  };
+
+  hundn.addEventListener(
+    'change',
+    (event: Event): void => {
+      const anz = parseInt(hundn.value, 10);
+
+      for (let i = 0; i <= anz; i++) {
+        const rt = document.getElementById('Rasse_Tier' + i);
+        const mhs = document.querySelectorAll<HTMLSelectElement|HTMLInputElement>('[name="mischling_hund' + i + '"]');
+
+        if (rt instanceof HTMLSelectElement || rt instanceof HTMLInputElement) {
+          rt.setAttribute('required', 'required');
         }
+
+        mhs.forEach((mh: HTMLSelectElement|HTMLInputElement): void => {
+          mh.setAttribute('required', 'required');
+          mh.addEventListener('change', handleMh);
+        });
       }
-    );
-  });
+
+      for (let i = anz + 1; i <= 5; i++) {
+        const rt = document.getElementById('Rasse_Tier' + i);
+        const mhs = document.querySelectorAll<HTMLSelectElement|HTMLInputElement>('[name="mischling_hund' + i + '"]');
+
+        if (rt instanceof HTMLSelectElement || rt instanceof HTMLInputElement) {
+          rt.removeAttribute('required');
+        }
+
+        mhs.forEach((mh: HTMLSelectElement|HTMLInputElement): void => {
+          mh.removeAttribute('required');
+          mh.removeEventListener('change', handleMh);
+        });
+      }
+    }
+  );
 }
-
-const verssummeauto = document.querySelectorAll('[name="verssummeauto"]');
-const verssumme = document.getElementById('verssumme');
-
-if (verssummeauto && verssumme) {
-  verssummeauto.forEach((element) => {
-    element.addEventListener(
-      'click',
-      (event) => {
-        if (element.value === 'manuell') {
-          verssumme.setAttribute('required', 'required');
-        } else {
-          verssumme.removeAttribute('required');
-        }
-      }
-    );
-  });
-}*/

@@ -40,42 +40,8 @@
     border-radius: var(--bs-border-radius);
 }
 
-/* fixes for accordeon to work work with <details> */
-.accordion-item:not([open]) .accordion-button {
-    background-color: var(--bs-accordion-bg);
-}
-
-.accordion-item:not([open]):last-of-type .accordion-button {
-    border-bottom-right-radius: var(--bs-border-radius);
-    border-bottom-left-radius: var(--bs-border-radius);
-}
-
-.accordion-item:not([open]) .accordion-button::after {
-    background-image: var(--bs-accordion-btn-active-icon);
-    transform: unset;
-}
-
-.accordion-item[open] .accordion-button::after {
-    background-image: var(--bs-accordion-btn-icon);
-    transform: var(--bs-accordion-btn-icon-transform);
-}
-
-/* fixes for menu to work work with <details> */
-.nav-item details[open] .dropdown-details-menu {
-    display: block;
-    position: absolute;
-    left: 0;
-    margin-top: calc(.125rem + var(--bs-dropdown-padding-y, 0));
-    width: 100%;
-}
-
-.nav-item details[open] ul {
-    list-style: none;
-    padding: var(--bs-dropdown-padding-y, 0) var(--bs-dropdown-padding-x, 0);
-}
-
 /* fixes for forms to work with <legend> */
-legend.form-label, legend.card-title {
+legend.form-label, legend.card-title, legend.col-form-label {
     display: inline-block;
     font-family: var(--bs-body-font-family);
     font-size: var(--bs-body-font-size);
@@ -189,28 +155,6 @@ legend.form-label, legend.card-title {
     color: var(--bs-card-color);
 }
 
-.navbar-nav {
-    gap: 1rem;
-}
-
-.card a.navbar-brand {
-    --bs-navbar-brand-color: var(--bs-primary-text-emphasis);
-    color: var(--bs-navbar-brand-color);
-}
-
-.nav-pills .nav-link:hover,
-.nav-pills .nav-link:focus {
-    background-color: var(--bs-btn-hover-bg);
-    border-color: var(--bs-btn-hover-border-color);
-    color: var(--bs-btn-hover-color);
-}
-
-.nav-pills .nav-link:active {
-    background-color: var(--bs-btn-active-bg);
-    border-color: var(--bs-btn-active-border-color);
-    color: var(--bs-btn-active-color);
-}
-
 .form-select {
     color: var(--bs-emphasis-color);
 }
@@ -237,139 +181,16 @@ legend.form-label, legend.card-title {
     --bs-card-spacer-x: 0;
 }
 
-.card.has-validation {
-    box-shadow: none;
-}
-
-/* new checkboxes */
-.checkbox-group {
-    display: grid;
-    gap: 0.25rem;
-    grid-auto-rows: 1fr;
-    grid-template-columns: calc(1/6 * 100%) repeat(5, 1fr) calc(1/6 * 100%);
-}
-
-.checkbox {
-    --checked-color: rgb(34, 96, 255);
-}
-
-.checkbox,
-.checkbox .card-body {
-    display: flex;
-    flex-wrap: nowrap;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-}
-
-.checkbox-input {
-    /* Code to hide the input */
-    clip: rect(0 0 0 0);
-    clip-path: inset(100%);
-    height: 1px;
-    overflow: hidden;
-    position: absolute;
-    white-space: nowrap;
-    width: 1px;
-
-    &:checked + .checkbox-tile {
-        border-color: var(--checked-color);
-        box-shadow: 0 5px 10px rgba(34, 96, 255, 0.2), 0 0 0 4px #b5c9fc;
-        color: var(--checked-color);
-
-        &::before {
-            transform: scale(1);
-            opacity: 1;
-            background-color: var(--checked-color);
-            border-color: var(--checked-color);
-        }
-
-        .checkbox-icon, .checkbox-label {
-            color: var(--checked-color);
-        }
-    }
-
-    &:focus + .checkbox-tile {
-        border-color: var(--checked-color);
-        box-shadow: 0 5px 10px rgba(34, 96, 255, 0.2), 0 0 0 4px #b5c9fc;
-        color: var(--checked-color);
-
-        &::before {
-            transform: scale(1);
-            opacity: 1;
-        }
-    }
-}
-
-.checkbox-icon {
-    transition: .375s ease;
-    color: #494949;
-
-    & svg {
-        width: 3rem;
-        height: 3rem;
-    }
-}
-
-.checkbox-label {
-    color: #707070;
-    transition: .375s ease;
-    text-align: center;
-}
-
-.checkbox-tile {
-    --bs-card-border-width: 2px;
-    --bs-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-
-    align-items: center;
-    justify-content: center;
-    width: 10rem;
-    height: 10rem;
-    transition: 0.15s ease;
-    cursor: pointer;
-
-    &:before {
-        content: "";
-        position: absolute;
-        display: block;
-        width: 1.25rem;
-        height: 1.25rem;
-        border: 2px solid #b5bfd9;
-        background-color: #fff;
-        border-radius: 50%;
-        top: 0.25rem;
-        left: 0.25rem;
-        opacity: 0;
-        transform: scale(0);
-        transition: 0.25s ease;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='192' height='192' fill='%23FFFFFF' viewBox='0 0 256 256'%3E%3Crect width='256' height='256' fill='none'%3E%3C/rect%3E%3Cpolyline points='216 72.005 104 184 48 128.005' fill='none' stroke='%23FFFFFF' stroke-linecap='round' stroke-linejoin='round' stroke-width='32'%3E%3C/polyline%3E%3C/svg%3E");
-        background-size: 12px;
-        background-repeat: no-repeat;
-        background-position: 50% 50%;
-    }
-
-    &:hover {
-        border-color: var(--checked-color);
-        box-shadow: 0 5px 10px rgba(34, 96, 255, 0.2), 0 0 0 4px #b5c9fc;
-        color: var(--checked-color);
-
-        &:before {
-            transform: scale(1);
-            opacity: 1;
-        }
-
-        & .checkbox-icon,
-        & .checkbox-label {
-            color: var(--checked-color);
-        }
-    }
+.card {
+    box-shadow: var(--bs-box-shadow);
 }
 
 /* fix for modals when using a <dialog> element */
 dialog[open] {
     display: block;
+}
+
+dialog[open]:not(:has(.modal-dialog-scrollable)) {
     height: max-content;
 }
 
@@ -382,9 +203,14 @@ dialog::backdrop {
     border: none;
     background-color: transparent;
     padding: 0;
+    margin: auto;
 
     & .modal-dialog {
         margin: 0;
+    }
+
+    & .modal-dialog-scrollable {
+        height: 100%;
     }
 }
 
@@ -443,3 +269,15 @@ dialog::backdrop {
     border-top-right-radius: 0;
     margin-right: calc(var(--bs-border-width)*-1);
 }
+
+form .alert {
+    display: none;
+}
+
+form.was-validated:has(:invalid) .alert {
+    display: block;
+}
+
+/*form > :has(:invalid) {
+    border: 1px solid red;
+}*/
