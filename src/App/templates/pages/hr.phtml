@@ -6,26 +6,179 @@ $form->prepare();
 
 <h1 class="card-header">Hausrat</h1>
 <div class="card-body" id="hr-start">
-    <div class="text-container">
+    <div class="text-wrapper">
         <strong>Lorem ipsum dolor sit amet, consetetur</strong>
         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod</p>
         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore</p>
         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore</p>
     </div>
-    <div class="card">
-        <div class="card-body">
-            <div class="card-title">Hausrat berechnen</div>
-            <div class="alert alert-danger" role="alert">
-                Es ist ein Fehler aufgetreten!
-            </div>
-            <div class="alert alert-warning" role="alert">
-                Ihre angegebenen Daten sind nicht korrekt!
-            </div>
+    <?= $this->form()->openTag($form); ?>
+    <div class="alert alert-warning" role="alert">
+        Ihre angegebenen Daten sind nicht korrekt!
+    </div>
+    <fieldset class="card mb-2">
+        <legend class="card-header">Was möchten Sie versichern?</legend>
 
-            <?= $this->form()->setIndent(16)->render($form) ?>
+        <div class="card-body">
+            <?= $this->formRow($form->get('versbeginn')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('versbeginn_datum')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('plz')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('ort')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('strasse')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('hnr')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('link')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('gebdatum')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('whg')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('vermietet')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('wohnfl')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('wohnfl_kg')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('kellerfl')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('beamte')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('verssummeauto')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('verssumme')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('fahrrad')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('glas')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('elem')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('grob')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('bauart')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('bauart-link')->setOption('form', $form)); ?>
+        </div>
+    </fieldset>
+
+    <fieldset class="card mb-2">
+        <legend class="card-header">Rabattrelevante Angaben</legend>
+
+        <div class="card-body">
+            <?= $this->formRow($form->get('selbst')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('laufzeit')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('vorvers5')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('schaeden5')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('kombirabatte')->setOption('form', $form)); ?>
+        </div>
+    </fieldset>
+
+    <fieldset class="card mb-2" data-optional="1" data-show="ja">
+        <legend class="card-header">Kombirabatte für folgende Sparten-Kombinationen berücksichtigen</legend>
+
+        <div class="card-body">
+            <p class="text-center pt-2 text-info-discount">Kombirabatte - Je mehr Verträge bei einer Gesellschaft, um so günstigere Preise.
+                Welche Verträge haben Sie schon oder haben vor, sie zu versichern?</p>
+
+            <?= $this->formRow($form->get('KrPHV')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('KrTIE')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('KrHUG')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('KrOEL')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('KrWG')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('KrWGGLS')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('KrHR')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('KrHRGLS')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('KrUNF')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('KrRS')->setOption('form', $form)); ?>
+        </div>
+    </fieldset>
+
+    <fieldset class="card mb-2">
+        <div class="card-body">
+            <?= $this->formRow($form->get('zusatzfragen')->setOption('form', $form)); ?>
+        </div>
+    </fieldset>
+
+    <fieldset class="card mb-2" data-detail="1" data-show="ja">
+        <legend class="card-header">Optionale Detailfragen</legend>
+        <div class="card-body">
+            <?= $this->formRow($form->get('links-standard')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('uver_v')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('ues_v')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('werts_v')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('dieb_v')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('dkfz_v')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('dkle_v')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('rauch_v')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('kfz_v')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('bank_v')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('dgar_v')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('was_v')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('seng_v')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('waver_v')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('hot_v')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('reis_v')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('arb_v')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('evors_v')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('all_v')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('sich_v')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('meld_v')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('bewo_v')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('tres_v')->setOption('form', $form)); ?>
+            <?= $this->formRow($form->get('feu_v')->setOption('form', $form)); ?>
+        </div>
+    </fieldset>
+
+    <div class="card mb-2">
+        <div class="card-body">
+            <?= $this->formRow($form->get('chkErstinfo')->setOption('form', $form)); ?>
+
+            <a class="mt-0 w-100 text-left first-info" title="Erstinformation" href="https://www.geld.de/module/geld/data/erstinformation-jdc.pdf" download="https://www.geld.de/module/geld/data/erstinformation-jdc.pdf" target="_blank">Erstinformation herunterladen</a>
+
+            <div class="accordion mt-3">
+                <details class="accordion-item border-bottom-0">
+                    <summary class="accordion-button" id="headingTwo">
+                        <div class="accordion-header user-select-none">
+                            Mitteilung zur Beratungsgrundlage, § 60 VVG
+                        </div>
+                    </summary>
+                    <div class="accordion-body border-bottom">
+                        <p>
+                            Im durchgeführten Produktvergleich wurden Hausratversicherungsverträge (nachfolgend das Versicherungsprodukt genannt) von 26 Versicherern und 7 Assekuradeuren (zusammen nachfolgend Gesellschaften genannt) berücksichtigt. Generell berücksichtigt der Vermittler keine so genannten Direktversicherer und Gesellschaften, welche dem Vermittler keine Courtage zahlen oder mit diesem nicht zusammenarbeiten.                    </p>
+                        <p>
+                            Nach der Recherche des Vergleichsprogrammherstellers, die anhand der von der Bundesanstalt für Finanzdienstleistungsaufsicht (BaFin) veröffentlichten Versichererlisten<sup>1</sup> und anderer öffentlich zugänglicher Quellen durchgeführt wurde, bieten das Versicherungsprodukt 91 Versicherer auf dem deutschen Versicherungsmarkt an. Aufgrund des Umstandes, dass die BaFin keine gesonderte Versichererliste für das Versicherungsprodukt veröffentlich hat, und der eingeschränkten Recherchemöglichkeiten sind allerdings bzgl. der genannten Zahl der Versicherer Abweichungen möglich. Ferner sind auf dem deutschen Versicherungsmarkt Assekuradeure tätig, die für die Versicherer hinsichtlich des Versicherungsprodukts spezielle Deckungskonzepte entwickeln und diese unter dem Namen des Assekuradeurs am Markt anbieten. Eine Angabe der Zahl der Assekuradeure ist dem Vermittler nicht möglich, da die BaFin diesbzgl. keine Listen veröffentlicht.                    </p>
+                        <p>
+                            Die Empfehlung des Vermittlers beruht demnach auf einer eingeschränkten Versicherer- und Vertragsauswahl und damit auf einer eingeschränkten Beratungsgrundlage des Vermittlers.                    </p>
+                        <p>
+                            Dem Vermittler ist nicht bekannt, welchen Marktanteil die berücksichtigten Gesellschaften und Versicherungsverträge im Verhältnis zum gesamten deutschen Versicherungsmarkt halten. Der Vermittler hat keinen Zugang zu etwaigen Statistiken, aus denen er auch nur schätzungsweise Informationen zum Marktanteil der berücksichtigten Gesellschaften und Versicherungsverträge ableiten könnte. Es ist somit möglich, dass die von dem Vermittler berücksichtigten Gesellschaften und Versicherungsverträge nur einen geringen Marktanteil der in Deutschland angebotenen Versicherungen abdecken.                    </p>
+                        <p>
+                            Der Produktvergleich beruht nicht auf einer eigenen Marktuntersuchung des Vermittlers, sondern auf den Informationen einer marktüblichen Vergleichssoftware für Versicherungsvermittler.                    </p>
+                        <p>
+                            Gesellschaften, welche bei dem Produktvergleich berücksichtigt wurden, werden nachfolgend unter "Teilnehmende Gesellschaften" aufgelistet.                    </p>
+                        <p>
+                            <sup>1</sup> Quelle: https://portal.mvp.bafin.de/database/InstInfo/sucheForm.do
+                        </p>
+                        <!-- Button trigger modal -->
+                        <a class="text-center d-block col-12 info-layer-trigger" data-layer="insurerList">
+                            Teilnehmende Gesellschaften
+                        </a>
+                    </div>
+                </details>
+            </div>
         </div>
     </div>
-    <div class="text-container">
+
+    <div class="card">
+        <div class="card-body no-margin">
+            <div class="row align-items-center">
+                <div class="col-sm-8">
+                    <div class="row g-0 align-items-center">
+                        <div class="col-1 align-middle fs-1"><i class="bi bi-telephone-fill"></i></div>
+                        <div class="col-4">
+                            <p>Bei Rückfragen stehen wir Ihnen gerne telefonisch zur Verfügung.</p>
+                            <p><a href="tel:+49xx" title="Hotline" class="fs-5">xx</a></p>
+                            <p><span class="fs-6">Mo - Fr:  xx - xx Uhr</span></p>
+                        </div>
+                        <button class="btn info-layer-trigger col-1 align-middle fs-1" data-layer="info-layer-consulting"><i class="bi bi-question-circle"></i></button>
+                    </div>
+                </div>
+
+                <div class="col-sm-4 pt-2">
+                    <?= $this->formRow($form->get('btn_berechnen')->setOption('form', $form)); ?>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <?= $this->formHidden($form->get('zahlweise')->setOption('form', $form)); ?>
+    <?= $this->formHidden($form->get('chkFilterNachhaltigkeit')->setOption('form', $form)); ?>
+
+    <?= $this->form()->closeTag(); ?>
+    <div class="text-wrapper">
         <strong>Lorem ipsum dolor sit amet, consetetur</strong>
         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod</p>
         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore</p>
@@ -33,7 +186,192 @@ $form->prepare();
     </div>
 </div>
 
-<?php $this->headLink()->appendStylesheet($this->viteUrl()->css('node_modules/bootswatch/dist/quartz/bootstrap.css'), 'screen', ['rel' => 'stylesheet']); ?>
+<dialog class="modal" id="info-layer-consulting" aria-hidden="true" aria-modal="true" aria-label="an info layer to show something">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <header class="modal-header">
+                <h5 class="modal-title" id="modal-title-consulting"></h5>
+                <button type="button" class="btn-close close" aria-label="Close" data-bs-dismiss="modal"></button>
+            </header>
+            <section class="modal-body">
+                <div class="container-fluid">
+                    <div class="row g-0">
+                        <div class="col-6">
+                            <h4>Sie möchten eine Beratung?</h4>
+                            <div class="col-1 align-middle fs-1"><i class="bi bi-telephone-fill"></i></div>
+                            <div>
+                                <span class="consulting-waiver-hotline">
+                                    <a href="tel:+49xx" title="Hotline" class=" telephone">xx</a>
+                                </span>
+                                <span class="consulting-waiver-business-hours">
+                                    <span class="description">Mo - Fr:  xx - xx Uhr</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <h4>Schneller zum Vertrag?</h4>
+                            <div class="layer-consulting-waiver-description">
+                                <p>So kommen Sie direkt zu Ihrer Versicherung</p>
+                                <ol class="pl-3">
+                                    <li>Klicken Sie auf "Berechnen".</li>
+                                    <li>Machen Sie die nötigen Angaben.</li>
+                                    <li>Bestätigen Sie vor dem Abschluss, dass Sie keine Beratung benötigen.</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</dialog>
+
+<dialog class="modal" id="modal-missing-street" aria-hidden="true" aria-labelledby="adModalLabel" aria-modal="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="adModalLabel">Fehlende Adresse melden</h5>
+                <button type="button" class="btn-close close" aria-label="Close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p>Bitte teilen Sie uns den fehlenden Ort oder die Straße mit.<br>
+                    Wir werden diese prüfen und innerhalb von 24 Stunden nachtragen.<br>
+                    Hausnummern sind dabei nicht relevant!
+                </p>
+                <form class="row">
+                    <textarea class="form-control col-12" placeholder="Fehlender Ort oder fehlende Straße" required="required"></textarea>
+                    <input type="email" name="email" id="email" class="form-control col-12" pattern="[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+)*@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9]))" value="" placeholder="E-Mail-Adresse für evtl. Rückfragen" required="required">
+                    <button type="button" class="btn btn-primary close" aria-label="Close" data-bs-dismiss="modal">Adresse melden</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</dialog>
+
+<dialog class="modal" id="modal-dialog-contruction-type" aria-labelledby="ctModalLabel" aria-hidden="true" aria-modal="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ctModalLabel">Bauartklassen-Einteilung (BKL) und Fertighausgruppen (FGH)</h5>
+                <button type="button" class="btn-close close" aria-label="Close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <table class="mb-3">
+                        <tbody>
+                        <tr>
+                            <td colspan="2"><strong>Bauartklassen-Einteilung (BKL) - </strong><strong>(Fertighäuser siehe unten)</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Außenwände</strong></td>
+                            <td><strong>Dachung</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>BAK I</strong> - Massiv-Mauerwerk, Beton</td>
+                            <td>Hart, z.B. Ziegel, Schiefer, Betonplatten, Metall,<br>gesandete Dachpappe</td>
+                        </tr>
+                        <tr>
+                            <td><strong>BAK II</strong> - Stahl- oder Holzfachwerk mit Stein- und Glasfüllung; Stahl- oder Stahlbetonkon-struktion mit Wandplatten-verkleidung aus nicht brennbarem Material (z.B. Profilblech, Asbestzement; kein Kunststoff)</td>
+                            <td>siehe 1</td>
+                        </tr>
+                        <tr>
+                            <td><strong>BAK III</strong> - Holz, Holzfachwerk mit Lehmfüllung, Holzkonstruk-tion mit Verkleidung jeglicher Art, Stahl- oder Stahlbeton-konstruktion mit Wandplattenverkleidung aus Holz oder Kunststoff, Gebäude mit einer oder mehreren offenen Seiten</td>
+                            <td>siehe 1</td>
+                        </tr>
+                        <tr>
+                            <td><strong>BAK IV</strong> - wie Klasse I oder II </td>
+                            <td>Weich z.B. vollständig oder teilweise Eindeckung mit Holz, Ried, Schilf, Stroh u.ä.</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td colspan="2"><strong>Fertighausgruppen (FGH)</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Außenwände</td>
+                            <td>Dachung</td>
+                        </tr>
+                        <tr>
+                            <td><strong>FHG I</strong> - In allen Teilen - einschl. der tragenden Konstruktion - aus feuerbeständigen Bauteilen (massiv)</td>
+                            <td>hart, z.B. Ziegel, Schiefer, Betonplatten, Metall, gesandete Dachpappe</td>
+                        </tr>
+                        <tr>
+                            <td><strong>FHG II</strong> - Fundament massiv, tragende Konstruktion aus Stahl, Holz, Leichtbauteilen oder dergleichen, außen mit feuerhemmenden Bauteilen bzw. nicht brennbaren Baustoffen verkleidet (z.B.<br> Putz, Klinkersteine, Gips-platten, Asbestzement, Profilblech, kein Kunststoff</td>
+                            <td>siehe 1</td>
+                        </tr>
+                        <tr>
+                            <td><strong>FHG III</strong> - Wie FHG II, jedoch ohne feuerhemmende Ummantelung bzw. Verkleidung</td>
+                            <td>siehe 1</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</dialog>
+
+<dialog class="modal" id="insurerList" aria-labelledby="insurerListModalCenterTitle" aria-hidden="true" aria-modal="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="insurerListModalCenterTitle">Teilnehmende Gesellschaften</h5>
+                <button type="button" class="btn-close close" aria-label="Close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <h6>Versicherer/ Versicherungsgesellschaften</h6>
+                <ul>
+                    <li>AXA Versicherung AG (DBV)</li>
+                    <li>Alte Leipziger Versicherung Aktiengesellschaft</li>
+                    <li>BA die Bayerische Allgemeine Versicherung AG</li>
+                    <li>Badischer Gemeinde-Versicherungs-Verband</li>
+                    <li>Baloise Sachversicherung AG Deutschland</li>
+                    <li>BavariaDirekt Versicherung AG</li>
+                    <li>Concordia VVaG</li>
+                    <li>Die Haftpflichtkasse VVaG</li>
+                    <li>Docura VVaG</li>
+                    <li>GVO Gegenseitigkeit Versicherung Oldenburg VVaG</li>
+                    <li>Gothaer Allgemeine Versicherung AG</li>
+                    <li>INTER Allgemeine Versicherung AG</li>
+                    <li>Ideal Versicherung AG</li>
+                    <li>Janitos Versicherung AG</li>
+                    <li>Medien-Versicherung a.G. Karlsruhe</li>
+                    <li>NV-Versicherungen VVaG</li>
+                    <li>Neodigital AG</li>
+                    <li>Ostangler Brandgilde VVaG</li>
+                    <li>Rhion Versicherung AG</li>
+                    <li>VHV Allgemeine Versicherung AG</li>
+                    <li>Waldenburger Versicherung AG</li>
+                    <li>Zurich Versicherung Aktiengesellschaft</li>
+                    <li>Ammerländer Versicherung VVaG</li>
+                    <li>Grundeigentümer-Versicherung VVaG</li>
+                    <li>HanseMerkur Allge­meine Versi­che­rung AG</li>
+                    <li>Oberösterreichische Versicherung AG</li>
+                </ul>
+                <h6>Assekuradeure (Versicherungsdienstleister)</h6>
+                <ul>
+                    <li>Adam Riese GmbH</li>
+                    <li>Adcuri GmbH</li>
+                    <li>ConceptIF Group AG</li>
+                    <li>Degenia Versicherungsdienst AG</li>
+                    <li>Domcura AG</li>
+                    <li>Konzept &amp; Marketing GmbH</li>
+                    <li>S.L.P. Vertriebsservice AG</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</dialog>
+
+<?php // $this->headLink()->prependStylesheet($this->viteUrl()->css('node_modules/bootswatch/dist/quartz/bootstrap.css'), 'screen', ['rel' => 'stylesheet']); ?>
+<?php $this->headLink()->prependStylesheet($this->viteUrl()->css('node_modules/bootstrap/dist/css/bootstrap.css'), 'screen', ['rel' => 'stylesheet']); ?>
 <?php $this->headLink()->appendStylesheet($this->viteUrl()->css('public/css/hr.css'), 'screen', ['rel' => 'stylesheet']); ?>
+<?php $this->headLink()->appendStylesheet($this->viteUrl()->css('public/css/help.css'), 'screen', ['rel' => 'stylesheet']); ?>
+<?php $this->headLink()->appendStylesheet($this->viteUrl()->css('public/css/navigation.css'), 'screen', ['rel' => 'stylesheet']); ?>
+<?php $this->headLink()->appendStylesheet($this->viteUrl()->css('public/css/accordion.css'), 'screen', ['rel' => 'stylesheet']); ?>
 <?php $this->inlineScript()->appendFile($this->viteUrl()->js('public/js/form.ts')); ?>
 <?php $this->inlineScript()->appendFile($this->viteUrl()->js('public/js/hr.ts')); ?>
+<?php $this->inlineScript()->appendFile($this->viteUrl()->js('public/js/versbeginn.ts')); ?>
+<?php $this->inlineScript()->appendFile($this->viteUrl()->js('public/js/dialog.ts'), 'module'); ?>

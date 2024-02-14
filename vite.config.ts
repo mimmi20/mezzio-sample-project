@@ -83,6 +83,8 @@ export default defineConfig({
         path.resolve(__dirname, 'public/js/unf.ts'),
         path.resolve(__dirname, 'public/js/wg.ts'),
         path.resolve(__dirname, 'public/js/atb.ts'),
+        path.resolve(__dirname, 'public/js/dialog.ts'),
+        path.resolve(__dirname, 'public/js/versbeginn.ts'),
         // glass theme
         path.resolve(__dirname, 'public/css/themes/glass.css'),
         // general css
@@ -97,6 +99,8 @@ export default defineConfig({
         path.resolve(__dirname, 'public/css/unf.css'),
         path.resolve(__dirname, 'public/css/wg.css'),
         path.resolve(__dirname, 'public/css/atb.css'),
+        path.resolve(__dirname, 'public/css/navigation.css'),
+        path.resolve(__dirname, 'public/css/accordion.css'),
         // Bootstrap
         path.resolve(__dirname, 'node_modules/bootstrap/dist/css/bootstrap.css'),
         path.resolve(__dirname, 'node_modules/bootstrap/dist/js/bootstrap.esm.js'),
@@ -105,6 +109,7 @@ export default defineConfig({
         // Themes
         path.resolve(__dirname, 'node_modules/bootswatch/dist/morph/bootstrap.css'),
         path.resolve(__dirname, 'node_modules/bootswatch/dist/quartz/bootstrap.css'),
+        // path.resolve(__dirname, 'node_modules/bootswatch/dist/materia/bootstrap.css'),
       ],
       output: {
         // dir: 'public/dist',

@@ -37,14 +37,14 @@
     }
 }
 
-.text-container, .calculation-container {
+.text-wrapper, .calculation-container {
     width: 100%;
 }
-.text-container {
+.text-wrapper {
     padding: 1.25rem;
     text-align: left;
 }
-.text-container .headline {
+.text-wrapper .headline {
     margin-bottom: 2.9375rem;
     font-size: 1.625rem;
     font-weight: 600;
