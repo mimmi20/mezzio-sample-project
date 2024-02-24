@@ -65,7 +65,7 @@ return [
                         ],
                     ],
 
-                    'col_attributes' => ['data-toogle' => '1'],
+                    'col_attributes' => ['data-toggle' => '1'],
 
                     'as-form-control' => true,
                 ],
@@ -325,7 +325,7 @@ return [
                         'manuell' => 'selbst angeben',
                     ],
 
-                    'col_attributes' => ['data-toogle' => '1'],
+                    'col_attributes' => ['data-toggle' => '1'],
 
                     'as-form-control' => true,
                 ],
@@ -553,7 +553,7 @@ return [
                         ],
                     ],
 
-                    'col_attributes' => ['data-toogle' => '1'],
+                    'col_attributes' => ['data-toggle' => '1'],
 
                     'as-form-control' => true,
                 ],
@@ -758,7 +758,7 @@ return [
                             'attributes' => ['id' => 'zusatzfragen_ja'],
                         ],
                     ],
-                    'row_attributes' => ['data-toogle' => '1'],
+                    'row_attributes' => ['data-toggle' => '1'],
 
                     'as-form-control' => true,
                 ],

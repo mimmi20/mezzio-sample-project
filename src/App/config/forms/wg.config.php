@@ -163,7 +163,7 @@ return [
                         ],
                     ],
 
-                    'col_attributes' => ['data-toogle' => '1'],
+                    'col_attributes' => ['data-toggle' => '1'],
                 ],
                 'attributes' => ['id' => 'kombirabatte'],
             ],
@@ -2288,7 +2288,7 @@ return [
                             'attributes' => ['id' => 'zusatzfragen_ja'],
                         ],
                     ],
-                    'col_attributes' => ['data-toogle' => '1'],
+                    'col_attributes' => ['data-toggle' => '1'],
                 ],
                 'attributes' => ['id' => 'zusatzfragen'],
             ],
