@@ -1,35 +1,47 @@
-/*const versbeginn = document.querySelectorAll('[name="versbeginn"]');
-const versbeginnDatum = document.getElementById('versbeginn_datum');
+const vermiet = document.getElementById('vermiet');
 
-if (versbeginn && versbeginnDatum) {
-  versbeginn.forEach((element) => {
-    element.addEventListener(
-      'click',
-      (event) => {
-        if (element.value === 'datum') {
-          versbeginnDatum.setAttribute('required', 'required');
-        } else {
-          versbeginnDatum.removeAttribute('required');
+if (vermiet instanceof HTMLSelectElement) {
+  vermiet.addEventListener(
+    'change',
+    (event: Event): void => {
+      const anz = parseInt(vermiet.value, 10);
+
+      for (let i = 0; i <= anz; i++) {
+        const ob = document.getElementById('OB' + i);
+
+        if (ob instanceof HTMLSelectElement || ob instanceof HTMLInputElement) {
+          ob.setAttribute('required', 'required');
         }
       }
-    );
-  });
+
+      for (let i = anz + 1; i <= 5; i++) {
+        const ob = document.getElementById('OB' + i);
+
+        if (ob instanceof HTMLSelectElement || ob instanceof HTMLInputElement) {
+          ob.removeAttribute('required');
+        }
+      }
+    }
+  );
 }
 
-const verssummeauto = document.querySelectorAll('[name="verssummeauto"]');
-const verssumme = document.getElementById('verssumme');
+const famstand = document.getElementById('famstand');
 
-if (verssummeauto && verssumme) {
-  verssummeauto.forEach((element) => {
-    element.addEventListener(
-      'click',
-      (event) => {
-        if (element.value === 'manuell') {
-          verssumme.setAttribute('required', 'required');
-        } else {
-          verssumme.removeAttribute('required');
-        }
+if (famstand instanceof HTMLSelectElement) {
+  famstand.addEventListener(
+    'change',
+    (event: Event): void => {
+      const getdatePartner = document.getElementById('geburtsdatumPartner');
+
+      if (! (getdatePartner instanceof HTMLElement)) {
+        return;
       }
-    );
-  });
-}*/
+
+      if (famstand.value === 'Familie' || famstand.value === 'Paar') {
+        getdatePartner.setAttribute('required', 'required');
+      } else {
+        getdatePartner.removeAttribute('required');
+      }
+    }
+  );
+}

@@ -80,7 +80,7 @@ return [
                         ],
                     ],
 
-                    'col_attributes' => ['data-toogle' => '1'],
+                    'col_attributes' => ['data-toggle' => '1'],
 
                     'as-form-control' => true,
                 ],
@@ -178,7 +178,7 @@ return [
                             'attributes' => ['id' => 'ausfall_j'],
                         ],
                     ],
-                    'col_attributes' => ['data-toogle' => '1'],
+                    'col_attributes' => ['data-toggle' => '1'],
 
                     'as-form-control' => true,
                 ],
@@ -218,7 +218,7 @@ return [
                         '5' => '5 Hunde',
                     ],
 
-                    'col_attributes' => ['data-toogle' => '1'],
+                    'col_attributes' => ['data-toggle' => '1'],
                 ],
                 'attributes' => ['id' => 'Hundn'],
             ],
@@ -252,7 +252,7 @@ return [
                         'ja' => 'ja',
                     ],
 
-                    'col_attributes' => ['data-toogle' => '1'],
+                    'col_attributes' => ['data-toggle' => '1'],
 
                     'as-form-control' => true,
                 ],
@@ -310,7 +310,7 @@ return [
                         'ja' => 'ja',
                     ],
 
-                    'col_attributes' => ['data-toogle' => '1'],
+                    'col_attributes' => ['data-toggle' => '1'],
 
                     'as-form-control' => true,
                 ],
@@ -368,7 +368,7 @@ return [
                         'ja' => 'ja',
                     ],
 
-                    'col_attributes' => ['data-toogle' => '1'],
+                    'col_attributes' => ['data-toggle' => '1'],
 
                     'as-form-control' => true,
                 ],
@@ -423,7 +423,7 @@ return [
                         'ja' => 'ja',
                     ],
 
-                    'col_attributes' => ['data-toogle' => '1'],
+                    'col_attributes' => ['data-toggle' => '1'],
 
                     'as-form-control' => true,
                 ],
@@ -478,7 +478,7 @@ return [
                         'ja' => 'ja',
                     ],
 
-                    'col_attributes' => ['data-toogle' => '1'],
+                    'col_attributes' => ['data-toggle' => '1'],
 
                     'as-form-control' => true,
                 ],
@@ -578,7 +578,7 @@ return [
                         ],
                     ],
 
-                    'col_attributes' => ['data-toogle' => '1'],
+                    'col_attributes' => ['data-toggle' => '1'],
                 ],
                 'attributes' => ['id' => 'kombirabatte'],
             ],
@@ -1012,7 +1012,7 @@ return [
                         '100000' => 'bis 100.000 Liter',
                     ],
                     'help_content' => '<strong>Einschluss Öltankhaftpflicht</strong><p>Wenn Sie einen Öltank besitzen, können Sie den Schutz hier mit einschließen.</p>',
-                    'col_attributes' => ['data-toogle' => '1'],
+                    'col_attributes' => ['data-toggle' => '1'],
                 ],
                 'attributes' => ['id' => 'oel_v'],
             ],
@@ -1425,7 +1425,7 @@ return [
                             'attributes' => ['id' => 'zusatzfragen_ja'],
                         ],
                     ],
-                    'col_attributes' => ['class' => 'col-12', 'data-toogle' => '1'],
+                    'col_attributes' => ['class' => 'col-12', 'data-toggle' => '1'],
 
                     'as-form-control' => true,
                 ],

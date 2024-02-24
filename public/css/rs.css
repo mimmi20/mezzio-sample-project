@@ -2,25 +2,56 @@
     display: none;
 }
 
+[data-toggle]:has([value="1"]:checked) ~ [data-show="1"],
+[data-toggle]:has([value="2"]:checked) ~ [data-show="1"],
+[data-toggle]:has([value="3"]:checked) ~ [data-show="1"],
+[data-toggle]:has([value="4"]:checked) ~ [data-show="1"],
+[data-toggle]:has([value="5"]:checked) ~ [data-show="1"],
+[data-toggle]:has([value="6"]:checked) ~ [data-show="1"] {
+    display: flex;
+}
+
+[data-toggle]:has([value="2"]:checked) ~ [data-show="2"],
+[data-toggle]:has([value="3"]:checked) ~ [data-show="2"],
+[data-toggle]:has([value="4"]:checked) ~ [data-show="2"],
+[data-toggle]:has([value="5"]:checked) ~ [data-show="2"],
+[data-toggle]:has([value="6"]:checked) ~ [data-show="2"] {
+    display: flex;
+}
+
+[data-toggle]:has([value="3"]:checked) ~ [data-show="3"],
+[data-toggle]:has([value="4"]:checked) ~ [data-show="3"],
+[data-toggle]:has([value="5"]:checked) ~ [data-show="3"],
+[data-toggle]:has([value="6"]:checked) ~ [data-show="3"] {
+    display: flex;
+}
+
+[data-toggle]:has([value="4"]:checked) ~ [data-show="4"],
+[data-toggle]:has([value="5"]:checked) ~ [data-show="4"],
+[data-toggle]:has([value="6"]:checked) ~ [data-show="4"] {
+    display: flex;
+}
+
+[data-toggle]:has([value="5"]:checked) ~ [data-show="5"],
+[data-toggle]:has([value="6"]:checked) ~ [data-show="5"] {
+    display: flex;
+}
+
+[data-toggle]:has([value="6"]:checked) ~ [data-show="6"] {
+    display: flex;
+}
+
+[data-toggle]:has([value="Familie"]:checked) ~ [data-show="Paar"],
+[data-toggle]:has([value="Paar"]:checked) ~ [data-show="Paar"] {
+    display: flex;
+}
+
 form:has(#kr_j:checked) [data-optional][data-show="ja"] {
     display: block;
 }
 
 form:has(#zusatzfragen_ja:checked) [data-detail][data-show="ja"] {
     display: block;
-}
-
-.alert-danger {
-    display: none;
-    --bs-alert-bg: var(--bs-danger-text-emphasis);
-    --bs-alert-color: #000000;
-    --bs-alert-border-color: var(--bs-form-invalid-border-color);
-}
-.alert-warning {
-    display: none;
-    --bs-alert-bg: var(--bs-warning-text-emphasis);
-    --bs-alert-color: #000000;
-    --bs-alert-border-color: var(--bs-form-invalid-border-color);
 }
 
 .form-container :valid~.valid-feedback {
@@ -40,6 +71,30 @@ form:has(#zusatzfragen_ja:checked) [data-detail][data-show="ja"] {
     gap: 0.25rem;
     grid-auto-rows: 1fr;
     grid-template-columns: calc(1/6 * 100%) repeat(5, 1fr) calc(1/6 * 100%);
+
+    & ~ .toast {
+        --bs-toast-max-width: 66.66666667%;
+    }
+
+    &:has([data-toggle="p"]:is(:focus)) ~ .toast[data-show="p"] {
+        display: block;
+    }
+
+    &:has([data-toggle="b"]:is(:focus)) ~ .toast[data-show="b"] {
+        display: block;
+    }
+
+    &:has([data-toggle="f"]:is(:focus)) ~ .toast[data-show="f"] {
+        display: block;
+    }
+
+    &:has([data-toggle="m"]:is(:focus)) ~ .toast[data-show="m"] {
+        display: block;
+    }
+
+    &:has([data-toggle="v"]:is(:focus)) ~ .toast[data-show="v"] {
+        display: block;
+    }
 }
 
 .tile-wrapper {
@@ -55,24 +110,26 @@ form:has(#zusatzfragen_ja:checked) [data-detail][data-show="ja"] {
     width: 100%;
     height: 100%;
 
+    & .form-check {
+        padding: 0;
+        margin: 0;
+    }
+
     & .btn-tile {
         --bs-btn-hover-bg: var(--bs-btn-bg);
         --bs-btn-active-bg: var(--bs-btn-bg);
+        --bs-btn-padding-y: 0;
+        --bs-btn-padding-x: 0;
 
-        display: flex;
-        flex-wrap: nowrap;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
         width: 10rem;
         height: 10rem;
-        transition: 0.15s ease;
-        cursor: pointer;
         box-shadow: var(--bs-box-shadow);
         border-width: var(--bs-card-border-width);
         border-style: solid;
         border-color: var(--bs-card-border-color);
         position: relative;
+        transition: 0.15s ease;
+        cursor: pointer;
 
         &:before {
             content: "";
@@ -110,17 +167,7 @@ form:has(#zusatzfragen_ja:checked) [data-detail][data-show="ja"] {
             }
         }
 
-        & .checkbox-icon {
-            transition: .375s ease;
-            color: #494949;
-
-            & svg {
-                width: 3rem;
-                height: 3rem;
-            }
-        }
-
-        &:has(:checked, :focus) {
+        &:has(:checked) {
             border-color: var(--checked-color);
             box-shadow: 0 5px 10px rgba(34, 96, 255, 0.2), 0 0 0 4px #b5c9fc;
             color: var(--checked-color);
@@ -136,5 +183,33 @@ form:has(#zusatzfragen_ja:checked) [data-detail][data-show="ja"] {
                 color: var(--checked-color);
             }
         }
+    }
+
+    & .btn-tile.btn:has(> .checkbox-icon),
+    & .btn-tile .btn,
+    & .btn-tile .form-check-label,
+    & .btn-tile span {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        & .checkbox-icon {
+            transition: .375s ease;
+            color: #494949;
+
+            & svg {
+                width: 3rem;
+                height: 3rem;
+            }
+        }
+    }
+
+    & .btn-tile .btn,
+    & .btn-tile .form-check-label,
+    & .btn-tile span {
+        height: 100%;
+        width: 100%;
     }
 }

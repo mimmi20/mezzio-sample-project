@@ -281,11 +281,52 @@ $form->prepare();
     </div>
 </dialog>
 
+<dialog class="modal" id="info-layer-consulting" aria-hidden="true" aria-modal="true" aria-label="an info layer to show something">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <header class="modal-header">
+                <h5 class="modal-title" id="modal-title-consulting"></h5>
+                <button type="button" class="btn-close close" aria-label="Close" data-bs-dismiss="modal"></button>
+            </header>
+            <section class="modal-body">
+                <div class="container-fluid">
+                    <div class="row g-0">
+                        <div class="col-6">
+                            <h4>Sie möchten eine Beratung?</h4>
+                            <div class="col-1 align-middle fs-1"><i class="bi bi-telephone-fill"></i></div>
+                            <div>
+                                <span class="consulting-waiver-hotline">
+                                    <a href="tel:+49xx" title="Hotline" class=" telephone">xx</a>
+                                </span>
+                                <span class="consulting-waiver-business-hours">
+                                    <span class="description">Mo - Fr:  xx - xx Uhr</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <h4>Schneller zum Vertrag?</h4>
+                            <div class="layer-consulting-waiver-description">
+                                <p>So kommen Sie direkt zu Ihrer Versicherung</p>
+                                <ol class="pl-3">
+                                    <li>Klicken Sie auf "Berechnen".</li>
+                                    <li>Machen Sie die nötigen Angaben.</li>
+                                    <li>Bestätigen Sie vor dem Abschluss, dass Sie keine Beratung benötigen.</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</dialog>
+
 <?php $this->headLink()->prependStylesheet($this->viteUrl()->css('node_modules/bootstrap/dist/css/bootstrap.css'), 'screen', ['rel' => 'stylesheet']); ?>
 <?php $this->headLink()->appendStylesheet($this->viteUrl()->css('public/css/phv.css'), 'screen', ['rel' => 'stylesheet']); ?>
 <?php $this->headLink()->appendStylesheet($this->viteUrl()->css('public/css/help.css'), 'screen', ['rel' => 'stylesheet']); ?>
 <?php $this->headLink()->appendStylesheet($this->viteUrl()->css('public/css/navigation.css'), 'screen', ['rel' => 'stylesheet']); ?>
 <?php $this->headLink()->appendStylesheet($this->viteUrl()->css('public/css/accordion.css'), 'screen', ['rel' => 'stylesheet']); ?>
+<?php $this->headLink()->appendStylesheet($this->viteUrl()->css('public/css/validation.css'), 'screen', ['rel' => 'stylesheet']); ?>
 <?php $this->inlineScript()->appendFile($this->viteUrl()->js('public/js/form.ts')); ?>
 <?php $this->inlineScript()->appendFile($this->viteUrl()->js('public/js/phv.ts')); ?>
 <?php $this->inlineScript()->appendFile($this->viteUrl()->js('public/js/versbeginn.ts')); ?>

@@ -2,15 +2,15 @@
     display: none!important;
 }
 
-[data-toogle]:has([value="datum"]:checked) ~ [data-show="datum"]:not(.row) {
+[data-toggle]:has([value="datum"]:checked) ~ [data-show="datum"]:not(.row) {
     display: block!important;
 }
 
-[data-toogle]:has([value="datum"]:checked) ~ [data-show="datum"].row {
+[data-toggle]:has([value="datum"]:checked) ~ [data-show="datum"].row {
     display: flex!important;
 }
 
-[data-toogle]:has([value="manuell"]:checked) ~ [data-show="manuell"] {
+[data-toggle]:has([value="manuell"]:checked) ~ [data-show="manuell"] {
     display: block!important;
 }
 

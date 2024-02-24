@@ -101,6 +101,7 @@ export default defineConfig({
         path.resolve(__dirname, 'public/css/atb.css'),
         path.resolve(__dirname, 'public/css/navigation.css'),
         path.resolve(__dirname, 'public/css/accordion.css'),
+        path.resolve(__dirname, 'public/css/validation.css'),
         // Bootstrap
         path.resolve(__dirname, 'node_modules/bootstrap/dist/css/bootstrap.css'),
         path.resolve(__dirname, 'node_modules/bootstrap/dist/js/bootstrap.esm.js'),
