@@ -199,7 +199,7 @@ jobs:
           flag-name: "php ${{ matrix.php-version }} on ${{ matrix.operating-system }}"
           parallel: true
           file: ".build/coverage/clover.xml"
-          format: "phpunit"
+          format: "clover"
           debug: false
 
   finish-code-coverage:
