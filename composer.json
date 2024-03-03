@@ -1,6 +1,6 @@
 {
     "name": "mimmi20/mezzio-sample-project",
-    "type": "library",
+    "type": "project",
     "description": "sample project for Mezzio Navigation",
     "homepage": "https://github.com/mimmi20/mezzio-sample-project",
     "license": "MIT",
