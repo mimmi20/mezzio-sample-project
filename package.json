@@ -16,10 +16,10 @@
     "bootstrap-icons": "^1.11.3",
     "bootswatch": "^5.3.3",
     "chart.js": "^4.4.2",
-    "moment": "^2.30.1"
+    "moment": "^2.30.1",
+    "fe-tools": "github:mimmi20/fe-tools#master"
   },
   "devDependencies": {
-    "@csstools/postcss-cascade-layers": "^4.0.3",
     "@csstools/postcss-color-function": "^3.0.10",
     "@csstools/postcss-font-format-keywords": "^3.0.2",
     "@csstools/postcss-is-pseudo-class": "^4.0.5",
@@ -32,16 +32,15 @@
     "@koddsson/imagemin-svgo": "^11.0.1",
     "@localnerve/imagemin-gifsicle": "^8.0.1",
     "@localnerve/imagemin-pngquant": "^10.0.5",
-    "@rollup/plugin-terser": "^0.4.4",
     "@types/bootstrap": "^5.2.10",
     "@types/chart.js": "^2.9.41",
     "@types/intl": "^1.2.2",
     "@types/node": "^20.11.24",
-    "@typescript-eslint/eslint-plugin": "^7.1.0",
-    "@typescript-eslint/parser": "^7.1.0",
-    "@typescript-eslint/typescript-estree": "^7.1.0",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "@typescript-eslint/typescript-estree": "^6.21.0",
     "@vheemstra/imagemin-avifenc": "^2.1.0",
-    "@vheemstra/vite-plugin-imagemin": "^2.0.0",
+    "@vheemstra/vite-plugin-imagemin": "^1.2.1",
     "@yeanzhi/imagemin-jpegtran": "^6.0.2",
     "@yeanzhi/imagemin-webp": "^5.1.2",
     "autoprefixer": "^10.4.18",
@@ -65,8 +64,6 @@
     "postcss-custom-selectors": "^7.1.7",
     "postcss-dir-pseudo-class": "^8.0.1",
     "postcss-flexbugs-fixes": "^5.0.2",
-    "postcss-focus-visible": "^9.0.1",
-    "postcss-focus-within": "^8.0.1",
     "postcss-font-family-system-ui": "^5.0.0",
     "postcss-gap-properties": "^5.0.1",
     "postcss-image-set-function": "^6.0.3",
@@ -103,5 +100,6 @@
   },
   "engines": {
     "node": ">=18.0.0"
-  }
+  },
+  "packageManager": "^npm@9.6.6"
 }
