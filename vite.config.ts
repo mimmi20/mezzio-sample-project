@@ -110,7 +110,7 @@ export default defineConfig({
         // Themes
         path.resolve(__dirname, 'node_modules/bootswatch/dist/morph/bootstrap.css'),
         path.resolve(__dirname, 'node_modules/bootswatch/dist/quartz/bootstrap.css'),
-        // path.resolve(__dirname, 'node_modules/bootswatch/dist/materia/bootstrap.css'),
+        path.resolve(__dirname, 'node_modules/bootswatch/dist/materia/bootstrap.css'),
       ],
       output: {
         // dir: 'public/dist',
