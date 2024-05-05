@@ -12,7 +12,7 @@
     }
   ],
   "require": {
-    "php": "^8.1.0",
+    "php": "~8.1.8 || ~8.2.0 || ~8.3.0 || ~8.4.0",
     "ext-fileinfo": "*",
     "ext-intl": "*",
     "ext-json": "*",
@@ -27,7 +27,7 @@
     "laminas/laminas-i18n-resources": "^2.10.0",
     "laminas/laminas-servicemanager": "^3.22.1",
     "laminas/laminas-stdlib": "^3.19.0",
-    "laminas/laminas-validator": "dev-feature-mezzio as 2.47.0",
+    "laminas/laminas-validator": "dev-feature-mezzio as 2.54.0",
     "mezzio/mezzio": "^3.19.0",
     "mezzio/mezzio-helpers": "^5.16.0",
     "mezzio/mezzio-laminasrouter": "^3.9.0",
@@ -117,7 +117,10 @@
     "cs-check": "phpcs",
     "cs-fix": "phpcbf",
     "mezzio": "mezzio --ansi",
-    "serve": "php -S 0.0.0.0:8080 -t public/",
+    "serve": [
+      "Composer\\Config::disableProcessTimeout",
+      "php -S 0.0.0.0:8080 -t public/"
+    ],
     "test": "phpunit --colors=always",
     "test-coverage": "phpunit --colors=always --coverage-clover clover.xml"
   },
