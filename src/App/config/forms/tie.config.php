@@ -616,7 +616,7 @@ return [
                     'label' => 'In welchem Jahr war der 1. Schaden?',
 
                     'value_options' => [
-                        (string) date('Y') => (string) date('Y'),
+                        date('Y') => date('Y'),
                         (string) (date('Y') - 1) => (string) (date('Y') - 1),
                         (string) (date('Y') - 2) => (string) (date('Y') - 2),
                         (string) (date('Y') - 3) => (string) (date('Y') - 3),
@@ -635,7 +635,7 @@ return [
                     'label' => 'In welchem Jahr war der 2. Schaden?',
 
                     'value_options' => [
-                        (string) date('Y') => (string) date('Y'),
+                        date('Y') => date('Y'),
                         (string) (date('Y') - 1) => (string) (date('Y') - 1),
                         (string) (date('Y') - 2) => (string) (date('Y') - 2),
                         (string) (date('Y') - 3) => (string) (date('Y') - 3),
@@ -654,7 +654,7 @@ return [
                     'label' => 'In welchem Jahr war der 3. Schaden?',
 
                     'value_options' => [
-                        (string) date('Y') => (string) date('Y'),
+                        date('Y') => date('Y'),
                         (string) (date('Y') - 1) => (string) (date('Y') - 1),
                         (string) (date('Y') - 2) => (string) (date('Y') - 2),
                         (string) (date('Y') - 3) => (string) (date('Y') - 3),
@@ -673,7 +673,7 @@ return [
                     'label' => 'In welchem Jahr war der 4. Schaden?',
 
                     'value_options' => [
-                        (string) date('Y') => (string) date('Y'),
+                        date('Y') => date('Y'),
                         (string) (date('Y') - 1) => (string) (date('Y') - 1),
                         (string) (date('Y') - 2) => (string) (date('Y') - 2),
                         (string) (date('Y') - 3) => (string) (date('Y') - 3),
