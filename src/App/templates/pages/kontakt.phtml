@@ -31,5 +31,7 @@ $form->prepare();
 </div>
 
 <?php $this->headLink()->appendStylesheet($this->viteUrl()->css('node_modules/bootstrap/dist/css/bootstrap.css'), 'screen', ['rel' => 'stylesheet']); ?>
+<?php $this->headLink()->appendStylesheet($this->viteUrl()->css('public/css/navigation.css'), 'screen', ['rel' => 'stylesheet']); ?>
 <?php $this->inlineScript()->appendFile($this->viteUrl()->js('public/js/form.ts')); ?>
+<?php $this->inlineScript()->appendFile($this->viteUrl()->js('public/js/dialog.ts')); ?>
 

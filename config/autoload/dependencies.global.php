@@ -24,12 +24,9 @@ return [
         // key is the alias name, the value is the service to which it points.
         'aliases' => [
             // Fully\Qualified\ClassOrInterfaceName::class => Fully\Qualified\ClassName::class,
-            \Mezzio\Router\RouterInterface::class => \Mezzio\Router\LaminasRouter::class,
         ],
         // Use 'factories' for services provided by callbacks/factory classes.
         'factories' => [
-            \Mezzio\Router\LaminasRouter::class => \App\Container\RouterFactory::class,
-            \App\Middleware\SetLocaleMiddleware::class => \App\Middleware\SetLocaleMiddlewareFactory::class,
             \App\Handler\HomePageHandler::class => \App\Handler\HomePageHandlerFactory::class,
             \App\Handler\InfoPageHandler::class => \App\Handler\InfoPageHandlerFactory::class,
             Factory::class => InvokableFactory::class,

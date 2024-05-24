@@ -36,7 +36,6 @@ return [
         'row_attributes' => ['class' => 'mb-3'],
         'layout' => \Mimmi20\LaminasView\BootstrapForm\Form::LAYOUT_HORIZONTAL,
         'form-required-mark' => '<div class="mt-2 text-info-required"><sup>*</sup> Pflichtfeld</div>',
-        'field-required-mark' => ' <span class="text-info-required"><sup>*</sup></span>',
     ],
     'attributes' => [
         'class' => 'g-3',
