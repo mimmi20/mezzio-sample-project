@@ -23,6 +23,7 @@ $aggregator = new ConfigAggregator(
         \Mimmi20\Monolog\Formatter\ConfigProvider::class,
         \Mimmi20\MonologFactory\ConfigProvider::class,
         \Mezzio\Tooling\ConfigProvider::class,
+        \Mimmi20\Mezzio\Middleware\ConfigProvider::class,
         \Laminas\Hydrator\ConfigProvider::class,
         \Laminas\Filter\ConfigProvider::class,
         \Mezzio\Authentication\ConfigProvider::class,
@@ -33,8 +34,6 @@ $aggregator = new ConfigAggregator(
         \Mimmi20\Form\Links\ConfigProvider::class,
         \Mimmi20\Form\Element\Group\ConfigProvider::class,
         \Mimmi20\Form\Paragraph\ConfigProvider::class,
-        \Mezzio\Router\LaminasRouter\ConfigProvider::class,
-        \Laminas\Router\ConfigProvider::class,
         \Mimmi20\Mezzio\Navigation\ConfigProvider::class,
         \Mezzio\LaminasView\ConfigProvider::class,
         \Mimmi20\LaminasView\Helper\PartialRenderer\ConfigProvider::class,
@@ -54,7 +53,10 @@ $aggregator = new ConfigAggregator(
         \Laminas\Validator\ConfigProvider::class,
         \Mezzio\Helper\ConfigProvider::class,
         \Mezzio\ConfigProvider::class,
+        \Mezzio\Router\LaminasRouter\ConfigProvider::class,
+        \Laminas\Router\ConfigProvider::class,
         \Mezzio\Router\ConfigProvider::class,
+        \Mimmi20\Mezzio\Router\ConfigProvider::class,
         \Laminas\Diactoros\ConfigProvider::class,
         // Include cache configuration
         new ArrayProvider($cacheConfig),
@@ -72,7 +74,7 @@ $aggregator = new ConfigAggregator(
         // Load development config if it exists
         new PhpFileProvider(realpath(__DIR__) . '/development.config.php'),
     ],
-    $cacheConfig['config_cache_path']
+    $cacheConfig['config_cache_path'],
 );
 
 return $aggregator->getMergedConfig();
