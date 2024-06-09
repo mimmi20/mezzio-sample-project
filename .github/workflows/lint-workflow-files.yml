@@ -18,6 +18,11 @@ jobs:
           lfs: false
           persist-credentials: false
 
+      - name: "Use Node.js 20"
+        uses: "actions/setup-node@v4"
+        with:
+          node-version: "20"
+
       - name: "Check workflow files"
         uses: "raven-actions/actionlint@v1"
         with:
