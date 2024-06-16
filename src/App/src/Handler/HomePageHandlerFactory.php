@@ -15,7 +15,6 @@ namespace App\Handler;
 use Mezzio\Template\TemplateRendererInterface;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
-use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Log\LoggerInterface;
 
 use function assert;
@@ -23,7 +22,7 @@ use function assert;
 final class HomePageHandlerFactory
 {
     /** @throws ContainerExceptionInterface */
-    public function __invoke(ContainerInterface $container): RequestHandlerInterface
+    public function __invoke(ContainerInterface $container): HomePageHandler
     {
         $renderer = $container->get(TemplateRendererInterface::class);
         $logger   = $container->get(LoggerInterface::class);

@@ -16,7 +16,6 @@ use Laminas\Form\Factory;
 use Mezzio\Template\TemplateRendererInterface;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
-use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Log\LoggerInterface;
 
 use function assert;
@@ -24,7 +23,7 @@ use function assert;
 final class InfoPageHandlerFactory
 {
     /** @throws ContainerExceptionInterface */
-    public function __invoke(ContainerInterface $container): RequestHandlerInterface
+    public function __invoke(ContainerInterface $container): InfoPageHandler
     {
         $renderer    = $container->get(TemplateRendererInterface::class);
         $formFactory = $container->get(Factory::class);
