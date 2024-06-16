@@ -24,7 +24,7 @@ use function assert;
 final class InfoPageHandlerFactory
 {
     /** @throws ContainerExceptionInterface */
-    public function __invoke(ContainerInterface $container): RequestHandlerInterface
+    public function __invoke(ContainerInterface $container): InfoPageHandler
     {
         $renderer    = $container->get(TemplateRendererInterface::class);
         $formFactory = $container->get(Factory::class);
