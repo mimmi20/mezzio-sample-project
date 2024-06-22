@@ -120,6 +120,7 @@ updates:
       - dependency-name: "vitest"
       - dependency-name: "supports-color"
       - dependency-name: "@localnerve/imagemin-gifsicle"
+      - dependency-name: "@localnerve/imagemin-pngquant"
 
     # Disable rebasing for all pull requests
     rebase-strategy: "disabled"
