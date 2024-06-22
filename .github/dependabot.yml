@@ -132,7 +132,6 @@ updates:
       - dependency-name: "cssnano-preset-default"
       - dependency-name: "imagemin"
       - dependency-name: "postcss-load-config"
-      - dependency-name: "@localnerve/imagemin-pngquant"
 
     # Disable rebasing for all pull requests
     rebase-strategy: "disabled"
