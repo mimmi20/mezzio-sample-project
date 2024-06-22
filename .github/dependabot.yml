@@ -69,6 +69,8 @@ updates:
       - dependency-name: "psr/log"
       - dependency-name: "browscap/browscap"
       - dependency-name: "symfony/filesystem"
+      - dependency-name: "predis/predis"
+      - dependency-name: "elasticsearch/elasticsearch"
 
     # Disable rebasing for all pull requests
     rebase-strategy: "disabled"
@@ -117,6 +119,7 @@ updates:
       - dependency-name: "@vitest/ui"
       - dependency-name: "vitest"
       - dependency-name: "supports-color"
+      - dependency-name: "@localnerve/imagemin-gifsicle"
 
     # Disable rebasing for all pull requests
     rebase-strategy: "disabled"
