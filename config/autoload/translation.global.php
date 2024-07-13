@@ -10,8 +10,7 @@
 
 declare(strict_types = 1);
 
-use Mezzio\Application;
-use Mezzio\Container\ApplicationConfigInjectionDelegator;
+use Laminas\Cache\Storage\Adapter\Filesystem;
 use Laminas\I18n\Translator\Resources;
 
 return [
@@ -51,6 +50,13 @@ return [
             ],
         ],
         'event_manager_enabled' => true,
-        //'cache' => false,
+        'cache' => [
+            'adapter' => [
+                'name'    => Filesystem::class,
+                'options' => [
+                    'cache_dir' => __DIR__ . '/../../data/cache',
+                ],
+            ],
+        ],
     ],
 ];
