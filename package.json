@@ -35,7 +35,7 @@
     "@types/bootstrap": "^5.2.10",
     "@types/chart.js": "^2.9.41",
     "@types/intl": "^1.2.2",
-    "@types/node": "^20.14.11",
+    "@types/node": "^20.14.12",
     "@typescript-eslint/eslint-plugin": "^7.13.0",
     "@typescript-eslint/parser": "^7.13.0",
     "@typescript-eslint/typescript-estree": "^7.13.0",
@@ -54,7 +54,7 @@
     "imagemin": "^9.0.0",
     "imagemin-gif2webp": "^3.0.0",
     "lilconfig": "^3.1.2",
-    "postcss": "^8.4.39",
+    "postcss": "^8.4.40",
     "postcss-clamp": "^4.1.0",
     "postcss-color-hex-alpha": "^9.0.4",
     "postcss-color-rebeccapurple": "^9.0.3",
@@ -91,12 +91,12 @@
     "stylelint": "^16.7.0",
     "stylelint-config-standard": "^36.0.1",
     "supports-color": "^7.2.0",
-    "typescript": "^5.5.3",
-    "vite": "^5.3.4",
+    "typescript": "^5.5.4",
+    "vite": "^5.3.5",
     "vite-plugin-dts": "^3.9.1",
     "vite-plugin-eslint": "^1.8.1",
     "vite-plugin-stylelint": "^5.3.1",
-    "yaml": "^2.4.5"
+    "yaml": "^2.5.0"
   },
   "engines": {
     "node": ">=18.0.0"
