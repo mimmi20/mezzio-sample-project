@@ -131,6 +131,7 @@ updates:
       - dependency-name: "@node-minify/core"
       - dependency-name: "@node-minify/no-compress"
       - dependency-name: "@node-minify/terser"
+      - dependency-name: "@types/node"
       - dependency-name: "@typescript-eslint/eslint-plugin"
       - dependency-name: "@typescript-eslint/parser"
       - dependency-name: "@typescript-eslint/typescript-estree"
