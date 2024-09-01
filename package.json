@@ -88,7 +88,7 @@
     "prettier": "^3.3.3",
     "prettier-eslint": "^16.3.0",
     "sass": "^1.77.8",
-    "stylelint": "^16.8.2",
+    "stylelint": "^16.9.0",
     "stylelint-config-standard": "^36.0.1",
     "supports-color": "^7.2.0",
     "typescript": "^5.5.4",
