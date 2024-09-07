@@ -10,6 +10,12 @@ import imageminWebp from '@yeanzhi/imagemin-webp';
 import imageminGifToWebp from 'imagemin-gif2webp';
 import imageminAviv from '@vheemstra/imagemin-avifenc';
 import imageminSvgo from '@koddsson/imagemin-svgo';
+import { resolveToEsbuildTarget } from 'esbuild-plugin-browserslist';
+import browserslist from 'browserslist';
+
+const target = resolveToEsbuildTarget(browserslist('defaults'), {
+  printUnknownTargets: false,
+});
 
 export default defineConfig({
   appType: 'custom',
@@ -62,7 +68,7 @@ export default defineConfig({
     watch: {},
   },
   build: {
-    target: 'modules',
+    target: target,
     outDir: 'public/dist', // relative to the `root` folder
     assetsDir: 'assets/',
     emptyOutDir: true,
