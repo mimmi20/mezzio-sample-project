@@ -1,7 +1,5 @@
 import {defineConfig} from 'vite';
 import * as path from 'path';
-import stylelint from 'vite-plugin-stylelint';
-import eslint from 'vite-plugin-eslint';
 import viteImagemin from '@vheemstra/vite-plugin-imagemin'
 import imageminJpegtran from '@yeanzhi/imagemin-jpegtran';
 import imageminPngquant from '@localnerve/imagemin-pngquant';
@@ -23,8 +21,6 @@ export default defineConfig({
   publicDir: 'public',
   base: '/dist/',
   plugins: [
-    stylelint(),
-    //eslint(),
     viteImagemin({
       plugins: {
         jpg: imageminJpegtran(),
@@ -138,13 +134,5 @@ export default defineConfig({
   css: {
     devSourcemap: true,
     transformer: 'postcss',
-    preprocessorOptions: {
-      scss: {
-        outputStyle: 'expanded',
-        alertAscii: true,
-        alertColor: true,
-        verbose: true,
-      }
-    }
   },
 })
