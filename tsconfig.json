@@ -20,6 +20,5 @@
     "lib": ["esnext", "dom", "dom.iterable"],
     "useDefineForClassFields": true
   },
-  "include": ["public/**/*.js", "public/**/*.ts", "public/**/*.d.ts"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": ["public/**/*.ts"]
 }
