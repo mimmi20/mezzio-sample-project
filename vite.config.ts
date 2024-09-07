@@ -65,7 +65,7 @@ export default defineConfig({
       clientPort: 8082,
     },
     origin: 'http://localhost:8082',
-    watch: {},
+    // watch: {},
   },
   build: {
     target: target,
@@ -128,9 +128,9 @@ export default defineConfig({
         strict: true,
       },
     },
-    watch: {
-      // https://rollupjs.org/configuration-options/#watch
-    },
+    // watch: {
+    //   // https://rollupjs.org/configuration-options/#watch
+    // },
     modulePreload: {
       polyfill: false
     },
