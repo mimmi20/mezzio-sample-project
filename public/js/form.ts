@@ -10,7 +10,7 @@ forms.forEach((form: HTMLFormElement): void => {
       form.checkValidity();
       form.classList.add('was-validated');
     },
-    false,
+    false
   );
 });
 
@@ -27,6 +27,6 @@ fields.forEach((field: HTMLInputElement | HTMLSelectElement): void => {
       field.classList.remove('is-invalid');
       field.classList.remove('is-valid');
     },
-    {once: true},
+    { once: true }
   );
 });

@@ -1,4 +1,4 @@
-(function(): void {
+(function (): void {
   const forms = document.querySelectorAll<HTMLFormElement>('[data-needs-validation]');
 
   forms.forEach((form: HTMLFormElement): void => {
@@ -59,7 +59,7 @@
                 detail: resultData,
                 bubbles: true, // Whether the event will bubble up through the DOM or not
                 cancelable: true, // Whether the event may be canceled or not
-              }),
+              })
             );
 
             const chart = document.querySelector('[data-chart]');
@@ -75,7 +75,7 @@
               infoText.textContent = new Intl.NumberFormat('de-DE', {
                 style: 'currency',
                 currency: 'EUR',
-                maximumFractionDigits: 0
+                maximumFractionDigits: 0,
               }).format(rentenluecke);
             }
 
@@ -103,14 +103,14 @@
             if (pensionGapAmount instanceof HTMLOutputElement) {
               pensionGapAmount.value = new Intl.NumberFormat('de-DE', {
                 style: 'currency',
-                currency: 'EUR'
+                currency: 'EUR',
               }).format(rentenluecke);
             }
 
             if (monthlyRequirementAmount instanceof HTMLOutputElement) {
               monthlyRequirementAmount.value = new Intl.NumberFormat('de-DE', {
                 style: 'currency',
-                currency: 'EUR'
+                currency: 'EUR',
               }).format(monatsBedarf);
             }
 
@@ -118,7 +118,7 @@
               if (erwarteteRente > 0) {
                 pensionNetAmount.value = new Intl.NumberFormat('de-DE', {
                   style: 'currency',
-                  currency: 'EUR'
+                  currency: 'EUR',
                 }).format(erwarteteRente);
                 pensionNetAmount.parentElement.classList.remove('d-none');
               } else {
@@ -130,7 +130,7 @@
               if (bestehendeVorsorge >= 0) {
                 pensionActualAmount.value = new Intl.NumberFormat('de-DE', {
                   style: 'currency',
-                  currency: 'EUR'
+                  currency: 'EUR',
                 }).format(bestehendeVorsorge);
                 pensionActualAmount.parentElement.classList.remove('d-none');
               } else {
@@ -140,13 +140,13 @@
           }
         }
       },
-      false,
+      false
     );
   });
 
-  const fields = document.querySelectorAll<HTMLInputElement|HTMLSelectElement>('[data-needs-validation] :is(input:not([type="button"]):not([type="submit"]), select)');
+  const fields = document.querySelectorAll<HTMLInputElement | HTMLSelectElement>('[data-needs-validation] :is(input:not([type="button"]):not([type="submit"]), select)');
 
-  fields.forEach((field: HTMLInputElement|HTMLSelectElement): void => {
+  fields.forEach((field: HTMLInputElement | HTMLSelectElement): void => {
     field.addEventListener(
       'blur',
       (event: Event): void => {
@@ -155,7 +155,7 @@
 
         field.classList.add('was-edited');
       },
-      {once: true},
+      { once: true }
     );
   });
 })();

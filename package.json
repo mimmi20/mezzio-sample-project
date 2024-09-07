@@ -7,8 +7,8 @@
     "dev": "tsc && vite",
     "build": "vite build",
     "preview": "tsc && vite preview",
-    "lint": "eslint . --ext .ts,.js",
-    "lint-fix": "eslint . --ext .ts,.js --fix"
+    "lint": "eslint . --ext .ts,.mjs,.cjs",
+    "lint-fix": "eslint . --ext .ts,.mjs,.cjs --fix"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",

@@ -1,13 +1,12 @@
 class Dialog {
   initLayer(): void {
     const layerTriggers = document.querySelectorAll<HTMLElement>('.info-layer-trigger');
-    const that = this;
 
-    layerTriggers.forEach(function(layerTrigger: HTMLElement): void {
+    layerTriggers.forEach((layerTrigger: HTMLElement): void => {
       const layerId = layerTrigger.getAttribute('data-layer');
 
       if (layerId === null) {
-        console.error('no layer-id')
+        console.error('no layer-id');
         return;
       }
 
@@ -19,16 +18,16 @@ class Dialog {
       }
 
       layerTrigger.addEventListener('click', (event: Event): void => {
-        console.log(`Button was clicked`);
+        console.log('Button was clicked');
 
         event.preventDefault();
         event.stopPropagation();
 
         dialog.showModal();
-        dialog.setAttribute('aria-hidden', 'false')
+        dialog.setAttribute('aria-hidden', 'false');
       });
 
-      that.initDialog(dialog);
+      this.initDialog(dialog);
     });
   }
 
@@ -41,7 +40,7 @@ class Dialog {
         event.stopPropagation();
 
         dialog.close();
-        dialog.setAttribute('aria-hidden', 'true')
+        dialog.setAttribute('aria-hidden', 'true');
       });
     });
   }
@@ -51,7 +50,7 @@ class Dialog {
   }
 }
 
-(function(): void {
+(function (): void {
   const dialog = new Dialog();
 
   dialog.init();

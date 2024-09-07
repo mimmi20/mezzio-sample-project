@@ -1,7 +1,7 @@
 const hundn = document.getElementById('Hundn');
 
 if (hundn instanceof HTMLSelectElement) {
-  const handleMh = function(event: Event) {
+  const handleMh = function (event: Event) {
     if (!(event.target instanceof HTMLSelectElement) && !(event.target instanceof HTMLInputElement)) {
       return;
     }
@@ -18,38 +18,35 @@ if (hundn instanceof HTMLSelectElement) {
     }
   };
 
-  hundn.addEventListener(
-    'change',
-    (event: Event): void => {
-      const anz = parseInt(hundn.value, 10);
+  hundn.addEventListener('change', (): void => {
+    const anz = parseInt(hundn.value, 10);
 
-      for (let i = 0; i <= anz; i++) {
-        const rt = document.getElementById('Rasse_Tier' + i);
-        const mhs = document.querySelectorAll<HTMLSelectElement|HTMLInputElement>('[name="mischling_hund' + i + '"]');
+    for (let i = 0; i <= anz; i++) {
+      const rt = document.getElementById('Rasse_Tier' + i);
+      const mhs = document.querySelectorAll<HTMLSelectElement | HTMLInputElement>('[name="mischling_hund' + i + '"]');
 
-        if (rt instanceof HTMLSelectElement || rt instanceof HTMLInputElement) {
-          rt.setAttribute('required', 'required');
-        }
-
-        mhs.forEach((mh: HTMLSelectElement|HTMLInputElement): void => {
-          mh.setAttribute('required', 'required');
-          mh.addEventListener('change', handleMh);
-        });
+      if (rt instanceof HTMLSelectElement || rt instanceof HTMLInputElement) {
+        rt.setAttribute('required', 'required');
       }
 
-      for (let i = anz + 1; i <= 5; i++) {
-        const rt = document.getElementById('Rasse_Tier' + i);
-        const mhs = document.querySelectorAll<HTMLSelectElement|HTMLInputElement>('[name="mischling_hund' + i + '"]');
-
-        if (rt instanceof HTMLSelectElement || rt instanceof HTMLInputElement) {
-          rt.removeAttribute('required');
-        }
-
-        mhs.forEach((mh: HTMLSelectElement|HTMLInputElement): void => {
-          mh.removeAttribute('required');
-          mh.removeEventListener('change', handleMh);
-        });
-      }
+      mhs.forEach((mh: HTMLSelectElement | HTMLInputElement): void => {
+        mh.setAttribute('required', 'required');
+        mh.addEventListener('change', handleMh);
+      });
     }
-  );
+
+    for (let i = anz + 1; i <= 5; i++) {
+      const rt = document.getElementById('Rasse_Tier' + i);
+      const mhs = document.querySelectorAll<HTMLSelectElement | HTMLInputElement>('[name="mischling_hund' + i + '"]');
+
+      if (rt instanceof HTMLSelectElement || rt instanceof HTMLInputElement) {
+        rt.removeAttribute('required');
+      }
+
+      mhs.forEach((mh: HTMLSelectElement | HTMLInputElement): void => {
+        mh.removeAttribute('required');
+        mh.removeEventListener('change', handleMh);
+      });
+    }
+  });
 }

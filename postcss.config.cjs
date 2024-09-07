@@ -68,12 +68,12 @@ module.exports = function (ctx) {
       require('css-declaration-sorter')({ keepOverrides: true, order: 'smacss' }),
       ctx.env === 'production'
         ? require('cssnano')({
-          preset: 'default',
-          safe: true,
-          calc: false,
-          minifyFontWeight: false,
-          precision: 2,
-        })
+            preset: 'default',
+            safe: true,
+            calc: false,
+            minifyFontWeight: false,
+            precision: 2,
+          })
         : false,
     ],
   };
