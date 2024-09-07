@@ -10,13 +10,13 @@ class AtbBase {
 
     const titles = dialog.querySelectorAll<HTMLElement>('.modal-title');
 
-    titles.forEach(function(title: HTMLElement): void {
+    titles.forEach(function (title: HTMLElement): void {
       title.innerHTML = headline;
     });
 
     const bodies = dialog.querySelectorAll<HTMLElement>('.modal-body p');
 
-    bodies.forEach(function(body: HTMLElement): void {
+    bodies.forEach(function (body: HTMLElement): void {
       body.innerHTML = text;
     });
   }
@@ -26,19 +26,19 @@ class AtbBase {
     const form = document.getElementById('insuranceSelection');
 
     if (thatScript === null) {
-      console.error('script not found')
+      console.error('script not found');
       return;
     }
 
     if (!(form instanceof HTMLFormElement)) {
-      console.error('form not found')
+      console.error('form not found');
       return;
     }
 
     const selects = form.querySelectorAll<HTMLSelectElement>('select[data-next]');
     const that = this;
 
-    selects.forEach(function(select: HTMLSelectElement): void {
+    selects.forEach(function (select: HTMLSelectElement): void {
       select.addEventListener('change', async function (event: Event): Promise<void> {
         event.preventDefault();
         event.stopPropagation();
@@ -46,14 +46,14 @@ class AtbBase {
         const next = select.getAttribute('data-next');
 
         if (next === null) {
-          console.error(`attribute "data-next" is empty select ${select.id}`)
+          console.error(`attribute "data-next" is empty select ${select.id}`);
           return;
         }
 
         const nextElement = document.getElementById(next);
 
         if (nextElement === null) {
-          console.error(`attribute "${next}" not found for select ${select.id}`)
+          console.error(`attribute "${next}" not found for select ${select.id}`);
           return;
         }
 
@@ -103,8 +103,8 @@ class AtbBase {
         }
 
         const sleep = async function Sleep(milliseconds: number) {
-          return new Promise(resolve => setTimeout(resolve, milliseconds));
-        }
+          return new Promise((resolve) => setTimeout(resolve, milliseconds));
+        };
 
         if (typeof thatScript.dataset.url === 'undefined') {
           nextElement.parentElement?.classList.add('has-spinner');
@@ -126,16 +126,11 @@ class AtbBase {
 
         await sleep(500); // Pausiert die Funktion für 0,5 Sekunden
 
-        const results = await that.fetch(
-          urls[next],
-          form,
-          submitter,
-          function(error: Error): void {
-            console.error(error);
+        const results = await that.fetch(urls[next], form, submitter, function (error: Error): void {
+          console.error(error);
 
-            select.classList.add('text-danger'); // indicate error
-          }
-        );
+          select.classList.add('text-danger'); // indicate error
+        });
 
         if (typeof results === 'object') {
           Object.keys(results).forEach(function (key) {
@@ -162,9 +157,9 @@ class AtbBase {
       return;
     }
 
-    const fields = form.querySelectorAll<HTMLInputElement|HTMLSelectElement>('input, select');
+    const fields = form.querySelectorAll<HTMLInputElement | HTMLSelectElement>('input, select');
 
-    fields.forEach((field: HTMLInputElement|HTMLSelectElement): void => {
+    fields.forEach((field: HTMLInputElement | HTMLSelectElement): void => {
       field.addEventListener('blur', (event: Event): void => {
         event.preventDefault();
         event.stopPropagation();
@@ -198,7 +193,7 @@ class AtbBase {
     const formData = new FormData(form, submitter);
     const that = this;
 
-    let response: Response|null = null;
+    let response: Response | null = null;
 
     try {
       response = await fetch(action, {
@@ -230,10 +225,7 @@ class AtbBase {
 
     if (results.hasOwnProperty('error')) {
       if (results.error === 'webservice error') {
-        that.handleError(
-          'Keine Leistungsbewertung',
-          'Für den gewählten Tarif liegt keine Leistungsbewertung vor.'
-        );
+        that.handleError('Keine Leistungsbewertung', 'Für den gewählten Tarif liegt keine Leistungsbewertung vor.');
       }
 
       return null;
@@ -242,7 +234,7 @@ class AtbBase {
     return results;
   }
 
-  getSelected (form: HTMLFormElement, name: string): any[] {
+  getSelected(form: HTMLFormElement, name: string): any[] {
     const data: any[] = [];
     const options = form.querySelectorAll<HTMLOptionElement>('select[name="' + name + '"] option');
 
@@ -282,19 +274,19 @@ class AtbBase {
     const submitter = form.querySelectorAll<HTMLButtonElement>('button[type="submit"]')[0];
     const that = this;
 
-    thatSubmitBtns.forEach(function(button) {
+    thatSubmitBtns.forEach(function (button) {
       button.classList.add('active');
       button.setAttribute('disabled', 'disabled');
     });
 
     let resultData = {
-      "type": that.getSelected(form, 'productType')[0],
-      "insurer": that.getSelected(form, 'company')[0],
-      "tariffgeneration": that.getSelected(form, 'year')[0],
-      "tariffname": that.getSelected(form, 'product')[0],
-      "options": that.getOptions(form),
-      "actualTariff": 0.0,
-      "bestTariff": 0.0
+      type: that.getSelected(form, 'productType')[0],
+      insurer: that.getSelected(form, 'company')[0],
+      tariffgeneration: that.getSelected(form, 'year')[0],
+      tariffname: that.getSelected(form, 'product')[0],
+      options: that.getOptions(form),
+      actualTariff: 0.0,
+      bestTariff: 0.0,
     };
 
     setTimeout(function () {
@@ -315,26 +307,20 @@ class AtbBase {
     const productType = form.querySelectorAll<HTMLSelectElement>('select[name="productType"]')[0];
 
     document.dispatchEvent(
-      new CustomEvent(
-        'atb.result-event',
-        {
-          'detail': productType.value
-        }
-      )
+      new CustomEvent('atb.result-event', {
+        detail: productType.value,
+      })
     );
 
     document.dispatchEvent(
-      new CustomEvent(
-        'atb.data-event',
-        {
-          'detail': resultData
-        }
-      )
+      new CustomEvent('atb.data-event', {
+        detail: resultData,
+      })
     );
 
     that.setHistory('atb-result');
 
-    thatSubmitBtns.forEach(function(button) {
+    thatSubmitBtns.forEach(function (button) {
       button.classList.remove('active');
       button.removeAttribute('disabled');
     });
@@ -359,7 +345,7 @@ class AtbBase {
       if (productOptions !== null) {
         const containers = productOptions.querySelectorAll<HTMLDivElement>('div');
 
-        containers.forEach(function(container) {
+        containers.forEach(function (container) {
           container.remove();
         });
       }
@@ -377,16 +363,11 @@ class AtbBase {
 
     element.classList.remove('text-danger');
 
-    const results = await that.fetch(
-      urls['prod-opt'],
-      form,
-      submitter,
-      function(error: Error): void {
-        console.error(error);
+    const results = await that.fetch(urls['prod-opt'], form, submitter, function (error: Error): void {
+      console.error(error);
 
-        element.classList.add('text-danger'); // indicate error
-      }
-    );
+      element.classList.add('text-danger'); // indicate error
+    });
 
     if (typeof results === 'object' && results.hasOwnProperty('elements')) {
       let htmlCheckbox = '',
@@ -446,8 +427,8 @@ class AtbBase {
     const elements = document.querySelectorAll<HTMLInputElement>('#product, #insuranceSelection input');
     const that = this;
 
-    elements.forEach(function(element: HTMLInputElement): void {
-      element.addEventListener('change', async function(event) {
+    elements.forEach(function (element: HTMLInputElement): void {
+      element.addEventListener('change', async function (event) {
         event.preventDefault();
         event.stopPropagation();
 
@@ -460,10 +441,10 @@ class AtbBase {
     const accordionInputs = document.querySelectorAll<HTMLInputElement>('.accordion-input');
     const activeClass = 'active';
 
-    accordionInputs.forEach(function(accordionInput: HTMLInputElement): void {
+    accordionInputs.forEach(function (accordionInput: HTMLInputElement): void {
       const thatParentTriggers = document.querySelectorAll<HTMLLabelElement>('label[for="' + accordionInput.id + '"]');
 
-      thatParentTriggers.forEach(function(thatParentTrigger: HTMLLabelElement): void {
+      thatParentTriggers.forEach(function (thatParentTrigger: HTMLLabelElement): void {
         if (accordionInput.checked) {
           thatParentTrigger.classList.add(activeClass);
         } else {
@@ -475,7 +456,7 @@ class AtbBase {
         event.preventDefault();
         event.stopPropagation();
 
-        thatParentTriggers.forEach(function(thatParentTrigger: HTMLLabelElement): void {
+        thatParentTriggers.forEach(function (thatParentTrigger: HTMLLabelElement): void {
           if (accordionInput.checked) {
             thatParentTrigger.classList.add(activeClass);
           } else {
@@ -487,14 +468,33 @@ class AtbBase {
   }
 
   getCheckboxHtml(id: string, name: string, val: string, label: string, required: boolean, requiredMessage: string, checked: boolean): string {
-    const isRequired = (required) ? 'required ' : '',
-      isChecked = (checked) ? 'checked="checked" ' : '',
-      isRequiredMessage = (requiredMessage) ? 'data-required-message="' + requiredMessage + '" ' : '';
+    const isRequired = required ? 'required ' : '',
+      isChecked = checked ? 'checked="checked" ' : '',
+      isRequiredMessage = requiredMessage ? 'data-required-message="' + requiredMessage + '" ' : '';
 
-    return '<div class="form-check col-12 col-sm-6">\n' +
-      '<input type="checkbox" ' + isChecked + 'class="form-check-input" ' + isRequired + 'name="' + name + '" ' + isRequiredMessage + 'id="' + id + '" value="' + val + '">\n' +
-      '<label class="form-check-label" for="' + id + '">' + label + '</label>\n' +
-      '</div>' + ((requiredMessage) ? '<div class="invalid-tooltip">' + requiredMessage + '</div>' : '');
+    return (
+      '<div class="form-check col-12 col-sm-6">\n' +
+      '<input type="checkbox" ' +
+      isChecked +
+      'class="form-check-input" ' +
+      isRequired +
+      'name="' +
+      name +
+      '" ' +
+      isRequiredMessage +
+      'id="' +
+      id +
+      '" value="' +
+      val +
+      '">\n' +
+      '<label class="form-check-label" for="' +
+      id +
+      '">' +
+      label +
+      '</label>\n' +
+      '</div>' +
+      (requiredMessage ? '<div class="invalid-tooltip">' + requiredMessage + '</div>' : '')
+    );
   }
 
   setHistory(stepForHistory: string): void {
@@ -504,7 +504,7 @@ class AtbBase {
   handleHistory(): void {
     const steps = ['atb-start', 'atb-result'];
 
-    window.addEventListener('hashchange', function(): void {
+    window.addEventListener('hashchange', function (): void {
       const cleanHash = this.location.hash.replace('#', '');
       const select = document.querySelectorAll<HTMLSelectElement>('[name="productType"]')[0];
 
@@ -512,25 +512,22 @@ class AtbBase {
         const stepName = steps[i];
         const dataSteps = document.querySelectorAll<HTMLElement>('[data-step="' + stepName + '"]');
 
-        dataSteps.forEach(function(dataStep): void {
+        dataSteps.forEach(function (dataStep): void {
           dataStep.classList.add('d-none');
         });
 
         if (cleanHash === stepName) {
-          dataSteps.forEach(function(dataStep): void {
+          dataSteps.forEach(function (dataStep): void {
             dataStep.classList.remove('d-none');
           });
 
           document.dispatchEvent(
-            new CustomEvent(
-              'jdcgeld.step',
-              {
-                'detail' : {
-                  'step' : stepName,
-                  'branch' : select.value
-                }
-              }
-            )
+            new CustomEvent('jdcgeld.step', {
+              detail: {
+                step: stepName,
+                branch: select.value,
+              },
+            })
           );
         }
       }
@@ -595,7 +592,7 @@ class AtbBase {
   }
 }
 
-(function(): void {
+(function (): void {
   const atbBase = new AtbBase();
 
   atbBase.init();

@@ -1,9 +1,11 @@
 {
   "compilerOptions": {
     "composite": true,
-    "module": "ESNext",
+    "target": "es6",
+    "module": "esnext",
     "moduleResolution": "Node",
     "allowSyntheticDefaultImports": true
   },
-  "include": ["vite.config.ts"]
+  "extends": "./tsconfig.json",
+  "include": ["vite.config.ts", "postcss.config.cjs", "public/**/*.ts"]
 }

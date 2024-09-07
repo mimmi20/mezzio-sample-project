@@ -1,7 +1,5 @@
 import {defineConfig} from 'vite';
 import * as path from 'path';
-import stylelint from 'vite-plugin-stylelint';
-import eslint from 'vite-plugin-eslint';
 import viteImagemin from '@vheemstra/vite-plugin-imagemin'
 import imageminJpegtran from '@yeanzhi/imagemin-jpegtran';
 import imageminPngquant from '@localnerve/imagemin-pngquant';
@@ -10,6 +8,12 @@ import imageminWebp from '@yeanzhi/imagemin-webp';
 import imageminGifToWebp from 'imagemin-gif2webp';
 import imageminAviv from '@vheemstra/imagemin-avifenc';
 import imageminSvgo from '@koddsson/imagemin-svgo';
+import { resolveToEsbuildTarget } from 'esbuild-plugin-browserslist';
+import browserslist from 'browserslist';
+
+const target = resolveToEsbuildTarget(browserslist('defaults'), {
+  printUnknownTargets: false,
+});
 
 export default defineConfig({
   appType: 'custom',
@@ -17,8 +21,6 @@ export default defineConfig({
   publicDir: 'public',
   base: '/dist/',
   plugins: [
-    stylelint(),
-    //eslint(),
     viteImagemin({
       plugins: {
         jpg: imageminJpegtran(),
@@ -59,10 +61,10 @@ export default defineConfig({
       clientPort: 8082,
     },
     origin: 'http://localhost:8082',
-    watch: {},
+    // watch: {},
   },
   build: {
-    target: 'modules',
+    target: target,
     outDir: 'public/dist', // relative to the `root` folder
     assetsDir: 'assets/',
     emptyOutDir: true,
@@ -122,9 +124,9 @@ export default defineConfig({
         strict: true,
       },
     },
-    watch: {
-      // https://rollupjs.org/configuration-options/#watch
-    },
+    // watch: {
+    //   // https://rollupjs.org/configuration-options/#watch
+    // },
     modulePreload: {
       polyfill: false
     },
@@ -132,13 +134,5 @@ export default defineConfig({
   css: {
     devSourcemap: true,
     transformer: 'postcss',
-    preprocessorOptions: {
-      scss: {
-        outputStyle: 'expanded',
-        alertAscii: true,
-        alertColor: true,
-        verbose: true,
-      }
-    }
   },
 })

@@ -3,7 +3,7 @@ const versbeginnDatum = document.getElementById('versbeginn_datum');
 
 if (versbeginn && versbeginnDatum) {
   versbeginn.forEach((element: HTMLInputElement): void => {
-    element.addEventListener('click', (event: MouseEvent): void => {
+    element.addEventListener('click', (): void => {
       if (element.value === 'datum') {
         versbeginnDatum.setAttribute('required', 'required');
       } else {
