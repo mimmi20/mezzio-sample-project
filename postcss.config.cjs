@@ -8,34 +8,34 @@ module.exports = function (ctx) {
       require('postcss-color-rebeccapurple')({ preserve: true }),
       require('postcss-color-rgba-fallback'),
       require('postcss-flexbugs-fixes'),
-      require('postcss-prefixwrap')('.base-container'),// no prefix here, will be added in the next step
-      require('postcss-prefix-selector')({
-        prefix: 'atb__',
-        transform(prefix, selector, prefixedSelector, filePath, rule) {
-          if (filePath.match(/node_modules/)) {
-            return selector; // Do not prefix styles imported from node_modules
-          }
-
-          const annotation = rule.prev();
-          if (annotation?.type === 'comment' && annotation.text.trim() === 'no-prefix') {
-            return selector; // Do not prefix style rules that are preceded by: /* no-prefix */
-          }
-
-
-          const conditionCssClass = /\.([a-z_][\w-]+)/;
-          const regExpCssClass = new RegExp(conditionCssClass, 'gi');
-
-          return selector.replace(regExpCssClass, function (matchAllClass, matchClass) {
-            const hasNotNamespce = matchClass.match(new RegExp(prefix, 'gi')) === null;
-
-            if (hasNotNamespce) {
-              return '.' + prefix + matchClass;
-            }
-
-            return matchClass;
-          });
-        },
-      }),
+      // require('postcss-prefixwrap')('.base-container'),// no prefix here, will be added in the next step
+      // require('postcss-prefix-selector')({
+      //   prefix: 'atb__',
+      //   transform(prefix, selector, prefixedSelector, filePath, rule) {
+      //     if (filePath.match(/node_modules/)) {
+      //       return selector; // Do not prefix styles imported from node_modules
+      //     }
+      //
+      //     const annotation = rule.prev();
+      //     if (annotation?.type === 'comment' && annotation.text.trim() === 'no-prefix') {
+      //       return selector; // Do not prefix style rules that are preceded by: /* no-prefix */
+      //     }
+      //
+      //
+      //     const conditionCssClass = /\.([a-z_][\w-]+)/;
+      //     const regExpCssClass = new RegExp(conditionCssClass, 'gi');
+      //
+      //     return selector.replace(regExpCssClass, function (matchAllClass, matchClass) {
+      //       const hasNotNamespce = matchClass.match(new RegExp(prefix, 'gi')) === null;
+      //
+      //       if (hasNotNamespce) {
+      //         return '.' + prefix + matchClass;
+      //       }
+      //
+      //       return matchClass;
+      //     });
+      //   },
+      // }),
       require('postcss-preset-env')({
         'stage': 2,
         'minimumVendorImplementations': 0,

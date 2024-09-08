@@ -50,13 +50,5 @@ return [
             ],
         ],
         'event_manager_enabled' => true,
-        'cache' => [
-            'adapter' => [
-                'name'    => Filesystem::class,
-                'options' => [
-                    'cache_dir' => __DIR__ . '/../../data/cache',
-                ],
-            ],
-        ],
     ],
 ];

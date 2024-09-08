@@ -33,3 +33,6 @@ npm-shrinkwrap.json
 *.txt
 log/
 /public/dist/
+/public/js/*.js
+/public/js/*.map
+/public/js/*.d.ts

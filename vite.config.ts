@@ -54,14 +54,19 @@ export default defineConfig({
   ],
   server: {
     host: 'localhost',
-    port: 8082,
+    port: 3000,
     strictPort: true,
-    hmr: {
-      host: 'localhost',
-      clientPort: 8082,
+    open: '/',
+    // https: {},
+    proxy: {
+      '/': 'http://localhost:8080/',
     },
-    origin: 'http://localhost:8082',
-    // watch: {},
+    // cors: {},
+    // hmr: {
+    //   host: 'localhost',
+    //   clientPort: 3000,
+    // },
+    origin: 'http://localhost:3000',
   },
   build: {
     target: target,
