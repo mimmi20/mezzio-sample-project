@@ -4,11 +4,19 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "concurrently \"tsc && vite\" \"php -S 0.0.0.0:8080 -t public/ -ddisplay_errors=1\"",
-    "build": "vite build",
+    "dev:all": "concurrently \"tsc && vite\" \"php -S 0.0.0.0:8080 -t public/ public/index.php -q -ddisplay_errors=1\"",
+    "dev": "tsc && vite",
+    "build": "tsc && vite build",
     "preview": "tsc && vite preview",
-    "lint": "eslint . --ext .ts,.mjs,.cjs",
-    "lint-fix": "eslint . --ext .ts,.mjs,.cjs --fix"
+    "test": "tsc && vite build && vitest run",
+    "coverage": "tsc && vite build && vitest run --coverage",
+    "typecheck": "tsc && vitest typecheck",
+    "prettier": "prettier --config prettier.config.mjs --check public/**/*.ts",
+    "prettier-fix": "prettier --config prettier.config.mjs --write public/**/*.ts",
+    "stylelint": "stylelint \"public/css/*.css\" --color --cache --custom-formatter ./node_modules/stylelint-formatter-pretty/index.js",
+    "stylelint-fix": "stylelint \"public/css/*.css\" --color --cache --fix --custom-formatter ./node_modules/stylelint-formatter-pretty/index.js",
+    "lint": "eslint . --config eslint.config.mjs",
+    "lint-fix": "eslint . --config eslint.config.mjs --fix"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
