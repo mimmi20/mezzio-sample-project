@@ -139,7 +139,7 @@ export default defineConfig({
         alertAscii: true,
         alertColor: true,
         verbose: true,
-      }
-    }
+      },
+    },
   },
 });

@@ -21,7 +21,7 @@
     "useDefineForClassFields": true,
     "types": ["node"]
   },
-  "include": ["public/**/*.ts"],
   "exclude": ["public/**/*.d.ts"],
+  "include": ["public/**/*.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
