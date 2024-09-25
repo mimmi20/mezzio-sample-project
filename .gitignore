@@ -37,3 +37,8 @@ log/
 /public/js/*.js
 /public/js/*.map
 /public/js/*.d.ts
+*.tsbuildinfo
+/vite.config.d.ts
+/vite.config.js
+/cypress.config.d.ts
+/cypress.config.js
