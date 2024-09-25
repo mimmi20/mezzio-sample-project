@@ -1,19 +1,21 @@
 .alert-danger {
     display: none;
+
     --bs-alert-bg: var(--bs-danger-text-emphasis);
-    --bs-alert-color: #000000;
+    --bs-alert-color: #000;
     --bs-alert-border-color: var(--bs-form-invalid-border-color);
 }
+
 .alert-warning {
     display: none;
+
     --bs-alert-bg: var(--bs-warning-text-emphasis);
-    --bs-alert-color: #000000;
+    --bs-alert-color: #000;
     --bs-alert-border-color: var(--bs-form-invalid-border-color);
 }
 
 .container[id="rl-start"] {
     display: block;
-
     container-type: inline-size;
     container-name: rl;
 }
@@ -26,7 +28,6 @@
     display: grid;
     grid-template-columns: [form-start button-start] 6fr [form-end result-start head-start graph-start overview-start change-start] 4fr [graph-end inflation-start] 2fr [result-end button-end head-end inflation-end overview-end change-end];
     grid-template-rows: [form-start result-start head-start] auto [head-end graph-start inflation-start] auto [graph-end inflation-end overview-start] auto [form-end result-end overview-end change-start] auto [change-end button-start] auto [button-end];
-
     gap: 0.5rem;
 }
 
@@ -40,23 +41,24 @@
 .text-wrapper, .calculation-container {
     width: 100%;
 }
+
 .text-wrapper {
     padding: 1.25rem;
     text-align: left;
 }
+
 .text-wrapper .headline {
     margin-bottom: 2.9375rem;
+    color: var(--vt-form-color, #212529);
     font-size: 1.625rem;
     font-weight: 600;
-    color: var(--vt-form-color, #212529);
 }
+
 .form-container {
     --bs-card-title-spacer-y: 35px;
     --bs-card-title-color: #212529;
-
-    grid-area: form;
-
     display: grid;
+    grid-area: form;
     grid-auto-rows: min-content;
     grid-template-columns: 1fr;
 
@@ -65,23 +67,24 @@
         font-weight: 300;
     }
 }
-.result-container {
-    grid-area: result;
 
+.result-container {
     display: grid;
-    gap: 0.5rem;
+    grid-area: result;
+    grid-auto-rows: min-content;
     grid-template-areas:
                     'head head'
                     'graph inflation'
                     'overview overview';
-    grid-auto-rows: min-content;
     grid-template-columns: 6fr 4fr;
+    gap: 0.5rem;
 }
+
 .button-container {
     grid-area: button;
-
     margin: 0.5rem auto;
 }
+
 .button-container .btn {
     --bs-btn-bg: #000;
     --bs-btn-color: #fff;
@@ -95,120 +98,141 @@
     --bs-btn-font-size: 1.125rem;
     --bs-btn-padding-y: 13px;
     --bs-btn-padding-x: 12px;
-
     width: 100%;
 }
+
 :is(.form-container, .result-container) .headline {
     padding-bottom: 2.1875rem;
+    color: var(--vt-form-color, #212529);
     font-size: 1.25rem;
     font-weight: 300;
-    color: var(--vt-form-color, #212529);
 }
+
 .result-container .result-headline {
     grid-area: head;
     height: fit-content;
 }
+
 .circular-chart {
     grid-area: graph;
-    margin: 0.625rem auto;
     width: 75%;
     height: 75%;
+    margin: 0.625rem auto;
 }
+
 .circular-chart .circle-bg {
-    fill: none;
-    stroke-width: 1.5;
     transform: rotate(-90deg);
     transform-origin: center;
+    stroke-width: 1.5;
+    fill: none;
 }
+
 .circular-chart .circle-bg.secondary {
+    stroke-dasharray: 0, 100;
     stroke: #2cc1d5;
-    stroke-dasharray: 0, 100;
 }
+
 .circular-chart .circle-bg.secondary-bg {
-    stroke: #ff1f00;
     stroke-dasharray: 101, 101;
+    stroke: #ff1f00;
 }
+
 .circular-chart .circle-bg.primary {
-    stroke: #005e97;
     stroke-dasharray: 0, 100;
+    stroke: #005e97;
 }
+
 .circular-chart .circle-bg.primary-bg {
     stroke: #c9c9c9;
 }
+
 .circular-chart .circle-info {
-    font-weight: bold;
+    fill: #ff1f00;
     font-size: 8px;
+    font-weight: bold;
     text-anchor: middle;
     dominant-baseline: middle;
-    fill: #ff1f00;
 }
+
 .circular-chart .circle-info.circle-percent {
     text-anchor: end;
 }
-.result-inflation {
-    grid-area: inflation;
 
+.result-inflation {
     display: grid;
-    gap: .2rem;
+    grid-area: inflation;
+    grid-auto-flow: row;
     grid-template-areas:
                     'label label'
                     'switch button';
-    grid-auto-flow: row;
     height: fit-content;
+    gap: .2rem;
 }
+
 .inflation-label {
     grid-area: label;
     height: fit-content;
 }
+
 .inflation-switch {
     grid-area: switch;
     height: fit-content;
 }
+
 .inflation-settings {
     grid-area: button;
-    color: #999;
-    text-decoration: none;
-    background-color: var(--bs-body-bg, #ffffff);
     width: fit-content;
     height: fit-content;
     padding: 0;
     border-color: transparent;
+    background-color: var(--bs-body-bg, #fff);
+    color: #999;
+    text-decoration: none;
 }
+
 .inflation-settings svg {
     margin: auto;
 }
+
 .result-list {
     grid-area: overview;
 }
+
 .result-change {
     grid-area: change;
 }
+
 .list-unstyled {
     padding-left: 0;
     list-style: none;
 }
+
 .result-list li {
-    border-left: 4px solid #ebecee;
-    border-top: 1px solid #ebecee;
     padding: 1.25rem 0.3125rem;
-    line-height: 1.25rem;
+    border-top: 1px solid #ebecee;
+    border-left: 4px solid #ebecee;
     color: #495057;
+    line-height: 1.25rem;
 }
+
 .result-list li.chart-amount-1 {
-    color: #2cc1d5;
     border-left-color: #2cc1d5;
+    color: #2cc1d5;
 }
+
 .result-list li.chart-amount-2 {
-    color: #005e97;
     border-left-color: #005e97;
+    color: #005e97;
 }
+
 .result-list li.chart-amount-3 {
-    color: #ff1f00;
     border-left-color: #ff1f00;
+    color: #ff1f00;
 }
+
 .result-list li.chart-amount-box .amount {
-    font-weight: 700;
     font-size: 1.25rem;
+    font-weight: 700;
 }
 
 /*
@@ -437,4 +461,4 @@ input[type=checkbox], input[type=radio] {
 .text-end {
     text-align: end !important;
 }
-/**/
+/ **/

@@ -1,77 +1,77 @@
 .error-page {
-    width: 310px;
-    height: 310px;
-    border-radius: 50%;
-    margin: 155px auto;
+    display: grid;
+    position: relative;
     top: 0;
     left: 0;
-    position: relative;
-    text-align: center;
-    background: linear-gradient(to bottom, #d36242 0%, darkred 100%);
-    display: grid;
     grid-auto-rows: 50% 25% 12.5% 12.5%;
-    align-items: center;
     align-content: center;
+    align-items: center;
+    width: 310px;
+    height: 310px;
+    margin: 155px auto;
+    border-radius: 50%;
+    background: linear-gradient(to bottom, #d36242 0%, darkred 100%);
+    text-align: center;
     isolation: isolate;
 }
 
-.error-page:after {
+.error-page::after {
+    content: '';
+    display: block;
+    position: relative;
+    z-index: -1;
+    top: 40px;
     width: 310px;
     height: 17px;
     margin: 0 auto;
-    top: 40px;
-    content: '';
-    z-index: -1;
-    display: block;
-    position: relative;
-    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.65) 0%, rgba(35, 26, 26, 0) 59%, rgba(60, 44, 44, 0) 100%);
+    background: radial-gradient(ellipse at center, rgb(0 0 0 / 0.65) 0%, rgb(35 26 26 / 0) 59%, rgb(60 44 44 / 0) 100%);
 }
 
 .error-page h1 {
-    color: rgba(255, 255, 255, 0.94);
-    font-size: 100px;
-    text-shadow: 0 0 7px rgba(0, 0, 0, 0.5);
     display: block;
-    width: 100%;
-    vertical-align: bottom;
     position: relative;
+    width: 100%;
+    color: rgb(255 255 255 / 0.94);
+    font-size: 100px;
+    text-shadow: 0 0 7px rgb(0 0 0 / 0.5);
+    vertical-align: bottom;
 }
 
-.error-page h1:after {
+.error-page h1::after {
+    content: '';
+    display: block;
+    position: relative;
+    bottom: 0;
     width: 260px;
     height: 1px;
-    position: relative;
     margin: 0 auto;
-    content: '';
-    bottom: 0;
-    display: block;
     background:
-        radial-gradient(ellipse at center, rgba(111, 25, 25, 0.65) 0%, rgba(75, 38, 38, 0) 70%, rgba(60, 44, 44, 0) 100%),
-        radial-gradient(ellipse at center, rgba(247, 173, 148, 0.65) 0%, rgba(255, 255, 255, 0.01) 99%, rgba(255, 255, 255, 0) 100%);
+        radial-gradient(ellipse at center, rgb(111 25 25 / 0.65) 0%, rgb(75 38 38 / 0) 70%, rgb(60 44 44 / 0) 100%),
+        radial-gradient(ellipse at center, rgb(247 173 148 / 0.65) 0%, rgb(255 255 255 / 0.01) 99%, rgb(255 255 255 / 0) 100%);
 }
 
 .error-page h2 {
-    margin: 55px 0 30px 0;
+    margin: 55px 0 30px;
     font-size: 17px;
 }
 
-.error-page h2:after {
-    width: 130px;
-    height: 1px;
+.error-page h2::after {
     content: '';
     display: block;
-    margin: 0 auto;
-    top: 11px;
     position: relative;
+    top: 11px;
+    width: 130px;
+    height: 1px;
+    margin: 0 auto;
     background:
-        radial-gradient(ellipse at center, rgba(111, 25, 25, 0.65) 0%, rgba(75, 38, 38, 0) 70%, rgba(60, 44, 44, 0) 100%),
-        radial-gradient(ellipse at center, rgba(247, 173, 148, 0.65) 0%, rgba(255, 255, 255, 0.01) 99%, rgba(255, 255, 255, 0) 100%);
+        radial-gradient(ellipse at center, rgb(111 25 25 / 0.65) 0%, rgb(75 38 38 / 0) 70%, rgb(60 44 44 / 0) 100%),
+        radial-gradient(ellipse at center, rgb(247 173 148 / 0.65) 0%, rgb(255 255 255 / 0.01) 99%, rgb(255 255 255 / 0) 100%);
 }
 
 .error-back {
-    text-decoration: none;
     color: #430400;
     font-size: 15px;
+    text-decoration: none;
 }
 
 .error-back:hover {
