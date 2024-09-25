@@ -22,5 +22,6 @@
     "types": ["node"]
   },
   "include": ["public/**/*.ts"],
+  "exclude": ["public/**/*.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

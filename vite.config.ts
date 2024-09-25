@@ -132,5 +132,14 @@ export default defineConfig({
   css: {
     devSourcemap: true,
     transformer: 'postcss',
+    preprocessorOptions: {
+      scss: {
+        api: 'modern-compiler',
+        outputStyle: 'expanded',
+        alertAscii: true,
+        alertColor: true,
+        verbose: true,
+      }
+    }
   },
-})
+});
