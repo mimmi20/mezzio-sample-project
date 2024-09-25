@@ -3,11 +3,11 @@
     --bs-toast-border-radius: 10px;
     --bs-toast-bg: var(--bs-card-bg);
     display: none;
-    flex-direction: column;
     position: absolute;
+    z-index: 10;
     right: 0;
     bottom: 50%;
-    z-index: 10;
+    flex-direction: column;
     translate: 0 50%;
 }
 
@@ -15,19 +15,19 @@
     padding: 1rem;
 }
 
-.help-content.toast:before {
+.help-content.toast::before {
     --arrow-size: 10px;
     content: '';
     display: block;
     position: absolute;
-    left: calc(-1 * var(--arrow-size) / 2 - 1px);
     top: 50%;
-    transform: translateY(-50%) rotate(45deg);
+    left: calc(-1 * var(--arrow-size) / 2 - 1px);
     width: var(--arrow-size);
     height: var(--arrow-size);
-    background-color: var(--bs-toast-bg);
-    border-left: var(--bs-toast-border-width) solid var(--bs-toast-header-border-color);
+    transform: translateY(-50%) rotate(45deg);
     border-bottom: var(--bs-toast-border-width) solid var(--bs-toast-header-border-color);
+    border-left: var(--bs-toast-border-width) solid var(--bs-toast-header-border-color);
+    background-color: var(--bs-toast-bg);
 }
 
 .help-content.toast .toast-body {
@@ -37,8 +37,8 @@
 .row:has(.help-content) > .field-content > :is(.card.has-validation)::after,
 .row > .col-12:has(.help-content) :is(.form-control, .form-select)::after,
 .row .has-help::after {
-    position: absolute;
     content: '';
+    position: absolute;
     right: calc(-1.5em - 0.75rem);
     bottom: 0;
     height: 100%;

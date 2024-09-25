@@ -8,13 +8,13 @@ class AtbBase {
 
     const titles = dialog.querySelectorAll<HTMLElement>('.modal-title');
 
-    titles.forEach(function (title: HTMLElement): void {
+    titles.forEach((title: HTMLElement): void => {
       title.innerHTML = headline;
     });
 
     const bodies = dialog.querySelectorAll<HTMLElement>('.modal-body p');
 
-    bodies.forEach(function (body: HTMLElement): void {
+    bodies.forEach((body: HTMLElement): void => {
       body.innerHTML = text;
     });
   }
@@ -34,10 +34,9 @@ class AtbBase {
     }
 
     const selects = form.querySelectorAll<HTMLSelectElement>('select[data-next]');
-    const that = this;
 
-    selects.forEach(function (select: HTMLSelectElement): void {
-      select.addEventListener('change', async function (event: Event): Promise<void> {
+    selects.forEach((select: HTMLSelectElement): void => {
+      select.addEventListener('change', async (event: Event): Promise<void> => {
         event.preventDefault();
         event.stopPropagation();
 
@@ -68,14 +67,14 @@ class AtbBase {
         nextElement.classList.remove('is-valid');
 
         // const nextElementOptions = nextElement.querySelectorAll<HTMLOptionElement>('option:not([value=""])');
-        // nextElementOptions.forEach(function (nextElementOption: HTMLOptionElement): void {
+        // nextElementOptions.forEach((nextElementOption: HTMLOptionElement): void => {
         //   nextElementOption.remove();
         // });
 
         const allSelects = document.querySelectorAll<HTMLSelectElement>('.row select:not([id="productType"])');
         let nextSelectFound = false;
 
-        allSelects.forEach(function (selectElement: HTMLSelectElement): void {
+        allSelects.forEach((selectElement: HTMLSelectElement): void => {
           if (selectElement.id === next) {
             nextSelectFound = true;
             return;
@@ -88,7 +87,7 @@ class AtbBase {
           selectElement.parentElement?.setAttribute('disabled', 'disabled');
 
           // const nextSelectOptions = selectElement.querySelectorAll<HTMLOptionElement>('option:not([value=""])');
-          // nextSelectOptions.forEach(function (nextElementOption: HTMLOptionElement): void {
+          // nextSelectOptions.forEach((nextElementOption: HTMLOptionElement): void => {
           //   nextElementOption.remove();
           // });
         });
@@ -124,14 +123,14 @@ class AtbBase {
 
         await sleep(500); // Pausiert die Funktion für 0,5 Sekunden
 
-        const results = await that.fetch(urls[next], form, submitter, function (error: Error): void {
+        const results = await this.fetch(urls[next], form, submitter, (error: Error): void => {
           console.error(error);
 
           select.classList.add('text-danger'); // indicate error
         });
 
         if (typeof results === 'object') {
-          Object.keys(results).forEach(function (key) {
+          Object.keys(results).forEach((key: string): void => {
             const option = document.createElement('option');
 
             option.setAttribute('value', key);
@@ -149,7 +148,6 @@ class AtbBase {
 
   initForm(): void {
     const form = document.getElementById('insuranceSelection');
-    const that = this;
 
     if (!(form instanceof HTMLFormElement)) {
       return;
@@ -169,8 +167,8 @@ class AtbBase {
       });
     });
 
-    form.addEventListener('submit', async function (event: SubmitEvent): Promise<boolean> {
-      //event.preventDefault();
+    form.addEventListener('submit', async (/* event: SubmitEvent */): Promise<boolean> => {
+      // event.preventDefault();
       // event.stopPropagation();
 
       const valid = form.checkValidity();
@@ -181,7 +179,7 @@ class AtbBase {
         return false;
       }
 
-      await that.handleForm(form);
+      await this.handleForm(form);
 
       return true;
     });
@@ -189,7 +187,6 @@ class AtbBase {
 
   async fetch(action: string, form: HTMLFormElement, submitter: HTMLElement, cb: Function): Promise<any> {
     const formData = new FormData(form, submitter);
-    const that = this;
 
     let response: Response | null = null;
 
@@ -221,9 +218,9 @@ class AtbBase {
 
     const results = await response.json();
 
-    if (results.hasOwnProperty('error')) {
+    if (Object.prototype.hasOwnProperty.call(results, 'error')) {
       if (results.error === 'webservice error') {
-        that.handleError('Keine Leistungsbewertung', 'Für den gewählten Tarif liegt keine Leistungsbewertung vor.');
+        this.handleError('Keine Leistungsbewertung', 'Für den gewählten Tarif liegt keine Leistungsbewertung vor.');
       }
 
       return null;
@@ -236,7 +233,7 @@ class AtbBase {
     const data: any[] = [];
     const options = form.querySelectorAll<HTMLOptionElement>('select[name="' + name + '"] option');
 
-    options.forEach(function (option) {
+    options.forEach((option: HTMLOptionElement): void => {
       if (!option.selected) {
         return;
       }
@@ -251,7 +248,7 @@ class AtbBase {
     const data: any[] = [];
     const options = form.querySelectorAll<HTMLInputElement>('input[name="prod-opt[]"]:checked');
 
-    options.forEach(function (option) {
+    options.forEach((option: HTMLInputElement): void => {
       const optionLabel = form.querySelectorAll<HTMLLabelElement>('label[for="' + option.id + '"]')[0];
 
       data.push(optionLabel.innerText);
@@ -268,36 +265,33 @@ class AtbBase {
     }
 
     const thatSubmitBtns = document.querySelectorAll<HTMLElement>('.loading-btn');
-    const resultContainer = document.querySelectorAll<HTMLElement>('[data-step="result"]')[0];
-    const submitter = form.querySelectorAll<HTMLButtonElement>('button[type="submit"]')[0];
-    const that = this;
 
-    thatSubmitBtns.forEach(function (button) {
+    thatSubmitBtns.forEach((button: HTMLElement): void => {
       button.classList.add('active');
       button.setAttribute('disabled', 'disabled');
     });
 
-    let resultData = {
-      type: that.getSelected(form, 'productType')[0],
-      insurer: that.getSelected(form, 'company')[0],
-      tariffgeneration: that.getSelected(form, 'year')[0],
-      tariffname: that.getSelected(form, 'product')[0],
-      options: that.getOptions(form),
+    const resultData = {
+      type: this.getSelected(form, 'productType')[0],
+      insurer: this.getSelected(form, 'company')[0],
+      tariffgeneration: this.getSelected(form, 'year')[0],
+      tariffname: this.getSelected(form, 'product')[0],
+      options: this.getOptions(form),
       actualTariff: 0.0,
       bestTariff: 0.0,
     };
 
-    setTimeout(function () {
+    setTimeout((): void => {
       const circles = form.querySelectorAll('.circle');
-      circles.forEach(function (circle) {
+      circles.forEach((circle: Element): void => {
         circle.classList.add('animate');
       });
 
-      that.setActiveClassForAccordion();
+      this.setActiveClassForAccordion();
 
       const charts = document.querySelectorAll('.progress-chart .non-width');
 
-      charts.forEach(function (chart) {
+      charts.forEach((chart: Element): void => {
         chart.classList.remove('non-width');
       });
     }, 500);
@@ -316,9 +310,9 @@ class AtbBase {
       })
     );
 
-    that.setHistory('atb-result');
+    this.setHistory('atb-result');
 
-    thatSubmitBtns.forEach(function (button) {
+    thatSubmitBtns.forEach((button: HTMLElement): void => {
       button.classList.remove('active');
       button.removeAttribute('disabled');
     });
@@ -332,9 +326,8 @@ class AtbBase {
       return;
     }
 
-    const that = this;
     const productOptions = document.getElementById('prod-opt');
-    let previousSelection: any[] = [];
+    const previousSelection: any[] = [];
 
     const submitter = form.querySelectorAll<HTMLButtonElement>('button[type="submit"]')[0];
     const formData = new FormData(form, submitter);
@@ -343,13 +336,13 @@ class AtbBase {
       if (productOptions !== null) {
         const containers = productOptions.querySelectorAll<HTMLDivElement>('div');
 
-        containers.forEach(function (container) {
+        containers.forEach((container: HTMLDivElement): void => {
           container.remove();
         });
       }
     } else {
-      for (let [key, value] of await formData.entries()) {
-        previousSelection[parseInt(key)] = value;
+      for (const [key, value] of await formData.entries()) {
+        previousSelection[parseInt(key, 10)] = value;
       }
     }
 
@@ -361,26 +354,25 @@ class AtbBase {
 
     element.classList.remove('text-danger');
 
-    const results = await that.fetch(urls['prod-opt'], form, submitter, function (error: Error): void {
+    const results = await this.fetch(urls['prod-opt'], form, submitter, (error: Error): void => {
       console.error(error);
 
       element.classList.add('text-danger'); // indicate error
     });
 
-    if (typeof results === 'object' && results.hasOwnProperty('elements')) {
-      let htmlCheckbox = '',
-        index = 0;
+    if (typeof results === 'object' && Object.prototype.hasOwnProperty.call(results, 'elements')) {
+      let htmlCheckbox = '';
 
       if (productOptions !== null) {
         productOptions.classList.remove('is-group');
         const containers = productOptions.querySelectorAll('div');
 
-        containers.forEach(function (container) {
+        containers.forEach((container: HTMLDivElement): void => {
           container.remove();
         });
       }
 
-      Object.keys(results.elements).forEach(function (key) {
+      Object.keys(results.elements).forEach((key: string): void => {
         const text = results.elements[key] + (results.required === true ? ' *' : '');
         let requiredText = '';
 
@@ -388,16 +380,15 @@ class AtbBase {
           requiredText = 'Bitte wählen Sie mindestens einen Baustein.';
         }
 
-        htmlCheckbox += that.getCheckboxHtml(
-          'prod-opt_' + that.escape(key),
+        htmlCheckbox += this.getCheckboxHtml(
+          'prod-opt_' + this.escape(key),
           'prod-opt[]',
-          that.escape(key),
-          that.escape(text),
+          this.escape(key),
+          this.escape(text),
           results.required === true,
           requiredText,
-          that.wasChecked(previousSelection, 'prod-opt[]', key)
+          this.wasChecked(previousSelection, 'prod-opt[]', key)
         );
-        index++;
       });
 
       if (productOptions !== null) {
@@ -409,12 +400,12 @@ class AtbBase {
 
         const inputs = productOptions.querySelectorAll('input');
 
-        inputs.forEach(function (input) {
-          input.addEventListener('change', async function (event) {
+        inputs.forEach((input: HTMLInputElement): void => {
+          input.addEventListener('change', async (event: Event): Promise<void> => {
             event.preventDefault();
             event.stopPropagation();
 
-            await that.handleCheckbox(input, true);
+            await this.handleCheckbox(input, true);
           });
         });
       }
@@ -423,14 +414,13 @@ class AtbBase {
 
   initCheckbox(): void {
     const elements = document.querySelectorAll<HTMLInputElement>('#product, #insuranceSelection input');
-    const that = this;
 
-    elements.forEach(function (element: HTMLInputElement): void {
-      element.addEventListener('change', async function (event) {
+    elements.forEach((element: HTMLInputElement): void => {
+      element.addEventListener('change', async (event): Promise<void> => {
         event.preventDefault();
         event.stopPropagation();
 
-        await that.handleCheckbox(element, element instanceof HTMLInputElement);
+        await this.handleCheckbox(element, element instanceof HTMLInputElement);
       });
     });
   }
@@ -439,10 +429,10 @@ class AtbBase {
     const accordionInputs = document.querySelectorAll<HTMLInputElement>('.accordion-input');
     const activeClass = 'active';
 
-    accordionInputs.forEach(function (accordionInput: HTMLInputElement): void {
+    accordionInputs.forEach((accordionInput: HTMLInputElement): void => {
       const thatParentTriggers = document.querySelectorAll<HTMLLabelElement>('label[for="' + accordionInput.id + '"]');
 
-      thatParentTriggers.forEach(function (thatParentTrigger: HTMLLabelElement): void {
+      thatParentTriggers.forEach((thatParentTrigger: HTMLLabelElement): void => {
         if (accordionInput.checked) {
           thatParentTrigger.classList.add(activeClass);
         } else {
@@ -454,7 +444,7 @@ class AtbBase {
         event.preventDefault();
         event.stopPropagation();
 
-        thatParentTriggers.forEach(function (thatParentTrigger: HTMLLabelElement): void {
+        thatParentTriggers.forEach((thatParentTrigger: HTMLLabelElement): void => {
           if (accordionInput.checked) {
             thatParentTrigger.classList.add(activeClass);
           } else {
@@ -502,20 +492,20 @@ class AtbBase {
   handleHistory(): void {
     const steps = ['atb-start', 'atb-result'];
 
-    window.addEventListener('hashchange', function (): void {
-      const cleanHash = this.location.hash.replace('#', '');
+    window.addEventListener('hashchange', (): void => {
+      const cleanHash = window.location.hash.replace('#', '');
       const select = document.querySelectorAll<HTMLSelectElement>('[name="productType"]')[0];
 
       for (let i = 0; i <= steps.length; i++) {
         const stepName = steps[i];
         const dataSteps = document.querySelectorAll<HTMLElement>('[data-step="' + stepName + '"]');
 
-        dataSteps.forEach(function (dataStep): void {
+        dataSteps.forEach((dataStep: HTMLElement): void => {
           dataStep.classList.add('d-none');
         });
 
         if (cleanHash === stepName) {
-          dataSteps.forEach(function (dataStep): void {
+          dataSteps.forEach((dataStep: HTMLElement): void => {
             dataStep.classList.remove('d-none');
           });
 
@@ -546,6 +536,7 @@ class AtbBase {
       return;
     } catch (error) {
       // but that fails on IE
+      console.error(error);
     }
 
     // IE workaround
@@ -562,7 +553,7 @@ class AtbBase {
    * @returns {boolean}
    */
   wasChecked(previousSelection: Array<any>, name: string, value: string): boolean {
-    for (let key in previousSelection) {
+    for (const key in previousSelection) {
       if (previousSelection[key]['name'] === name && previousSelection[key]['value'] === value) {
         return true;
       }
@@ -590,7 +581,7 @@ class AtbBase {
   }
 }
 
-(function (): void {
+((): void => {
   const atbBase = new AtbBase();
 
   atbBase.init();

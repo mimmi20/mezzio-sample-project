@@ -9,11 +9,11 @@
 }
 
 .accordion-item:not([open]) .accordion-button::after {
-    background-image: var(--bs-accordion-btn-active-icon);
     transform: unset;
+    background-image: var(--bs-accordion-btn-active-icon);
 }
 
 .accordion-item[open] .accordion-button::after {
-    background-image: var(--bs-accordion-btn-icon);
     transform: var(--bs-accordion-btn-icon-transform);
+    background-image: var(--bs-accordion-btn-icon);
 }

@@ -21,6 +21,7 @@ tests/temp/*.ini
 .phplint-cache
 .phpunit.result.cache
 .phpcs.cache
+.stylelintcache
 infection-*.log
 rewrite*.php
 .reports/
@@ -36,3 +37,8 @@ log/
 /public/js/*.js
 /public/js/*.map
 /public/js/*.d.ts
+*.tsbuildinfo
+/vite.config.d.ts
+/vite.config.js
+/cypress.config.d.ts
+/cypress.config.js

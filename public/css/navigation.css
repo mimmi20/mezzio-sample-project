@@ -3,13 +3,13 @@
     display: block;
     position: absolute;
     left: 0;
-    margin-top: calc(.125rem + var(--bs-dropdown-padding-y, 0));
     width: 100%;
+    margin-top: calc(.125rem + var(--bs-dropdown-padding-y, 0));
 }
 
 .nav-item details[open] ul {
-    list-style: none;
     padding: var(--bs-dropdown-padding-y, 0) var(--bs-dropdown-padding-x, 0);
+    list-style: none;
 }
 
 .navbar-nav {
@@ -23,13 +23,13 @@
 
 .nav-pills .nav-link:hover,
 .nav-pills .nav-link:focus {
-    background-color: var(--bs-btn-hover-bg);
     border-color: var(--bs-btn-hover-border-color);
+    background-color: var(--bs-btn-hover-bg);
     color: var(--bs-btn-hover-color);
 }
 
 .nav-pills .nav-link:active {
-    background-color: var(--bs-btn-active-bg);
     border-color: var(--bs-btn-active-border-color);
+    background-color: var(--bs-btn-active-bg);
     color: var(--bs-btn-active-color);
 }

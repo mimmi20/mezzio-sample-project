@@ -98,21 +98,19 @@ form:has(#zusatzfragen_ja:checked) [data-detail][data-show="ja"] {
 }
 
 .tile-wrapper {
-    --bs-box-shadow: 0 5px 10px rgba(0,0,0,.1);
+    --bs-box-shadow: 0 5px 10px rgb(0 0 0 / .1);
     --bs-card-border-width: 2px;
-    --checked-color: rgb(34, 96, 255);
-
+    --checked-color: rgb(34 96 255);
     display: flex;
-    flex-wrap: nowrap;
-    flex-direction: column;
+    flex-flow: column nowrap;
     align-items: center;
     justify-content: center;
     width: 100%;
     height: 100%;
 
     & .form-check {
-        padding: 0;
         margin: 0;
+        padding: 0;
     }
 
     & .btn-tile {
@@ -120,43 +118,42 @@ form:has(#zusatzfragen_ja:checked) [data-detail][data-show="ja"] {
         --bs-btn-active-bg: var(--bs-btn-bg);
         --bs-btn-padding-y: 0;
         --bs-btn-padding-x: 0;
-
+        position: relative;
         width: 10rem;
         height: 10rem;
-        box-shadow: var(--bs-box-shadow);
+        transition: 0.15s ease;
         border-width: var(--bs-card-border-width);
         border-style: solid;
         border-color: var(--bs-card-border-color);
-        position: relative;
-        transition: 0.15s ease;
+        box-shadow: var(--bs-box-shadow);
         cursor: pointer;
 
-        &:before {
+        &::before {
             content: "";
-            position: absolute;
             display: block;
-            width: 1.25rem;
-            height: 1.25rem;
-            border: 2px solid #b5bfd9;
-            background-color: #fff;
-            border-radius: 50%;
+            position: absolute;
             top: 0.25rem;
             left: 0.25rem;
-            opacity: 0;
+            width: 1.25rem;
+            height: 1.25rem;
             transform: scale(0);
             transition: 0.25s ease;
+            border: 2px solid #b5bfd9;
+            border-radius: 50%;
+            opacity: 0;
+            background-color: #fff;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='192' height='192' fill='%23FFFFFF' viewBox='0 0 256 256'%3E%3Crect width='256' height='256' fill='none'%3E%3C/rect%3E%3Cpolyline points='216 72.005 104 184 48 128.005' fill='none' stroke='%23FFFFFF' stroke-linecap='round' stroke-linejoin='round' stroke-width='32'%3E%3C/polyline%3E%3C/svg%3E");
-            background-size: 12px;
             background-repeat: no-repeat;
             background-position: 50% 50%;
+            background-size: 12px;
         }
 
         &:hover {
             border-color: var(--checked-color);
-            box-shadow: 0 5px 10px rgba(34, 96, 255, 0.2), 0 0 0 4px #b5c9fc;
+            box-shadow: 0 5px 10px rgb(34 96 255 / 0.2), 0 0 0 4px #b5c9fc;
             color: var(--checked-color);
 
-            &:before {
+            &::before {
                 transform: scale(1);
                 opacity: 1;
             }
@@ -169,14 +166,14 @@ form:has(#zusatzfragen_ja:checked) [data-detail][data-show="ja"] {
 
         &:has(:checked) {
             border-color: var(--checked-color);
-            box-shadow: 0 5px 10px rgba(34, 96, 255, 0.2), 0 0 0 4px #b5c9fc;
+            box-shadow: 0 5px 10px rgb(34 96 255 / 0.2), 0 0 0 4px #b5c9fc;
             color: var(--checked-color);
 
             &::before {
                 transform: scale(1);
+                border-color: var(--checked-color);
                 opacity: 1;
                 background-color: var(--checked-color);
-                border-color: var(--checked-color);
             }
 
             .checkbox-icon, .checkbox-label {
@@ -190,8 +187,7 @@ form:has(#zusatzfragen_ja:checked) [data-detail][data-show="ja"] {
     & .btn-tile .form-check-label,
     & .btn-tile span {
         display: flex;
-        flex-wrap: nowrap;
-        flex-direction: column;
+        flex-flow: column nowrap;
         align-items: center;
         justify-content: center;
 
@@ -209,7 +205,7 @@ form:has(#zusatzfragen_ja:checked) [data-detail][data-show="ja"] {
     & .btn-tile .btn,
     & .btn-tile .form-check-label,
     & .btn-tile span {
-        height: 100%;
         width: 100%;
+        height: 100%;
     }
 }

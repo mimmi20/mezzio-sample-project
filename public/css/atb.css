@@ -9,22 +9,23 @@
 .has-spinner {
     position: relative;
 }
+
 .has-spinner::after {
-    position: absolute;
     content: '';
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
     width: 2rem;
     height: 2rem;
-    vertical-align: -0.125em;
-    border-radius: 50%;
     animation: 0.75s linear infinite spinner-border;
-    right: 0;
-    top: 0;
-    translate: -3rem 2.2rem;
-    border-style: solid;
     border-width: 0.25rem;
+    border-style: solid;
+    border-radius: 50%;
     border-color: red;
     border-right-color: transparent;
-    z-index: 1;
+    vertical-align: -0.125em;
+    translate: -3rem 2.2rem;
 }
 
 .was-validated .has-spinner:not(:disabled):has(:invalid, :valid)::after,
@@ -34,28 +35,31 @@
 
 .alert-danger {
     display: none;
+
     --bs-alert-bg: var(--bs-danger-text-emphasis);
-    --bs-alert-color: #000000;
+    --bs-alert-color: #000;
     --bs-alert-border-color: var(--bs-form-invalid-border-color);
 }
+
 .alert-warning {
     display: none;
+
     --bs-alert-bg: var(--bs-warning-text-emphasis);
-    --bs-alert-color: #000000;
+    --bs-alert-color: #000;
     --bs-alert-border-color: var(--bs-form-invalid-border-color);
 }
 
 .btn.info-layer-trigger {
     --bs-btn-padding-y: 0;
     --bs-btn-padding-x: 0;
-
-    border: none;
     z-index: 100;
+    border: none;
     cursor: pointer;
 }
+
 .btn.icon {
-    height: 1rem;
     width: 1rem;
+    height: 1rem;
 }
 
 [id="atb-start"],
@@ -75,70 +79,80 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
+
 .flex-wrapper {
+    position: relative;
     max-width: 8.75rem;
     height: auto;
     margin: 0 auto;
-    position: relative;
 }
+
 .single-chart {
     display: grid;
-    max-width: 100%;
-    justify-content: space-around;
     position: relative;
+    justify-content: space-around;
+    max-width: 100%;
     margin: 1rem auto;
 }
+
 .circular-chart {
     display: block;
     position: relative;
-    margin: 0.625rem auto;
     width: 15.625rem;
     height: 15.625rem;
+    margin: 0.625rem auto;
 }
+
 .circular-chart .circle-bg {
     position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
+    inset: 0;
     fill: none;
 }
 
 .circular-chart .circle-bg.secondary {
-    stroke: #959595;
     stroke-linecap: round;
+    stroke: #959595;
 }
+
 .circular-chart .circle-bg.bg {
     stroke: #d1d1d1;
 }
+
 .circular-chart .circle-bg.primary {
-    stroke: #0099cc;
     stroke-linecap: round;
+    stroke: #09c;
 }
+
 .circular-chart .text {
     font-size: 10px;
     text-anchor: middle;
     dominant-baseline: middle;
 }
+
 .circular-chart .text.secondary {
     fill: #959595;
 }
+
 .circular-chart .text.primary {
-    fill: #0099cc;
+    fill: #09c;
 }
+
 .circular-chart .circle.animate {
-    -webkit-animation: progress 1s ease-out forwards;
+    animation: progress 1s ease-out forwards;
     animation: progress 1s ease-out forwards;
 }
+
 .percentage {
     width: 100%;
-    margin: auto auto;
+    margin: auto;
 }
-@-webkit-keyframes progress {
+
+@keyframes progress {
     0% {
         stroke-dasharray: 0 100;
     }
 }
+
 @keyframes progress {
     0% {
         stroke-dasharray: 0 100;
@@ -168,10 +182,7 @@ meter.progress {
 }
 
 div.progress .progress-bar {
-    border-top-left-radius: var(--bs-progress-border-radius);
-    border-bottom-left-radius: var(--bs-progress-border-radius);
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
+    border-radius: var(--bs-progress-border-radius) 0 0 var(--bs-progress-border-radius);
 
     .secondary & {
         --bs-progress-bar-bg: #959595;
@@ -179,25 +190,24 @@ div.progress .progress-bar {
     }
 
     .primary & {
-        --bs-progress-bar-bg: #0099cc;
-        --bs-progress-border-color: #0099cc;
+        --bs-progress-bar-bg: #09c;
+        --bs-progress-border-color: #09c;
     }
 }
 
 progress.progress {
     --bs-progress-border-color: var(--bs-secondary-bg);
     --bs-progress-border-width: 0;
-
     display: block; /* default: inline-block */
     width: 100%;
     height: var(--bs-progress-bar-height);
-    appearance: none;
-    background-color: var(--bs-secondary-bg);
     border-width: var(--bs-progress-border-width);
     border-style: solid;
-    border-color: var(--bs-progress-border-color);
     border-radius: var(--bs-progress-border-radius);
+    border-color: var(--bs-progress-border-color);
+    background-color: var(--bs-secondary-bg);
     box-shadow: var(--bs-box-shadow-inset);
+    appearance: none;
 
     .secondary & {
         --bs-progress-bar-bg: #959595;
@@ -205,47 +215,42 @@ progress.progress {
     }
 
     .primary & {
-        --bs-progress-bar-bg: #0099cc;
-        --bs-progress-border-color: #0099cc;
+        --bs-progress-bar-bg: #09c;
+        --bs-progress-border-color: #09c;
     }
 }
 
 progress.progress::-moz-progress-bar {
-    border-top-left-radius: var(--bs-progress-border-radius);
-    border-bottom-left-radius: var(--bs-progress-border-radius);
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
+    border-radius: var(--bs-progress-border-radius) 0 0 var(--bs-progress-border-radius);
     background-color: var(--bs-progress-bar-bg);
-    box-shadow: inset 0 -2px 4px rgba(0,0,0,0.4), 0 2px 5px 0 rgba(0,0,0,0.3);
+    box-shadow: inset 0 -2px 4px rgb(0 0 0 / 0.4), 0 2px 5px 0 rgb(0 0 0 / 0.3);
 
 }
 
 progress.progress::-webkit-progress-bar {
-    background-color: transparent;
     overflow: hidden;
+    background-color: transparent;
 }
+
 progress.progress::-webkit-progress-value {
-    border-top-left-radius: var(--bs-progress-border-radius);
-    border-bottom-left-radius: var(--bs-progress-border-radius);
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
+    border-radius: var(--bs-progress-border-radius) 0 0 var(--bs-progress-border-radius);
     background-color: var(--bs-progress-bar-bg);
-    box-shadow: inset 0 -2px 4px rgba(0,0,0,0.4), 0 2px 5px 0 rgba(0,0,0,0.3);
+    box-shadow: inset 0 -2px 4px rgb(0 0 0 / 0.4), 0 2px 5px 0 rgb(0 0 0 / 0.3);
 }
 
 meter.progress {
     --bs-meter-border-color: var(--bs-secondary-bg);
     --bs-meter-border-width: 2px;
-
-    place-self: center;
+    position: relative;
     width: 100%;
-    /*overflow: hidden;*/
+
+    /* overflow: hidden; */
     height: var(--bs-progress-bar-height);
     border-width: var(--bs-meter-border-width);
     border-style: solid;
-    border-color: var(--bs-meter-border-color);
     border-radius: var(--bs-progress-border-radius);
-    position: relative;
+    border-color: var(--bs-meter-border-color);
+    place-self: center;
 
     .secondary & {
         --bs-progress-bar-bg: #959595;
@@ -253,45 +258,50 @@ meter.progress {
     }
 
     .primary & {
-        --bs-progress-bar-bg: #0099cc;
-        --bs-meter-border-color: #0099cc;
+        --bs-progress-bar-bg: #09c;
+        --bs-meter-border-color: #09c;
     }
 }
 
-/*meter.progress::-webkit-meter-inner-element {
+/* meter.progress::-webkit-meter-inner-element {
     position: absolute;
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
     background-color: transparent;
-}*/
+} */
 meter.progress::-webkit-meter-bar {
-    position: absolute;
-    height: calc(var(--bs-progress-bar-height) + calc(2 * var(--bs-meter-border-width)));
-    width: calc(100% + calc(2 * var(--bs-meter-border-width)));
     display: flex;
+    position: absolute;
+    width: calc(100% + calc(2 * var(--bs-meter-border-width)));
+    height: calc(var(--bs-progress-bar-height) + calc(2 * var(--bs-meter-border-width)));
     border-radius: var(--bs-progress-border-radius);
     background-color: transparent;
-    /*translate: -50% -50%;*/
+
+    /* translate: -50% -50%; */
 }
+
 meter.progress::-webkit-meter-optimum-value {
     border-radius: calc(var(--bs-progress-border-radius) - var(--bs-meter-border-width));
     background-color: var(--bs-progress-bar-bg); /* default is green */
 }
+
 meter.progress::-webkit-meter-suboptimum-value {
     border-radius: calc(var(--bs-progress-border-radius) - var(--bs-meter-border-width));
     background-color: var(--bs-progress-bar-bg); /* default is yellow */
 }
+
 meter.progress::-webkit-meter-even-less-good-value {
     border-radius: calc(var(--bs-progress-border-radius) - var(--bs-meter-border-width));
     background-color: var(--bs-progress-bar-bg); /* default is red */
 }
+
 meter.progress::-moz-meter-bar {
-    border-radius: var(--bs-progress-border-radius);
-    height: calc(1rem - calc(2 * var(--bs-meter-border-width)));
-    width: 100%;
     position: absolute;
+    width: 100%;
+    height: calc(1rem - calc(2 * var(--bs-meter-border-width)));
+    border-radius: var(--bs-progress-border-radius);
     background: #0d6efd;
 }
 
@@ -315,13 +325,13 @@ meter.progress:-moz-meter-sub-sub-optimum::-moz-meter-bar {
 
 /* style range */
 .form-range[type="range"] {
-    height: var(--thumb-height);
+    display: block;
     position: relative;
     z-index: 200;
-    display: block;
     top: 10px;
-    left: 0;
     right: 0;
+    left: 0;
+    height: var(--thumb-height);
     padding: 1rem;
 }
 
@@ -329,150 +339,175 @@ meter.progress:-moz-meter-sub-sub-optimum::-moz-meter-bar {
 .form-range[type="range"]:focus {
     outline: 0;
 }
+
 .form-range[type="range"]:focus::-webkit-slider-thumb {
-    box-shadow: 0 0 0 1px #fff, 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    box-shadow: 0 0 0 1px #fff, 0 0 0 0.25rem rgb(13 110 253 / 0.25);
 }
+
 .form-range[type="range"]:focus::-moz-range-thumb {
-    box-shadow: 0 0 0 1px #fff, 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    box-shadow: 0 0 0 1px #fff, 0 0 0 0.25rem rgb(13 110 253 / 0.25);
 }
+
 .form-range[type="range"]::-moz-focus-outer {
     border: 0;
 }
+
 .form-range[type="range"]::-webkit-slider-thumb {
     width: 1rem;
     height: 1rem;
     margin-top: -0.25rem;
-    -webkit-appearance: none;
-    appearance: none;
-    background-color: #0d6efd;
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     border: 0;
     border-radius: 1rem;
-    -webkit-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    background-color: #0d6efd;
+    appearance: none;
+    appearance: none;
 }
+
 @media (prefers-reduced-motion: reduce) {
     .form-range[type="range"]::-webkit-slider-thumb {
-        -webkit-transition: none;
+        transition: none;
         transition: none;
     }
 }
+
 .form-range[type="range"]::-webkit-slider-thumb:active {
     background-color: #b6d4fe;
 }
+
 .form-range[type="range"]::-webkit-slider-runnable-track {
     width: 100%;
     height: 0.5rem;
+    border-radius: 1rem;
+    border-color: transparent;
+    background-color: var(--bs-secondary-bg);
     color: transparent;
     cursor: pointer;
-    background-color: var(--bs-secondary-bg);
-    border-color: transparent;
-    border-radius: 1rem;
 }
+
 .form-range[type="range"]::-moz-range-thumb {
     width: 1rem;
     height: 1rem;
-    -moz-appearance: none;
-    appearance: none;
-    background-color: #0d6efd;
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     border: 0;
     border-radius: 1rem;
-    -moz-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    background-color: #0d6efd;
+    appearance: none;
+    appearance: none;
 }
+
 @media (prefers-reduced-motion: reduce) {
     .form-range[type="range"]::-moz-range-thumb {
-        -moz-transition: none;
+        transition: none;
         transition: none;
     }
 }
+
 .form-range[type="range"]::-moz-range-thumb:active {
     background-color: #b6d4fe;
 }
+
 .form-range[type="range"]::-moz-range-track {
     width: 100%;
     height: 0.5rem;
+    border-radius: 1rem;
+    border-color: transparent;
+    background-color: var(--bs-secondary-bg);
     color: transparent;
     cursor: pointer;
-    background-color: var(--bs-secondary-bg);
-    border-color: transparent;
-    border-radius: 1rem;
 }
+
 .form-range[type="range"]:disabled {
     pointer-events: none;
 }
+
 .form-range[type="range"]:disabled::-webkit-slider-thumb {
     background-color: var(--bs-secondary-color);
 }
+
 .form-range[type="range"]:disabled::-moz-range-thumb {
     background-color: var(--bs-secondary-color);
 }
 
 datalist {
     display: flex;
+    box-sizing: border-box;
     flex-direction: column;
     justify-content: space-between;
-    writing-mode: vertical-lr;
     width: 100%;
-    box-sizing: border-box;
     padding: 0 1rem;
+    writing-mode: vertical-lr;
 }
 
 datalist option {
     --option-width: calc(100% / 6);
-
+    display: flex;
+    position: relative;
+    align-items: center;
+    width: var(--option-width);
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+    padding: 0;
+    padding-top: var(--thumb-height);
     color: #8E8E93;
     font-size: 12px;
     line-height: 16px;
-    padding: 0;
-    display: flex;
-    padding-top: var(--thumb-height);
-    margin-top: 0.5em;
-    margin-bottom: 1em;
-    width: var(--option-width);
     text-align: left;
-    position: relative;
-    align-items: center;
 
     &::before {
         content: "";
         position: absolute;
-        width: 16px;
-        height: 16px;
-        border-top-color: var(--bs-secondary-bg);
-        border-top-style: solid;
-        border-top-width: 16px;
-        border-left-color: var(--bs-secondary-bg);
-        border-left-style: solid;
-        border-left-width: 16px;
-        /*transform: rotate(45deg);*/
-        transform: translateY(-50%) rotate(45deg);
         top: 0;
         right: 0;
-        /*margin-left: calc(-1 * var(--option-width));*/
+        width: 16px;
+        height: 16px;
+
+        /* transform: rotate(45deg); */
+        transform: translateY(-50%) rotate(45deg);
+        border-top: 16px solid var(--bs-secondary-bg);
+        border-left: 16px solid var(--bs-secondary-bg);
+
+        /* margin-left: calc(-1 * var(--option-width)); */
         background-color: transparent;
     }
 
-    /*&:first-child {*/
-    /*    width: calc(*/
-    /*        (100% - var(--thumb-width)) / (6 * 2) + var(--thumb-width) / 2*/
-    /*    );*/
-    /*    text-align: left;*/
+    /* &:first-child { */
 
-    /*    &::before {*/
-    /*        left: 0;*/
-    /*        margin-left: unset;*/
-    /*    }*/
-    /*}*/
+    /*    width: calc( */
 
-    /*&:last-child {*/
-    /*    width: calc((100% - 12px) / (6 * 2) + 6px);*/
+    /*        (100% - var(--thumb-width)) / (6 * 2) + var(--thumb-width) / 2 */
 
-    /*    &::before {*/
-    /*        left: unset;*/
-    /*        margin-left: unset;*/
-    /*        right: 0;*/
-    /*    }*/
-    /*}*/
+    /*    ); */
+
+    /*    text-align: left; */
+
+    /*    &::before { */
+
+    /*        left: 0; */
+
+    /*        margin-left: unset; */
+
+    /*    } */
+
+    /* } */
+
+    /* &:last-child { */
+
+    /*    width: calc((100% - 12px) / (6 * 2) + 6px); */
+
+    /*    &::before { */
+
+    /*        left: unset; */
+
+    /*        margin-left: unset; */
+
+    /*        right: 0; */
+
+    /*    } */
+
+    /* } */
 }
 
 .accordion {

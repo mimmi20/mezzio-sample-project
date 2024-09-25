@@ -3,8 +3,8 @@
     "allowSyntheticDefaultImports": true,
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
-    "declaration": true,
-    "declarationMap": true,
+    "declaration": false,
+    "declarationMap": false,
     "esModuleInterop": true,
     "isolatedModules": true,
     "module": "esnext",
@@ -13,12 +13,14 @@
     "noImplicitReturns": true,
     "pretty": true,
     "resolveJsonModule": true,
-    "skipLibCheck": false,
-    "sourceMap": true,
+    "skipLibCheck": true,
+    "sourceMap": false,
     "strict": true,
     "target": "es6",
     "lib": ["esnext", "dom", "dom.iterable"],
-    "useDefineForClassFields": true
+    "useDefineForClassFields": true,
+    "types": ["node"]
   },
+  "exclude": ["public/**/*.d.ts"],
   "include": ["public/**/*.ts"]
 }

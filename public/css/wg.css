@@ -12,13 +12,16 @@ form:has(#zusatzfragen_ja:checked) [data-detail][data-show="ja"] {
 
 .alert-danger {
     display: none;
+
     --bs-alert-bg: var(--bs-danger-text-emphasis);
-    --bs-alert-color: #000000;
+    --bs-alert-color: #000;
     --bs-alert-border-color: var(--bs-form-invalid-border-color);
 }
+
 .alert-warning {
     display: none;
+
     --bs-alert-bg: var(--bs-warning-text-emphasis);
-    --bs-alert-color: #000000;
+    --bs-alert-color: #000;
     --bs-alert-border-color: var(--bs-form-invalid-border-color);
 }

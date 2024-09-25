@@ -1,17 +1,16 @@
 /* default site structure */
 .wrapper {
-    position: relative;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-
     display: grid;
-    gap: 0;
+    position: relative;
+    grid-auto-rows: min-content;
     grid-template-areas:
                     'header'
                     'main'
                     'footer';
-    grid-auto-rows: min-content;
     grid-template-columns: 1fr;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    gap: 0;
 
     & > header {
         grid-area: header;
@@ -22,8 +21,8 @@
     }
 
     & > footer {
-        grid-area: footer;
         bottom: 0;
+        grid-area: footer;
     }
 }
 
@@ -60,22 +59,21 @@ legend.form-label, legend.card-title, legend.col-form-label {
 
 .form-floating > legend.form-label {
     position: absolute;
+    z-index: 2;
     top: 0;
     left: 0;
-    z-index: 2;
     height: 100%;
     padding: 1rem 0.75rem;
     overflow: hidden;
+    transform: scale(.85) translateY(-0.5rem) translateX(0.15rem);
+    transform-origin: 0 0;
+    transition: opacity .1s ease-in-out, transform .1s ease-in-out;
+    border: var(--bs-border-width) solid transparent;
+    color: rgba(var(--bs-emphasis-color-rgb), .65);
     text-align: start;
     text-overflow: ellipsis;
     white-space: nowrap;
     pointer-events: none;
-    border: var(--bs-border-width) solid transparent;
-    transform-origin: 0 0;
-    transition: opacity .1s ease-in-out, transform .1s ease-in-out;
-
-    color: rgba(var(--bs-emphasis-color-rgb), .65);
-    transform: scale(.85) translateY(-0.5rem) translateX(0.15rem);
 }
 
 /* fix for forms when placing .form-check inside a .form-control using floating labels */
@@ -88,11 +86,12 @@ legend.form-label, legend.card-title, legend.col-form-label {
 .form-floating > .form-control:not(:placeholder-shown) ~ label::after,
 .form-floating > .form-control-plaintext ~ label::after,
 .form-floating > .form-select ~ label::after {
-    background-color: inherit;
     border-radius: inherit;
+    background-color: inherit;
 }
 
 /* add symbol to required fields */
+
 /* for vertical forms without floating labels */
 :is(:required, .required):not(:placeholder-shown) ~ :is(label:not(.form-check-label), .form-label)::after,
 :is(label:not(.form-check-label), .form-label):has(~ :is(:required, .required))::after,
@@ -101,19 +100,21 @@ legend.form-label, legend.card-title, legend.col-form-label {
 .form-floating > :is(:required, .required):not(:placeholder-shown) ~ :is(label:not(.form-check-label), .form-label)::after,
 /* for horizontal forms */
 .row:has(:is(:required, .required)) > :is(label:not(.form-check-label), .col-form-label)::after {
-    position: absolute;
     content: ' *';
-    color: var(--bs-form-invalid-color);
+    position: absolute;
     padding-left: 0.25rem;
+    color: var(--bs-form-invalid-color);
     inset: unset;
 }
+
 :is(label:not(.form-check-label), .form-label):has(~ .input-group:has(:is(:required, .required)))::after {
-    position: absolute;
     content: ' *';
-    color: var(--bs-form-invalid-color);
+    position: absolute;
     padding-left: 0.25rem;
+    color: var(--bs-form-invalid-color);
     inset: unset;
 }
+
 .text-info-required sup {
     color: var(--bs-form-invalid-color);
 }
@@ -146,8 +147,8 @@ legend.form-label, legend.card-title, legend.col-form-label {
 .card .col-8,
 .card .col-12,
 .card .card-body:has(> .form-check) {
-    flex-shrink: unset;
     flex-grow: unset;
+    flex-shrink: unset;
 }
 
 .card.has-validation:has(.form-control, .form-select) .card-body {
@@ -169,15 +170,15 @@ dialog[open]:not(:has(.modal-dialog-scrollable)) {
 }
 
 dialog::backdrop {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgb(0 0 0 / 0.5);
 }
 
 .modal[open] {
     width: var(--bs-modal-width);
+    margin: auto;
+    padding: 0;
     border: none;
     background-color: transparent;
-    padding: 0;
-    margin: auto;
 
     & .modal-dialog {
         margin: 0;
@@ -190,7 +191,7 @@ dialog::backdrop {
 
 .input-group>:not(:last-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback),
 .input-group>:not(:last-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) .form-control {
-    border-bottom-right-radius: 0;
-    border-top-right-radius: 0;
     margin-right: calc(var(--bs-border-width)*-1);
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
 }
