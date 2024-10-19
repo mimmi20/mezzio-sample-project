@@ -15,8 +15,8 @@
     "prettier-fix": "prettier --config prettier.config.mjs --write public/**/*.ts",
     "stylelint": "stylelint \"public/css/*.css\" --color --cache --custom-formatter ./node_modules/stylelint-formatter-pretty/index.js",
     "stylelint-fix": "stylelint \"public/css/*.css\" --color --cache --fix --custom-formatter ./node_modules/stylelint-formatter-pretty/index.js",
-    "lint": "eslint . --config eslint.config.mjs",
-    "lint-fix": "eslint . --config eslint.config.mjs --fix"
+    "eslint": "eslint . --config eslint.config.mjs",
+    "eslint-fix": "eslint . --config eslint.config.mjs --fix"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
@@ -58,7 +58,7 @@
     "cssnano-preset-default": "^6.0.3 || ^7.0.2",
     "esbuild": "~0.24.0",
     "esbuild-plugin-browserslist": "~0.15.0",
-    "eslint": "^8.57.1 || ^9.11.1",
+    "eslint": "^9.11.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-prettier": "^5.2.1",

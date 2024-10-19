@@ -10,30 +10,7 @@ updates:
     directory: "/"
 
     schedule:
-      interval: "weekly"
-      day: "saturday"
-      time: "04:00"
-      timezone: "Europe/Berlin"
-
-    groups:
-      security-updates:
-        applies-to: "security-updates"
-        patterns:
-          - "*"
-        exclude-patterns:
-          - "friendsofphp/php-cs-fixer"
-          - "sirbrillig/phpcs-variable-analysis"
-          - "slevomat/coding-standard"
-          - "squizlabs/php_codesniffer"
-      version-updates:
-        applies-to: "version-updates"
-        patterns:
-          - "*"
-        exclude-patterns:
-          - "friendsofphp/php-cs-fixer"
-          - "sirbrillig/phpcs-variable-analysis"
-          - "slevomat/coding-standard"
-          - "squizlabs/php_codesniffer"
+      interval: "daily"
 
     open-pull-requests-limit: 10
 
@@ -53,9 +30,6 @@ updates:
     commit-message:
       include: "scope"
       prefix: "composer"
-
-    #allow:
-    #  - '*'
 
     ignore:
       - dependency-name: "browscap/browscap"
@@ -83,28 +57,14 @@ updates:
       - dependency-name: "symfony/http-foundation"
       - dependency-name: "symfony/yaml"
 
-    # Disable rebasing for all pull requests
-    rebase-strategy: "disabled"
+    rebase-strategy: "auto"
 
   - package-ecosystem: "npm"
 
     directory: "/"
 
     schedule:
-      interval: "weekly"
-      day: "saturday"
-      time: "04:00"
-      timezone: "Europe/Berlin"
-
-    groups:
-      security-updates:
-        applies-to: "security-updates"
-        patterns:
-          - "*"
-      version-updates:
-        applies-to: "version-updates"
-        patterns:
-          - "*"
+      interval: "daily"
 
     open-pull-requests-limit: 10
 
@@ -150,7 +110,6 @@ updates:
       - dependency-name: "cssnano"
       - dependency-name: "cssnano-preset-default"
       - dependency-name: "esbuild"
-      - dependency-name: "eslint"
       - dependency-name: "imagemin"
       - dependency-name: "postcss-color-hex-alpha"
       - dependency-name: "postcss-color-rebeccapurple"
@@ -171,30 +130,14 @@ updates:
       - dependency-name: "supports-color"
       - dependency-name: "vitest"
 
-    # Disable rebasing for all pull requests
-    rebase-strategy: "disabled"
+    rebase-strategy: "auto"
 
   - package-ecosystem: "github-actions"
 
     directory: "/"
 
     schedule:
-      interval: "weekly"
-      day: "saturday"
-      time: "04:00"
-      timezone: "Europe/Berlin"
-
-    groups:
-      # Specify a name for the group, which will be used in pull request titles
-      # and branch names
-      security-updates:
-        applies-to: "security-updates"
-        patterns:
-          - "*"
-      version-updates:
-        applies-to: "version-updates"
-        patterns:
-          - "*"
+      interval: "daily"
 
     open-pull-requests-limit: 10
 
@@ -212,5 +155,4 @@ updates:
     commit-message:
       prefix: "github-actions"
 
-    # Disable rebasing for all pull requests
-    rebase-strategy: "disabled"
+    rebase-strategy: "auto"
