@@ -23,7 +23,7 @@
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
     "bootswatch": "^5.3.3",
-    "chart.js": "^4.4.5",
+    "chart.js": "^4.4.6",
     "fe-tools": "github:mimmi20/fe-tools#master",
     "moment": "^2.30.1"
   },
