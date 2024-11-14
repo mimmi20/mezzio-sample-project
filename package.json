@@ -65,7 +65,7 @@
     "imagemin": "^8.0.1 || ^9.0.0",
     "imagemin-gif2webp": "^3.0.0",
     "lilconfig": "^3.1.2",
-    "postcss": "^8.4.47",
+    "postcss": "^8.4.49",
     "postcss-clamp": "^4.1.0",
     "postcss-color-hex-alpha": "^10.0.0",
     "postcss-color-rebeccapurple": "^10.0.0",
