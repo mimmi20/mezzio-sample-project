@@ -18,7 +18,7 @@
     "ext-json": "*",
     "ext-mbstring": "*",
     "fig/http-message-util": "^1.1.5",
-    "laminas/laminas-component-installer": "^3.4.0",
+    "laminas/laminas-component-installer": "^3.5.0",
     "laminas/laminas-config": "^3.10.0",
     "laminas/laminas-config-aggregator": "^1.17.0",
     "laminas/laminas-diactoros": "^3.3.1",
