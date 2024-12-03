@@ -22,7 +22,6 @@ $aggregator = new ConfigAggregator(
     [
         \Mimmi20\Monolog\Formatter\ConfigProvider::class,
         \Mimmi20\MonologFactory\ConfigProvider::class,
-        \Mezzio\Tooling\ConfigProvider::class,
         \Mimmi20\Mezzio\Middleware\ConfigProvider::class,
         \Laminas\Hydrator\ConfigProvider::class,
         \Laminas\Filter\ConfigProvider::class,

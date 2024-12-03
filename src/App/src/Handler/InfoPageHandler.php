@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the mimmi20/mezzio-sample-project package.
  *
@@ -19,6 +20,7 @@ use Laminas\Form\Factory;
 use Laminas\Form\Form;
 use Laminas\View\Model\ViewModel;
 use Mezzio\Template\TemplateRendererInterface;
+use Override;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -30,13 +32,13 @@ use function file_exists;
 use function is_string;
 use function sprintf;
 
-final class InfoPageHandler implements RequestHandlerInterface
+final readonly class InfoPageHandler implements RequestHandlerInterface
 {
     /** @throws void */
     public function __construct(
-        private readonly TemplateRendererInterface $template,
-        private readonly Factory $factory,
-        private readonly LoggerInterface $logger,
+        private TemplateRendererInterface $template,
+        private Factory $factory,
+        private LoggerInterface $logger,
     ) {
         // nothing to do
     }
@@ -46,6 +48,7 @@ final class InfoPageHandler implements RequestHandlerInterface
      * @throws \Laminas\Form\Exception\InvalidArgumentException
      * @throws DomainException
      */
+    #[Override]
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $id = $request->getAttribute('id');
