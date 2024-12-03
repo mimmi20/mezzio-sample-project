@@ -16,23 +16,23 @@ use Laminas\Diactoros\Exception\InvalidArgumentException;
 use Laminas\Diactoros\Response\HtmlResponse;
 use Laminas\View\Model\ViewModel;
 use Mezzio\Template\TemplateRendererInterface;
+use Override;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Log\LoggerInterface;
 use Throwable;
 
-final class HomePageHandler implements RequestHandlerInterface
+final readonly class HomePageHandler implements RequestHandlerInterface
 {
     /** @throws void */
-    public function __construct(
-        private readonly TemplateRendererInterface $template,
-        private readonly LoggerInterface $logger,
-    ) {
+    public function __construct(private TemplateRendererInterface $template, private LoggerInterface $logger)
+    {
         // nothing to do
     }
 
     /** @throws InvalidArgumentException */
+    #[Override]
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $layout = new ViewModel(
