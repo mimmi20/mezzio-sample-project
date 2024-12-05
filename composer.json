@@ -46,7 +46,7 @@
     "mimmi20/mezzio-setlocale-middleware": "^2.0.0",
     "mimmi20/monolog-callbackfilterhandler": "^4.0.0",
     "mimmi20/monolog-factory": "^2.0.10",
-    "mimmi20/monolog-streamformatter": "^4.0.0",
+    "mimmi20/monolog-streamformatter": "^4.0.1",
     "mimmi20/navigation-helper-acceptpage": "^3.0.1",
     "mimmi20/navigation-helper-containerparser": "^5.1.0",
     "mimmi20/navigation-helper-converttopages": "^3.0.0",
