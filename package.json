@@ -96,7 +96,7 @@
     "postcss-selector-not": "^8.0.0",
     "postcss-strip-inline-comments": "^0.1.5",
     "postcss-will-change": "^4.0.1",
-    "prettier": "^3.4.1",
+    "prettier": "^3.4.2",
     "prettier-eslint": "^16.3.0",
     "sass-embedded": "^1.82.0",
     "stylelint": "^16.11.0",
