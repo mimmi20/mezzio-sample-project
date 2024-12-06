@@ -39,7 +39,7 @@
     "mimmi20/laminasviewrenderer-bootstrap-form": "^3.0.0",
     "mimmi20/laminasviewrenderer-vite-url": "^2.0.0",
     "mimmi20/mezzio-generic-authorization": "^4.0.0",
-    "mimmi20/mezzio-navigation": "^4.0.2",
+    "mimmi20/mezzio-navigation": "^4.0.3",
     "mimmi20/mezzio-navigation-laminasviewrenderer": "^5.0.0",
     "mimmi20/mezzio-navigation-laminasviewrenderer-bootstrap": "^3.0.1",
     "mimmi20/mezzio-router-laminasrouter-factory": "^2.0.0",
