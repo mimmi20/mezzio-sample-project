@@ -34,7 +34,7 @@
     "mezzio/mezzio-laminasviewrenderer": "^2.16.0",
     "mezzio/mezzio-router": "^3.18.0",
     "mimmi20/laminas-form-element-group": "^4.0.0",
-    "mimmi20/laminas-form-element-links": "^2.0.9",
+    "mimmi20/laminas-form-element-links": "^3.0.0",
     "mimmi20/laminas-form-element-paragraph": "^2.0.9",
     "mimmi20/laminasviewrenderer-bootstrap-form": "^3.0.0",
     "mimmi20/laminasviewrenderer-vite-url": "^2.0.0",
