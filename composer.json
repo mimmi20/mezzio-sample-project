@@ -53,7 +53,7 @@
     "mimmi20/navigation-helper-findactive": "^3.0.2",
     "mimmi20/navigation-helper-findfromproperty": "^3.0.2",
     "mimmi20/navigation-helper-findroot": "^3.0.0",
-    "mimmi20/navigation-helper-htmlify": "^5.0.0"
+    "mimmi20/navigation-helper-htmlify": "^5.0.2"
   },
   "require-dev": {
     "ext-ctype": "*",
