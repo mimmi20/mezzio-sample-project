@@ -10,6 +10,7 @@ import imageminAviv from '@vheemstra/imagemin-avifenc';
 import imageminSvgo from '@koddsson/imagemin-svgo';
 import { resolveToEsbuildTarget } from 'esbuild-plugin-browserslist';
 import browserslist from 'browserslist';
+import { compression } from 'vite-plugin-compression2';
 
 const target = resolveToEsbuildTarget(browserslist('defaults'), {
   printUnknownTargets: false,
@@ -53,6 +54,8 @@ export default defineConfig({
         skipIfLargerThan: 'optimized',
       },
     }),
+    compression({ deleteOriginalAssets: false, skipIfLargerOrEqual: true, algorithm: 'gzip', include: /\.(html|css|js|cjs|mjs|svg|woff|woff2|json)$/ }),
+    compression({ deleteOriginalAssets: false, skipIfLargerOrEqual: true, algorithm: 'brotliCompress', include: /\.(html|css|js|cjs|mjs|svg|woff|woff2|json)$/ }),
   ],
   server: {
     host: 'localhost',

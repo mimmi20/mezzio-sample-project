@@ -33,6 +33,9 @@ updates:
 
     rebase-strategy: "auto"
 
+    ignore:
+      - dependency-name: "psr/container"
+
   - package-ecosystem: "npm"
 
     directory: "/"
@@ -58,51 +61,6 @@ updates:
     commit-message:
       include: "scope"
       prefix: "npm"
-
-    ignore:
-      - dependency-name: "@csstools/postcss-cascade-layers"
-      - dependency-name: "@csstools/postcss-color-function"
-      - dependency-name: "@csstools/postcss-font-format-keywords"
-      - dependency-name: "@csstools/postcss-is-pseudo-class"
-      - dependency-name: "@csstools/postcss-nested-calc"
-      - dependency-name: "@csstools/postcss-normalize-display-values"
-      - dependency-name: "@csstools/postcss-text-decoration-shorthand"
-      - dependency-name: "@csstools/postcss-trigonometric-functions"
-      - dependency-name: "@csstools/postcss-unset-value"
-      - dependency-name: "@localnerve/imagemin-gifsicle"
-      - dependency-name: "@localnerve/imagemin-pngquant"
-      - dependency-name: "@node-minify/core"
-      - dependency-name: "@node-minify/no-compress"
-      - dependency-name: "@node-minify/terser"
-      - dependency-name: "@types/node"
-      - dependency-name: "@typescript-eslint/eslint-plugin"
-      - dependency-name: "@typescript-eslint/parser"
-      - dependency-name: "@typescript-eslint/typescript-estree"
-      - dependency-name: "@vheemstra/vite-plugin-imagemin"
-      - dependency-name: "@vitest/coverage-istanbul"
-      - dependency-name: "@vitest/ui"
-      - dependency-name: "cssnano"
-      - dependency-name: "cssnano-preset-default"
-      - dependency-name: "esbuild"
-      - dependency-name: "imagemin"
-      - dependency-name: "postcss-color-hex-alpha"
-      - dependency-name: "postcss-color-rebeccapurple"
-      - dependency-name: "postcss-custom-media"
-      - dependency-name: "postcss-custom-properties"
-      - dependency-name: "postcss-custom-selectors"
-      - dependency-name: "postcss-dir-pseudo-class"
-      - dependency-name: "postcss-focus-visible"
-      - dependency-name: "postcss-focus-within"
-      - dependency-name: "postcss-gap-properties"
-      - dependency-name: "postcss-image-set-function"
-      - dependency-name: "postcss-load-config"
-      - dependency-name: "postcss-nesting"
-      - dependency-name: "postcss-overflow-shorthand"
-      - dependency-name: "postcss-preset-env"
-      - dependency-name: "postcss-pseudo-class-any-link"
-      - dependency-name: "postcss-selector-not"
-      - dependency-name: "supports-color"
-      - dependency-name: "vitest"
 
     rebase-strategy: "auto"
 
