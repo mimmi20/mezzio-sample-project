@@ -34,7 +34,7 @@
     "@csstools/postcss-nested-calc": "^4.0.0",
     "@csstools/postcss-normalize-display-values": "^4.0.0",
     "@csstools/postcss-text-decoration-shorthand": "^4.0.1",
-    "@csstools/postcss-trigonometric-functions": "^4.0.1",
+    "@csstools/postcss-trigonometric-functions": "^4.0.6",
     "@csstools/postcss-unset-value": "^4.0.0",
     "@koddsson/imagemin-svgo": "^11.0.1",
     "@localnerve/imagemin-gifsicle": "^8.0.0 || ^9.0.0 || ^10.0.0",
