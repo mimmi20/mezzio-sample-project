@@ -73,7 +73,7 @@
     "postcss-custom-media": "^11.0.1",
     "postcss-custom-properties": "^14.0.1",
     "postcss-custom-selectors": "^8.0.1",
-    "postcss-dir-pseudo-class": "^9.0.0",
+    "postcss-dir-pseudo-class": "^9.0.1",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-font-family-system-ui": "^5.0.0",
     "postcss-gap-properties": "^6.0.0",
