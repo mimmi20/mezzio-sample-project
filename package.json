@@ -71,7 +71,7 @@
     "postcss-color-rebeccapurple": "^10.0.0",
     "postcss-color-rgba-fallback": "^4.0.0",
     "postcss-custom-media": "^11.0.1",
-    "postcss-custom-properties": "^14.0.1",
+    "postcss-custom-properties": "^14.0.4",
     "postcss-custom-selectors": "^8.0.4",
     "postcss-dir-pseudo-class": "^9.0.1",
     "postcss-flexbugs-fixes": "^5.0.2",
