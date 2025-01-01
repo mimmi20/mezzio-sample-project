@@ -3,7 +3,7 @@
 /**
  * This file is part of the mimmi20/mezzio-sample-project package.
  *
- * Copyright (c) 2021-2024, Thomas Mueller <mimmi20@live.de>
+ * Copyright (c) 2021-2025, Thomas Mueller <mimmi20@live.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -24,6 +24,7 @@ use Rector\Set\ValueObject\SetList;
 return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->paths([
         __DIR__ . '/src',
+        __DIR__ . '/stubs',
         __DIR__ . '/tests',
     ]);
 
