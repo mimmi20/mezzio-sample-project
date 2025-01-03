@@ -116,7 +116,7 @@ export default function (ctx) {
             nesting: true,
             customMedia: true,
           },
-        }
+        },
       }),
       postcssColorRgbaFallback,
       autoprefixer({
