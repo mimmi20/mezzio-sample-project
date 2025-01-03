@@ -42,7 +42,7 @@
     "@types/bootstrap": "^5.2.10",
     "@types/chart.js": "^2.9.41",
     "@types/intl": "^1.2.2",
-    "@types/node": "^22.10.3",
+    "@types/node": "^22.10.4",
     "@typescript-eslint/eslint-plugin": "^8.19.0",
     "@typescript-eslint/parser": "^8.19.0",
     "@typescript-eslint/typescript-estree": "^8.19.0",
