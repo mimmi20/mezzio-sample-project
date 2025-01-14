@@ -107,7 +107,7 @@
     "postcss-will-change": "^4.0.1",
     "prettier": "^3.4.2",
     "prettier-eslint": "^16.3.0",
-    "sass-embedded": "^1.83.1",
+    "sass-embedded": "^1.83.4",
     "stylelint": "^16.13.2",
     "stylelint-config-property-sort-order-smacss": "^10.0.0",
     "stylelint-config-standard-scss": "^14.0.0",
