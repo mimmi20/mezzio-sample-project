@@ -49,7 +49,7 @@
     "@typescript-eslint/typescript-estree": "^8.20.0",
     "@vheemstra/imagemin-avifenc": "^2.1.0",
     "@vheemstra/vite-plugin-imagemin": "^2.0.0",
-    "@vitest/coverage-istanbul": "^2.1.8",
+    "@vitest/coverage-istanbul": "^3.0.1",
     "@vitest/ui": "^2.1.8",
     "@yeanzhi/imagemin-jpegtran": "^6.0.2",
     "@yeanzhi/imagemin-webp": "^5.1.2",
