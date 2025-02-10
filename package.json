@@ -61,7 +61,7 @@
     "cssnano-preset-default": "^7.0.6",
     "esbuild": "~0.25.0",
     "esbuild-plugin-browserslist": "~0.15.0",
-    "eslint": "^9.19.0",
+    "eslint": "^9.20.0",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-prettier": "^5.2.3",
