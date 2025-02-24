@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "@csstools/postcss-cascade-layers": "^5.0.1",
-    "@csstools/postcss-color-function": "^4.0.7",
+    "@csstools/postcss-color-function": "^4.0.8",
     "@csstools/postcss-font-format-keywords": "^4.0.0",
     "@csstools/postcss-is-pseudo-class": "^5.0.1",
     "@csstools/postcss-nested-calc": "^4.0.0",
