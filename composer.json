@@ -80,7 +80,7 @@
     "ext-xmlwriter": "*",
     "filp/whoops": "^2.18.0",
     "infection/infection": "^0.29.14",
-    "mimmi20/coding-standard": "^6.0.18",
+    "mimmi20/coding-standard": "^6.0.19",
     "nikic/php-parser": "^5.4.0",
     "phpstan/extension-installer": "^1.4.3",
     "phpstan/phpstan": "^2.1.8",
