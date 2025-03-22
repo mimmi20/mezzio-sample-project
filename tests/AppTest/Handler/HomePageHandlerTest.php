@@ -30,6 +30,7 @@ final class HomePageHandlerTest extends TestCase
      * @throws Exception
      * @throws InvalidArgumentException
      * @throws RuntimeException
+     * @throws \PHPUnit\Framework\MockObject\Exception
      */
     public function testReturnsHtmlResponseWhenTemplateRendererProvided(): void
     {
@@ -62,6 +63,7 @@ final class HomePageHandlerTest extends TestCase
      * @throws Exception
      * @throws InvalidArgumentException
      * @throws RuntimeException
+     * @throws \PHPUnit\Framework\MockObject\Exception
      */
     public function testLogsError(): void
     {

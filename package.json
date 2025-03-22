@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev:all": "concurrently \"tsc && vite\" \"php -S 0.0.0.0:8080 -t public/ public/index.php -q -ddisplay_errors=1\"",
+    "dev:all": "concurrently \"tsc && vite\" \"php -S localhost:8081 -t public/ public/index.php -q -ddisplay_errors=1\"",
     "dev": "tsc && vite",
     "build": "tsc && vite build",
     "preview": "tsc && vite preview",

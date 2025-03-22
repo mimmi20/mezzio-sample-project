@@ -108,8 +108,8 @@ parameters:
     no_mixed: true
     narrow_param: true
 
-  ignoreErrors:
-    - '~will always evaluate to true~'
+#  ignoreErrors:
+#    - '~will always evaluate to true~'
 
   stubFiles:
     - stubs/mezzio/renderer/TemplateRendererInterface.stub
