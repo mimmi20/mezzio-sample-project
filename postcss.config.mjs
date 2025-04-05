@@ -33,7 +33,7 @@ export default function (ctx) {
         selectors: ['before', 'after', 'first-letter', 'first-line'],
         'colon-notation': 'double',
       }),
-      postcssRtlLogicalProperties({ hDirection: 'LeftToRight', vDirection: 'TopToBottom'}),
+      postcssRtlLogicalProperties({ hDirection: 'LeftToRight', vDirection: 'TopToBottom' }),
       rtlcss(),
       postColorConverter({ outputColorFormat: 'rgb', ignore: ['rgb', 'hsl'], alwaysAlpha: true }),
       postcssPxtorem({
