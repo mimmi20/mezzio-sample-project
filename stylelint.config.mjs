@@ -4,8 +4,8 @@ export default {
   plugins: ['stylelint-plugin-logical-css', 'stylelint-declaration-block-no-ignored-properties', 'stylelint-use-nesting'],
   rules: {
     // rules for logical properties and values
-    'plugin/use-logical-properties-and-values': null, // maybe later
-    'plugin/use-logical-units': null, // maybe later
+    'plugin/use-logical-properties-and-values': [true, { severity: 'warning', disableFix: true }],
+    'plugin/use-logical-units': [true, { severity: 'warning', disableFix: true }],
 
     'plugin/declaration-block-no-ignored-properties': true,
 
