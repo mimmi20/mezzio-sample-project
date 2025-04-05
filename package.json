@@ -102,6 +102,7 @@
     "postcss-pseudo-element-colons": "^1.0.2",
     "postcss-pxtorem": "^6.1.0",
     "postcss-replace-overflow-wrap": "^4.0.0",
+    "postcss-rtl-logical-properties": "^2.0.1",
     "postcss-selector-not": "^8.0.1",
     "postcss-strip-inline-comments": "^0.1.5",
     "postcss-will-change": "^4.0.1",
