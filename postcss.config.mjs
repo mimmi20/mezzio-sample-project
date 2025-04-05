@@ -18,6 +18,8 @@ import postcssDiscardComments from 'postcss-discard-comments';
 import postcssImport from 'postcss-import';
 import postColorConverter from 'postcss-color-converter';
 import postcssLightningcss from 'postcss-lightningcss';
+import postcssRtlLogicalProperties from 'postcss-rtl-logical-properties';
+import rtlcss from 'rtlcss';
 
 export default function (ctx) {
   const root = process.cwd();
@@ -31,6 +33,8 @@ export default function (ctx) {
         selectors: ['before', 'after', 'first-letter', 'first-line'],
         'colon-notation': 'double',
       }),
+      postcssRtlLogicalProperties({ hDirection: 'LeftToRight', vDirection: 'TopToBottom'}),
+      rtlcss(),
       postColorConverter({ outputColorFormat: 'rgb', ignore: ['rgb', 'hsl'], alwaysAlpha: true }),
       postcssPxtorem({
         propList: ['*'],
