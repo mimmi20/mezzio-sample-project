@@ -131,6 +131,7 @@ export default function (ctx) {
             calc: false,
             minifyFontWeight: false,
             precision: 2,
+            cssDeclarationSorter: false,
           })
         : false,
     ],
