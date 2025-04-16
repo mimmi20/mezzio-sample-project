@@ -25,7 +25,7 @@
     "laminas/laminas-form": "^3.21.0",
     "laminas/laminas-httphandlerrunner": "^2.11.0",
     "laminas/laminas-hydrator": "^4.16.0",
-    "laminas/laminas-i18n": "^2.29.0",
+    "laminas/laminas-i18n": "^2.30.0",
     "laminas/laminas-i18n-resources": "^2.11.0",
     "laminas/laminas-inputfilter": "^2.32.0",
     "laminas/laminas-router": "^3.14.0",
