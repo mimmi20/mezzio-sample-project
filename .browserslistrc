@@ -10,6 +10,15 @@ not dead
 # exclude opera mini
 not op_mini all
 
+# exclude QQ Browser
+not and_qq <= 14.9
+
+# exclude UC Browser for Android
+not and_uc <= 15.5
+
+# exclude Samsung Internet (versions lower than 23)
+not samsung <= 22
+
 # exclude kaios
 # @see https://github.com/postcss/autoprefixer/issues/1533
 # @see https://github.com/twbs/bootstrap/issues/41342
