@@ -53,6 +53,11 @@ export default {
       },
     ],
 
+    'plugin/no-unresolved-module': {
+      modules: ['node_modules'],
+      cwd: process.cwd(),
+    },
+
     'csstools/media-use-custom-media': [
       'known',
       // {
