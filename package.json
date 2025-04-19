@@ -143,6 +143,7 @@
   "overrides": {
     "cross-spawn": "^7.0.6",
     "find-versions": "^6.0.0",
+    "glob": "^11.0.1",
     "got": "^11.8.3",
     "meow": "^13.2.0",
     "trim-newlines": "^3.0.1",
