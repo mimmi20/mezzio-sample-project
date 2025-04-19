@@ -142,7 +142,6 @@
   },
   "overrides": {
     "cross-spawn": "^7.0.6",
-    "download": "^8.0.0",
     "find-versions": "^6.0.0",
     "glob": "^11.0.1",
     "meow": "^13.2.0",
