@@ -35,8 +35,8 @@ export default {
       },
     ],
 
-    'plugin/require-baseline': [
-      true,
+    'plugin/use-baseline': [
+      false,
       {
         // "available" can be "widely" (default) or "newly"
         available: 'newly',
@@ -68,7 +68,12 @@ export default {
       // }
     ],
 
-    'plugin/no-low-performance-animation-properties': true,
+    'plugin/no-low-performance-animation-properties': [
+      true,
+      {
+        severity: 'warning',
+      }
+    ],
 
     // general rules
     'alpha-value-notation': null, // maybe later -> 'percentage',
