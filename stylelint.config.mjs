@@ -28,7 +28,7 @@ export default {
     'order/properties-order': [sortOrderSmacss(), { severity: 'warning' }],
 
     'plugin/no-unsupported-browser-features': [
-      true,
+      null,
       {
         ignorePartialSupport: true,
         severity: 'warning',
@@ -36,7 +36,7 @@ export default {
     ],
 
     'plugin/require-baseline': [
-      false,
+      null,
       {
         // "available" can be "widely" (default) or "newly"
         available: 'newly',
@@ -45,7 +45,7 @@ export default {
     ],
 
     'plugin/stylelint-no-indistinguishable-colors': [
-      false,
+      null,
       {
         allowEquivalentNotation: true,
         threshold: 3,
