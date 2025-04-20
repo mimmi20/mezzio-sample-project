@@ -72,7 +72,7 @@ export default {
       true,
       {
         severity: 'warning',
-      }
+      },
     ],
 
     // general rules
