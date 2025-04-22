@@ -43,7 +43,7 @@
     "@types/chart.js": "^2.9.41",
     "@types/intl": "^1.2.2",
     "@types/node": "^22.14.1",
-    "@typescript-eslint/eslint-plugin": "^8.30.1",
+    "@typescript-eslint/eslint-plugin": "^8.31.0",
     "@typescript-eslint/parser": "^8.30.1",
     "@typescript-eslint/typescript-estree": "^8.30.1",
     "@vheemstra/imagemin-avifenc": "^2.1.0",
