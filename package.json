@@ -58,7 +58,7 @@
     "css-declaration-sorter": "^7.2.0",
     "cssnano": "^7.0.6",
     "cssnano-preset-default": "^7.0.6",
-    "esbuild": "~0.25.2",
+    "esbuild": "~0.25.3",
     "esbuild-plugin-browserslist": "~1.0.0",
     "eslint": "^9.25.1",
     "eslint-config-prettier": "^10.1.2",
