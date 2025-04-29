@@ -39,7 +39,7 @@
     "mezzio/mezzio-authentication": "^1.10.0",
     "mezzio/mezzio-helpers": "^5.18.0",
     "mezzio/mezzio-laminasrouter": "^3.11.0",
-    "mezzio/mezzio-laminasviewrenderer": "^2.16.0",
+    "mezzio/mezzio-laminasviewrenderer": "^2.18.0",
     "mezzio/mezzio-router": "^3.18.0",
     "mezzio/mezzio-template": "^2.11.0",
     "mimmi20/laminas-form-element-group": "^4.0.0",
