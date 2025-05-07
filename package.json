@@ -106,7 +106,7 @@
     "postcss-rtl-logical-properties": "^2.0.1",
     "postcss-selector-not": "^8.0.1",
     "postcss-strip-inline-comments": "^0.1.5",
-    "postcss-svgo": "^7.0.1",
+    "postcss-svgo": "^7.0.2",
     "postcss-will-change": "^4.0.1",
     "prettier": "^3.5.3",
     "prettier-eslint": "^16.4.1",
