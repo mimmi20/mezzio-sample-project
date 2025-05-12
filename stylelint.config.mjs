@@ -35,7 +35,7 @@ export default {
       },
     ],
 
-    'plugin/require-baseline': [
+    'plugin/use-baseline': [
       null,
       {
         // "available" can be "widely" (default) or "newly"
