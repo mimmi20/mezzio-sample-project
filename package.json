@@ -22,7 +22,7 @@
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.6",
     "bootstrap-icons": "^1.12.1",
-    "bootswatch": "^5.3.5",
+    "bootswatch": "^5.3.6",
     "chart.js": "^4.4.9",
     "moment": "^2.30.1"
   },
