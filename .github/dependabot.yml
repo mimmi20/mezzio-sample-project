@@ -62,6 +62,9 @@ updates:
       include: "scope"
       prefix: "npm"
 
+    ignore:
+      - dependency-name: "stylelint-config-standard-scss"
+
     rebase-strategy: "auto"
 
   - package-ecosystem: "github-actions"
