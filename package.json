@@ -37,7 +37,7 @@
     "@csstools/postcss-trigonometric-functions": "^4.0.8",
     "@csstools/postcss-unset-value": "^4.0.0",
     "@koddsson/imagemin-svgo": "^11.0.1",
-    "@localnerve/imagemin-gifsicle": "^10.3.2",
+    "@localnerve/imagemin-gifsicle": "^10.4.0",
     "@localnerve/imagemin-pngquant": "^12.3.3",
     "@types/bootstrap": "^5.2.10",
     "@types/chart.js": "^2.9.41",
