@@ -128,7 +128,7 @@
     "stylelint-use-nesting": "^6.0.0",
     "supports-color": "^10.0.0",
     "typescript": "^5.8.3",
-    "typescript-eslint": "^8.33.0",
+    "typescript-eslint": "^8.33.1",
     "vite": "^6.3.5",
     "vite-plugin-compression2": "^1.4.0",
     "vite-plugin-dts": "^4.5.4",
