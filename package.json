@@ -98,7 +98,7 @@
     "postcss-overflow-shorthand": "^6.0.0",
     "postcss-prefix-selector": "^2.1.1",
     "postcss-prefixwrap": "^1.55.0",
-    "postcss-preset-env": "^10.2.0",
+    "postcss-preset-env": "^10.2.1",
     "postcss-pseudo-class-any-link": "^10.0.1",
     "postcss-pseudo-element-colons": "^1.0.2",
     "postcss-pxtorem": "^6.1.0",
