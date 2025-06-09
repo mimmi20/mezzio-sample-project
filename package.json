@@ -110,7 +110,7 @@
     "postcss-will-change": "^4.0.1",
     "prettier": "^3.5.3",
     "prettier-eslint": "^16.4.2",
-    "rollup": "^4.41.1",
+    "rollup": "^4.42.0",
     "rtlcss": "^4.3.0",
     "sass-embedded": "^1.89.1",
     "stylehacks": "^7.0.5",
