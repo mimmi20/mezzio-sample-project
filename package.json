@@ -92,7 +92,7 @@
     "postcss-merge-rules": "^7.0.5",
     "postcss-modules": "^6.0.1",
     "postcss-nested": "^7.0.2",
-    "postcss-nesting": "^13.0.1",
+    "postcss-nesting": "^13.0.2",
     "postcss-normalize-whitespace": "^7.0.1",
     "postcss-opacity-percentage": "^3.0.0",
     "postcss-overflow-shorthand": "^6.0.0",
