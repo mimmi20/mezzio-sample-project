@@ -10,7 +10,9 @@ import imageminAviv from '@vheemstra/imagemin-avifenc';
 import imageminSvgo from '@koddsson/imagemin-svgo';
 import { resolveToEsbuildTarget } from 'esbuild-plugin-browserslist';
 import browserslist from 'browserslist';
-import { compression } from 'vite-plugin-compression2';
+import { compression, defineAlgorithm } from 'vite-plugin-compression2';
+import zlib from 'zlib';
+import { NodePackageImporter } from 'sass-embedded';
 
 const target = resolveToEsbuildTarget(browserslist('defaults'), {
   printUnknownTargets: false,
@@ -36,6 +38,22 @@ const SvgoOpts = {
     },
   ],
 };
+
+const compress = compression({
+  algorithms: [
+    defineAlgorithm('gzip', { level: 9 }),
+    defineAlgorithm('brotliCompress', {
+      params: {
+        [zlib.constants.BROTLI_PARAM_QUALITY]: 11,
+        [zlib.constants.BROTLI_PARAM_MODE]: 1,
+        [zlib.constants.BROTLI_PARAM_LGWIN]: 24,
+      },
+    }),
+  ],
+  deleteOriginalAssets: false,
+  skipIfLargerOrEqual: true,
+  include: /\.(html|css|js|cjs|mjs|woff|woff2|json)$/,
+});
 
 export default defineConfig({
   appType: 'custom',
@@ -71,8 +89,7 @@ export default defineConfig({
         skipIfLargerThan: 'optimized',
       },
     }),
-    compression({ deleteOriginalAssets: false, skipIfLargerOrEqual: true, algorithm: 'gzip', include: /\.(html|css|js|cjs|mjs|svg|woff|woff2|json|jpeg|jpg|gif|png|webp|avif)$/ }),
-    compression({ deleteOriginalAssets: false, skipIfLargerOrEqual: true, algorithm: 'brotliCompress', include: /\.(html|css|js|cjs|mjs|svg|woff|woff2|json|jpeg|jpg|gif|png|webp|avif)$/ }),
+    compress,
   ],
   server: {
     host: 'localhost',
@@ -159,6 +176,9 @@ export default defineConfig({
         alertAscii: true,
         alertColor: true,
         verbose: true,
+        importers: [new NodePackageImporter(process.cwd())],
+        quietDeps: true,
+        fatalDeprecations: ['legacy-js-api'],
       },
     },
   },
