@@ -44,6 +44,10 @@ jobs:
       composer-options: "--optimize-autoloader --prefer-dist --prefer-stable -v"
       skip-php-install: false
       skip-npm-install: false
+      skip-nasm-install: false
+      skip-libimagequant-install: false
+      skip-librabbitmq-install: false
+      skip-libgif-install: false
 
   analytics:
     name: "Project Analysis"
@@ -62,6 +66,10 @@ jobs:
       skip-eslint: false
       skip-stylelint: true
       skip-prettier: false
+      skip-nasm-install: false
+      skip-libimagequant-install: false
+      skip-librabbitmq-install: false
+      skip-libgif-install: false
       phpcs-options: ""
 
   tests:
@@ -81,6 +89,10 @@ jobs:
       skip-phpunit: false
       skip-vitest: true
       skip-stryker: true
+      skip-nasm-install: false
+      skip-libimagequant-install: false
+      skip-librabbitmq-install: false
+      skip-libgif-install: false
       upload-codecov: true
       upload-codeclimate: true
       upload-coveralls: false
@@ -120,8 +132,20 @@ jobs:
           lfs: false
           persist-credentials: false
 
+      - name: "Set up NASM (for imagemin binary builds)"
+        uses: "ilammy/setup-nasm@v1"
+
       - name: "install libimagequant-dev"
         run: "sudo apt-get install libimagequant-dev -y"
+
+      - name: "install libpng-dev"
+        run: "sudo apt-get install libpng-dev -y"
+
+      - name: "install librabbitmq-dev"
+        run: "sudo apt-get install librabbitmq-dev -y"
+
+      - name: "install libgif-dev"
+        run: "sudo apt-get install libgif-dev"
 
       - name: "Use Node.js ${{ matrix.node-version }}"
         uses: "actions/setup-node@v4"
