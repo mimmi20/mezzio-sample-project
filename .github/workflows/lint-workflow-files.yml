@@ -7,29 +7,10 @@ on:
 
 jobs:
   actionlint:
-    runs-on: "ubuntu-24.04"
 
-    steps:
-      - name: "Checkout"
-        uses: "actions/checkout@v4"
-        with:
-          # Disabling shallow clone is recommended for improving relevancy of reporting
-          fetch-depth: 0
-          lfs: false
-          persist-credentials: false
-
-      - name: "install libimagequant-dev"
-        run: "sudo apt-get install libimagequant-dev -y"
-
-      - name: "Use Node.js 22"
-        uses: "actions/setup-node@v4"
-        with:
-          node-version: "22"
-
-      - name: "Check workflow files"
-        uses: "raven-actions/actionlint@v2"
-        with:
-          matcher: true
-          cache: true
-          fail-on-error: false
-          flags: "-ignore SC2086"
+    uses: "mimmi20/ci/.github/workflows/lint-actions.yml@8.3"
+    with:
+      skip-nasm-install: false
+      skip-libimagequant-install: false
+      skip-librabbitmq-install: false
+      skip-libgif-install: false

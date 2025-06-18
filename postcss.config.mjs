@@ -1,6 +1,5 @@
 /* global process */
 
-import postcssColorRgbaFallback from 'postcss-color-rgba-fallback';
 import postcssPxtorem from 'postcss-pxtorem';
 import postcssPresetEnv from 'postcss-preset-env';
 import cssnano from 'cssnano';
@@ -18,9 +17,6 @@ import postcssDiscardComments from 'postcss-discard-comments';
 import postcssImport from 'postcss-import';
 import postColorConverter from 'postcss-color-converter';
 import stylehacks from 'stylehacks';
-import postcssRtlLogicalProperties from 'postcss-rtl-logical-properties';
-import rtlcss from 'rtlcss';
-import postcssMergeLonghand from 'postcss-merge-longhand';
 import postcssMergeRules from 'postcss-merge-rules';
 import postcssSvgo from 'postcss-svgo';
 import postcssNormalizeWhitespace from 'postcss-normalize-whitespace';
@@ -57,9 +53,6 @@ export default function (ctx) {
         selectors: ['before', 'after', 'first-letter', 'first-line'],
         'colon-notation': 'double',
       }),
-      postcssRtlLogicalProperties({ hDirection: 'LeftToRight', vDirection: 'TopToBottom' }),
-      rtlcss,
-      postcssMergeLonghand,
       postcssMergeRules,
       postcssSvgo(SvgoOpts),
       postcssNormalizeWhitespace,
@@ -138,7 +131,6 @@ export default function (ctx) {
         logical: false,
       }),
       stylehacks({ lint: false }),
-      postcssColorRgbaFallback,
       autoprefixer({
         add: true,
         remove: true,
@@ -164,7 +156,7 @@ export default function (ctx) {
             discardDuplicates: false,
             discardEmpty: false,
             discardOverridden: false,
-            mergeLonghand: false,
+            mergeLonghand: true,
             mergeRules: false,
             minifyFontValues: false,
             minifyFontWeight: false,
