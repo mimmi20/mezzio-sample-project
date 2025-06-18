@@ -1,17 +1,11 @@
+import zlib from 'zlib';
 import { defineConfig } from 'vite';
 import * as path from 'path';
-import viteImagemin from '@vheemstra/vite-plugin-imagemin';
-import imageminJpegtran from '@yeanzhi/imagemin-jpegtran';
-import imageminPngquant from '@localnerve/imagemin-pngquant';
-import imageminGif from '@localnerve/imagemin-gifsicle';
-import imageminWebp from '@yeanzhi/imagemin-webp';
-import imageminGifToWebp from 'imagemin-gif2webp';
-import imageminAviv from '@vheemstra/imagemin-avifenc';
-import imageminSvgo from '@koddsson/imagemin-svgo';
 import { resolveToEsbuildTarget } from 'esbuild-plugin-browserslist';
 import browserslist from 'browserslist';
 import { compression, defineAlgorithm } from 'vite-plugin-compression2';
-import zlib from 'zlib';
+import autoOrigin from 'vite-plugin-auto-origin';
+import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 import { NodePackageImporter } from 'sass-embedded';
 
 const target = resolveToEsbuildTarget(browserslist('defaults'), {
@@ -25,7 +19,7 @@ const SvgoOpts = {
       name: 'preset-default',
       params: {
         overrides: {
-          removeViewBox: false,
+          removeViewBox: false, // https://github.com/svg/svgo/issues/1128
           removeComments: true,
           cleanupNumericValues: {
             floatPrecision: 2,
@@ -34,9 +28,58 @@ const SvgoOpts = {
             shortname: false,
           },
         },
+        cleanupIDs: {
+          minify: false,
+          remove: false,
+        },
+        convertPathData: false,
+      },
+    },
+    'sortAttrs',
+    {
+      name: 'addAttributesToSVGElement',
+      params: {
+        attributes: [{ xmlns: 'http://www.w3.org/2000/svg' }],
       },
     },
   ],
+};
+
+const minifyOptions = {
+  test: /\.(jpe?g|png|gif|tiff|webp|svg|avif)$/i,
+  includePublic: true,
+  logStats: true,
+  ansiColors: true,
+  svg: SvgoOpts,
+  png: {
+    // https://sharp.pixelplumbing.com/api-output#png
+    quality: 100,
+  },
+  jpeg: {
+    // https://sharp.pixelplumbing.com/api-output#jpeg
+    quality: 100,
+  },
+  jpg: {
+    // https://sharp.pixelplumbing.com/api-output#jpeg
+    quality: 100,
+  },
+  tiff: {
+    // https://sharp.pixelplumbing.com/api-output#tiff
+    quality: 100,
+  },
+  // gif does not support lossless compression
+  // https://sharp.pixelplumbing.com/api-output#gif
+  gif: {},
+  webp: {
+    // https://sharp.pixelplumbing.com/api-output#webp
+    lossless: true,
+  },
+  avif: {
+    // https://sharp.pixelplumbing.com/api-output#avif
+    lossless: true,
+  },
+  cache: false,
+  cacheLocation: undefined,
 };
 
 const compress = compression({
@@ -52,7 +95,7 @@ const compress = compression({
   ],
   deleteOriginalAssets: false,
   skipIfLargerOrEqual: true,
-  include: /\.(html|css|js|cjs|mjs|woff|woff2|json)$/,
+  include: /\.(html|css|js|cjs|mjs|svg|woff|woff2|json|jpeg|jpg|gif|png|webp|avif)$/,
 });
 
 export default defineConfig({
@@ -60,54 +103,15 @@ export default defineConfig({
   root: __dirname,
   publicDir: 'public',
   base: '/dist/',
-  plugins: [
-    viteImagemin({
-      plugins: {
-        jpg: imageminJpegtran(),
-        png: imageminPngquant({
-          quality: [0.8, 1],
-        }),
-        gif: imageminGif(),
-        svg: imageminSvgo(SvgoOpts),
-      },
-      onlyAssets: true,
-      skipIfLarger: true,
-      clearCache: true,
-      makeWebp: {
-        plugins: {
-          jpg: imageminWebp({ quality: 100 }),
-          png: imageminWebp({ quality: 100 }),
-          gif: imageminGifToWebp({ quality: 82 }),
-        },
-        skipIfLargerThan: 'optimized',
-      },
-      makeAvif: {
-        plugins: {
-          jpg: imageminAviv({ lossless: true }),
-          png: imageminAviv({ lossless: true }),
-        },
-        skipIfLargerThan: 'optimized',
-      },
-    }),
-    compress,
-  ],
-  server: {
-    host: 'localhost',
-    port: 3000,
-    strictPort: true,
-    hmr: {
-      host: 'localhost',
-      clientPort: 3000,
-    },
-    origin: 'http://localhost:3000',
-  },
+  plugins: [ViteImageOptimizer(minifyOptions), compress, autoOrigin()],
   build: {
-    target: target,
+    target,
     outDir: 'public/dist', // relative to the `root` folder
     assetsDir: 'assets/',
     emptyOutDir: true,
     copyPublicDir: false,
     minify: false,
+    sourcemap: true,
     manifest: true,
     assetsInlineLimit: 0,
     rollupOptions: {
