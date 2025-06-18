@@ -119,7 +119,7 @@
     "vite": "^6.3.5",
     "vite-plugin-auto-origin": "^1.2.1",
     "vite-plugin-compression2": "^2.2.0",
-    "vite-plugin-image-optimizer": "^1.1.8",
+    "vite-plugin-image-optimizer": "^1.1.9",
     "vitest": "^3.2.4",
     "yaml": "^2.8.0"
   },
