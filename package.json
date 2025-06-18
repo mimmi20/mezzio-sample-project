@@ -84,7 +84,7 @@
     "postcss-font-family-system-ui": "^5.0.0",
     "postcss-gap-properties": "^6.0.0",
     "postcss-image-set-function": "^7.0.0",
-    "postcss-import": "^16.1.0",
+    "postcss-import": "^16.1.1",
     "postcss-input-style": "^1.0.0",
     "postcss-load-config": "^6.0.1",
     "postcss-media-minmax": "^5.0.0",
