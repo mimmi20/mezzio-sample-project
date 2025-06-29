@@ -61,7 +61,7 @@
     "mocha": "^11.7.0",
     "postcss": "^8.5.6",
     "postcss-clamp": "^4.1.0",
-    "postcss-color-converter": "github:mimmi20/postcss-color-converter#master",
+    "postcss-color-converter": "^1.2.1",
     "postcss-color-hex-alpha": "^10.0.0",
     "postcss-color-rebeccapurple": "^10.0.0",
     "postcss-custom-media": "^11.0.6",
