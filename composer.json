@@ -37,7 +37,7 @@
     "laminas/laminas-view": "^2.41.0",
     "mezzio/mezzio": "^3.21.0",
     "mezzio/mezzio-authentication": "^1.11.0",
-    "mezzio/mezzio-helpers": "^5.18.0",
+    "mezzio/mezzio-helpers": "^5.19.0",
     "mezzio/mezzio-laminasrouter": "^3.11.0",
     "mezzio/mezzio-laminasviewrenderer": "^2.18.0",
     "mezzio/mezzio-router": "^3.18.0",
