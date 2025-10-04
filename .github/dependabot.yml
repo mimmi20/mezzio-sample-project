@@ -33,6 +33,9 @@ multi-ecosystem-groups:
 
     target-branch: "master"
 
+    commit-message:
+      prefix: "(master)"
+
 updates:
   - package-ecosystem: "composer"
 
