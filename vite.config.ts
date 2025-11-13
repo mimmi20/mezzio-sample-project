@@ -111,43 +111,43 @@ export default defineConfig({
       include: /\.(gif)/,
       defaultDirectives: () => {
         return new URLSearchParams({
-          quality: "82",
-          effort: "max",
-          format: "gif;webp"
+          quality: '82',
+          effort: 'max',
+          format: 'gif;webp',
         });
-      }
+      },
     }),
     imagetools({
       exclude: [],
       // include: /^[^?]+\.(avif|gif|heif|jpeg|jpg|png|tiff|webp)(\?.*)?$/
       // https://github.com/JonasKruckenberg/imagetools/issues/317
       include: /\.(jpe?g)/,
-      defaultDirectives: (url) => {
+      defaultDirectives: () => {
         return new URLSearchParams({
-          lossless: "1",
-          quality: "100",
-          effort: "max",
-          format: "jpg;webp;avif"
+          lossless: '1',
+          quality: '100',
+          effort: 'max',
+          format: 'jpg;webp;avif',
         });
-      }
+      },
     }),
     imagetools({
       exclude: [],
       // include: /^[^?]+\.(avif|gif|heif|jpeg|jpg|png|tiff|webp)(\?.*)?$/
       // https://github.com/JonasKruckenberg/imagetools/issues/317
       include: /\.(png)/,
-      defaultDirectives: (url) => {
+      defaultDirectives: () => {
         return new URLSearchParams({
-          lossless: "1",
-          quality: "100",
-          effort: "max",
-          format: "png;webp;avif"
+          lossless: '1',
+          quality: '100',
+          effort: 'max',
+          format: 'png;webp;avif',
         });
-      }
+      },
     }),
     ViteImageOptimizer(minifyOptions),
     compress,
-    autoOrigin()
+    autoOrigin(),
   ],
   server: {
     host: 'localhost',
@@ -160,7 +160,7 @@ export default defineConfig({
     },
     watch: {
       usePolling: true,
-      ignored: /(^|[\/\\])\..|\.php|vendor/,
+      ignored: /(^|[/\\])\..|\.php|vendor/,
     },
     origin: 'http://localhost:8082',
   },
