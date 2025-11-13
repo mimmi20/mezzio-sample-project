@@ -50,7 +50,6 @@ final readonly class HomePageHandler implements RequestHandlerInterface
                 ],
             );
         } catch (Throwable $e) {
-            var_dump($e);
             $this->logger->error(
                 $e,
                 [
