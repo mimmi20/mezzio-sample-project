@@ -1,4 +1,4 @@
 <?= $this->partial('components/layer/cookie-layer.phtml', ['isCookiePage'=> true]); ?>
 
-<?php $this->headLink()->appendStylesheet($this->viteUrl()->css('node_modules/bootstrap/dist/css/bootstrap.css'), 'screen', ['rel' => 'stylesheet']); ?>
-<?php $this->headLink()->appendStylesheet($this->viteUrl()->css('public/css/navigation.css'), 'screen', ['rel' => 'stylesheet']); ?>
+<?php $this->headLink()->appendStylesheet($this->viteUrl()->file('node_modules/bootstrap/dist/css/bootstrap.css'), 'screen', ['rel' => 'stylesheet']); ?>
+<?php $this->headLink()->appendStylesheet($this->viteUrl()->file('public/css/navigation.css'), 'screen', ['rel' => 'stylesheet']); ?>

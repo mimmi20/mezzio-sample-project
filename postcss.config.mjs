@@ -30,7 +30,6 @@ export default function (ctx) {
         name: 'preset-default',
         params: {
           overrides: {
-            removeViewBox: false,
             removeComments: true,
             cleanupNumericValues: {
               floatPrecision: 2,
