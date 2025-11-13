@@ -3,5 +3,20 @@
 <?php
 $this->inlineScript()->setAutoEscape(false);
 ?>
-<?php //$this->inlineScript()->appendFile($this->viteUrl()->js('node_modules/bootstrap/dist/js/bootstrap.esm.js'), 'module'); ?>
+<?php //$this->inlineScript()->appendFile($this->viteUrl()->file('node_modules/bootstrap/dist/js/bootstrap.esm.js'), 'module'); ?>
+
+<?php if ($this->viteUrl()->isDev()) : ?>
+<?php $this->inlineScript()->appendFile($this->viteUrl()->file('@vite/client'), 'module'); ?>
+<?php endif; ?>
+<?php
+//$this->inlineScript()->captureStart(
+//    \Laminas\View\Helper\Placeholder\Container\AbstractContainer::APPEND,
+//    'text/javascript'
+//);
+?>
+
+<?php
+//$this->inlineScript()->captureEnd();
+?>
+
 <?= $this->inlineScript(); ?>

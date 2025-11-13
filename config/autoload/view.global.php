@@ -23,11 +23,13 @@ return [
             'header' => [__DIR__ . '/../../src/App/templates/header'],
             'pages' => [__DIR__ . '/../../src/App/templates/pages'],
             'layout' => [__DIR__ . '/../../src/App/templates/layout'],
+            'nav' => [__DIR__ . '/../../src/App/templates/nav'],
         ],
         'layout' => 'layout::default',
     ],
     'vite-url' => [
         'public-dir' => 'public',
         'build-dir' => 'dist',
+        'vite-host' => 'http://localhost:8082',
     ],
 ];

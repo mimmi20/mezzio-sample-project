@@ -7,6 +7,7 @@ import { compression, defineAlgorithm } from 'vite-plugin-compression2';
 import autoOrigin from 'vite-plugin-auto-origin';
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 import { NodePackageImporter } from 'sass-embedded';
+import { imagetools } from 'vite-imagetools';
 
 const target = resolveToEsbuildTarget(browserslist('defaults'), {
   printUnknownTargets: false,
@@ -19,7 +20,6 @@ const SvgoOpts = {
       name: 'preset-default',
       params: {
         overrides: {
-          removeViewBox: false, // https://github.com/svg/svgo/issues/1128
           removeComments: true,
           cleanupNumericValues: {
             floatPrecision: 2,
@@ -102,8 +102,68 @@ export default defineConfig({
   appType: 'custom',
   root: __dirname,
   publicDir: 'public',
-  base: '/dist/',
-  plugins: [ViteImageOptimizer(minifyOptions), compress, autoOrigin()],
+  base: '/',
+  plugins: [
+    imagetools({
+      exclude: [],
+      // include: /^[^?]+\.(avif|gif|heif|jpeg|jpg|png|tiff|webp)(\?.*)?$/
+      // https://github.com/JonasKruckenberg/imagetools/issues/317
+      include: /\.(gif)/,
+      defaultDirectives: () => {
+        return new URLSearchParams({
+          quality: "82",
+          effort: "max",
+          format: "gif;webp"
+        });
+      }
+    }),
+    imagetools({
+      exclude: [],
+      // include: /^[^?]+\.(avif|gif|heif|jpeg|jpg|png|tiff|webp)(\?.*)?$/
+      // https://github.com/JonasKruckenberg/imagetools/issues/317
+      include: /\.(jpe?g)/,
+      defaultDirectives: (url) => {
+        return new URLSearchParams({
+          lossless: "1",
+          quality: "100",
+          effort: "max",
+          format: "jpg;webp;avif"
+        });
+      }
+    }),
+    imagetools({
+      exclude: [],
+      // include: /^[^?]+\.(avif|gif|heif|jpeg|jpg|png|tiff|webp)(\?.*)?$/
+      // https://github.com/JonasKruckenberg/imagetools/issues/317
+      include: /\.(png)/,
+      defaultDirectives: (url) => {
+        return new URLSearchParams({
+          lossless: "1",
+          quality: "100",
+          effort: "max",
+          format: "png;webp;avif"
+        });
+      }
+    }),
+    ViteImageOptimizer(minifyOptions),
+    compress,
+    autoOrigin()
+  ],
+  server: {
+    host: 'localhost',
+    port: 8082,
+    strictPort: true,
+    hmr: {
+      host: 'localhost',
+      clientPort: 8082,
+      overlay: true,
+    },
+    watch: {
+      usePolling: true,
+      ignored: /(^|[\/\\])\..|\.php|vendor/,
+    },
+    origin: 'http://localhost:8082',
+  },
   build: {
     target,
     outDir: 'public/dist', // relative to the `root` folder
@@ -138,7 +198,7 @@ export default defineConfig({
         path.resolve(__dirname, 'public/css/phv.css'),
         path.resolve(__dirname, 'public/css/rl.css'),
         path.resolve(__dirname, 'public/css/rs.css'),
-        path.resolve(__dirname, 'public/css/styles.css'),
+        path.resolve(__dirname, 'public/css/styles.scss'),
         path.resolve(__dirname, 'public/css/tie.css'),
         path.resolve(__dirname, 'public/css/unf.css'),
         path.resolve(__dirname, 'public/css/wg.css'),
@@ -155,6 +215,8 @@ export default defineConfig({
         path.resolve(__dirname, 'node_modules/bootswatch/dist/morph/bootstrap.css'),
         path.resolve(__dirname, 'node_modules/bootswatch/dist/quartz/bootstrap.css'),
         path.resolve(__dirname, 'node_modules/bootswatch/dist/materia/bootstrap.css'),
+        // Images
+        path.resolve(__dirname, 'public/img/ico_datepicker.svg'),
       ],
       output: {
         // dir: 'public/dist',

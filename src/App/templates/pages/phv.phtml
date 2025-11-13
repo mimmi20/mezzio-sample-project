@@ -321,13 +321,13 @@ $form->prepare();
     </div>
 </dialog>
 
-<?php $this->headLink()->prependStylesheet($this->viteUrl()->css('node_modules/bootstrap/dist/css/bootstrap.css'), 'screen', ['rel' => 'stylesheet']); ?>
-<?php $this->headLink()->appendStylesheet($this->viteUrl()->css('public/css/phv.css'), 'screen', ['rel' => 'stylesheet']); ?>
-<?php $this->headLink()->appendStylesheet($this->viteUrl()->css('public/css/help.css'), 'screen', ['rel' => 'stylesheet']); ?>
-<?php $this->headLink()->appendStylesheet($this->viteUrl()->css('public/css/navigation.css'), 'screen', ['rel' => 'stylesheet']); ?>
-<?php $this->headLink()->appendStylesheet($this->viteUrl()->css('public/css/accordion.css'), 'screen', ['rel' => 'stylesheet']); ?>
-<?php $this->headLink()->appendStylesheet($this->viteUrl()->css('public/css/validation.css'), 'screen', ['rel' => 'stylesheet']); ?>
-<?php $this->inlineScript()->appendFile($this->viteUrl()->js('public/js/form.ts')); ?>
-<?php $this->inlineScript()->appendFile($this->viteUrl()->js('public/js/phv.ts')); ?>
-<?php $this->inlineScript()->appendFile($this->viteUrl()->js('public/js/versbeginn.ts')); ?>
-<?php $this->inlineScript()->appendFile($this->viteUrl()->js('public/js/dialog.ts'), 'module'); ?>
+<?php $this->headLink()->prependStylesheet($this->viteUrl()->file('node_modules/bootstrap/dist/css/bootstrap.css'), 'screen', ['rel' => 'stylesheet']); ?>
+<?php $this->headLink()->appendStylesheet($this->viteUrl()->file('public/css/phv.css'), 'screen', ['rel' => 'stylesheet']); ?>
+<?php $this->headLink()->appendStylesheet($this->viteUrl()->file('public/css/help.css'), 'screen', ['rel' => 'stylesheet']); ?>
+<?php $this->headLink()->appendStylesheet($this->viteUrl()->file('public/css/navigation.css'), 'screen', ['rel' => 'stylesheet']); ?>
+<?php $this->headLink()->appendStylesheet($this->viteUrl()->file('public/css/accordion.css'), 'screen', ['rel' => 'stylesheet']); ?>
+<?php $this->headLink()->appendStylesheet($this->viteUrl()->file('public/css/validation.css'), 'screen', ['rel' => 'stylesheet']); ?>
+<?php $this->inlineScript()->appendFile($this->viteUrl()->file('public/js/form.ts')); ?>
+<?php $this->inlineScript()->appendFile($this->viteUrl()->file('public/js/phv.ts')); ?>
+<?php $this->inlineScript()->appendFile($this->viteUrl()->file('public/js/versbeginn.ts')); ?>
+<?php $this->inlineScript()->appendFile($this->viteUrl()->file('public/js/dialog.ts'), 'module'); ?>

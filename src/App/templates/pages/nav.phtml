@@ -1,10 +1,8 @@
-<?php
-/* @var $form \Laminas\Form\Form */
+<?= $this->navigation('Mimmi20\\Mezzio\\Navigation\\Top')->breadcrumbs()->setPartial('nav::breadcrumbs'); ?>
 
-$form->prepare();
-?>
+<?= $this->navigation('Mimmi20\\Mezzio\\Navigation\\Top')->menu()->setPartial('nav::breadcrumbs'); ?>
 
-<h1 class="card-header">Unfall</h1>
+<h1 class="card-header">WG</h1>
 <div class="card-body" id="hr-start">
     <div class="text-wrapper">
         <strong>Lorem ipsum dolor sit amet, consetetur</strong>
@@ -14,15 +12,13 @@ $form->prepare();
     </div>
     <div class="card">
         <div class="card-body">
-            <div class="card-title">Unfall berechnen</div>
+            <div class="card-title">WG berechnen</div>
             <div class="alert alert-danger" role="alert">
                 Es ist ein Fehler aufgetreten!
             </div>
             <div class="alert alert-warning" role="alert">
                 Ihre angegebenen Daten sind nicht korrekt!
             </div>
-
-            <?= $this->form()->setIndent(16)->render($form) ?>
         </div>
     </div>
     <div class="text-wrapper">
@@ -35,6 +31,6 @@ $form->prepare();
 
 <?php $this->headLink()->appendStylesheet($this->viteUrl()->file('node_modules/bootstrap/dist/css/bootstrap.css'), 'screen', ['rel' => 'stylesheet']); ?>
 <?php $this->headLink()->appendStylesheet($this->viteUrl()->file('public/css/navigation.css'), 'screen', ['rel' => 'stylesheet']); ?>
-<?php $this->headLink()->appendStylesheet($this->viteUrl()->file('public/css/unf.css'), 'screen', ['rel' => 'stylesheet']); ?>
+<?php $this->headLink()->appendStylesheet($this->viteUrl()->file('public/css/wg.css'), 'screen', ['rel' => 'stylesheet']); ?>
 <?php $this->inlineScript()->appendFile($this->viteUrl()->file('public/js/form.ts')); ?>
-<?php $this->inlineScript()->appendFile($this->viteUrl()->file('public/js/unf.ts')); ?>
+<?php $this->inlineScript()->appendFile($this->viteUrl()->file('public/js/wg.ts')); ?>

@@ -158,6 +158,14 @@ return [
                         'id' => 'rl-id',
                         'class' => 'btn-secondary',
                     ],
+                    'nav' => [
+                        'label' => 'nav',
+                        'title' => 'nav',
+                        'route' => 'info',
+                        'params' => ['id' => 'nav'],
+                        'id' => 'nav-id',
+                        'class' => 'btn-secondary',
+                    ],
                 ],
             ],
             'login' => [
