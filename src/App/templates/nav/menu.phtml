@@ -1,0 +1,2 @@
+<?php /** @var \Mimmi20\Mezzio\Navigation\ContainerInterface<\Mimmi20\Mezzio\Navigation\Page\PageInterface> $container */ ?>
+<?= $this->navigation()->menu()->setIndent(28)->renderMenu($container, ['in-navbar' => true, 'fill' => true, 'pills' => true, 'style' => 'ul', 'sublink' => 'details', 'onlyActiveBranch' => false, 'renderParents' => true, 'minDepth' => 0, 'ulClass' => 'justify-content-end']); ?>
