@@ -10,6 +10,10 @@ on:
 
 permissions:
   contents: read
+  security-events: read
+  issues: read
+  pull-requests: read
+  checks: read
 
 concurrency:
   group: "${{ github.event_name }}-${{ github.workflow }}-${{ github.head_ref || github.run_id }}-${{ github.ref }}"
@@ -19,7 +23,7 @@ jobs:
   validate:
     name: "Validate Project"
 
-    uses: "mimmi20/ci/.github/workflows/validate.yml@8.3"
+    uses: "mimmi20/ci/.github/workflows/validate.yml@8.4"
     with:
       extensions: "ctype, curl, dom, fileinfo, iconv, intl, mbstring, simplexml, tokenizer, xml, xmlwriter"
       ini-values: "opcache.enable=1, opcache.fast_shutdown=0, zend.assertions=1, assert.exception=On, intl.default_locale=de, intl.use_exceptions=1, zend.exception_ignore_args=0"
@@ -28,7 +32,7 @@ jobs:
       skip-validate-yaml: false
       skip-validate-md: false
       skip-phplint: false
-      skip-check-composer: true
+      skip-check-composer: false
       skip-ec-checker: false
       dependency-analyser-options: "--ignore-dev-in-prod-deps --ignore-unknown-classes"
 
@@ -37,7 +41,7 @@ jobs:
 
     needs: "validate"
 
-    uses: "mimmi20/ci/.github/workflows/install.yml@8.3"
+    uses: "mimmi20/ci/.github/workflows/install.yml@8.4"
     with:
       extensions: "ctype, curl, dom, fileinfo, iconv, mbstring, intl, simplexml, tokenizer, xml, xmlwriter"
       ini-values: "opcache.enable=1, opcache.fast_shutdown=0, zend.assertions=1, assert.exception=On, intl.default_locale=de, intl.use_exceptions=1, zend.exception_ignore_args=0"
@@ -52,15 +56,23 @@ jobs:
   analytics:
     name: "Project Analysis"
 
+    permissions:
+      security-events: write
+      id-token: write
+      contents: read
+      issues: read
+      pull-requests: read
+      checks: read
+
     needs: "install"
 
-    uses: "mimmi20/ci/.github/workflows/analytics.yml@8.3"
+    uses: "mimmi20/ci/.github/workflows/analytics.yml@8.4"
     with:
       extensions: "ctype, curl, dom, fileinfo, iconv, intl, mbstring, simplexml, tokenizer, xml, xmlwriter"
       ini-values: "opcache.enable=1, opcache.fast_shutdown=0, zend.assertions=1, assert.exception=On, intl.default_locale=de, intl.use_exceptions=1, zend.exception_ignore_args=0"
       composer-options: "--optimize-autoloader --prefer-dist --prefer-stable -v"
       skip-php-cs-fixer: false
-      skip-phpcs: true
+      skip-phpcs: false
       skip-phpstan: false
       skip-rector: false
       skip-eslint: false
@@ -70,6 +82,8 @@ jobs:
       skip-libimagequant-install: false
       skip-librabbitmq-install: false
       skip-libgif-install: false
+      skip-oxlint: true
+      use-code-scanning: true
       phpcs-options: ""
 
   tests:
@@ -77,7 +91,7 @@ jobs:
 
     needs: "analytics"
 
-    uses: "mimmi20/ci/.github/workflows/test.yml@8.3"
+    uses: "mimmi20/ci/.github/workflows/test.yml@8.4"
     with:
       extensions: "ctype, dom, fileinfo, intl, simplexml, tokenizer, xml, xmlwriter"
       ini-values: "opcache.enable=1, opcache.fast_shutdown=0, zend.assertions=1, assert.exception=On, intl.default_locale=de, intl.use_exceptions=1, zend.exception_ignore_args=0"
@@ -94,9 +108,10 @@ jobs:
       skip-librabbitmq-install: false
       skip-libgif-install: false
       upload-codecov: true
-      upload-codeclimate: true
-      upload-coveralls: false
+      upload-codeclimate: false
+      upload-coveralls: true
       upload-flag: ""
+      use-phpstan: true
     secrets:
       ENV_CODECLIMATE_API_KEY: ${{ secrets.CODECLIMATE_API_KEY }}
       ENV_CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}

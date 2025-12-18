@@ -12,7 +12,7 @@
   ],
   "homepage": "https://github.com/mimmi20/mezzio-sample-project",
   "require": {
-    "php": "~8.3.0 || ~8.4.0 || ~8.5.0",
+    "php": "~8.4.0 || ~8.5.0",
     "ext-fileinfo": "*",
     "ext-intl": "*",
     "ext-json": "*",
@@ -72,6 +72,7 @@
     "ext-xmlwriter": "*",
     "filp/whoops": "^2.18.4",
     "infection/infection": "^0.31.9",
+    "jbelien/phpstan-sarif-formatter": "^1.2.0",
     "mimmi20/coding-standard": "^6.2.5",
     "nikic/php-parser": "^5.7.0",
     "phpstan/extension-installer": "^1.4.3",
@@ -108,7 +109,7 @@
     },
     "lock": false,
     "platform": {
-      "php": "8.3.0"
+      "php": "8.4.0"
     },
     "preferred-install": "dist",
     "sort-packages": true
