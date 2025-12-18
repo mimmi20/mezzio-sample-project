@@ -12,7 +12,7 @@
   ],
   "homepage": "https://github.com/mimmi20/mezzio-sample-project",
   "require": {
-    "php": "~8.3.0 || ~8.4.0 || ~8.5.0",
+    "php": "~8.4.0 || ~8.5.0",
     "ext-fileinfo": "*",
     "ext-intl": "*",
     "ext-json": "*",
@@ -108,7 +108,7 @@
     },
     "lock": false,
     "platform": {
-      "php": "8.3.0"
+      "php": "8.4.0"
     },
     "preferred-install": "dist",
     "sort-packages": true
