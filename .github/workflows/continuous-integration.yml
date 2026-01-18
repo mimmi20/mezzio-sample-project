@@ -79,7 +79,7 @@ jobs:
       skip-stylelint: true
       skip-prettier: false
       skip-nasm-install: false
-      skip-libimagequant-install: false
+      skip-libimagequant-install: true
       skip-librabbitmq-install: false
       skip-libgif-install: false
       skip-oxlint: true
