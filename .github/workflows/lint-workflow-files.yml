@@ -14,6 +14,7 @@ jobs:
     with:
       skip-nasm-install: false
       skip-libimagequant-install: false
+      skip-libpng-install: true
       skip-librabbitmq-install: false
       skip-libgif-install: false
 
