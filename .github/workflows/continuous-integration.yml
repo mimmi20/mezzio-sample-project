@@ -50,6 +50,7 @@ jobs:
       skip-npm-install: false
       skip-nasm-install: false
       skip-libimagequant-install: false
+      skip-libpng-install: true
       skip-librabbitmq-install: false
       skip-libgif-install: false
 
@@ -80,6 +81,7 @@ jobs:
       skip-prettier: false
       skip-nasm-install: false
       skip-libimagequant-install: false
+      skip-libpng-install: true
       skip-librabbitmq-install: false
       skip-libgif-install: false
       skip-oxlint: true
@@ -105,6 +107,7 @@ jobs:
       skip-stryker: true
       skip-nasm-install: false
       skip-libimagequant-install: false
+      skip-libpng-install: true
       skip-librabbitmq-install: false
       skip-libgif-install: false
       upload-codecov: true
@@ -155,6 +158,7 @@ jobs:
 
       - name: "install libpng-dev"
         run: "sudo apt-get install libpng-dev -y"
+        continue-on-error: true
 
       - name: "install librabbitmq-dev"
         run: "sudo apt-get install librabbitmq-dev -y"
