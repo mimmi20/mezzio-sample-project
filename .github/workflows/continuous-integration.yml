@@ -158,6 +158,7 @@ jobs:
 
       - name: "install libpng-dev"
         run: "sudo apt-get install libpng-dev -y"
+        continue-on-error: true
 
       - name: "install librabbitmq-dev"
         run: "sudo apt-get install librabbitmq-dev -y"
