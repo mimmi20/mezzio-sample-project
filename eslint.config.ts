@@ -6,6 +6,10 @@ import globals from 'globals';
 import pluginPromise from 'eslint-plugin-promise';
 import depend from 'eslint-plugin-depend';
 import { importX } from 'eslint-plugin-import-x';
+import nodePlugin from 'eslint-plugin-n';
+import simpleImportSort from 'eslint-plugin-simple-import-sort';
+import unusedImports from 'eslint-plugin-unused-imports';
+import tsdoc from 'eslint-plugin-tsdoc';
 
 export default tseslint.config(
   eslint.configs.recommended,
@@ -313,6 +317,7 @@ export default tseslint.config(
       'symbol-description': 'error',
       'import-x/no-dynamic-require': 'warn',
       'import-x/no-nodejs-modules': 'warn',
+      'import-x/no-unresolved': 'warn',
     },
     languageOptions: {
       globals: {
@@ -334,6 +339,10 @@ export default tseslint.config(
   {
     plugins: {
       prettier,
+      node: nodePlugin,
+      'unused-imports': unusedImports,
+      'simple-import-sort': simpleImportSort,
+      tsdoc,
     },
     rules: {
       'prettier/prettier': 'error',
@@ -414,7 +423,6 @@ export default tseslint.config(
           avoidExplicitReturnArrows: true,
         },
       ],
-      'import-x/no-unresolved': 'off',
     },
   },
   {
