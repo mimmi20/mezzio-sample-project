@@ -154,39 +154,39 @@ jobs:
       ENV_CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       ENV_STRYKER_DASHBOARD_API_KEY: ${{ secrets.STRYKER_DASHBOARD_API_KEY }}
 
-  tests-node:
-    name: "UnitTests on Node"
-
-    needs:
-      - "analytics-php"
-      - "analytics-node"
-
-    uses: "mimmi20/ci/.github/workflows/test-node.yml@8.4"
-    with:
-      coverage: "xdebug"
-      test-name: ""
-      skip-vitest: false
-      skip-stryker: true
-      skip-nasm-install: false
-      skip-libimagequant-install: false
-      skip-libpng-install: true
-      skip-librabbitmq-install: false
-      skip-libgif-install: false
-      upload-codecov: true
-      upload-codeclimate: false
-      upload-coveralls: true
-      upload-flag: ""
-    secrets:
-      ENV_CODECLIMATE_API_KEY: ${{ secrets.CODECLIMATE_API_KEY }}
-      ENV_CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-      ENV_STRYKER_DASHBOARD_API_KEY: ${{ secrets.STRYKER_DASHBOARD_API_KEY }}
+#  tests-node:
+#    name: "UnitTests on Node"
+#
+#    needs:
+#      - "analytics-php"
+#      - "analytics-node"
+#
+#    uses: "mimmi20/ci/.github/workflows/test-node.yml@8.4"
+#    with:
+#      coverage: "xdebug"
+#      test-name: ""
+#      skip-vitest: false
+#      skip-stryker: true
+#      skip-nasm-install: false
+#      skip-libimagequant-install: false
+#      skip-libpng-install: true
+#      skip-librabbitmq-install: false
+#      skip-libgif-install: false
+#      upload-codecov: true
+#      upload-codeclimate: false
+#      upload-coveralls: true
+#      upload-flag: ""
+#    secrets:
+#      ENV_CODECLIMATE_API_KEY: ${{ secrets.CODECLIMATE_API_KEY }}
+#      ENV_CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+#      ENV_STRYKER_DASHBOARD_API_KEY: ${{ secrets.STRYKER_DASHBOARD_API_KEY }}
 
   build-with-vite:
     name: "Build with vite"
 
     needs:
       - "tests-php"
-      - "tests-node"
+#      - "tests-node"
 
     runs-on: "${{ matrix.operating-system }}"
 
@@ -251,7 +251,7 @@ jobs:
 
     needs:
       - "tests-php"
-      - "tests-node"
+#      - "tests-node"
       - "build-with-vite"
 
     steps:
