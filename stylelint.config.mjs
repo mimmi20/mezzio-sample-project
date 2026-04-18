@@ -1,7 +1,6 @@
-/* global process */
 /** @type {import('stylelint').Config} */
 
-import sortOrderSmacss from 'stylelint-config-property-sort-order-smacss/generate.js';
+import sortOrderSmacss from 'stylelint-config-property-sort-order-smacss/generate';
 
 export default {
   extends: ['stylelint-config-standard', 'stylelint-config-property-sort-order-smacss'],

@@ -139,7 +139,6 @@
 
 .circular-chart .circle.animate {
     animation: progress 1s ease-out forwards;
-    animation: progress 1s ease-out forwards;
 }
 
 .percentage {
@@ -357,17 +356,14 @@ meter.progress:-moz-meter-sub-sub-optimum::-moz-meter-bar {
     height: 1rem;
     margin-top: -0.25rem;
     transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     border: 0;
     border-radius: 1rem;
     background-color: #0d6efd;
-    appearance: none;
     appearance: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
     .form-range[type="range"]::-webkit-slider-thumb {
-        transition: none;
         transition: none;
     }
 }
@@ -390,17 +386,14 @@ meter.progress:-moz-meter-sub-sub-optimum::-moz-meter-bar {
     width: 1rem;
     height: 1rem;
     transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     border: 0;
     border-radius: 1rem;
     background-color: #0d6efd;
-    appearance: none;
     appearance: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
     .form-range[type="range"]::-moz-range-thumb {
-        transition: none;
         transition: none;
     }
 }
@@ -449,8 +442,7 @@ datalist option {
     width: var(--option-width);
     margin-top: 0.5em;
     margin-bottom: 1em;
-    padding: 0;
-    padding-top: var(--thumb-height);
+    padding: var(--thumb-height) 0 0;
     color: #8E8E93;
     font-size: 12px;
     line-height: 16px;

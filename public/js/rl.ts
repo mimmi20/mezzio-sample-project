@@ -13,10 +13,10 @@
         form.classList.add('was-validated');
 
         if (valid) {
-          const data = new FormData(form),
-            netto = data.get('netto');
+          const data = new FormData(form);
+          const netto = data.get('netto');
 
-          if (null !== netto) {
+          if (netto !== null) {
             const bestehendeVorsorge = 100;
             const calculationResult = {
               valid: true,
@@ -32,10 +32,10 @@
               return;
             }
 
-            const monatsBedarf = calculationResult.monatsBedarf || 0,
-              monatsRente = calculationResult.monatsRente || 0,
-              kv = calculationResult.kv || 0,
-              steuer = calculationResult.steuer || 0;
+            const monatsBedarf = calculationResult.monatsBedarf || 0;
+            const monatsRente = calculationResult.monatsRente || 0;
+            const kv = calculationResult.kv || 0;
+            const steuer = calculationResult.steuer || 0;
 
             const erwarteteRente = calculationResult.nettoRente || 0;
 
@@ -48,10 +48,10 @@
 
             const resultData = {
               type: 'rentenluecke',
-              monatsBedarf: monatsBedarf,
-              monatsRente: monatsRente,
-              kv: kv,
-              steuer: steuer,
+              monatsBedarf,
+              monatsRente,
+              kv,
+              steuer,
             };
 
             document.dispatchEvent(
@@ -64,7 +64,7 @@
 
             const chart = document.querySelector('[data-chart]');
 
-            if (null === chart) {
+            if (chart === null) {
               console.error('no chart');
               return;
             }
@@ -114,7 +114,7 @@
               }).format(monatsBedarf);
             }
 
-            if (pensionNetAmount instanceof HTMLOutputElement && null !== pensionNetAmount.parentElement) {
+            if (pensionNetAmount instanceof HTMLOutputElement && pensionNetAmount.parentElement !== null) {
               if (erwarteteRente > 0) {
                 pensionNetAmount.value = new Intl.NumberFormat('de-DE', {
                   style: 'currency',
@@ -126,7 +126,7 @@
               }
             }
 
-            if (pensionActualAmount instanceof HTMLOutputElement && null !== pensionActualAmount.parentElement) {
+            if (pensionActualAmount instanceof HTMLOutputElement && pensionActualAmount.parentElement !== null) {
               if (bestehendeVorsorge >= 0) {
                 pensionActualAmount.value = new Intl.NumberFormat('de-DE', {
                   style: 'currency',

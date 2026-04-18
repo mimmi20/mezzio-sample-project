@@ -99,8 +99,10 @@ class AtbBase {
           return;
         }
 
-        const sleep = async function Sleep(milliseconds: number) {
-          return new Promise((resolve) => setTimeout(resolve, milliseconds));
+        const sleep = async function (milliseconds: number) {
+          return new Promise((resolve) => {
+            setTimeout(() => resolve(1), milliseconds);
+          });
         };
 
         if (typeof thatScript.dataset.url === 'undefined') {
@@ -332,18 +334,16 @@ class AtbBase {
     const submitter = form.querySelectorAll<HTMLButtonElement>('button[type="submit"]')[0];
     const formData = new FormData(form, submitter);
 
-    if (!isCheckbox) {
-      if (productOptions !== null) {
-        const containers = productOptions.querySelectorAll<HTMLDivElement>('div');
-
-        containers.forEach((container: HTMLDivElement): void => {
-          container.remove();
-        });
-      }
-    } else {
+    if (isCheckbox) {
       for (const [key, value] of await formData.entries()) {
         previousSelection[parseInt(key, 10)] = value;
       }
+    } else if (productOptions !== null) {
+      const containers = productOptions.querySelectorAll<HTMLDivElement>('div');
+
+      containers.forEach((container: HTMLDivElement): void => {
+        container.remove();
+      });
     }
 
     if (typeof thatScript.dataset.url === 'undefined') {
@@ -456,9 +456,9 @@ class AtbBase {
   }
 
   getCheckboxHtml(id: string, name: string, val: string, label: string, required: boolean, requiredMessage: string, checked: boolean): string {
-    const isRequired = required ? 'required ' : '',
-      isChecked = checked ? 'checked="checked" ' : '',
-      isRequiredMessage = requiredMessage ? 'data-required-message="' + requiredMessage + '" ' : '';
+    const isRequired = required ? 'required ' : '';
+    const isChecked = checked ? 'checked="checked" ' : '';
+    const isRequiredMessage = requiredMessage ? 'data-required-message="' + requiredMessage + '" ' : '';
 
     return (
       '<div class="form-check col-12 col-sm-6">\n' +

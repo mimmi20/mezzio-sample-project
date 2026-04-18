@@ -127,7 +127,7 @@ jobs:
       skip-oxlint: true
 
   tests-php:
-    name: "UnitTests"
+    name: "UnitTests PHP"
 
     needs:
       - "analytics-php"
@@ -155,7 +155,7 @@ jobs:
       ENV_STRYKER_DASHBOARD_API_KEY: ${{ secrets.STRYKER_DASHBOARD_API_KEY }}
 
   tests-node:
-    name: "UnitTests"
+    name: "UnitTests Node"
 
     needs:
       - "analytics-php"
