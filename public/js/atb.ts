@@ -387,7 +387,7 @@ class AtbBase {
           this.escape(text),
           results.required === true,
           requiredText,
-          this.wasChecked(previousSelection, 'prod-opt[]', key)
+          false // @todo: uncomment this.wasChecked(previousSelection, 'prod-opt[]', key)
         );
       });
 
@@ -551,16 +551,18 @@ class AtbBase {
    * @param name {string}
    * @param value
    * @returns {boolean}
+   *
+   * @todo: uncomment
    */
-  wasChecked(previousSelection: Array<any>, name: string, value: string): boolean {
-    for (const key in previousSelection) {
-      if (previousSelection[key]['name'] === name && previousSelection[key]['value'] === value) {
-        return true;
-      }
-    }
-
-    return false;
-  }
+  // wasChecked(previousSelection: Array<any>, name: string, value: string): boolean {
+  //   for (const key in previousSelection) {
+  //     if (previousSelection[key]['name'] === name && previousSelection[key]['value'] === value) {
+  //       return true;
+  //     }
+  //   }
+  //
+  //   return false;
+  // }
 
   /**
    *

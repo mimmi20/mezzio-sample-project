@@ -414,7 +414,7 @@ export default tseslint.config(
           avoidExplicitReturnArrows: true,
         },
       ],
-      'import/no-unresolved': 'off',
+      'import-x/no-unresolved': 'off',
     },
   },
   {
