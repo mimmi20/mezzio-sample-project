@@ -43,7 +43,7 @@ jobs:
       dependency-analyser-options: "--ignore-dev-in-prod-deps --ignore-unknown-classes"
 
   install-php:
-    name: "Install Project"
+    name: "Install Project on PHP"
 
     needs:
       - "validate-all"
@@ -58,7 +58,7 @@ jobs:
       skip-libgif-install: true
 
   install-node:
-    name: "Install Project"
+    name: "Install Project on Node"
 
     needs:
       - "validate-all"
@@ -73,7 +73,7 @@ jobs:
       skip-libgif-install: false
 
   analytics-php:
-    name: "Project Analysis"
+    name: "Project Analysis with PHP"
 
     permissions:
       security-events: write
@@ -100,7 +100,7 @@ jobs:
       phpcs-options: ""
 
   analytics-node:
-    name: "Project Analysis"
+    name: "Project Analysis with Node"
 
     permissions:
       security-events: write
@@ -127,7 +127,7 @@ jobs:
       skip-oxlint: true
 
   tests-php:
-    name: "UnitTests PHP"
+    name: "UnitTests on PHP"
 
     needs:
       - "analytics-php"
@@ -155,13 +155,13 @@ jobs:
       ENV_STRYKER_DASHBOARD_API_KEY: ${{ secrets.STRYKER_DASHBOARD_API_KEY }}
 
   tests-node:
-    name: "UnitTests Node"
+    name: "UnitTests on Node"
 
     needs:
       - "analytics-php"
       - "analytics-node"
 
-    uses: "mimmi20/ci/.github/workflows/test-node.yml@master"
+    uses: "mimmi20/ci/.github/workflows/test-node.yml@8.4"
     with:
       coverage: "xdebug"
       test-name: ""
