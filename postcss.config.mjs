@@ -1,5 +1,3 @@
-/* global process */
-
 import postcssPxtorem from 'postcss-pxtorem';
 import postcssPresetEnv from 'postcss-preset-env';
 import cssnano from 'cssnano';
@@ -45,7 +43,7 @@ export default function (ctx) {
 
   return {
     plugins: [
-      postcssImport({ root: root }),
+      postcssImport({ root }),
       postcssInputStyle,
       postcssFlexbugsFixes,
       postcssPseudoColons({

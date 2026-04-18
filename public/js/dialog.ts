@@ -34,7 +34,7 @@ class Dialog {
   initDialog(dialog: HTMLDialogElement): void {
     const closeButtons = dialog.querySelectorAll<HTMLButtonElement>('[data-bs-dismiss="modal"]');
 
-    closeButtons.forEach(function (button: HTMLButtonElement): void {
+    closeButtons.forEach((button: HTMLButtonElement): void => {
       button.addEventListener('click', (event: MouseEvent): void => {
         event.preventDefault();
         event.stopPropagation();

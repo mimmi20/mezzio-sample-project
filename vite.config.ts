@@ -109,7 +109,7 @@ export default defineConfig({
       // include: /^[^?]+\.(avif|gif|heif|jpeg|jpg|png|tiff|webp)(\?.*)?$/
       // https://github.com/JonasKruckenberg/imagetools/issues/317
       include: /\.(gif)/,
-      defaultDirectives: () => {
+      defaultDirectives() {
         return new URLSearchParams({
           quality: '82',
           effort: 'max',
@@ -122,7 +122,7 @@ export default defineConfig({
       // include: /^[^?]+\.(avif|gif|heif|jpeg|jpg|png|tiff|webp)(\?.*)?$/
       // https://github.com/JonasKruckenberg/imagetools/issues/317
       include: /\.(jpe?g)/,
-      defaultDirectives: () => {
+      defaultDirectives() {
         return new URLSearchParams({
           lossless: '1',
           quality: '100',
@@ -136,7 +136,7 @@ export default defineConfig({
       // include: /^[^?]+\.(avif|gif|heif|jpeg|jpg|png|tiff|webp)(\?.*)?$/
       // https://github.com/JonasKruckenberg/imagetools/issues/317
       include: /\.(png)/,
-      defaultDirectives: () => {
+      defaultDirectives() {
         return new URLSearchParams({
           lossless: '1',
           quality: '100',

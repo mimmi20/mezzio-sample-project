@@ -11,7 +11,6 @@
     "moduleResolution": "bundler",
     "noEmit": false,
     "noImplicitReturns": true,
-    "pretty": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "sourceMap": false,

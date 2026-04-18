@@ -12,7 +12,7 @@
   ],
   "homepage": "https://github.com/mimmi20/mezzio-sample-project",
   "require": {
-    "php": "~8.4.0 || ~8.5.0",
+    "php": "~8.4.0 || ~8.5.0 || ~8.6.0",
     "ext-fileinfo": "*",
     "ext-intl": "*",
     "ext-json": "*",
@@ -70,6 +70,7 @@
     "ext-tokenizer": "*",
     "ext-xml": "*",
     "ext-xmlwriter": "*",
+    "ergebnis/composer-normalize": "^2.50.0",
     "filp/whoops": "^2.18.4",
     "infection/infection": "^0.32.6",
     "jbelien/phpstan-sarif-formatter": "^1.2.0",
@@ -103,6 +104,7 @@
   "config": {
     "allow-plugins": {
       "dealerdirect/phpcodesniffer-composer-installer": true,
+      "ergebnis/composer-normalize": true,
       "infection/extension-installer": true,
       "laminas/laminas-component-installer": true,
       "phpstan/extension-installer": true
@@ -115,6 +117,10 @@
     "sort-packages": true
   },
   "extra": {
+    "composer-normalize": {
+      "indent-size": 2,
+      "indent-style": "space"
+    },
     "laminas": {
       "component-whitelist": [
         "mezzio/mezzio",
