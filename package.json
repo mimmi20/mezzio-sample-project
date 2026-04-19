@@ -127,7 +127,7 @@
     "supports-color": "^10.2.2",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.58.1",
-    "vite": "^8.0.8",
+    "vite": "^7.3.2",
     "vite-imagetools": "^10.0.0",
     "vite-plugin-auto-origin": "^2.0.2",
     "vite-plugin-compression2": "^2.5.3",
@@ -140,12 +140,16 @@
   },
   "overrides": {
     "cross-spawn": "^7.0.6",
-    "find-versions": "^6.0.0",
-    "glob": "^11.0.1",
-    "meow": "^13.2.0",
-    "trim-newlines": "^3.0.1",
-    "uuid": "^11.1.0",
+    "diff": "^9.0.0",
     "eslint": "$eslint",
-    "postcss": "$postcss"
+    "find-versions": "^6.0.0",
+    "glob": "^13.0.6",
+    "lodash": "^4.18.1",
+    "meow": "^14.1.0",
+    "mocha": "$mocha",
+    "postcss": "$postcss",
+    "serialize-javascript": "^7.0.5",
+    "trim-newlines": "^5.0.0",
+    "uuid": "^13.0.0"
   }
 }
