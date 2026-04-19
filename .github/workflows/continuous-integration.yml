@@ -114,7 +114,7 @@ jobs:
       - "install-php"
       - "install-node"
 
-    uses: "mimmi20/ci/.github/workflows/analytics-node.yml@8.4"
+    uses: "mimmi20/ci/.github/workflows/analytics-node.yml@8.5"
     with:
       skip-eslint: false
       skip-stylelint: true
