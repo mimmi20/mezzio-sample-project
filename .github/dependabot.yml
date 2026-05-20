@@ -90,6 +90,8 @@ updates:
         versions: [ ">=8.0.0" ]
       - dependency-name: "postcss-normalize-whitespace"
         versions: [ ">=8.0.0" ]
+      - dependency-name: "postcss-svgo"
+        versions: [ ">=8.0.0" ]
 
     # Disable rebasing for all pull requests
     rebase-strategy: "disabled"
