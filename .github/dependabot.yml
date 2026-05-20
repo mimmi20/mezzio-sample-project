@@ -86,6 +86,8 @@ updates:
         versions: [ ">=8.0.0" ]
       - dependency-name: "cssnano-preset-default"
         versions: [ ">=8.0.0" ]
+      - dependency-name: "postcss-merge-rules"
+        versions: [ ">=8.0.0" ]
 
     # Disable rebasing for all pull requests
     rebase-strategy: "disabled"
