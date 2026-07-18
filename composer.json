@@ -28,7 +28,7 @@
     "laminas/laminas-i18n": "^2.33.0",
     "laminas/laminas-i18n-resources": "^2.13.0",
     "laminas/laminas-inputfilter": "^2.35.0",
-    "laminas/laminas-router": "^3.18.0",
+    "laminas/laminas-router": "^3.19.0",
     "laminas/laminas-servicemanager": "^3.24.0",
     "laminas/laminas-stdlib": "^3.21.0",
     "laminas/laminas-stratigility": "^4.3.1",
