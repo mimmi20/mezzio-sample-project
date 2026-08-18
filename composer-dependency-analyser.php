@@ -41,7 +41,6 @@ $config
     ->ignoreErrorsOnPackage('tomasvotruba/cognitive-complexity', [ErrorType::UNUSED_DEPENDENCY])
     ->ignoreErrorsOnPackage('tomasvotruba/type-coverage', [ErrorType::UNUSED_DEPENDENCY])
     ->ignoreErrorsOnPackage('tomasvotruba/unused-public', [ErrorType::UNUSED_DEPENDENCY])
-    ->ignoreErrorsOnPackage('rector/type-perfect', [ErrorType::UNUSED_DEPENDENCY])
     ->ignoreErrorsOnPackage('laminas/laminas-component-installer', [ErrorType::UNUSED_DEPENDENCY])
     ->ignoreErrorsOnPackage('filp/whoops', [ErrorType::UNUSED_DEPENDENCY])
     ->ignoreErrorsOnPackage('phpstan/phpstan-phpunit', [ErrorType::UNUSED_DEPENDENCY])
