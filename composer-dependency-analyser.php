@@ -44,6 +44,7 @@ $config
     ->ignoreErrorsOnPackage('rector/type-perfect', [ErrorType::UNUSED_DEPENDENCY])
     ->ignoreErrorsOnPackage('laminas/laminas-component-installer', [ErrorType::UNUSED_DEPENDENCY])
     ->ignoreErrorsOnPackage('filp/whoops', [ErrorType::UNUSED_DEPENDENCY])
+    ->ignoreErrorsOnPackage('phpstan/phpstan-phpunit', [ErrorType::UNUSED_DEPENDENCY])
     ->ignoreErrorsOnPackage(
         'jbelien/phpstan-sarif-formatter',
         [ErrorType::UNUSED_DEPENDENCY],
